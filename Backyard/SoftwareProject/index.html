@@ -4,85 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Background with Clickable Image</title>
-    
-    
-
-    
-
-  <style>
-      
-    @font-face {
-      font-family: ComicNeue;
-      src: url(fonts/Comic_Neue/ComicNeue-Regular.ttf);
-    }
-      
-      
-      p {
-        font-family: ComicNeue;
-        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-      }
-      
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background-image: url("Background.png"); /* Use your own image file */
-      background-size: cover;
-      background-position: center;
-    }
-      
-
-      
-      
-    #clickImage {
-      width: 144px;
-      height: auto;
-      cursor: pointer;
-      border-radius: 6px;
-      transition: transform 0.3s ease;
-    position: relative
-        left: 6700px;
-    }
-
-    #clickImage:hover {
-      transform: scale(1.05);
-    }
-      
-    #popupImage:hover {
-      transform: scale(1.05);
-      cursor: pointer;
-    }
-      
-      
-
-    #popupImage {
-      display: none;
-      position: absolute;
-      margin-left: 200px; /* Position to the right of clickable image */
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      width: 200px;
-      height: auto;
-    }
-  </style>
-    
-    
-    
-    
-    
-
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
   <div style="position: relative; display: flex; align-items: center;">
     <img id="clickImage" src="Trashcan.png" alt="Clickable Button Image">
     <img id="popupImage" src="bitmap.png" alt="Popup Image">
   </div>
 
-    <p id="levelCounter" style="margin-left: 20px; font-size: 18px; color: white;">Level: 0</p>
+    <p id="levelCounter" style="margin-left: 20px; font-size: 30px; color: white;">Level: 0</p>
     
     
     
@@ -114,6 +44,6 @@
     });
 
   </script>
-
+  
 </body>
 </html>

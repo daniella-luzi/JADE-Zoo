@@ -38,7 +38,7 @@ function loadFurniture(){
     item.style.left = i.left + "px";
     if(item.id == "backyardButton"){
       item.addEventListener("click", ()=>{
-        window.location.href = 'backyard/index.html';
+        window.location.href = 'Backyard//SoftwareProject/index.html';
       });
     }
     world.appendChild(item);
