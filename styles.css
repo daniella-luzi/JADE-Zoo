@@ -121,7 +121,7 @@ nav {
     background-color: rgba(0,0,0,0.5); 
     pointer-events: none;
     opacity: 0;
-    z-index: 3;
+    z-index: 1001;
 }
 .encyclopedia-container.show{
     pointer-events: auto;
