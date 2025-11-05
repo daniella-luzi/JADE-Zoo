@@ -1,0 +1,252 @@
+/*font*/
+@font-face {
+  font-family: ComicNeue;
+  src: url(fonts/Comic_Neue/ComicNeue-Regular.ttf);
+}
+
+*{
+    font-family: ComicNeue;
+}
+
+body{
+    background-color: lightyellow;
+}
+
+/*SHOP! and Shopping Cart Title*/
+h1{
+    font-size: 65px;
+    color: rgb(105, 4, 88);
+}
+
+/*Zoo and Tab borders/colors/size*/
+#zooTab{
+    border: 2px solid rgb(59, 21, 95);
+    border-radius: 10px 10px 0px 0px; 
+    background-color: rgb(202, 156, 245);
+    font-size: 45px;
+    padding: 10px 70px;
+    font-weight: bold;
+    cursor: pointer;
+    border-bottom: 0;
+    margin-right: 20px;
+    
+}
+
+/*Backyard Tab borders/colors/size*/
+#backyardTab{
+    border: 2px solid rgb(13, 21, 67);
+    border-radius: 10px 10px 0px 0px; 
+    background-color: rgb(157, 171, 246);
+    font-size: 45px;
+    padding: 10px 70px;
+    font-weight: bold;
+    cursor: pointer;
+    border-bottom: 0;
+}
+
+/*padding and border for the line under the tabs*/
+#Zoo, #Backyard{
+    border-top: 2px solid black;
+    padding-top: 20px;
+}
+
+/*line under the header for shoppingcart.html*/
+#header{
+    border-bottom: 2px solid black;
+}
+
+/*container to keep zoo and backyard tabs together/having the buttons touch*/
+.button-container {
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+/*positioning the zoo tab*/
+#zooTab{
+    margin-left: 25px;
+    /*border-right:none;*/
+}
+
+/*changing the color of tabs when hovered*/
+#bedTab:hover, #paintingsTab:hover, #toysTab:hover,
+#zoo-furnitureTab:hover, #zoo-miscTab:hover, #by-furnitureTab:hover, #lightsTab:hover,
+#decorTab:hover, #by-miscTab:hover{
+    background-color:#57b259;
+}
+
+#zooTab:hover{
+    background-color:rgb(129, 64, 190)
+}
+
+#backyardTab:hover{
+    background-color:rgb(95, 95, 212);
+}
+
+/*styling the subcategory tabs*/
+#bedTab, #paintingsTab, #toysTab, #zoo-furnitureTab, #zoo-miscTab,
+#by-furnitureTab, #lightsTab, #decorTab, #by-miscTab{
+    border: 2px solid rgb(11, 15, 55);
+    background-color: rgb(168, 243, 168);
+    font-size: 25px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 10px;
+    border-radius: 10px;
+    
+}
+
+/*positioning the wallet/money section*/
+#Wallet{
+    position: absolute;
+    top: 130px;
+    right: 60px;
+    border: 2px solid black;
+    padding: 10px 10px;
+    background-color: white;
+    z-index: 9999;
+    min-width: 350px;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+/*positioning the shopping cart*/
+#ShoppingCart{
+    position: fixed;
+    top: 250px;
+    right: 175px;
+    border: 2px solid black;
+    padding: 10px 10px 5px 5px;
+    background-color: white;
+    z-index: 9999;
+    min-width: 50px;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+/*positioning the exit button*/
+#ExitButton{
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    /*border: 2px solid black;*/
+    padding: 10px 3px 3px 15px;
+    /*background-color: white;*/
+    z-index: 9999;
+    min-width: 50px;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+#ExitButton:hover{
+    background-color: rgb(226, 220, 220);
+    cursor:pointer;
+}
+
+/*positioning all item sections so their contents line up horizontally*/
+#zooItems, #Beds, #Paintings, #Toys, #zooFurniture, #zooMisc,
+#byItems, #byFurniture, #Lights, #Decorations, #byMisc {
+    position: absolute;
+    left: 20px;
+    top: 325px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; 
+    gap: 30px 40px;   
+    align-content: flex-start;
+}
+
+/*makes the items align horizontally*/
+.item-container {
+    display: inline-block;
+    margin-right: 40px;
+    vertical-align: top;
+}
+
+/*styling the image*/
+.item-container img {
+    object-fit: contain;
+    border: 2px solid black;
+    padding: 60px;
+    margin-bottom: 10px;
+    background-color: rgb(249, 249, 190);
+    margin-top: 10px;
+}
+
+/*style for the item descriptions*/
+.item-description {
+    border: 2px solid black;
+    padding: 1px;
+    background-color: rgb(247, 247, 153);
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.5;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+/*quantity placeholder button under each item description */
+.quantityButton {
+    display: block;
+    width: 100px;
+    padding: 8px 10px;
+    margin: 8px auto 0 auto; /* center under the item */
+    background-color: #f0f0f0;
+    border: 2px solid rgb(11, 15, 55);
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/*positioning and styling the text inside wallet section*/
+#WalletText{
+    display: flex;
+    flex-direction: column;
+    /*background-color: red;*/
+    width: fit-content;
+    margin-right: 20px;
+}
+
+#cartButtonContainer {
+    display: flex;
+    justify-content: space-around;
+}
+
+#shoppingCartButton {
+    border: none;
+    background-color: transparent;
+}
+
+#shoppingCartButton:hover {
+    background-color: rgb(226, 220, 220);
+    cursor: pointer;
+}
+
+/*shoppingcart.html styles*/
+/* line under items separating the total*/
+
+#cartBox {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 30px;
+    color: rgb(105, 4, 88);
+    min-height: 500px;
+    /*background-color: pink;*/
+}
+
+#cartItems{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin-top: 70px;
+    background-color: rgb(249, 249, 190);
+} 
+
+#cartTotal{
+    border-top: 2px solid black;
+}

@@ -1,18 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Title</title>
-        <link rel="stylesheet" href="styles.css" />
-        
-    </head>
-    <body>
-        
-        Sample Game Space
-        
-        <button id="openEncyclopediaBtn">Encyclopedia</button>
-        
-        <div id="encyclopedia-container" class="encyclopedia-container">
+  <head>
+    <meta charset="utf-8">
+    <title>Petting Zoo!</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div id="encyclopedia-container" class="encyclopedia-container">
             <div class="encyclopedia">
                 
                 <div  class="animalPage">
@@ -30,7 +26,7 @@
                 
                 <div class="descPage">
                     <div class = "imgBox">
-                        <img src = "images/cat.jpg" alt = "Picture of cat" id = "descImage">
+                        <img src = "images/cat.jpg" alt = "Picture of cat" class = "encyclopediaImg" id = "descImage">
                     </div>
                     <h2 id="descTitle"></h2>
                     <p id = description></p>
@@ -40,6 +36,23 @@
                 <button id="closeEncyclopediaBtn">X</button>
             </div>
         </div>
-        <script src="script.js"></script>
-    </body>
+    
+    <div id="worldWrapper">
+      <div id="frame">
+        <div id="world">
+          <img src="assets/backgrounds/FLOOR.png" alt="Floor" id="floor">
+        </div>
+      </div>
+    </div>
+    <nav>
+      <div>
+        <img src="assets/UI/shop icon.png" alt="Shop" id="shopButton" class="squareIcon" onclick="window.location.href = 'shop/index.html'">
+        <img src="assets/UI/gem.png" alt="Jades" id="jade">
+        <span class="mainFont">150</span>
+        <img src="assets/UI/creatures icon.png" alt="Creatures" id="creaturesButton" class="squareIcon" onclick="showEncyclopedia()">
+      </div>
+      <img src="assets/UI/zoo icon.png" alt="Zoo Customization" id="zooButton" class="squareIcon" onclick="window.location.href = 'customization.html'">
+    </nav>
+    <script src="script.js"></script>
+  </body>
 </html>
