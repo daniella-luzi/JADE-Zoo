@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="80.469841mm"
+   height="45.606937mm"
+   viewBox="0 0 80.469841 45.606937"
+   version="1.1"
+   id="svg1"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-17.470728,-17.382015)">
+    <rect
+       style="opacity:1;fill:#ffffff;stroke:#000000;stroke-width:0.365;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1"
+       width="80.104843"
+       height="45.241936"
+       x="17.653227"
+       y="17.564516"
+       ry="0.84274191" />
+    <text
+       xml:space="preserve"
+       style="font-size:10.3665px;font-family:'Bauhaus 93';-inkscape-font-specification:'Bauhaus 93, ';opacity:0.858824;fill:#000000;stroke-width:0.121673"
+       x="23.273205"
+       y="27.331457"
+       id="text1"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Bradley Hand ITC';-inkscape-font-specification:'Bradley Hand ITC';stroke-width:0.121673"
+         x="23.273205"
+         y="27.331457">Trash Can</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.75389px;font-family:'Bauhaus 93';-inkscape-font-specification:'Bauhaus 93, ';opacity:0.858824;fill:#000000;stroke-width:0.055797"
+       x="22.631941"
+       y="33.836498"
+       id="text1-4"><tspan
+         sodipodi:role="line"
+         id="tspan1-7"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Bradley Hand ITC';-inkscape-font-specification:'Bradley Hand ITC';stroke-width:0.055797"
+         x="22.631941"
+         y="33.836498">50% chance to lure in a raccoon</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Bradley Hand ITC';-inkscape-font-specification:'Bradley Hand ITC';stroke-width:0.055797"
+         x="22.631941"
+         y="40.12286"
+         id="tspan2">50% chance to lure in a possum</tspan></text>
+    <rect
+       style="opacity:0.858824;fill:#5fd070;fill-opacity:1;stroke:#000000;stroke-width:0.365001;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2"
+       width="49.056454"
+       height="11.354838"
+       x="31.846773"
+       y="48.879032"
+       ry="0.84274191" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.97399px;font-family:'Bradley Hand ITC';-inkscape-font-specification:'Bradley Hand ITC';opacity:0.858824;fill:#5fd070;fill-opacity:1;stroke:#000000;stroke-width:0.12891;stroke-dasharray:none;stroke-opacity:1"
+       x="43.452332"
+       y="56.344128"
+       id="text3"><tspan
+         sodipodi:role="line"
+         id="tspan3"
+         style="stroke-width:0.12891"
+         x="43.452332"
+         y="56.344128">Upgrade</tspan></text>
+  </g>
+</svg>

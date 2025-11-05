@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Background with Clickable Image</title>
+    
+    
+
+    
+
+  <style>
+      
+    @font-face {
+      font-family: ComicNeue;
+      src: url(fonts/Comic_Neue/ComicNeue-Regular.ttf);
+    }
+      
+      
+      p {
+        font-family: ComicNeue;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+      }
+      
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-image: url("Background.png"); /* Use your own image file */
+      background-size: cover;
+      background-position: center;
+    }
+      
+
+      
+      
+    #clickImage {
+      width: 144px;
+      height: auto;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: transform 0.3s ease;
+    position: relative
+        left: 6700px;
+    }
+
+    #clickImage:hover {
+      transform: scale(1.05);
+    }
+      
+    #popupImage:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+      
+      
+
+    #popupImage {
+      display: none;
+      position: absolute;
+      margin-left: 200px; /* Position to the right of clickable image */
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      width: 200px;
+      height: auto;
+    }
+  </style>
+    
+    
+    
+    
+    
+
+</head>
+<body>
+
+  <div style="position: relative; display: flex; align-items: center;">
+    <img id="clickImage" src="Trashcan.png" alt="Clickable Button Image">
+    <img id="popupImage" src="bitmap.png" alt="Popup Image">
+  </div>
+
+    <p id="levelCounter" style="margin-left: 20px; font-size: 18px; color: white;">Level: 0</p>
+    
+    
+    
+    
+    
+    
+    
+  <script>
+    let level = 0;
+      
+    const clickableImage = document.getElementById('clickImage');
+    const popupImage = document.getElementById('popupImage');
+
+    clickableImage.addEventListener('click', () => {
+      if (popupImage.style.display === 'none' || popupImage.style.display === '') {
+        popupImage.style.display = 'block';
+      } else {
+        popupImage.style.display = 'none';
+      }
+        
+
+    const levelCounter = document.getElementById('levelCounter');
+
+    popupImage.addEventListener('click', () => {
+      level++;
+      levelCounter.textContent = `Level: ${level}`;
+    });
+
+    });
+
+  </script>
+
+</body>
+</html>
