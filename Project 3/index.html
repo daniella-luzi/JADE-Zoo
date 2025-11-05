@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset-windows-1252">
+    <meta charset="utf-8" />
+    <title>Shop!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!--Shop! Header-->
+    <h1><center>SHOP!</center></h1>
+    
+     <!--Zoo and Backyard Tabs-->
+    <nav class="button-container">
+        <button id="zooTab" onclick="openCategory('Zoo')">Zoo</button>
+        <button id="backyardTab" onclick="openCategory('Backyard')">Backyard</button>
+    </nav>
+    <!--Lines to separate/help tabs look like tabs-->
+    <!--<hr> 
+    <hr id="secondHR">-->
+
+     <!--Zoo Tab with its subcategories-->
+    <div id="Zoo" style="display: none;">
+        <!-- Filter Buttons -->
+        <button id="bedTab" onclick="openSubCategory('Beds')">Beds</button>
+        <button id="paintingsTab" onclick="openSubCategory('Paintings')">Paintings</button>
+        <button id="toysTab" onclick="openSubCategory('Toys')">Toys</button>
+        <button id="zoo-furnitureTab" onclick="openSubCategory('zooFurniture')">Furniture</button>
+        <button id="zoo-miscTab" onclick="openSubCategory('zooMisc')">Misc.</button>
+
+        <!--Zoo Items in Shop (All items shown when Zoo tab is clicked)-->
+        <div id="zooItems">
+            <!-- circle bed in zoo items w/ name, desc, quantity button placeholder -->
+            <div class="item-container">
+                <img src="./images/furniture/beds/circle bed.png" alt="Circle Cat Bed" width="125" height="100">
+                <div class="item-description">
+                    <span>Circle Cat Bed - $10</span>
+                    <br>
+                    <span>Gives an extra 20% tip</span>
+                </div>
+                <!-- quantity button placeholder -->
+                <button class="quantityButton">Quantity</button>
+            </div>
+            <!-- fluffy bed -->
+            <div class="item-container">
+                <img src="./images/furniture/beds/fluffy bed.png" alt="Fluffy Cat Bed" width="125" height="100">
+                <div class="item-description">
+                    <span>Fluffy Cat Bed - $25</span>
+                    <br>
+                    <span>Gives an extra 50% tip</span>
+                </div>
+                <!-- quantity button placeholder -->
+                <button class="quantityButton">Quantity</button>
+            </div>
+            <!-- pillow bed -->
+            <div class="item-container">
+                <img src="./images/furniture/beds/pillow bed.png" alt="Pillow Cat Bed" width="125" height="100">
+                <div class="item-description">
+                    <span>Pillow Cat Bed - $15</span>
+                    <br>
+                    <span>Gives an extra 25% tip</span>
+                </div>
+                <!-- quantity button placeholder -->
+                <button class="quantityButton">Quantity</button>
+            </div>
+            <!-- bench -->
+            <div class="item-container">
+                <img src="./images/furniture/benches/bench.png" alt="Bench" width="125" height="100">
+                <div class="item-description">
+                    <span>Bench - $30</span>
+                    <br>
+                    <span>Gives an extra 25% tip</span>
+                </div>
+                <!-- quantity button placeholder -->
+                <button class="quantityButton">Quantity</button>
+            </div>
+            <!-- rug -->
+            <div class="item-container">
+                <img src="./images/furniture/rugs/rug.png" alt="Rug" width="125" height="100">
+                <div class="item-description">
+                    <span>Rug - $10</span>
+                    <br>
+                    <span>Gives an extra 25% tip</span>
+                </div>
+                <!-- quantity button placeholder -->
+                <button class="quantityButton">Quantity</button>
+            </div>
+            <!-- painting -->
+            <div class="item-container">
+                <img src="./images/furniture/wall/paintings/painting.png" alt="Painting" width="125" height="100">
+                <div class="item-description">
+                    <span>Painting - $20</span>
+                    <br>
+                    <span>Gives an extra 25% tip</span>
+                </div>
+                <!-- quantity button placeholder -->
+                <button class="quantityButton">Quantity</button>
+            </div>
+            <!-- platform -->
+            <div class="item-container">
+                <img src="./images/furniture/wall/platforms/platform.png" alt="Platform" width="125" height="100">
+                <div class="item-description">
+                    <span>Platform - $20</span>
+                    <br>
+                    <span>Gives an extra 25% tip</span>
+                </div>
+                <!-- quantity button placeholder -->
+                <button class="quantityButton">Quantity</button>
+            </div>
+            <!-- window -->
+            <div class="item-container">
+                <img src="./images/furniture/wall/windows/window.png" alt="Window" width="125" height="100">
+                <div class="item-description">
+                    <span>Window - $20</span>
+                    <br>
+                    <span>Gives an extra 25% tip</span>
+                </div>
+                <!-- quantity button placeholder -->
+                <button class="quantityButton">Quantity</button>
+            </div>
+        </div>
+
+        <!--Beds Tab-->
+        <div id="Beds" style="display: none;">
+            <!-- circle bed -->
+            <div class="item-container">
+                <img src="./images/furniture/beds/circle bed.png" alt="Cat Bed" width="125" height="100">
+                <div class="item-description">
+                    <span>S. Cat Bed - $10</span>
+                    <br>
+                    <span>Gives an extra 20% tip</span>
+                </div>
+                <!-- quantity button placeholder -->
+                <button class="quantityButton">Quantity</button>
+            </div>
+            <!-- fluffy bed -->
+            <div class="item-container">
+                <img src="./images/furniture/beds/fluffy bed.png" alt="Fluffy Cat Bed" width="125" height="100">
+                <div class="item-description">
+                    <span>Fluffy Cat Bed - $25</span>
+                    <br>
+                    <span>Gives an extra 50% tip</span>
+                </div>
+                <!-- quantity button placeholder -->
+                <button class="quantityButton">Quantity</button>
+            </div>
+            <!-- pillow bed -->
+            <div class="item-container">
+                <img src="./images/furniture/beds/pillow bed.png" alt="Pillow Cat Bed" width="125" height="100">
+                <div class="item-description">
+                    <span>Pillow Cat Bed - $15</span>
+                    <br>
+                    <span>Gives an extra 25% tip</span>
+                </div>
+                <!-- quantity button placeholder -->
+                <button class="quantityButton">Quantity</button>
+            </div>
+        </div>
+
+        <!--Paintings Tab-->
+        <div id="Paintings" style="display: none;">
+            <!-- painting -->
+            <div class="item-container">
+                <img src="./images/furniture/wall/paintings/painting.png" alt="Painting" width="125" height="100">
+                <div class="item-description">
+                    <span>Painting - $20</span>
+                    <br>
+                    <span>Gives an extra 25% tip</span>
+                </div>
+                <!-- quantity button placeholder -->
+                <button class="quantityButton">Quantity</button>
+            </div>
+        </div>
+
+        <!--Toys Tab-->
+        <div id="Toys" style="display: none;">
+            
+        </div>
+
+        <!--Furniture Tab-->
+        <div id="zooFurniture" style="display: none;">
+            <!-- bench -->
+            <div class="item-container">
+                <img src="./images/furniture/benches/bench.png" alt="Bench" width="125" height="100">
+                <div class="item-description">
+                    <span>Bench - $30</span>
+                    <br>
+                    <span>Gives an extra 25% tip</span>
+                </div>
+                <!-- quantity button placeholder -->
+                <button class="quantityButton">Quantity</button>
+            </div>
+            <!-- rug -->
+            <div class="item-container">
+                <img src="./images/furniture/rugs/rug.png" alt="Rug" width="125" height="100">
+                <div class="item-description">
+                    <span>Rug - $10</span>
+                    <br>
+                    <span>Gives an extra 25% tip</span>
+                </div>
+                <!-- quantity button placeholder -->
+                <button class="quantityButton">Quantity</button>
+            </div>
+        </div>
+
+    <!--Misc Tab-->
+    <div id="zooMisc" style="display: none;">
+        <!-- platform -->
+            <div class="item-container">
+                <img src="./images/furniture/wall/platforms/platform.png" alt="Platform" width="125" height="100">
+                <div class="item-description">
+                    <span>Platform - $20</span>
+                    <br>
+                    <span>Gives an extra 25% tip</span>
+                </div>
+                <!-- quantity button placeholder -->
+                <button class="quantityButton">Quantity</button>
+            </div>
+            <!-- window -->
+            <div class="item-container">
+                <img src="./images/furniture/wall/windows/window.png" alt="Window" width="125" height="100">
+                <div class="item-description">
+                    <span>Window - $20</span>
+                    <br>
+                    <span>Gives an extra 25% tip</span>
+                </div>
+                <!-- quantity button placeholder -->
+                <button class="quantityButton">Quantity</button>
+            </div>
+        </div>
+    </div>
+
+     <!--Backyard Tab with its subcategories-->
+     <!--"by" means backyard-->
+    <div id="Backyard" style="display: none;">
+        <!--Filter Buttons-->
+    <button id="by-furnitureTab" onclick="openSubCategory('byFurniture')">Furniture</button>
+    <button id="lightsTab" onclick="openSubCategory('Lights')">Lights</button>
+    <button id="decorTab" onclick="openSubCategory('Decorations')">Decorations</button>
+    <button id="by-miscTab" onclick="openSubCategory('byMisc')">Misc.</button>
+
+        <!--Backyard Items (All items shown when Backyard tab is clicked)-->
+        <div id="byItems">
+            <!-- trashcan -->
+            <div class="item-container">
+                <img src="./images/trashcan.jpg" alt="Trash Can" width="100" height="100">
+                <div class="item-description">
+                    <span>Trash Can - $2</span>
+                    <br>
+                    <span>25% Chance for Raccoons</span>
+                </div>
+                <!-- quantity button placeholder -->
+                <button class="quantityButton">Quantity</button>
+            </div>
+            <!-- fairy lights -->
+            <div class="item-container">
+                <img src="./images/fairylights.jpg" alt="Fairy Lights" width="100" height="100">
+                <div class="item-description">
+                    <span>Fairy Lights - $12</span>
+                    <br>
+                    <span>Increases Money</span>
+                </div>
+                <!-- quantity button placeholder -->
+                <button class="quantityButton">Quantity</button>
+            </div>
+        </div>
+
+        <!--Furniture Tab-->
+        <div id="byFurniture" style="display: none;">
+            <!-- trash can -->
+            <div class="item-container">
+                <img src="./images/trashcan.jpg" alt="Trash Can" width="100" height="100">
+                <div class="item-description">
+                    <span>Trash Can - $2</span>
+                    <br>
+                    <span>25% Chance for Raccoons</span>
+                </div>
+                <!-- quantity button placeholder -->
+                <button class="quantityButton">Quantity</button>
+            </div>
+        </div>
+
+        <!--Lights Tab-->
+        <div id="Lights" style="display: none;">
+            <!-- fairy lights -->
+            <div class="item-container">
+                <img src="./images/fairylights.jpg" alt="Fairy Lights" width="100" height="100">
+                <div class="item-description">
+                    <span>Fairy Lights - $12</span>
+                    <br>
+                    <span>Increases Money</span>
+                </div>
+                <!-- quantity button placeholder -->
+                <button class="quantityButton">Quantity</button>
+            </div>
+        </div>
+
+        <!--Decorations Tab-->
+        <div id="Decorations" style="display: none;">
+        
+        </div>
+
+        <!--Misc Tab-->
+        <div id="byMisc" style="display: none;">
+            <!-- Add misc items here -->
+        </div>
+
+    </div>
+
+    <!--Wallet/Money Section-->
+    <div id="Wallet">
+        <div id="cartButtonContainer">
+            <div id="WalletText">
+                <span>Current Balance: </span>
+                <span>Total Money Earned: </span>
+            </div>
+            <button id="shoppingCartButton" onclick="window.location.href = 'shoppingcart.html'">
+                <img src="./images/cart.png" width="50" height="50">
+            </button>
+        </div>
+    </div>
+
+    <!--Shopping Cart Section-->
+    <!--<div id="ShoppingCart">-->
+       <!-- <h2><center>SHOP!</center></h2>
+        <h2><center>Shopping Cart: </center></h2>-->
+        <!--<img src="./images/cart.png" width="50" height="50">-->
+        
+    <!--</div>-->
+
+    <!--attempting to create shopping cart button/page-->
+    <!--Shopping Cart Button-->
+    <!--<button id="cartButton" onclick="showCart('ShoppingCart')">
+        <img src="./images/cart.png" width="50" height="50">
+    </button>-->
+
+    
+    <div id="ShoppingCart" style="display: none;">
+        <h2><center>Shopping Cart!</center></h2>
+    </div>
+
+    <!--Exit Button-->
+    <div id="ExitButton">
+        <img src="./images/exit.png" width="35" height="35">
+    </div>
+
+<script src="script.js"></script>
+</body>
+</html>
