@@ -1,14 +1,107 @@
-.title {
-    color: green;
+@font-face {
+  font-family: ComicNeue;
+  src: url(fonts/Comic_Neue/ComicNeue-Regular.ttf);
 }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+#worldWrapper {
+  width: 100%;
+  height: 100vh;               /* full viewport height */
+  display: flex;
+  justify-content: center;     /* center horizontally */
+  align-items: center;         /* center vertically */
+  position: relative;
+  background-image: url(assets/backgrounds/WALL.png);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+#frame {
+  position: relative;
+  /* initial size equals base size; JS will overwrite to scaled size on load/resize */
+  width: 1600px;
+  height: 900px;
+  display: block;
+}
+
+#world {
+  width: 1600px;
+  height: 900px;
+  position: relative;
+  transform-origin: top left;  /* simpler when using the frame sizing approach */
+  /* background-color: red; */
+  /* border: 1px solid red; */
+  z-index: 1;
+}
+
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(assets/backgrounds/WALL.png)
+}
+
+nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+#jade {
+  margin-left: 30px;
+}
+
+.mainFont {
+  font-family: ComicNeue;
+  font-size: 40pt;
+}
+
+.squareIcon {
+  width: 100px;
+  margin: 10px;
+}
+
+.squareIcon:hover, #backyardButton:hover {
+  scale: 1.1;
+}
+
+#creaturesButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* Floor stretches dynamically */
+#floor {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 0; /* behind world */
+  width: 100%;
+  object-fit: cover;
+  border-top: black 5px solid;
+}
+
+#bench {
+  position: absolute;
+  bottom: 150px;
+  left: 0;
+}
+
+/*Encyclopedia stuff*/
 .encyclopedia{
     position: fixed;
     background-color: beige; 
     width:80vw;
     height:50vw;
-}
-#openEncyclopediaBtn{
-    float: right;
 }
 #closeEncyclopediaBtn{
     background-color: beige;
@@ -28,6 +121,7 @@
     background-color: rgba(0,0,0,0.5); 
     pointer-events: none;
     opacity: 0;
+    z-index: 3;
 }
 .encyclopedia-container.show{
     pointer-events: auto;
@@ -71,41 +165,30 @@
     padding-right: 20px;
     margin-top: 5%;
 }
-img{
-    border: groove;
-    width: 40%;
-    margin-left: 30%;
-    object-fit: contain;
-}
 #cat{
-    background-image: url(images/cat.jpg);
+    background-image: url("assets/animals/cat.jpg");
+    z-index: 4;
 }
 #rat{
-    background-image: url(images/rat.jpeg);
+    background-image: url("assets/animals/rat.jpeg");
 }
 #dog{
-    background-image: url(images/dog.jpeg);
+    background-image: url("assets/animals/dog.jpeg");
 }
 .animalBtn{
     display: block;
     height: 8vw;
     width: 8vw;
     background-size: cover; 
+  
 }
 .animal{
     padding: 1vw 5px;
     grid-row:span 1;
 }
-body{
-    background-color: skyblue;
-}
-@font-face {
-  font-family: ComicNeue;
-  src: url(fonts/ComicNeue-Regular.ttf);
-}
-*{
-    font-family: 'ComicNeue'
-}
-button{
-    cursor: pointer; 
+.encyclopediaImg{
+    border: groove;
+    width: 40%;
+    margin-left: 30%;
+    object-fit: contain;
 }
