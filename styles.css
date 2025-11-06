@@ -1,0 +1,204 @@
+@font-face {
+  font-family: ComicNeue;
+  src: url(fonts/Comic_Neue/ComicNeue-Regular.ttf);
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+#worldWrapper {
+  width: 100%;
+  height: 100vh;               /* full viewport height */
+  display: flex;
+  justify-content: center;     /* center horizontally */
+  align-items: center;         /* center vertically */
+  position: relative;
+  background-image: url(assets/backgrounds/WALL.png);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+#frame {
+  position: relative;
+  /* initial size equals base size; JS will overwrite to scaled size on load/resize */
+  width: 1600px;
+  height: 900px;
+  display: block;
+}
+
+#world {
+  width: 1600px;
+  height: 900px;
+  position: relative;
+  transform-origin: top left;  /* simpler when using the frame sizing approach */
+  /* background-color: red; */
+  /* border: 1px solid red; */
+  z-index: 1;
+}
+
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(assets/backgrounds/WALL.png)
+}
+
+nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+#jade {
+  margin-left: 30px;
+}
+
+.mainFont {
+  font-family: ComicNeue;
+  font-size: 40pt;
+}
+
+.squareIcon {
+  width: 100px;
+  margin: 10px;
+}
+
+.squareIcon:hover, #backyardButton:hover {
+  scale: 1.1;
+}
+
+#creaturesButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* Floor stretches dynamically */
+#floor {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 0; /* behind world */
+  width: 100%;
+  object-fit: cover;
+  border-top: black 5px solid;
+}
+
+#bench {
+  position: absolute;
+  bottom: 150px;
+  left: 0;
+}
+
+/*Encyclopedia stuff*/
+.encyclopedia{
+    position: fixed;
+    background-color: beige; 
+    width:80vw;
+    height:50vw;
+}
+#closeEncyclopediaBtn{
+    background-color: beige;
+    position: absolute;
+    right:10px;
+    top:10px;
+}
+.encyclopedia-container{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top:0;
+    left:0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0,0,0,0.5); 
+    pointer-events: none;
+    opacity: 0;
+    z-index: 1001;
+}
+.encyclopedia-container.show{
+    pointer-events: auto;
+    opacity: 1;
+}
+.animalPage{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5,1fr);
+    background-color: rgba(0,0,0,0.2);
+    align-items: center;
+    justify-items: center;
+    height: 50vw;
+    width: 40vw;
+    right: 50%;
+}
+.descPage{
+    justify-content: center;
+    width: 40vw;
+    height: 50vw;
+    position: absolute;
+    left: 50%;
+    top:0;
+    overflow: hidden;
+}
+.imgBox{
+    position: absolute;
+    top: 0%;
+    align-content: center;
+    justify-content: center;
+    height: 40%;
+    width: 100%;
+    box-sizing: border-box;
+}
+#descTitle{
+  font-family: ComicNeue;
+  font-size: 30pt;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 50%;
+}
+#description{
+  font-family: ComicNeue; 
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-top: 5%;
+  font-size: 20pt;
+}
+#cat{
+    background-image: url("assets/animals/cat.jpg");
+    z-index: 4;
+}
+#rat{
+    background-image: url("assets/animals/rat.jpeg");
+}
+#dog{
+    background-image: url("assets/animals/dog.jpeg");
+}
+.animalBtn{
+    display: block;
+    height: 8vw;
+    width: 8vw;
+    background-size: cover; 
+  
+}
+.animal{
+    padding: 1vw 5px;
+    grid-row:span 1;
+}
+.encyclopediaImg{
+    border: groove;
+    width: 40%;
+    margin-left: 30%;
+    object-fit: contain;
+}
+
+#exit_button {
+  width: 70px;
+  padding: 10px;
+}

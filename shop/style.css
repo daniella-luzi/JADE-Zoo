@@ -9,8 +9,19 @@
 }
 
 body{
-    background-color: lightyellow;
+    background-image: url(images/singlepaw.png);
 }
+
+#shopGem{
+    width:20px;
+    height:20px;
+}
+
+#walletGem{
+    width:15px;
+    height:15px;
+}
+
 
 /*SHOP! and Shopping Cart Title*/
 h1{
@@ -21,8 +32,8 @@ h1{
 /*Zoo and Tab borders/colors/size*/
 #zooTab{
     border: 2px solid rgb(59, 21, 95);
-    border-radius: 10px 10px 0px 0px; 
-    background-color: rgb(202, 156, 245);
+    border-radius: 10px 10px 0px 0px;
+    background-color: rgb(238,230,250); 
     font-size: 45px;
     padding: 10px 70px;
     font-weight: bold;
@@ -35,8 +46,8 @@ h1{
 /*Backyard Tab borders/colors/size*/
 #backyardTab{
     border: 2px solid rgb(13, 21, 67);
-    border-radius: 10px 10px 0px 0px; 
-    background-color: rgb(157, 171, 246);
+    border-radius: 10px 10px 0px 0px;
+    background-color: rgb(238,230,250); 
     font-size: 45px;
     padding: 10px 70px;
     font-weight: bold;
@@ -72,22 +83,25 @@ h1{
 #bedTab:hover, #paintingsTab:hover, #toysTab:hover,
 #zoo-furnitureTab:hover, #zoo-miscTab:hover, #by-furnitureTab:hover, #lightsTab:hover,
 #decorTab:hover, #by-miscTab:hover{
-    background-color:#57b259;
+    background-color: rgb(131, 113, 185);
 }
 
-#zooTab:hover{
-    background-color:rgb(129, 64, 190)
+/*changing the color of tabs when focused*/
+#bedTab:focus, #paintingsTab:focus, #toysTab:focus,
+#zoo-furnitureTab:focus, #zoo-miscTab:focus, #by-furnitureTab:focus, #lightsTab:focus,
+#decorTab:focus, #by-miscTab:focus{
+    background-color: rgb(131, 113, 185);
 }
 
-#backyardTab:hover{
-    background-color:rgb(95, 95, 212);
+#zooTab:hover, #zooTab:focus, #backyardTab:hover, #backyardTab:focus{
+    background-color: rgb(131, 113, 185);
 }
 
 /*styling the subcategory tabs*/
 #bedTab, #paintingsTab, #toysTab, #zoo-furnitureTab, #zoo-miscTab,
 #by-furnitureTab, #lightsTab, #decorTab, #by-miscTab{
     border: 2px solid rgb(11, 15, 55);
-    background-color: rgb(168, 243, 168);
+    background-color: rgb(238,230,250); 
     font-size: 25px;
     padding: 10px 20px;
     font-weight: bold;
@@ -104,7 +118,7 @@ h1{
     right: 60px;
     border: 2px solid black;
     padding: 10px 10px;
-    background-color: white;
+    background-color: rgb(238,230,250); 
     z-index: 9999;
     min-width: 350px;
     font-size: 18px;
@@ -129,18 +143,12 @@ h1{
 #ExitButton{
     position: absolute;
     top: 25px;
-    right: 25px;
-    /*border: 2px solid black;*/
-    padding: 10px 3px 3px 15px;
-    /*background-color: white;*/
-    z-index: 9999;
-    min-width: 50px;
-    font-size: 18px;
+    left: 25px;
+    padding: 10px;
     line-height: 1.5;
 }
 
 #ExitButton:hover{
-    background-color: rgb(226, 220, 220);
     cursor:pointer;
 }
 
@@ -157,42 +165,53 @@ h1{
     align-content: flex-start;
 }
 
-/*makes the items align horizontally*/
+/*styling each item square/container*/
 .item-container {
-    display: inline-block;
-    margin-right: 40px;
-    vertical-align: top;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 220px;
+  height: 220px;
+  margin: 20px;
+  border: 2px solid black;
+  border-radius: 20%;
+  background-color: rgba(255, 253, 225, 0.635);
+  vertical-align: top;
+  padding: 10px;
 }
 
-/*styling the image*/
 .item-container img {
-    object-fit: contain;
-    border: 2px solid black;
-    padding: 60px;
-    margin-bottom: 10px;
-    background-color: rgb(249, 249, 190);
-    margin-top: 10px;
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
 }
 
-/*style for the item descriptions*/
+.item-container span {
+  font-size: 16pt;
+}
+
 .item-description {
-    border: 2px solid black;
-    padding: 1px;
-    background-color: rgb(247, 247, 153);
-    text-align: center;
-    font-size: 18px;
-    line-height: 1.5;
-    width: 100%;
-    margin-top: 5px;
-    margin-bottom: 10px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-/*quantity placeholder button under each item description */
-.quantityButton {
+.itemName {
+  font-weight: bold;
+}
+
+.itemAttribute {
+  color: darkgreen;
+}
+
+/*add to cart placeholder button under each item description */
+.addtocartButton {
     display: block;
     width: 100px;
     padding: 8px 10px;
-    margin: 8px auto 0 auto; /* center under the item */
+    margin: 8px 30px 5px auto;
     background-color: #f0f0f0;
     border: 2px solid rgb(11, 15, 55);
     border-radius: 6px;
@@ -204,7 +223,6 @@ h1{
 #WalletText{
     display: flex;
     flex-direction: column;
-    /*background-color: red;*/
     width: fit-content;
     margin-right: 20px;
 }
@@ -220,13 +238,48 @@ h1{
 }
 
 #shoppingCartButton:hover {
-    background-color: rgb(226, 220, 220);
     cursor: pointer;
 }
 
-/*shoppingcart.html styles*/
-/* line under items separating the total*/
+/*quantity style from google*/
+.quantity-selector {
+  margin: 8px auto -42px 30px;
+}
 
+/*quantity style from google*/
+.quantity-selector label {
+  display: block;
+  font-weight: bold;
+  margin: 8px 15px 0 auto;
+}
+
+/*quantity style from google*/
+.quantity-selector select {
+  width: 50px;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+/*quantity style from google*/
+/* Add an arrow icon for better visual indication (optional) */
+.quantity-selector select {
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M287%20197.3l-136.2-136.2c-4.7-4.7-12.3-4.7-17%200L5.4%20197.3c-4.7%204.7-4.7%2012.3%200%2017l11.3%2011.3c4.7%204.7%2012.3%204.7%2017%200l110.7-110.7c4.7-4.7%2012.3-4.7%2017%200l110.7%20110.7c4.7%204.7%2012.3%204.7%2017%200l11.3-11.3c4.7-4.7%204.7-12.3%200-17z%22%2F%3E%3C%2Fsvg%3E');
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 12px;
+  padding-right: 30px; /* Make space for the arrow */
+}
+
+/*----------------------------------*/
+
+/*shoppingcart.html styles*/
 #cartBox {
     width: 100%;
     display: flex;

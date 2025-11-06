@@ -1,68 +1,3 @@
-/*class ZooItem { //This is a "container" for ALL the items in the zoo!
-    constructor(name, price, attribute) {
-        this.name = name;
-        this.price = price;
-        this.attribute = attribute;
-    }
-    description() {
-        return `${this.name} - $${this.price}\n${this.attribute}`
-    }
-}
-
-
-class Bed extends ZooItem {
-    static instances = [];
-
-    constructor(name, price, attribute) {
-        super(name, price, attribute);
-        Bed.instances.push(this)
-    }
-    static getAllBeds() {
-        return Bed.instances;
-    }
-}
-
-class Painting extends ZooItem {
-    constructor(name, price, attribute) {
-        super(name, price, attribute);
-    }
-}
-
-
-
-let smallBed = new Bed();
-let smallBed2 = new Bed();
-let smallBed3 = new Bed();
-let smallBed4 = new Bed();
-let smallBed5 = new Bed();
-let smallBed6 = new Bed();
-let smallBed7 = new Bed();
-let smallBed8 = new Bed();
-let smallBed9 = new Bed();
-
-console.log(Bed)*/
-
-
-
-
-
-
-
-// class Bed {
-//     constructor(name, price, attribute){
-//         this.name = name;
-//         this.price = price;
-//         this.attribute = attribute;
-//     }
-//     description() {
-//         return `${this.name} - $${this.price}\n${this.attribute}`
-//     }
-// }
-
-// let myBed = new Bed("S. Cat Bed", 10, "Gives an extra 20% tip");
-// console.log(myBed.writeDescription());
-
-
 /*Zoo and Backyard tabs are invisible, and shown when clicked*/
 function openCategory(categoryID) {
     document.getElementById('Zoo').style.display = 'none';
@@ -91,6 +26,9 @@ function openCategory(categoryID) {
             if (el) el.style.display = 'none';
         });
         document.getElementById('byItems').style.display = 'block';
+        // Show the Wallet and Exit Button when switching to Backyard tab
+        document.getElementById('Wallet').style.display = 'block';
+        document.getElementById('ExitButton').style.display = 'block';
     }
 }
 
@@ -119,6 +57,10 @@ function openSubCategory(subcategoryID) {
     if (selectedCategory) {
         selectedCategory.style.display = 'block';
     }
+    
+    // Show the Wallet and Exit Button for both Zoo and Backyard sections
+    document.getElementById('Wallet').style.display = 'block';
+    document.getElementById('ExitButton').style.display = 'block';
 
 }
 
