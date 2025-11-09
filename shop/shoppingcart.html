@@ -13,33 +13,26 @@
 
     <!--Wallet/Money Section-->
     <div id="Wallet">
-        <div id="cartButtonContainer">
-            <div id="WalletText">
-                <span>Current Balance: </span>
-                <span>Total Money Earned: </span>
-            </div>
+        <div id="WalletText">
+            <span>Current Balance: </span>
+            <span>Total Money Earned: </span>
         </div>
+        <button id="shoppingCartButton"></button>
     </div>
 
     <!--Exit Button-->
-    <div id="ExitButton">
-        <img src="./images/exit.png" width="35" height="35" onclick="window.location.href = 'index.html'">
+    <div>
+        <img id="ExitButton" src="./images/exit.png" width="70" height="70" onclick="window.location.href = 'index.html'">
     </div>
     
 
     <!--Shopping Cart Items Section-->
     <div id="cartBox">
         <div id="cartItems">
-            <span><center>2 Circle Cat Beds - $20</center></span>
-            <span><center>1 Bench - $30</center></span>
-            <span><center>5 Rugs - $50</center></span>
-            <span><center>3 Paintings - $60</center></span>
-            <span><center>1 Fluffy Cat Bed - $25</center></span>
+            <div id="cartContents">
+            </div>
             <br>
             <div id="cartTotal">
-                <br>
-                <span><center>Total: $185</center></span>
-                <span style="font-weight: bold"><center>Confirm Purchase?</center></span>
             </div>
         </div>
     </div>
