@@ -106,8 +106,8 @@ nav {
 #closeEncyclopediaBtn{
     background-color: beige;
     position: absolute;
-    right:0;
-    top:0;
+    right:10px;
+    top:10px;
 }
 .encyclopedia-container{
     position: fixed;
@@ -157,13 +157,18 @@ nav {
     box-sizing: border-box;
 }
 #descTitle{
-    text-align: center;
-    margin-top: 50%;
+  font-family: ComicNeue;
+  font-size: 30pt;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 50%;
 }
 #description{
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-top: 5%;
+  font-family: ComicNeue; 
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-top: 5%;
+  font-size: 20pt;
 }
 #cat{
     background-image: url("assets/animals/cat.jpg");
