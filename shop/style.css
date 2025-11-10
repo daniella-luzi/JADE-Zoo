@@ -1,0 +1,286 @@
+/*font*/
+@font-face {
+  font-family: ComicNeue;
+  src: url(fonts/Comic_Neue/ComicNeue-Regular.ttf);
+}
+
+*{
+    font-family: ComicNeue;
+}
+
+body{
+    background-image: url(images/singlepaw.png);
+}
+
+#shopGem{
+    width:20px;
+    height:20px;
+}
+
+#walletGem{
+    width:15px;
+    height:15px;
+}
+
+
+/*SHOP! and Shopping Cart Title*/
+h1{
+    font-size: 65px;
+    color: rgb(105, 4, 88);
+}
+
+/* generalized tab borders/colors/size*/
+.styled-tab {
+    border: 2px solid rgb(59, 21, 95);
+    border-radius: 10px 10px 0px 0px;
+    background-color: rgb(238,230,250); 
+    font-size: 45px;
+    padding: 10px 70px;
+    font-weight: bold;
+    cursor: pointer;
+    border-bottom: 0;
+    margin-left: 25px;
+    
+}
+
+/* changing color of tabs when hovered */
+.styled-tab:hover {
+    background-color: rgb(131, 113, 185);
+}
+
+/*padding and border for the line under the tabs*/
+#Zoo, #Backyard{
+    border-top: 2px solid black;
+    padding-top: 20px;
+}
+
+/*line under the header for shoppingcart.html*/
+#header{
+    border-bottom: 2px solid black;
+}
+
+/*styling the subcategory tabs*/
+.sub-tab {
+    border-bottom: 2px solid;
+    font-size: 25px;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+/*positioning the wallet/money section*/
+#Wallet{
+    position: absolute;
+    top: 130px;
+    right: 60px;
+    border: 2px solid black;
+    padding: 10px 10px;
+    background-color: rgb(238,230,250); 
+    z-index: 9999;
+    min-width: 350px;
+    font-size: 18px;
+    line-height: 1.5;
+    display: flex;
+    justify-content: space-around;
+}
+
+/*positioning the exit button*/
+#ExitButton{
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    padding: 10px;
+    line-height: 1.5;
+}
+
+#ExitButton:hover{
+    cursor:pointer;
+}
+
+/*positioning all item sections so their contents line up horizontally*/
+.item-section {
+    position: absolute;
+    left: 20px;
+    top: 325px;
+    display: block;
+}
+
+/* styling each item square/container */
+.item-container {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 250px;
+    margin: 20px;
+    border: 2px solid black;
+    border-radius: 20%;
+    background-color: rgba(255, 253, 225, 0.635);
+    vertical-align: top;
+    padding: 10px;
+}
+
+.item-container img {
+  width: 150px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.item-description {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 16pt;
+}
+
+.itemName {
+  font-weight: bold;
+}
+
+.itemAttribute {
+  color: darkgreen;
+}
+
+.shopper {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    justify-content: space-between;
+}
+
+/*add to cart placeholder button under each item description */
+.addtocartButton {
+    display: inline;
+    width: 100px;
+    padding: 5px 8px;
+    margin-left: 5px;
+    background-color: #f0f0f0;
+    border: 2px solid rgb(11, 15, 55);
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/*positioning and styling the text inside wallet section*/
+#WalletText{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin-right: 20px;
+}
+
+#shoppingCartButton {
+    border: none;
+    background-color: transparent;
+}
+
+#shoppingCartButton:hover {
+    cursor: pointer;
+    scale: 1.1;
+}
+
+/* QUANTITY BUTTONS (taken and altered from CodePen: https://codepen.io/Rajesh-Pal-the-scripter/pen/QWzEWjG) */
+
+.quantity {
+    display: flex;
+    overflow: hidden;
+}
+
+.quantity button {
+    border: 2px solid black;
+    background-color: rgb(238,230,250);
+    color: black;
+    cursor: pointer;
+    font-size: 30px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.quantity .minus {
+    border-radius: 4px 0 0 4px;
+}
+
+.quantity .plus {
+    border-radius: 0 4px 4px 0;
+}
+
+
+.quantity button:hover {
+    background-color: rgb(131, 113, 185);
+}
+
+.input-box {
+    width: 30px;
+    text-align: center;
+    border: none;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    font-size: 20px;
+    outline: none;
+}
+
+/* Hide the number input spin buttons */
+.input-box::-webkit-inner-spin-button,
+.input-box::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.input-box[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+
+/*----------------------------------*/
+
+/*shoppingcart.html styles*/
+#cartBox {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 30px;
+    color: rgb(105, 4, 88);
+    min-height: 500px;
+    /*background-color: pink;*/
+}
+
+#cartItems{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin-top: 70px;
+    background-color: rgb(249, 249, 190);
+} 
+
+#cartTotal{
+    border-top: 2px solid black;
+}
+
+.itemBadge {
+    visibility: hidden;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    font-size: 20pt;
+    border-radius: 50%;
+    background-color: rgb(131, 113, 185);
+    border: 2px solid black;
+    font-weight: bold;
+    color: white;
+    right: 0;
+    top: 0;
+}

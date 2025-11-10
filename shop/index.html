@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset-windows-1252">
+    <meta charset="utf-8" />
+    <title>Shop!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!--Shop! Header-->
+    <h1><center>SHOP!</center></h1>
+    
+     <!--Zoo and Backyard Tabs-->
+    <nav class="button-container">
+        <button id="zooTab" class="styled-tab" onclick="openCategory('Zoo')">Zoo</button>
+        <button id="backyardTab" class="styled-tab" onclick="openCategory('Backyard')">Backyard</button>
+    </nav>
+
+     <!--Zoo Tab with its subcategories-->
+    <div id="Zoo" style="display: none;">
+        <!-- Filter Buttons -->
+        <button id="bedTab" class="styled-tab sub-tab" onclick="openSubCategory('Beds')">Beds</button>
+        <button id="paintingsTab" class="styled-tab sub-tab" onclick="openSubCategory('Paintings')">Paintings</button>
+        <button id="toysTab" class="styled-tab sub-tab" onclick="openSubCategory('Toys')">Toys</button>
+        <button id="zoo-furnitureTab" class="styled-tab sub-tab" onclick="openSubCategory('zooFurniture')">Furniture</button>
+        <button id="zoo-miscTab" class="styled-tab sub-tab" onclick="openSubCategory('zooMisc')">Misc.</button>
+
+        <!--Zoo Items in Shop (All items shown when Zoo tab is clicked)-->
+        <div id="zooItems" class="item-section">
+        </div>
+
+        <!--Beds Tab-->
+        <div id="Beds" class="item-section" style="display: none;">
+        </div>
+
+        <!--Paintings Tab-->
+        <div id="Paintings" class="item-section" style="display: none;">
+        </div>
+
+        <!--Toys Tab-->
+        <div id="Toys" class="item-section" style="display: none;"></div>
+
+        <!--Furniture Tab-->
+        <div id="zooFurniture" class="item-section" style="display: none;">
+        </div>
+
+        <!--Zoo Misc Tab-->
+        <div id="zooMisc" class="item-section" style="display: none;">
+        </div>
+    </div>
+
+     <!--Backyard Tab with its subcategories-->
+     <!--"by" means backyard-->
+    <div id="Backyard" style="display: none;">
+        <!--Filter Buttons-->
+        <button id="by-furnitureTab" class="styled-tab sub-tab" onclick="openSubCategory('byFurniture')">Furniture</button>
+        <button id="lightsTab" class="styled-tab sub-tab" onclick="openSubCategory('Lights')">Lights</button>
+        <button id="decorTab" class="styled-tab sub-tab" onclick="openSubCategory('Decorations')">Decorations</button>
+        <button id="by-miscTab" class="styled-tab sub-tab" onclick="openSubCategory('byMisc')">Misc.</button>
+
+        <!--Backyard Items (All items shown when Backyard tab is clicked)-->
+        <div id="backyardItems" class="item-section">
+        </div>
+
+        <!--Furniture Tab-->
+        <div id="byFurniture" class="item-section" style="display: none;">
+        </div>
+
+        <!--Lights Tab-->
+        <div id="Lights" class="item-section" style="display: none;">
+        </div>
+
+        <!--Decorations Tab-->
+        <div id="Decorations" class="item-section" style="display: none;"></div>
+
+        <!--Misc Tab-->
+        <div id="byMisc" class="item-section" style="display: none;"></div>
+    </div>
+
+    <!--Wallet/Money Section-->
+    <div id="Wallet">
+        <div id="WalletText">
+            <span>Current Balance: </span>
+            <span>Total Money Earned: </span>
+        </div>
+        <button id="shoppingCartButton" onclick="goToCart()">
+            <img src="./images/cart.png" width="50" height="50" style="object-fit: contain;">
+        </button>
+    </div>
+    
+    <!--Exit Button-->
+    <div>
+        <img id="ExitButton" src="./images/exit.png" onclick="window.location.href = '../index.html'">
+    </div>
+
+<script src="script.js"></script>
+</body>
+

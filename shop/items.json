@@ -1,0 +1,81 @@
+{
+  "Zoo":[
+    {"id": "bench",
+    "name": "Wooden Bench",
+    "src": "./assets/furniture/benches/bench.png",
+    "price": 30,
+    "attribute": "Gives an extra $1 tip",
+    "category": "Furniture"},
+
+    {"id": "catTree",
+    "name": "Plant Cat Tree",
+    "src": "./assets/furniture/cat trees/plant cat tree.png",
+    "price": 50,
+    "attribute": "+5% Tip Chance",
+    "category": "Furniture"},
+
+    {"id": "window",
+    "name": "Basic Window",
+    "src": "./assets/furniture/wall/windows/window.png",
+    "price": 30,
+    "attribute": "Gives an extra $1 tip",
+    "category": "Misc."},
+
+    {"id": "rug",
+    "name": "Basic Rug",
+    "src": "./assets/furniture/rugs.rug.png",
+    "price": 30,
+    "attribute": "Gives an extra $2 tip",
+    "category": "Furniture"},
+
+    {"id": "fluffyBed",
+    "name": "Fluffy Bed",
+    "src": "./assets/furniture/beds/fluffy bed.png",
+    "price": 30,
+    "attribute": "+5% Tip Chance",
+    "category": "Beds"},
+
+    {"id": "circleBed",
+    "name": "Circle Bed",
+    "src": "./assets/furniture/beds/circle bed.png",
+    "price": 15,
+    "attribute": "Gives an extra $1 tip",
+    "category": "Beds"},
+
+    {"id": "pillowBed",
+    "name": "Pillow Bed",
+    "src": "./assets/furniture/beds/pillow bed.png",
+    "price": 15,
+    "attribute": "Gives an extra $1 tip",
+    "category": "Beds"},
+
+    {"id": "platform",
+    "name": "Basic Platform",
+    "src": "./assets/furniture/wall/platforms/platform.png",
+    "price": 60,
+    "attribute": "+5% Tip Chance",
+    "category": "Misc."},
+
+    {"id": "cat painting",
+    "name": "Cat Painting",
+    "src": "./assets/furniture/wall/paintings/painting.png",
+    "price": 10,
+    "attribute": "Gives an extra $1 tip",
+    "category": "Paintings"}
+  ],
+  "Backyard": [
+    {"id": "trashcan",
+    "name": "Trash Can",
+    "src": "images/trashcan.jpg",
+    "price": 20,
+    "attribute": "30% Chance for Raccoons, 5% Chance for Possums",
+    "category": "Furniture"},
+
+    {"id": "fairylights",
+    "name": "Fairy Lights",
+    "src": "images/fairylights.jpg",
+    "price": 60,
+    "attribute": "+1% Chance for Rare Breeds",
+    "category": "Lights"}
+  ]
+}
