@@ -191,4 +191,12 @@ nav {
     width: 40%;
     margin-left: 30%;
     object-fit: contain;
+<<<<<<< Updated upstream
+=======
+}
+
+#exit_button {
+  width: 3vw;
+  padding: 1vw;
+>>>>>>> Stashed changes
 }
