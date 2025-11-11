@@ -78,9 +78,30 @@
 
     <!--Wallet/Money Section-->
     <div id="Wallet">
+<<<<<<< HEAD
         <div id="WalletText">
             <span>Current Balance: </span>
             <span>Total Money Earned: </span>
+=======
+        <div id="cartButtonContainer">
+            <div id="WalletText">
+                <span>Cart Balance: </span>
+                <!-- If you have an element that displays money, use this code to display money value -->
+
+                <!-- This is the page element -->
+                <span id ="money" class="mainFont">This Value Will Be Replaced by $$$</span>
+                <!-- This is the script needed -->
+                <script src="../Money.js"></script>
+                  <script>
+                    setupPage()
+                  </script>
+                <!-- If you have an element that displays money, use this code to display money value -->
+                
+            </div>
+            <button id="shoppingCartButton" onclick="window.location.href = 'shoppingcart.html'">
+                <img src="./images/cart.png" width="50" height="50">
+            </button>
+>>>>>>> origin/Justin
         </div>
         <button id="shoppingCartButton" onclick="goToCart()">
             <img src="./images/cart.png" width="50" height="50" style="object-fit: contain;">
