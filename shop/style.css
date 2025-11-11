@@ -29,8 +29,8 @@ h1{
     color: rgb(105, 4, 88);
 }
 
-/*Zoo and Tab borders/colors/size*/
-#zooTab{
+/* generalized tab borders/colors/size*/
+.styled-tab {
     border: 2px solid rgb(59, 21, 95);
     border-radius: 10px 10px 0px 0px;
     background-color: rgb(238,230,250); 
@@ -39,20 +39,13 @@ h1{
     font-weight: bold;
     cursor: pointer;
     border-bottom: 0;
-    margin-right: 20px;
+    margin-left: 25px;
     
 }
 
-/*Backyard Tab borders/colors/size*/
-#backyardTab{
-    border: 2px solid rgb(13, 21, 67);
-    border-radius: 10px 10px 0px 0px;
-    background-color: rgb(238,230,250); 
-    font-size: 45px;
-    padding: 10px 70px;
-    font-weight: bold;
-    cursor: pointer;
-    border-bottom: 0;
+/* changing color of tabs when hovered */
+.styled-tab:hover {
+    background-color: rgb(131, 113, 185);
 }
 
 /*padding and border for the line under the tabs*/
@@ -66,49 +59,12 @@ h1{
     border-bottom: 2px solid black;
 }
 
-/*container to keep zoo and backyard tabs together/having the buttons touch*/
-.button-container {
-    display: flex;
-    padding: 0;
-    margin: 0;
-}
-
-/*positioning the zoo tab*/
-#zooTab{
-    margin-left: 25px;
-    /*border-right:none;*/
-}
-
-/*changing the color of tabs when hovered*/
-#bedTab:hover, #paintingsTab:hover, #toysTab:hover,
-#zoo-furnitureTab:hover, #zoo-miscTab:hover, #by-furnitureTab:hover, #lightsTab:hover,
-#decorTab:hover, #by-miscTab:hover{
-    background-color: rgb(131, 113, 185);
-}
-
-/*changing the color of tabs when focused*/
-#bedTab:focus, #paintingsTab:focus, #toysTab:focus,
-#zoo-furnitureTab:focus, #zoo-miscTab:focus, #by-furnitureTab:focus, #lightsTab:focus,
-#decorTab:focus, #by-miscTab:focus{
-    background-color: rgb(131, 113, 185);
-}
-
-#zooTab:hover, #zooTab:focus, #backyardTab:hover, #backyardTab:focus{
-    background-color: rgb(131, 113, 185);
-}
-
 /*styling the subcategory tabs*/
-#bedTab, #paintingsTab, #toysTab, #zoo-furnitureTab, #zoo-miscTab,
-#by-furnitureTab, #lightsTab, #decorTab, #by-miscTab{
-    border: 2px solid rgb(11, 15, 55);
-    background-color: rgb(238,230,250); 
+.sub-tab {
+    border-bottom: 2px solid;
     font-size: 25px;
     padding: 10px 20px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-left: 10px;
     border-radius: 10px;
-    
 }
 
 /*positioning the wallet/money section*/
@@ -123,24 +79,14 @@ h1{
     min-width: 350px;
     font-size: 18px;
     line-height: 1.5;
-}
-
-/*positioning the shopping cart*/
-#ShoppingCart{
-    position: fixed;
-    top: 250px;
-    right: 175px;
-    border: 2px solid black;
-    padding: 10px 10px 5px 5px;
-    background-color: white;
-    z-index: 9999;
-    min-width: 50px;
-    font-size: 18px;
-    line-height: 1.5;
+    display: flex;
+    justify-content: space-around;
 }
 
 /*positioning the exit button*/
 #ExitButton{
+    width: 70px;
+    height: 70px;
     position: absolute;
     top: 25px;
     left: 25px;
@@ -153,42 +99,34 @@ h1{
 }
 
 /*positioning all item sections so their contents line up horizontally*/
-#zooItems, #Beds, #Paintings, #Toys, #zooFurniture, #zooMisc,
-#byItems, #byFurniture, #Lights, #Decorations, #byMisc {
+.item-section {
     position: absolute;
     left: 20px;
     top: 325px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap; 
-    gap: 30px 40px;   
-    align-content: flex-start;
+    display: block;
 }
 
-/*styling each item square/container*/
+/* styling each item square/container */
 .item-container {
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 220px;
-  height: 220px;
-  margin: 20px;
-  border: 2px solid black;
-  border-radius: 20%;
-  background-color: rgba(255, 253, 225, 0.635);
-  vertical-align: top;
-  padding: 10px;
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 250px;
+    margin: 20px;
+    border: 2px solid black;
+    border-radius: 20%;
+    background-color: rgba(255, 253, 225, 0.635);
+    vertical-align: top;
+    padding: 10px;
 }
 
 .item-container img {
-  width: 120px;
-  height: 120px;
+  width: 150px;
+  height: 80px;
   object-fit: contain;
-}
-
-.item-container span {
-  font-size: 16pt;
 }
 
 .item-description {
@@ -196,6 +134,7 @@ h1{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-size: 16pt;
 }
 
 .itemName {
@@ -206,17 +145,28 @@ h1{
   color: darkgreen;
 }
 
-/*add to cart placeholder button under each item description */
+.shopper {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    justify-content: space-between;
+}
+
+/*add to cart button under each item description */
 .addtocartButton {
-    display: block;
+    display: inline;
     width: 100px;
-    padding: 8px 10px;
-    margin: 8px 30px 5px auto;
+    padding: 5px 8px;
+    margin-left: 5px;
     background-color: #f0f0f0;
     border: 2px solid rgb(11, 15, 55);
     border-radius: 6px;
     cursor: pointer;
     font-weight: bold;
+}
+
+.addtocartButton:hover{
+    background-color: #b9b5b5;
 }
 
 /*positioning and styling the text inside wallet section*/
@@ -227,11 +177,6 @@ h1{
     margin-right: 20px;
 }
 
-#cartButtonContainer {
-    display: flex;
-    justify-content: space-around;
-}
-
 #shoppingCartButton {
     border: none;
     background-color: transparent;
@@ -239,45 +184,46 @@ h1{
 
 #shoppingCartButton:hover {
     cursor: pointer;
+    scale: 1.1;
 }
 
-/*quantity style from google*/
-.quantity-selector {
-  margin: 8px auto -42px 30px;
+.input-box {
+    width: 30px;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-size: 20px;
+    outline: none;
 }
 
-/*quantity style from google*/
-.quantity-selector label {
-  display: block;
-  font-weight: bold;
-  margin: 8px 15px 0 auto;
+#resetCartButton{
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    padding: 10px;
+    font-size: 15px;
 }
 
-/*quantity style from google*/
-.quantity-selector select {
-  width: 50px;
-  padding: 8px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #fff;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  cursor: pointer;
+.itemBadge {
+    visibility: hidden;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    font-size: 20pt;
+    border-radius: 50%;
+    background-color: rgb(131, 113, 185);
+    border: 2px solid black;
+    font-weight: bold;
+    color: white;
+    right: 0;
+    top: 0;
 }
 
-/*quantity style from google*/
-/* Add an arrow icon for better visual indication (optional) */
-.quantity-selector select {
-  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M287%20197.3l-136.2-136.2c-4.7-4.7-12.3-4.7-17%200L5.4%20197.3c-4.7%204.7-4.7%2012.3%200%2017l11.3%2011.3c4.7%204.7%2012.3%204.7%2017%200l110.7-110.7c4.7-4.7%2012.3-4.7%2017%200l110.7%20110.7c4.7%204.7%2012.3%204.7%2017%200l11.3-11.3c4.7-4.7%204.7-12.3%200-17z%22%2F%3E%3C%2Fsvg%3E');
-  background-repeat: no-repeat;
-  background-position: right 8px center;
-  background-size: 12px;
-  padding-right: 30px; /* Make space for the arrow */
-}
 
-/*----------------------------------*/
+/*------------------------------------------------------------*/
 
 /*shoppingcart.html styles*/
 #cartBox {
@@ -296,10 +242,47 @@ h1{
     display: flex;
     flex-direction: column;
     width: 70%;
-    margin-top: 70px;
+    margin-top: 30px;
     background-color: rgb(249, 249, 190);
+    border-radius: 10%;
+    padding-top: 20px;
 } 
 
 #cartTotal{
     border-top: 2px solid black;
 }
+
+#noButton{
+    border-bottom: 2px solid;
+    font-size: 25px;
+    padding: 8px 20px;
+    border-radius: 10px;
+    background-color: rgb(238, 103, 103);
+}
+
+#noButton:hover{
+    cursor:pointer;
+    background-color: rgb(209, 68, 68);
+}
+
+#yesButton{
+    border-bottom: 2px solid;
+    font-size: 25px;
+    padding: 8px 20px;
+    border-radius: 10px;
+    background-color: rgb(121, 241, 121);
+}
+
+#yesButton:hover{
+    cursor:pointer;
+    background-color: rgb(74, 214, 109);
+}
+
+#purchaseOrcancelPrompt {
+    padding: 20px 20%;
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+    background-color: rgb(249, 249, 190);
+}
+

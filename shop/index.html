@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <title>Shop!</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="./images/Jonathan.png">
 </head>
 <body>
     <!--Shop! Header-->
@@ -11,667 +12,96 @@
     
      <!--Zoo and Backyard Tabs-->
     <nav class="button-container">
-        <button id="zooTab" onclick="openCategory('Zoo')">Zoo</button>
-        <button id="backyardTab" onclick="openCategory('Backyard')">Backyard</button>
+        <button id="zooTab" class="styled-tab" onclick="openCategory('Zoo')">Zoo</button>
+        <button id="backyardTab" class="styled-tab" onclick="openCategory('Backyard')">Backyard</button>
     </nav>
 
      <!--Zoo Tab with its subcategories-->
     <div id="Zoo" style="display: none;">
         <!-- Filter Buttons -->
-        <button id="bedTab" onclick="openSubCategory('Beds')">Beds</button>
-        <button id="paintingsTab" onclick="openSubCategory('Paintings')">Paintings</button>
-        <button id="toysTab" onclick="openSubCategory('Toys')">Toys</button>
-        <button id="zoo-furnitureTab" onclick="openSubCategory('zooFurniture')">Furniture</button>
-        <button id="zoo-miscTab" onclick="openSubCategory('zooMisc')">Misc.</button>
+        <button id="bedTab" class="styled-tab sub-tab" onclick="openSubCategory('Beds')">Beds</button>
+        <button id="paintingsTab" class="styled-tab sub-tab" onclick="openSubCategory('Paintings')">Paintings</button>
+        <button id="toysTab" class="styled-tab sub-tab" onclick="openSubCategory('Toys')">Toys</button>
+        <button id="zoo-furnitureTab" class="styled-tab sub-tab" onclick="openSubCategory('zooFurniture')">Furniture</button>
+        <button id="zoo-miscTab" class="styled-tab sub-tab" onclick="openSubCategory('zooMisc')">Misc.</button>
 
         <!--Zoo Items in Shop (All items shown when Zoo tab is clicked)-->
-        <div id="zooItems">
-            <!-- circle bed in zoo items w/ name, desc, quantity button placeholder -->
-            <div class="item-container">
-                <img src="./images/furniture/beds/circle bed.png" alt="Circle Cat Bed" width="125" height="100">
-                <div class="item-description">
-                    <div class="itemName">
-                        <span>Circle Cat Bed - <img id="shopGem" src="./images/gem.png"> 10</span>
-                    </div>
-                    <div class="itemAttribute">
-                        <span>Gives an extra 20% tip</span>
-                    </div>
-                </div>
-                <!--Quantity Drop Down Menu-->
-                <div class="quantity-selector">
-                    <label for="quantity">Qty:</label>
-                    <select id="quantity" name="quantity">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <!-- Add more options as needed -->
-                    </select>
-                </div>
-                <!-- add to cart button placeholder -->
-                <button class="addtocartButton">Add to Cart!</button>
-            </div>
-            <!-- fluffy bed -->
-            <div class="item-container">
-                <img src="./images/furniture/beds/fluffy bed.png" alt="Fluffy Cat Bed" width="125" height="100">
-                <div class="item-description">
-                    <div class="itemName">
-                        <span>Fluffy Cat Bed - <img id="shopGem" src="./images/gem.png"> 25</span>
-                    </div>
-                    <div class="itemAttribute">
-                        <span>Gives an extra 50% tip</span>
-                    </div>
-                </div>
-                <!--Quantity Drop Down Menu-->
-                <div class="quantity-selector">
-                    <label for="quantity">Qty:</label>
-                    <select id="quantity" name="quantity">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <!-- Add more options as needed -->
-                    </select>
-                </div>
-                <!-- add to cart button placeholder -->
-                <button class="addtocartButton">Add to Cart!</button>
-            </div>
-            <!-- pillow bed -->
-            <div class="item-container">
-                <img src="./images/furniture/beds/pillow bed.png" alt="Pillow Cat Bed" width="125" height="100">
-                <div class="item-description">
-                    <div class="itemName">
-                        <span>Pillow Cat Bed - <img id="shopGem" src="./images/gem.png"> 15</span>
-                    </div>
-                    <div class="itemAttribute">
-                        <span>Gives an extra 25% tip</span>
-                    </div>
-                </div>
-                <!--Quantity Drop Down Menu-->
-                <div class="quantity-selector">
-                    <label for="quantity">Qty:</label>
-                    <select id="quantity" name="quantity">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <!-- Add more options as needed -->
-                    </select>
-                </div>
-                <!-- add to cart button placeholder -->
-                <button class="addtocartButton">Add to Cart!</button>
-            </div>
-            <!-- bench -->
-            <div class="item-container">
-                <img src="./images/furniture/benches/bench.png" alt="Bench" width="125" height="100">
-                <div class="item-description">
-                    <div class="itemName">
-                        <span>Bench - <img id="shopGem" src="./images/gem.png"> 30</span>
-                    </div>
-                    <div class="itemAttribute">
-                        <span>Gives an extra 25% tip</span>
-                    </div>
-                </div>
-                <!--Quantity Drop Down Menu-->
-                <div class="quantity-selector">
-                    <label for="quantity">Qty:</label>
-                    <select id="quantity" name="quantity">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <!-- Add more options as needed -->
-                    </select>
-                </div>
-                <!-- add to cart button placeholder -->
-                <button class="addtocartButton">Add to Cart!</button>
-            </div>
-            <!-- rug -->
-            <div class="item-container">
-                <img src="./images/furniture/rugs/rug.png" alt="Rug" width="125" height="100">
-                <div class="item-description">
-                    <div class="itemName">
-                        <span>Rug - <img id="shopGem" src="./images/gem.png"> 10</span>
-                    </div>
-                    <div class="itemAttribute">
-                        <span>Gives an extra 25% tip</span>
-                    </div>
-                </div>
-                <!--Quantity Drop Down Menu-->
-                <div class="quantity-selector">
-                    <label for="quantity">Qty:</label>
-                    <select id="quantity" name="quantity">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <!-- Add more options as needed -->
-                    </select>
-                </div>
-                <!-- add to cart button placeholder -->
-                <button class="addtocartButton">Add to Cart!</button>
-            </div>
-            <!-- painting -->
-            <div class="item-container">
-                <img src="./images/furniture/wall/paintings/painting.png" alt="Painting" width="125" height="100">
-                <div class="item-description">
-                    <div class="itemName">
-                        <span>Painting - <img id="shopGem" src="./images/gem.png"> 20</span>
-                    </div>
-                    <div class="itemAttribute">
-                        <span>Gives an extra 25% tip</span>
-                    </div>
-                </div>
-                <!--Quantity Drop Down Menu-->
-                <div class="quantity-selector">
-                    <label for="quantity">Qty:</label>
-                    <select id="quantity" name="quantity">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <!-- Add more options as needed -->
-                    </select>
-                </div>
-                <!-- add to cart button placeholder -->
-                <button class="addtocartButton">Add to Cart!</button>
-            </div>
-            <!-- platform -->
-            <div class="item-container">
-                <img src="./images/furniture/wall/platforms/platform.png" alt="Platform" width="125" height="100">
-                <div class="item-description">
-                    <div class="itemName">
-                        <span>Platform - <img id="shopGem" src="./images/gem.png"> 20</span>
-                    </div>
-                    <div class="itemAttribute">
-                        <span>Gives an extra 25% tip</span>
-                    </div>
-                </div>
-                <!--Quantity Drop Down Menu-->
-                <div class="quantity-selector">
-                    <label for="quantity">Qty:</label>
-                    <select id="quantity" name="quantity">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <!-- Add more options as needed -->
-                    </select>
-                </div>
-                <!-- add to cart button placeholder -->
-                <button class="addtocartButton">Add to Cart!</button>
-            </div>
-            <!-- window -->
-            <div class="item-container">
-                <img src="./images/furniture/wall/windows/window.png" alt="Window" width="125" height="100">
-                <div class="item-description">
-                    <div class="itemName">
-                        <span>Window - <img id="shopGem" src="./images/gem.png"> 20</span>
-                    </div>
-                    <div class="itemAttribute">
-                        <span>Gives an extra 25% tip</span>
-                    </div>
-                </div>
-                <!--Quantity Drop Down Menu-->
-                <div class="quantity-selector">
-                    <label for="quantity">Qty:</label>
-                    <select id="quantity" name="quantity">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <!-- Add more options as needed -->
-                    </select>
-                </div>
-                <!-- add to cart button placeholder -->
-                <button class="addtocartButton">Add to Cart!</button>
-            </div>
+        <div id="zooItems" class="item-section">
         </div>
 
         <!--Beds Tab-->
-        <div id="Beds" style="display: none;">
-            <!-- circle bed -->
-            <div class="item-container">
-                <img src="./images/furniture/beds/circle bed.png" alt="Circle Cat Bed" width="125" height="100">
-                <div class="item-description">
-                    <div class="itemName">
-                        <span>Circle Cat Bed - <img id="shopGem" src="./images/gem.png"> 10</span>
-                    </div>
-                    <div class="itemAttribute">
-                        <span>Gives an extra 20% tip</span>
-                    </div>
-                </div>
-                <!--Quantity Drop Down Menu-->
-                <div class="quantity-selector">
-                    <label for="quantity">Qty:</label>
-                    <select id="quantity" name="quantity">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <!-- Add more options as needed -->
-                    </select>
-                </div>
-                <!-- add to cart button placeholder -->
-                <button class="addtocartButton">Add to Cart!</button>
-            </div>
-            <!-- fluffy bed -->
-            <div class="item-container">
-                <img src="./images/furniture/beds/fluffy bed.png" alt="Fluffy Cat Bed" width="125" height="100">
-                <div class="item-description">
-                    <div class="itemName">
-                        <span>Fluffy Cat Bed - <img id="shopGem" src="./images/gem.png"> 25</span>
-                    </div>
-                    <div class="itemAttribute">
-                        <span>Gives an extra 50% tip</span>
-                    </div>
-                </div>
-                <!--Quantity Drop Down Menu-->
-                <div class="quantity-selector">
-                    <label for="quantity">Qty:</label>
-                    <select id="quantity" name="quantity">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <!-- Add more options as needed -->
-                    </select>
-                </div>
-                <!-- add to cart button placeholder -->
-                <button class="addtocartButton">Add to Cart!</button>
-            </div>
-            <!-- pillow bed -->
-            <div class="item-container">
-                <img src="./images/furniture/beds/pillow bed.png" alt="Pillow Cat Bed" width="125" height="100">
-                <div class="item-description">
-                    <div class="itemName">
-                        <span>Pillow Cat Bed - <img id="shopGem" src="./images/gem.png"> 15</span>
-                    </div>
-                    <div class="itemAttribute">
-                        <span>Gives an extra 25% tip</span>
-                    </div>
-                </div>
-                <!--Quantity Drop Down Menu-->
-                <div class="quantity-selector">
-                    <label for="quantity">Qty:</label>
-                    <select id="quantity" name="quantity">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <!-- Add more options as needed -->
-                    </select>
-                </div>
-                <!-- add to cart button placeholder -->
-                <button class="addtocartButton">Add to Cart!</button>
-            </div>
+        <div id="Beds" class="item-section" style="display: none;">
         </div>
 
         <!--Paintings Tab-->
-        <div id="Paintings" style="display: none;">
-            <!-- painting -->
-            <div class="item-container">
-                <img src="./images/furniture/wall/paintings/painting.png" alt="Painting" width="125" height="100">
-                <div class="item-description">
-                    <div class="itemName">
-                        <span>Painting - <img id="shopGem" src="./images/gem.png"> 20</span>
-                    </div>
-                    <div class="itemAttribute">
-                        <span>Gives an extra 25% tip</span>
-                    </div>
-                </div>
-                <!--Quantity Drop Down Menu-->
-                <div class="quantity-selector">
-                    <label for="quantity">Qty:</label>
-                    <select id="quantity" name="quantity">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <!-- Add more options as needed -->
-                    </select>
-                </div>
-                <!-- add to cart button placeholder -->
-                <button class="addtocartButton">Add to Cart!</button>
-            </div>
+        <div id="Paintings" class="item-section" style="display: none;">
         </div>
 
         <!--Toys Tab-->
-        <div id="Toys" style="display: none;">
-            
-        </div>
+        <div id="Toys" class="item-section" style="display: none;"></div>
 
         <!--Furniture Tab-->
-        <div id="zooFurniture" style="display: none;">
-            <!-- bench -->
-            <div class="item-container">
-                <img src="./images/furniture/benches/bench.png" alt="Bench" width="125" height="100">
-                <div class="item-description">
-                    <div class="itemName">
-                        <span>Bench - <img id="shopGem" src="./images/gem.png"> 30</span>
-                    </div>
-                    <div class="itemAttribute">
-                        <span>Gives an extra 25% tip</span>
-                    </div>
-                </div>
-                <!--Quantity Drop Down Menu-->
-                <div class="quantity-selector">
-                    <label for="quantity">Qty:</label>
-                    <select id="quantity" name="quantity">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <!-- Add more options as needed -->
-                    </select>
-                </div>
-                <!-- add to cart button placeholder -->
-                <button class="addtocartButton">Add to Cart!</button>
-            </div>
-            <!-- rug -->
-            <div class="item-container">
-                <img src="./images/furniture/rugs/rug.png" alt="Rug" width="125" height="100">
-                <div class="item-description">
-                    <div class="itemName">
-                        <span>Rug - <img id="shopGem" src="./images/gem.png"> 10</span>
-                    </div>
-                    <div class="itemAttribute">
-                        <span>Gives an extra 25% tip</span>
-                    </div>
-                </div>
-                <!--Quantity Drop Down Menu-->
-                <div class="quantity-selector">
-                    <label for="quantity">Qty:</label>
-                    <select id="quantity" name="quantity">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <!-- Add more options as needed -->
-                    </select>
-                </div>
-                <!-- add to cart button placeholder -->
-                <button class="addtocartButton">Add to Cart!</button>
-            </div>
+        <div id="zooFurniture" class="item-section" style="display: none;">
         </div>
 
-    <!--Zoo Misc Tab-->
-    <div id="zooMisc" style="display: none;">
-        <!-- platform -->
-            <div class="item-container">
-                <img src="./images/furniture/wall/platforms/platform.png" alt="Platform" width="125" height="100">
-                <div class="item-description">
-                    <div class="itemName">
-                        <span>Platform - <img id="shopGem" src="./images/gem.png"> 20</span>
-                    </div>
-                    <div class="itemAttribute">
-                        <span>Gives an extra 25% tip</span>
-                    </div>
-                </div>
-                <!--Quantity Drop Down Menu-->
-                <div class="quantity-selector">
-                    <label for="quantity">Qty:</label>
-                    <select id="quantity" name="quantity">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <!-- Add more options as needed -->
-                    </select>
-                </div>
-                <!-- add to cart button placeholder -->
-                <button class="addtocartButton">Add to Cart!</button>
-            </div>
-            <!-- window -->
-            <div class="item-container">
-                <img src="./images/furniture/wall/windows/window.png" alt="Window" width="125" height="100">
-                <div class="item-description">
-                    <span>Window - <img id="shopGem" src="./images/gem.png"> 20</span>
-                    <span>Gives an extra 25% tip</span>
-                </div>
-                <!--Quantity Drop Down Menu-->
-                <div class="quantity-selector">
-                    <label for="quantity">Qty:</label>
-                    <select id="quantity" name="quantity">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <!-- Add more options as needed -->
-                    </select>
-                </div>
-                <!-- add to cart button placeholder -->
-                <button class="addtocartButton">Add to Cart!</button>
-            </div>
+        <!--Zoo Misc Tab-->
+        <div id="zooMisc" class="item-section" style="display: none;">
         </div>
-                <!--i stg this appeared earlier and now it will only appear if i put it here send help pls-->
-                <!--Wallet/Money Section-->
-                <div id="Wallet">
-                    <div id="cartButtonContainer">
-                        <div id="WalletText">
-                            <span>Current Balance: <img id="walletGem" src="./images/gem.png"> </span>
-                            <span>Total Money Earned: <img id="walletGem" src="./images/gem.png"> </span>
-                        </div>
-                        <button id="shoppingCartButton" onclick="window.location.href = 'shoppingcart.html'">
-                            <img src="./images/cart.png" width="50" height="50">
-                        </button>
-                    </div>
-                </div>
-            
-                <!--Exit Button-->
-                <div id="ExitButton">
-                    <img src="./images/exit.png" width="70" height="70" onclick="window.location.href = '../index.html'">
-                </div>
     </div>
 
      <!--Backyard Tab with its subcategories-->
      <!--"by" means backyard-->
     <div id="Backyard" style="display: none;">
         <!--Filter Buttons-->
-    <button id="by-furnitureTab" onclick="openSubCategory('byFurniture')">Furniture</button>
-    <button id="lightsTab" onclick="openSubCategory('Lights')">Lights</button>
-    <button id="decorTab" onclick="openSubCategory('Decorations')">Decorations</button>
-    <button id="by-miscTab" onclick="openSubCategory('byMisc')">Misc.</button>
+        <button id="by-furnitureTab" class="styled-tab sub-tab" onclick="openSubCategory('byFurniture')">Furniture</button>
+        <button id="lightsTab" class="styled-tab sub-tab" onclick="openSubCategory('Lights')">Lights</button>
+        <button id="decorTab" class="styled-tab sub-tab" onclick="openSubCategory('Decorations')">Decorations</button>
+        <button id="by-miscTab" class="styled-tab sub-tab" onclick="openSubCategory('byMisc')">Misc.</button>
 
         <!--Backyard Items (All items shown when Backyard tab is clicked)-->
-        <div id="byItems">
-            <!-- trashcan -->
-            <div class="item-container">
-                <img src="./images/trashcan.jpg" alt="Trash Can" width="100" height="100">
-                <div class="item-description">
-                    <div class="itemName">
-                        <span>Trash Can - <img id="shopGem" src="./images/gem.png"> 2</span>
-                    </div>
-                    <div class="itemAttribute">
-                        <span>25% Chance for Raccoons</span>
-                    </div>
-                </div>
-                <!--Quantity Drop Down Menu-->
-                <div class="quantity-selector">
-                    <label for="quantity">Qty:</label>
-                    <select id="quantity" name="quantity">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <!-- Add more options as needed -->
-                    </select>
-                </div>
-                <!-- add to cart button placeholder -->
-                <button class="addtocartButton">Add to Cart!</button>
-            </div>
-            <!-- fairy lights -->
-            <div class="item-container">
-                <img src="./images/fairylights.jpg" alt="Fairy Lights" width="100" height="100">
-                <div class="item-description">
-                    <div class="itemName">
-                        <span>Fairy Lights - <img id="shopGem" src="./images/gem.png"> 12</span>
-                    </div>
-                    <div class="itemAttribute">
-                        <span>Increases Money</span>
-                    </div>
-                </div>
-                    <!--Quantity Drop Down Menu-->
-                <div class="quantity-selector">
-                    <label for="quantity">Qty:</label>
-                    <select id="quantity" name="quantity">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <!-- Add more options as needed -->
-                    </select>
-                </div>
-                <!-- add to cart button placeholder -->
-                <button class="addtocartButton">Add to Cart!</button>
-            </div>
+        <div id="backyardItems" class="item-section">
         </div>
 
         <!--Furniture Tab-->
-        <div id="byFurniture" style="display: none;">
-            <!-- trash can -->
-            <div class="item-container">
-                <img src="./images/trashcan.jpg" alt="Trash Can" width="100" height="100">
-                <div class="item-description">
-                    <div class="itemName">
-                        <span>Trash Can - <img id="shopGem" src="./images/gem.png"> 2</span>
-                    </div>
-                    <div class="itemAttribute">
-                        <span>25% Chance for Raccoons</span>
-                    </div>
-                </div>
-                <!--Quantity Drop Down Menu-->
-                <div class="quantity-selector">
-                    <label for="quantity">Qty:</label>
-                    <select id="quantity" name="quantity">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <!-- Add more options as needed -->
-                    </select>
-                </div>
-                <!-- add to cart button placeholder -->
-                <button class="addtocartButton">Add to Cart!</button>
-            </div>
+        <div id="byFurniture" class="item-section" style="display: none;">
         </div>
 
         <!--Lights Tab-->
-        <div id="Lights" style="display: none;">
-            <!-- fairy lights -->
-            <div class="item-container">
-                <img src="./images/fairylights.jpg" alt="Fairy Lights" width="100" height="100">
-                <div class="item-description">
-                    <div class="itemName">
-                        <span>Fairy Lights - <img id="shopGem" src="./images/gem.png"> 12</span>
-                    </div>
-                    <div class="itemAttribute">
-                        <span>Increases Money</span>
-                    </div>
-                </div>
-                <!--Quantity Drop Down Menu-->
-                <div class="quantity-selector">
-                    <label for="quantity">Qty:</label>
-                    <select id="quantity" name="quantity">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <!-- Add more options as needed -->
-                    </select>
-                </div>
-                <!-- add to cart button placeholder -->
-                <button class="addtocartButton">Add to Cart!</button>
-            </div>
+        <div id="Lights" class="item-section" style="display: none;">
         </div>
 
         <!--Decorations Tab-->
-        <div id="Decorations" style="display: none;">
-        
-        </div>
+        <div id="Decorations" class="item-section" style="display: none;"></div>
 
         <!--Misc Tab-->
-        <div id="byMisc" style="display: none;">
-            <!-- Add misc items here -->
-        </div>
-
-    </div>
-
-    <!--Shopping Cart Section-->
-    <!--<div id="ShoppingCart">-->
-       <!-- <h2><center>SHOP!</center></h2>
-        <h2><center>Shopping Cart: </center></h2>-->
-        <!--<img src="./images/cart.png" width="50" height="50">-->
-        
-    <!--</div>-->
-
-    <!--attempting to create shopping cart button/page-->
-    <!--Shopping Cart Button-->
-    <!--<button id="cartButton" onclick="showCart('ShoppingCart')">
-        <img src="./images/cart.png" width="50" height="50">
-    </button>-->
-
-    
-    <div id="ShoppingCart" style="display: none;">
-        <h2><center>Shopping Cart!</center></h2>
+        <div id="byMisc" class="item-section" style="display: none;"></div>
     </div>
 
     <!--Wallet/Money Section-->
     <div id="Wallet">
-        <div id="cartButtonContainer">
-            <div id="WalletText">
-                <span>Current Balance: </span>
-                <span>Total Money Earned: </span>
-            </div>
-            <button id="shoppingCartButton" onclick="window.location.href = 'shoppingcart.html'">
-                <img src="./images/cart.png" width="50" height="50">
-            </button>
+        <div id="WalletText">
+            <!--adding Money.js code-->
+            <span id ="money" class="mainFont">This Value Will Be Replaced by $$$</span>
+            <!-- This is the script needed -->
+            <script src="../Money.js"></script>
+            <script>
+                setupPage()
+            </script>
+            <span>Total Money Earned: </span>
         </div>
+        <button id="shoppingCartButton" onclick="goToCart()">
+            <img src="./images/cart.png" width="50" height="50" style="object-fit: contain;">
+        </button>
     </div>
     
     <!--Exit Button-->
-    <div id="ExitButton">
-        <img src="./images/exit.png" width="70" height="70" onclick="window.location.href = '../index.html'">
+    <div>
+        <img id="ExitButton" src="./images/exit.png" onclick="window.location.href = '../index.html'">
+    </div>
+
+    <!--Reset Cart Button-->
+    <div resetCartContainer>
+        <button id="resetCartButton" class="styled-tab sub-tab" onclick="resetCart()">Reset!</button>
     </div>
 
 <script src="script.js"></script>
