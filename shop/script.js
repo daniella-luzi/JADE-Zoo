@@ -144,7 +144,7 @@ const allItems = {
     },
 
     {
-      id: "cat painting",
+      id: "catPainting",
       name: "Cat Painting",
       src: "../assets/furniture/wall/paintings/painting.png",
       price: 10,
