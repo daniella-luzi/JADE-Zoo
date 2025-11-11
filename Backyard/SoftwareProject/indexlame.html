@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Im going to redo this high key</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div style="position: relative; display: flex; align-items: center;">
+    <img id="clickImage" src="Trashcan.png" alt="Clickable Button Image">
+    <img id="popupImage" src="bitmap.png" alt="Popup Image">
+  </div>
+
+    <p id="levelCounter" style="margin-left: 20px; font-size: 30px; color: white;">Level: 0</p>
+    
+    
+    
+    
+    
+    
+    
+  <script>
+    let level = 0;
+      
+    const clickableImage = document.getElementById('clickImage');
+    const popupImage = document.getElementById('popupImage');
+
+    clickableImage.addEventListener('click', () => {
+      if (popupImage.style.display === 'none' || popupImage.style.display === '') {
+        popupImage.style.display = 'block';
+      } else {
+        popupImage.style.display = 'none';
+      }
+        
+
+    const levelCounter = document.getElementById('levelCounter');
+
+    popupImage.addEventListener('click', () => {
+      level++;
+      levelCounter.textContent = `Level: ${level}`;
+    });
+
+    });
+
+  </script>
+  
+</body>
+</html>
