@@ -1,0 +1,9 @@
+{
+    animals:[
+        {"species": "cat", "name": "Johnathan", "src": "assets/animals/johnathan_cat.png", "baseIncome": 10, "incomeModifier": 0.2},
+        {"species": "raccoon", "name": "Geoffrey", "src": "assets/animals/racket_raccoon.png", "baseIncome": 5, "incomeModifier": 0},
+        {"species": "cat", "name": "Caliban", "src": "assets/animals/johnathan_cat.png", "baseIncome": 10, "incomeModifier": 0.2},
+        {"species": "dog", "name": "Norbit", "src": "assets/animals/dog.jpeg", "baseIncome": 8, "incomeModifier": 0.1},
+        {"species": "raccoon", "name": "Kyle", "src": "assets/animals/racket_raccoon.png", "baseIncome": 10, "incomeModifier": 0},
+    ]
+}

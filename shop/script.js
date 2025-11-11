@@ -1,4 +1,4 @@
-console.log(localStorage)
+console.log(localStorage);
 let shoppingCart = {}; //{id: quantity}
 
 // after all elements have loaded, set up quantity buttons
@@ -65,7 +65,7 @@ window.addEventListener('load', () => {
         const itemBadge = document.querySelector(`#${key} > .itemBadge`);
         itemBadge.innerHTML = `${shoppingCart[key].quantity}`;
         itemBadge.style.visibility = "visible";
-    })
+    });
 }
 });
 
@@ -176,8 +176,8 @@ const allItems = {
 Object.keys(allItems).forEach((key)=>{
     allItems[key].forEach((itemObject)=>{
         itemObject.itemGroup = `${key}`;
-    })
-})
+    });
+});
 
 /**
  * Takes in an object representing ONE item (like the bench)
@@ -327,5 +327,5 @@ openCategory("Zoo");
 Object.keys(allItems).forEach((key)=>{
     allItems[key].forEach((itemObject)=>{
         addItem(itemObject);
-    })
-})
+    });
+});
