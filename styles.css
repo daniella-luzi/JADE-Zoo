@@ -96,56 +96,95 @@ nav {
   left: 0;
 }
 
+
+
+
 /*Encyclopedia stuff*/
-.encyclopedia{
-    position: fixed;
+.encyclopedia
+{
+    position: relative;
     background-color: beige; 
-    width:80vw;
-    height:50vw;
+    width:80%;
+    padding-top: 50%
 }
-#closeEncyclopediaBtn{
-    background-color: beige;
-    position: absolute;
-    right:10px;
-    top:10px;
-}
-.encyclopedia-container{
+.encyclopedia-container
+{
     position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
     top:0;
     left:0;
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     background-color: rgba(0,0,0,0.5); 
     pointer-events: none;
     opacity: 0;
     z-index: 1001;
 }
-.encyclopedia-container.show{
-    pointer-events: auto;
-    opacity: 1;
+.encyclopedia-container.show
+{
+  pointer-events: auto;
+  opacity: 1;
 }
+#closeEncyclopediaBtn
+{
+  background-color: beige;
+  position: absolute;
+  right:1%;
+  top:1%;
+}
+
+/*Tabs*/
+.encyclopediaTab
+{
+  opacity: 0;
+  pointer-events: none;
+}
+.encyclopediaTab.show
+{
+  opacity: 1;
+  pointer-events: auto;
+}
+#creatureTab
+{
+  opacity: 0;
+  pointer-events: none;
+  background-color: aqua;
+}
+#creatureTab.show
+{
+  pointer-events: auto;
+  opacity: 1;
+}
+
+/*Pages*/
 .animalPage{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(5,1fr);
-    background-color: rgba(0,0,0,0.2);
-    align-items: center;
-    justify-items: center;
-    height: 50vw;
-    width: 40vw;
-    right: 50%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5,1fr);
+
+  align-items: center;
+  justify-items: center;
+  position: absolute;
+  top: 0%;
+  width: 50%;
+  height: 100%;
+  max-width: 50%;
 }
 .descPage{
-    justify-content: center;
-    width: 40vw;
-    height: 50vw;
-    position: absolute;
-    left: 50%;
-    top:0;
-    overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0%;
+  width: 50%;
+  height: 100%;
+  max-width: 50%;
+  left: 50%;
+  overflow: hidden;
+  background-color: rgba(0,0,0,0.1);
 }
 .imgBox{
     position: absolute;
@@ -156,36 +195,47 @@ nav {
     width: 100%;
     box-sizing: border-box;
 }
-#descTitle{
+.encycloDescTitle{
+  position: absolute;
   font-family: ComicNeue;
   font-size: 30pt;
   font-weight: bold;
   text-align: center;
-  margin-top: 50%;
+  top: 35%;
+  padding: 0%;
+  margin: 0;
 }
-#description{
+.encycloDescription{
   font-family: ComicNeue; 
-  padding-left: 40px;
-  padding-right: 40px;
-  margin-top: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
   font-size: 20pt;
+  height: 35%;
+  width: 80%;
+  background: none;
+  position: absolute;
+  left: 5%;
+  resize: none;
+  top: 50%
+  
 }
 #cat{
-    background-image: url("assets/animals/cat.jpg");
+    background-image: url("assets/animals/johnathan_cat.png");
     z-index: 4;
 }
-#rat{
-    background-image: url("assets/animals/rat.jpeg");
+#raccoon{
+    background-image: url("assets/animals/racket_raccoon.png");
 }
 #dog{
     background-image: url("assets/animals/dog.jpeg");
 }
 .animalBtn{
-    display: block;
-    height: 8vw;
-    width: 8vw;
-    background-size: cover; 
-  
+  display: block;
+  height: 8vw;
+  width: 8vw;
+  background-size: cover; 
+  background-color: beige;
+  cursor: pointer;
 }
 .animal{
     padding: 1vw 5px;
@@ -198,7 +248,42 @@ nav {
     object-fit: contain;
 }
 
-#exit_button {
-  width: 3vw;
-  padding: 1vw;
+.exit_button {
+  width: 8%; 
+  height: 10%;
+  cursor: pointer;
+}
+.exit_button img{
+  width: 100%; 
+  height: 100%;
+  object-fit: contain;
+}
+#assignActive
+{
+  position: absolute;
+  bottom: 5%;
+  
+}
+#creaturesTab_btn
+{
+  background-color: rgb(190, 192, 176);
+  position: absolute;
+  top: -10%;
+  left: 8%;
+  border-bottom: none;
+}
+#encyclopediaTab_btn
+{
+  background-color: rgb(190, 192, 176);
+  position: absolute;
+  top: -10%;
+  border-bottom: none
+}
+#creaturesTab_btn.active
+{
+  background-color: rgb(245, 245, 220);
+}
+#encyclopediaTab_btn.active
+{
+  background-color: rgb(245, 245, 220);
 }

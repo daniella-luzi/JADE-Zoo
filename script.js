@@ -69,52 +69,140 @@ window.addEventListener('load', loadFurniture);
 resizeWorld();
 
 //Encyclopedia stuff
+const creatureTab = document.querySelector("#creatureTab");
+const encyclopediaTab = document.querySelector("#encyclopediaTab");
+const animalPage = document.querySelector(".animalPage");
 const encyclopedia_container = document.querySelector("#encyclopedia-container");
 const creaturesButton = document.querySelector("#creaturesButton");
 const closeEncyclopediaBtn = document.querySelector("#closeEncyclopediaBtn");
-const descImage = document.querySelector("#descImage");
-const descTitle = document.querySelector("#descTitle");
-const description = document.querySelector("#description");
-const dogPage = document.querySelector("#dog");
-const catPage = document.querySelector("#cat");
-const ratPage = document.querySelector("#rat");
+const descImage = document.querySelector("#encycloDescImage");
+const encycloDescTitle = document.querySelector("#encycloDescTitle");
+const encycloDescription = document.querySelector("#encycloDescription");
+const dogBtn = document.querySelector("#dog");
+const catBtn = document.querySelector("#cat");
+const raccoonBtn = document.querySelector("#raccoon");
+const encycloBtn = document.querySelector("#encyclopediaTab_btn");
+const creaturesTab_btn = document.querySelector("#creaturesTab_btn");
+const ownedAnimal1 = document.querySelector("#ownedAnimal1");
+const ownedAnimal2 = document.querySelector("#ownedAnimal2");
+const ownedAnimal3 = document.querySelector("#ownedAnimal3");
+const creatureDescTitle = document.getElementById("creatureDescTitle");
+const creatureDescription = document.getElementById("creatureDescription");
+const creatureDescImage = document.getElementById("creatureDescImage");
 
 
 creaturesButton.addEventListener("click", openEncyclopedia);
 closeEncyclopediaBtn.addEventListener("click", closeEncyclopedia);
 
-dogPage.addEventListener("click", showDogPage);
-catPage.addEventListener("click", showCatPage);
-ratPage.addEventListener("click", showRatPage);
+dogBtn.addEventListener("click", showDogPage);
+catBtn.addEventListener("click", showCatPage);
+raccoonBtn.addEventListener("click", showRaccoonPage);
+encycloBtn.addEventListener("click", showEncyclopediaPage);
+creaturesBtn.addEventListener("click", showCreaturePage);
 
+ownedAnimal1.addEventListener("click", showOwnedAnimalPage("cat", "Johnathan"));
+ownedAnimal2.addEventListener("click", showOwnedAnimalPage("dog", "Johnathan"));
+ownedAnimal3.addEventListener("click", showOwnedAnimalPage("raccoon", "Racket"));
 
 //Open and close the Encyclopedia
-function openEncyclopedia(){
-    encyclopedia_container.classList.add("show");
-    descImage.style.opacity = 0;
-    descTitle.textContent = "";
-    description.textContent = "";
+function openEncyclopedia()
+{
+  encyclopedia_container.classList.add("show");
+  showCatPage();
+  showEncyclopediaPage();
 }
-function closeEncyclopedia(){
-    encyclopedia_container.classList.remove("show");
+function closeEncyclopedia()
+{
+  encyclopedia_container.classList.remove("show");
 }
 
-//Change which page is visible
+
+//Change which tab is shown
+function showEncyclopediaPage()
+{
+  creatureTab.classList.remove("show");
+  encyclopediaTab.classList.add("show");
+  creaturesTab_btn.classList.remove("active");
+  encycloBtn.classList.add("active");
+}
+
+function showCreaturePage()
+{
+  assignButtonImages();
+  showOwnedAnimalPage("cat", "Johnathan");
+  encyclopediaTab.classList.remove("show");
+  creatureTab.classList.add("show");
+  encycloBtn.classList.remove("active");
+  creaturesTab_btn.classList.add("active");
+}
+
+
+//Change which encyclopedia page is visible
 function showDogPage(){
-    descImage.style.opacity = 1;
-    descImage.src = "assets/animals/dog.jpeg";
-    descTitle.textContent = "Dog";
-    description.textContent = "Is a dog. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua";
+  descImage.src = "assets/animals/dog.jpeg";
+  encycloDescTitle.textContent = "Dog";
+  encycloDescription.textContent = "Is a dog. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua";
 }
 function showCatPage(){
-    descImage.style.opacity = 1;
-    descImage.src = "assets/animals/cat.jpg";
-    descTitle.textContent = "Cat";
-    description.textContent = "Is a cat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua";
+  descImage.src = "assets/animals/johnathan_cat.png";
+  encycloDescTitle.textContent = "Cat";
+  encycloDescription.textContent = "Is a cat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua";
 }
-function showRatPage(){
-    descImage.style.opacity = 1;
-    descImage.src = "assets/animals/rat.jpeg";
-    descTitle.textContent = "Rat";
-    description.textContent = "Is a rat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua";
+function showRaccoonPage(){
+  descImage.src = "assets/animals/racket_raccoon.png";
+  encycloDescTitle.textContent = "Raccoon";
+  encycloDescription.textContent = "Is a raccoon. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua";
+}
+
+let totalBaseIncome = 0;
+let incomeMod = 1;
+function assignActive(Species)
+{
+  switch(species)
+  {
+    case "cat":
+      totalBaseIncome += 10;
+      incomeMod += 0.1;
+      break;
+    case "dog":
+      totalBaseIncome += 8;
+      incomeMod += 0.2;
+      break;
+    case "raccoon":
+      totalBaseIncome += 5;
+      break;
+  }
+}
+
+let trueIncome;
+//Math
+function calcIncome()
+{
+  trueIncome = Math.floor(totalBaseIncome * incomeMod);
+}
+
+function assignButtonImages()
+{
+  ownedAnimal1.style.backgroundImage = 'url("assets/animals/johnathan_cat.png")';
+  ownedAnimal2.style.backgroundImage = 'url("assets/animals/dog.jpeg")';
+  ownedAnimal3.style.backgroundImage = 'url("assets/animals/racket_raccoon.png")';
+}
+
+function showOwnedAnimalPage(species, name)
+{
+  console.log("Clicked");
+  const animalName = `${name} the ${species}`;
+  creatureDescTitle.textContent = animalName;
+  switch(species)
+    {
+      case "cat":
+        creatureDescImage.src = "assets/animals/johnathan_cat.png";
+        break;
+      case "dog":
+        creatureDescImage.src = "assets/animals/dog.jpeg";
+        break;
+      case "raccoon":
+        creatureDescImage.src = "assets/animals/racket_raccoon.png";
+        break;
+    }
 }
