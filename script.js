@@ -172,7 +172,7 @@ function placeDecoration(itemObject){
   const deleteFunc = attributeLookup[oldDecorationAlt.replaceAll(" ", "")][1];
   const newDecoration = document.querySelector(`#${itemObject.id}`);
   newDecoration.alt = itemObject.name.replaceAll(" ", "");
-  document.querySelector("#decorChoice").innerText = newDecoration.alt;
+  document.querySelector("#decorChoice").innerText = itemObject.name;
   newDecoration.src = itemObject.src;
   const addFunc = attributeLookup[newDecoration.alt][0];
 
