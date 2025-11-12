@@ -1,86 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Petting Zoo!</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../styles.css">
-  </head>
-  <body>
-    <div id="encyclopedia-container" class="encyclopedia-container">
-            <div class="encyclopedia">
-                
-                <div  class="animalPage">
-                    <div  class="animal animal-1">
-                        <button class="animalBtn" id= "cat"></button> 
-                    </div>
-                    <div  class="animal animal-2">
-                       <button class="animalBtn" id= "dog"></button> 
-                    </div>
-                    <div  class="animal animal-3">
-                        <button class="animalBtn" id= "rat"></button> 
-                    </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Background with Clickable Image</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div style="position: relative; display: flex; align-items: center;">
+    <img id="clickImage" src="Trashcan.png" alt="Clickable Button Image">
+    <img id="popupImage" src="bitmap.png" alt="Popup Image">
+  </div>
 
-                </div>
-                
-                <div class="descPage">
-                    <div class = "imgBox">
-                        <img src = "../../images/cat.jpg" alt = "Picture of cat" class = "encyclopediaImg" id = "descImage">
-                    </div>
-                    <h2 id="descTitle"></h2>
-                    <p id ="description"></p>
-                    
-                </div>
-                
-                <button id="closeEncyclopediaBtn">
-                  <img src="../../assets/UI/exit_transparent.png" alt="exit sign" id="exit_button" onclick="window.location.href = 'index.html'">
-                </button>
-            </div>
-        </div>
+    <p id="levelCounter" style="margin-left: 20px; font-size: 30px; color: white;">Level: 0</p>
     
-    <div id="worldWrapper">
-      <div id="frame">
-        <div id="world">
-          <img src="Background.png" alt="Floor" id="floor">
-        </div>
-      </div>
-    </div>
-    <nav>
-      <div>
-        <img src="../../assets/UI/shop icon.png" alt="Shop" id="shopButton" class="squareIcon" onclick="window.location.href = '../../shop/index.html'">
-        <img src="../../assets/UI/gem.png" alt="Jades" id="jade">
+    
+    
+    
+    
+    
+    
+  <script>
+    let level = 0;
+      
+    const clickableImage = document.getElementById('clickImage');
+    const popupImage = document.getElementById('popupImage');
+
+    clickableImage.addEventListener('click', () => {
+      if (popupImage.style.display === 'none' || popupImage.style.display === '') {
+        popupImage.style.display = 'block';
+      } else {
+        popupImage.style.display = 'none';
+      }
         
-        
-        <!-- If you have an element that displays money, use this code to display money value -->
-        
-        <!-- This is the page element -->
-        <span id ="money" class="mainFont">This Value Will Be Replaced by $$$</span>
-        <!-- This is the script needed -->
-        <script src="../../Money.js"></script>
-          <script>
-            setupPage()
-          </script>
-        <!-- If you have an element that displays money, use this code to display money value -->
-        
-        
-        
-        
-        <!-- As long as the script src="Money.js"> is loaded. You can use add(value) to add to the money.-->
-        <!-- You can also add(-value) to subtract from your balance. -->
-        <!-- Must use <scrip> or other ways to acess JS for this function to work. -->
-      <button onclick="add(10)">+10</button>
-      <button onclick="add(-10)">-10</button>
-        
-        
-        
-        
-        
-        
-        <img src="../../assets/UI/creatures icon.png" alt="Creatures" id="creaturesButton" class="squareIcon" onclick="showEncyclopedia()">
-      </div>
-      <img src="../../assets/UI/zoo icon.png" alt="Zoo Customization" id="zooButton" class="squareIcon" onclick="window.location.href = '../../customization.html'">
-    </nav>
-    <script src="../../script.js"></script>
-  </body>
+
+    const levelCounter = document.getElementById('levelCounter');
+
+    popupImage.addEventListener('click', () => {
+      level++;
+      levelCounter.textContent = `Level: ${level}`;
+    });
+
+    });
+
+  </script>
+  
+</body>
 </html>
