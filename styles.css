@@ -3,6 +3,10 @@
   src: url(fonts/Comic_Neue/ComicNeue-Regular.ttf);
 }
 
+* {
+  font-family: ComicNeue;
+}
+
 html, body {
   height: 100%;
   margin: 0;
@@ -96,7 +100,35 @@ nav {
   left: 0;
 }
 
+#placeDecor {
+  background-color: green;
+}
 
+#rejectDecor {
+  background-color: red;
+}
+
+.decorButton {
+  color: black;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 5px solid black;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+
+#decorPopUp {
+  padding: 50px;
+  font-size: 30px;
+}
+
+#decorButtons {
+  display: flex;
+  column-gap: 20px;
+  align-items: center;
+}
 
 
 /*Encyclopedia stuff*/
@@ -222,16 +254,6 @@ nav {
   top: 50%
   
 }
-#cat{
-    background-image: url("assets/animals/johnathan_cat.png");
-    z-index: 4;
-}
-#raccoon{
-    background-image: url("assets/animals/racket_raccoon.png");
-}
-#dog{
-    background-image: url("assets/animals/dog.jpeg");
-}
 .animalBtn{
   display: block;
   height: 8vw;
@@ -293,3 +315,4 @@ nav {
 {
   background-color: rgb(245, 245, 220);
 }
+

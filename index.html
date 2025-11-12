@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <div id="encyclopedia-container" class="encyclopedia-container">
+    <!-- Encyclopedia (Andrew) -->
+   <div id="encyclopedia-container" class="encyclopedia-container">
             <div class="encyclopedia">
                 
               
@@ -33,8 +34,6 @@
                 </div>
                 
                 <div id="activeAnimals">
-                
-                
                 </div>
                 
                 <div class="descPage">
@@ -62,6 +61,8 @@
             </div>
         </div>
     
+
+    <!-- Petting Zoo (Emma) -->
     <div id="worldWrapper">
       <div id="frame">
         <div id="world">
@@ -70,35 +71,20 @@
       </div>
     </div>
     <nav>
-      <div>
+      <div class="navItem">
         <img src="assets/UI/shop icon.png" alt="Shop" id="shopButton" class="squareIcon" onclick="window.location.href = 'shop/index.html'">
         <img src="assets/UI/gem.png" alt="Jades" id="jade">
-
-        <span class="mainFont"></span>
-        <img src="assets/UI/creatures icon.png" alt="Creatures" id="creaturesButton" class="squareIcon" onclick="openEncyclopedia()">
-
-        <!-- If you have an element that displays money, use this code to display money value -->
-        
-        <!-- This is the page element -->
-        <span id ="money" class="mainFont">This Value Will Be Replaced by $$$</span>
-        <!-- This is the script needed -->
-        <script src="Money.js"></script>
-          <script>
-            setupPage()
-          </script>
-        <!-- If you have an element that displays money, use this code to display money value -->
-        
-        
-        
-        
-        <!-- As long as the script src="Money.js"> is loaded. You can use add(value) to add to the money.-->
-        <!-- You can also add(-value) to subtract from your balance. -->
-        <!-- Must use <scrip> or other ways to acess JS for this function to work. -->
-      <button onclick="add(10)">+10</button>
-      <button onclick="add(-10)">-10</button>
-        
+        <span class="mainFont" id="balance">150</span>
+        <img src="assets/UI/creatures icon.png" alt="Creatures" id="creaturesButton" class="squareIcon" onclick="showEncyclopedia()">
       </div>
-      <img src="assets/UI/zoo icon.png" alt="Zoo Customization" id="zooButton" class="squareIcon" onclick="window.location.href = 'customization.html'">
+      <img src="assets/UI/zoo icon.png" alt="Zoo Customization" id="zooButton" class="squareIcon navItem" onclick="window.location.href = 'customization.html'">
+      <div id="decorPopUp" style="display: none;">
+        <p>Place <span id="decorChoice">DECOR ITEM</span> here?</p>
+        <div id="decorButtons">
+          <button id="placeDecor" class="decorButton">&#10003;</button>
+          <button id="rejectDecor" class="decorButton">X</button>
+        </div>
+      </div>
     </nav>
     <script src="script.js"></script>
   </body>
