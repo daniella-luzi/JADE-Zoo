@@ -136,10 +136,13 @@ nav {
 {
     position: relative;
     background-color: beige; 
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
     width:80%;
     padding-top: 50%;
     max-width: 1200px;
-  max-height: 750px;
+    max-height: 750px;
 }
 .encyclopedia-container
 {

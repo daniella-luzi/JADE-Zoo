@@ -301,19 +301,9 @@ const creatureGrid = document.getElementById("creatureGrid");
 creaturesButton.addEventListener("click", openEncyclopedia);
 closeEncyclopediaBtn.addEventListener("click", closeEncyclopedia);
 
-/*
-dogBtn.addEventListener("click", showDogPage);
-catBtn.addEventListener("click", showCatPage);
-raccoonBtn.addEventListener("click", showRaccoonPage);
-*/
 encyclopediaTab_btn.addEventListener("click", showEncyclopediaPage);
 creaturesTab_btn.addEventListener("click", showCreaturePage);
 
-/*
-ownedAnimal1.addEventListener("click", showDogPage); //showOwnedAnimalPage("cat", "Johnathan", 0, 0));
-ownedAnimal2.addEventListener("click", showOwnedAnimalPage("dog", "Johnathan", 0, 0));
-ownedAnimal3.addEventListener("click", showOwnedAnimalPage("raccoon", "Racket", 0, 0));
-*/
 
 //Open and close the Encyclopedia
 function openEncyclopedia()
@@ -405,6 +395,12 @@ function showOwnedAnimalPage(species, name, baseIncome, incomeMod)
       case "Cavalier King Charles Spaniel":
         creatureDescImage.src = "assets/animals/cavalier_dog.png";
         break;
+      case "Labrador Retriever":
+        creatureDescImage.src = "assets/animals/lab_puppy.png";
+        break;
+      case "Virginia Possum":
+        creatureDescImage.src = "assets/animals/virginia_possum.png";
+        break;
     }
   creatureDescription.textContent = `Base Income: ${baseIncome} 
           \nIncome Modifier: ${1+incomeMod}x`;
@@ -414,28 +410,6 @@ function showOwnedAnimalPage(species, name, baseIncome, incomeMod)
 
 function populateOwnedAnimalBtns()
 {
-  /*
-  for(let count of parsedAnimals.animals)
-  {
-    const animal = document.createElement("button");
-    animal.id = `ownedAnimal${count}`;
-    animal.style.backgroundImage = `url(${count.src})`;
-    animal.classList.add("animalBtn");
-    animal.onclick = () => showOwnedAnimalPage(
-      count.species,
-      count.name,
-      count.baseIncome,
-      count.incomeModifier
-    );
-    
-    creatureGrid.appendChild(animal);
-    
-    if(count == parsedAnimals.animals.length)
-    {
-      break;
-    }
-  }
-  */
   for (let i = 0; i < parsedAnimals.animals.length; i++) 
   {
     const animalData = parsedAnimals.animals[i];
@@ -521,7 +495,6 @@ function setEncycloBtns()
     
     entryGrid.appendChild(entry);
   }
-  
 }
 function resetEntryBtns()
 {
