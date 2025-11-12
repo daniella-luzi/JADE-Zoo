@@ -149,7 +149,7 @@ let animalJSONText = '{' +
     '"animals":[' +
         '{"species": "Cat", "name": "Johnathan", "src": "assets/animals/johnathan_cat.png", "baseIncome": 10, "incomeModifier": 0.2},' +
         '{"species": "Common Raccoon", "name": "Geoffrey", "src": "assets/animals/racket_raccoon.png", "baseIncome": 5, "incomeModifier": 0},' +
-        '{"species": "Cat", "name": "Caliban", "src": "assets/animals/johnathan_cat.png", "baseIncome": 10, "incomeModifier": 0.2},' +
+        '{"species": "Virginia Possum", "name": "Caliban", "src": "assets/animals/virginia_possum.png", "baseIncome": 10, "incomeModifier": 0.2},' +
         '{"species": "Labrador Retriever", "name": "Norbit", "src": "assets/animals/lab_puppy.png", "baseIncome": 8, "incomeModifier": 0.1},'+
         '{"species": "Golden Raccoon", "name": "Kyle", "src": "assets/animals/golden_raccoon.png", "baseIncome": 10, "incomeModifier": 0},'+
         '{"species": "Golden Raccoon", "name": "Chartreuse", "src": "assets/animals/golden_raccoon.png", "baseIncome": 10, "incomeModifier": 0},'+
@@ -300,6 +300,7 @@ function setEncycloBtns()
     {
       const entryData = parsedAnimals.animals[i];
       animalSpeciesArray[i] = entryData.species;
+      console.log(entryData.species);
     }
   const uniqueAnimals = [...new Set(animalSpeciesArray)];
   
@@ -307,7 +308,8 @@ function setEncycloBtns()
   {
     const entryData = parsedAnimals.animals[i];
     const entry = document.createElement("button");
-
+    console.log(entryData.species);
+    
     entry.id = `animalEntry{i}`;
     entry.style.backgroundImage = `url(${entryData.src})`;
     entry.classList.add("animalBtn");
