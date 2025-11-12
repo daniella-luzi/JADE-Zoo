@@ -152,8 +152,8 @@ let animalJSONText = '{' +
         '{"species": "Virginia Possum", "name": "Caliban", "src": "assets/animals/virginia_possum.png", "baseIncome": 10, "incomeModifier": 0.2},' +
         '{"species": "Labrador Retriever", "name": "Norbit", "src": "assets/animals/lab_puppy.png", "baseIncome": 8, "incomeModifier": 0.1},'+
         '{"species": "Golden Raccoon", "name": "Kyle", "src": "assets/animals/golden_raccoon.png", "baseIncome": 10, "incomeModifier": 0},'+
-        '{"species": "Golden Raccoon", "name": "Chartreuse", "src": "assets/animals/golden_raccoon.png", "baseIncome": 10, "incomeModifier": 0},'+
         '{"species": "Cavalier King Charles Spaniel", "name": "Emily", "src": "assets/animals/cavalier_dog.png", "baseIncome": 10, "incomeModifier": 0},'+
+        '{"species": "Golden Raccoon", "name": "Chartreuse", "src": "assets/animals/golden_raccoon.png", "baseIncome": 10, "incomeModifier": 0},'+
         '{"species": "Common Raccoon", "name": "Racket", "src": "assets/animals/racket_raccoon.png", "baseIncome": 10, "incomeModifier": 0}'+
     ']'+
 '}';

@@ -105,7 +105,9 @@ nav {
     position: relative;
     background-color: beige; 
     width:80%;
-    padding-top: 50%
+    padding-top: 50%;
+    max-width: 1200px;
+  max-height: 750px;
 }
 .encyclopedia-container
 {
@@ -234,7 +236,10 @@ nav {
   display: block;
   height: 8vw;
   width: 8vw;
-  background-size: cover; 
+  
+  background-size:contain;
+  background-position: center;
+  background-repeat: no-repeat;
   background-color: beige;
   cursor: pointer;
 }
