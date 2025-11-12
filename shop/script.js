@@ -151,6 +151,39 @@ const allItems = {
       attribute: "Gives an extra $1 tip",
       category: "Paintings",
     },
+     {
+      id: "basicbench",
+      name: "Basic Bench",
+      src: "../assets/furniture/benches/basicbench.png",
+      price: 10,
+      attribute: "Gives an extra $1 tip",
+      category: "zooFurniture",
+    },
+    {
+      id: "flowerwindow",
+      name: "Flower Window",
+      src: "../assets/furniture/wall/windows/flowerwindow.png",
+      price: 10,
+      attribute: "Gives an extra $5 tip",
+      category: "zooMisc",
+    },
+    {
+      id: "basiccattree",
+      name: "Basic Cat Tree",
+      src: "../assets/furniture/cat trees/basic cat tree.png",
+      price: 10,
+      attribute: "+1% Tip Chance",
+      category: "zooFurniture",
+    },
+    {
+      id: "flowerpainting",
+      name: "Flower Painting",
+      src: "../assets/furniture/wall/paintings/flowerPainting.png",
+      price: 10,
+      attribute: "+1% Tip Chance",
+      category: "Paintings",
+    }
+
   ],
   Backyard: [
     {
