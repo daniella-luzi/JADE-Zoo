@@ -12,9 +12,14 @@ let tipChance = 1;
 
 // A list of all the item names (WITHOUT SPACES) and their corresponding attribute functions.
 let attributeLookup = {
-  "WoodenBench": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
+  "WoodenBench": [()=>{addToTip(3)}, ()=>{addToTip(-3)}],
   "PlantCatTree": [()=>{changeTipChance(5)}, ()=>{changeTipChance(-5)}],
-  "BasicWindow": [()=>{addToTip(1)}, ()=>{addToTip(-1)}]
+  "BasicWindow": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
+  "FlowerWindow": [()=>{addToTip(5)}, ()=>{addToTip(-5)}],
+  "BasicBench": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
+  "BasicCatTree": [()=>{changeTipChance(1)}, ()=>{changeTipChance(-1)}],
+  "FlowerPainting": [()=>{changeTipChance(2)}, ()=>{changeTipChance(-2)}],
+  "CatPainting": [()=>{changeTipChance(1)}, ()=>{changeTipChance(-1)}]
 }
 
 
@@ -114,8 +119,9 @@ function loadFurniture() {
     console.log("filling local with decorations")
     localStorage.setItem("currentDecorations", JSON.stringify(jsonData));
   }
+  jsonData = JSON.parse(localStorage.getItem("currentDecorations"));
   let currentDecorations = JSON.parse(localStorage.getItem("currentDecorations")).furniture;
-
+  console.log("currentDecorations in loadFurniture: ", currentDecorations)
   for (let i of currentDecorations) {
     const item = document.createElement("img");
     item.id = i.id;
@@ -176,11 +182,22 @@ function placeDecoration(itemObject){
   //runs if you choose to place down the item
   function placeDecor(){
     console.log("decor accepted :)");
+    console.log("jsonData before placement: ", jsonData);
+    const decorIndex = (jsonData.furniture.findIndex((i)=>{
+      return (i.id == itemObject.id)
+    }));
+    jsonData.furniture[decorIndex].id = itemObject.id;
+    jsonData.furniture[decorIndex].name = itemObject.name;
+    jsonData.furniture[decorIndex].src = itemObject.src;
+    console.log("jsonData after placement: ", jsonData);
+    console.log("localStorage before placement: ", localStorage);
+    localStorage.setItem("currentDecorations", JSON.stringify(jsonData));
+    console.log("localStorage after placement: ", localStorage);
     deleteFunc();
     addFunc();
     document.querySelector(`#${itemObject.id}`).style.border = "none";
     localStorage.removeItem("decorChoice");
-
+    console.log("jsonData after placement: ", jsonData);
     cleanup();
   }
   
@@ -232,6 +249,23 @@ function changeTipChance(amt){
   console.log("adding to tip chance: ", amt)
   tipChance += amt;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //Encyclopedia stuff

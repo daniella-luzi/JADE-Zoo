@@ -4,7 +4,7 @@ let inventory = {
       id: "bench",
       name: "Wooden Bench",
       src: "../assets/furniture/benches/bench.png",
-      attribute: "Gives an extra $1 tip"
+      attribute: "Gives an extra $3 tip"
     },
     {
       id: "catTree",
@@ -17,6 +17,30 @@ let inventory = {
       name: "Basic Window",
       src: "../assets/furniture/wall/windows/window.png",
       attribute: "Gives an extra $1 tip"
+    },
+    {
+      id: "window",
+      name: "Flower Window",
+      src: "../assets/furniture/wall/windows/flowerWindow.png",
+      attribute: "Gives an extra $5 tip"
+    },
+    {
+      id: "bench",
+      name: "Basic Bench",
+      src: "../assets/furniture/benches/basicbench.png",
+      attribute: "Gives an extra $1 tip"
+    },
+    {
+      id: "catTree",
+      name: "Basic Cat Tree",
+      src: "../assets/furniture/cat trees/basic cat tree.png",
+      attribute: "+1% Tip Chance"
+    },
+    {
+      id: "painting1",
+      name: "Flower Painting",
+      src: "../assets/furniture/wall/paintings/flowerPainting.png",
+      attribute: "+1% Tip Chance"
     }
   ],
   "animals": []
