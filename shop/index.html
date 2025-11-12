@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <title>Shop!</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="./images/Jonathan.png">
 </head>
 <body>
     <!--Shop! Header-->
@@ -79,7 +80,13 @@
     <!--Wallet/Money Section-->
     <div id="Wallet">
         <div id="WalletText">
-            <span>Current Balance: </span>
+            <!--adding Money.js code-->
+            <span id ="money" class="mainFont">This Value Will Be Replaced by $$$</span>
+            <!-- This is the script needed -->
+            <script src="../Money.js"></script>
+            <script>
+                setupPage()
+            </script>
             <span>Total Money Earned: </span>
         </div>
         <button id="shoppingCartButton" onclick="goToCart()">
@@ -90,6 +97,11 @@
     <!--Exit Button-->
     <div>
         <img id="ExitButton" src="./images/exit.png" onclick="window.location.href = '../index.html'">
+    </div>
+
+    <!--Reset Cart Button-->
+    <div resetCartContainer>
+        <button id="resetCartButton" class="styled-tab sub-tab" onclick="resetCart()">Reset!</button>
     </div>
 
 <script src="script.js"></script>

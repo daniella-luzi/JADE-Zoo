@@ -1,70 +1,19 @@
 console.log(localStorage)
 let shoppingCart = {}; //{id: quantity}
 
-// after all elements have loaded, set up quantity buttons
 window.addEventListener('load', () => {
-    // get all elements with the `.quantity` class  
-    const quantityContainers = document.querySelectorAll(".quantity");
-    
-    // set up event listeners for each of the selected elements
-    quantityContainers.forEach(
-    // Quantity Button Code (from CodePen)
-      (quantityContainer) => {
-  
-      const minusBtn = quantityContainer.querySelector(".minus");
-      const plusBtn = quantityContainer.querySelector(".plus");
-      const inputBox = quantityContainer.querySelector(".input-box");
-  
-      updateButtonStates();
-  
-      quantityContainer.addEventListener("click", handleButtonClick);
-      inputBox.addEventListener("input", handleQuantityChange);
-  
-      function updateButtonStates() {
-        const value = parseInt(inputBox.value);
-        minusBtn.disabled = value <= 1;
-        plusBtn.disabled = value >= parseInt(inputBox.max);
-      }
-  
-      function handleButtonClick(event) {
-        if (event.target.classList.contains("minus")) {
-          decreaseValue();
-        } else if (event.target.classList.contains("plus")) {
-          increaseValue();
-        }
-      }
-  
-      function decreaseValue() {
-        let value = parseInt(inputBox.value);
-        value = isNaN(value) ? 1 : Math.max(value - 1, 1);
-        inputBox.value = value;
-        updateButtonStates();
-        handleQuantityChange();
-      }
-  
-      function increaseValue() {
-        let value = parseInt(inputBox.value);
-        value = isNaN(value) ? 1 : Math.min(value + 1, parseInt(inputBox.max));
-        inputBox.value = value;
-        updateButtonStates();
-        handleQuantityChange();
-      }
-  
-      function handleQuantityChange() {
-        let value = parseInt(inputBox.value);
-        value = isNaN(value) ? 1 : value;
-  
-        // Execute your code here based on the updated quantity value
-        console.log("Quantity changed:", value);
-      }
-    }
-  );
   if(localStorage.getItem("cart")){
     shoppingCart = JSON.parse(localStorage.getItem("cart"));
+
     Object.keys(shoppingCart).forEach((key)=>{
-        const itemBadge = document.querySelector(`#${key} > .itemBadge`);
-        itemBadge.innerHTML = `${shoppingCart[key].quantity}`;
-        itemBadge.style.visibility = "visible";
+
+        document.querySelectorAll(`#${key}`).forEach((itemC)=>{
+
+          const itemBadge = itemC.querySelector('.itemBadge');
+          itemBadge.innerHTML = shoppingCart[key].quantity;
+          itemBadge.style.visibility = "visible";
+
+        })
     })
 }
 });
@@ -236,22 +185,22 @@ function createItemContainer(itemObject) {
   return itemContainer;
 }
 
+// Makes the quantity and add to cart buttons appear in the item container
 function createShopper(itemObject) {
     const shopper = document.createElement("div");
     const onclickText = `onclick='addToCart(${JSON.stringify(itemObject)})'`;
     shopper.className = "shopper";
     shopper.innerHTML = `<div class="quantity">
-    <button class="minus" aria-label="Decrease">&minus;</button>
     <input type="number" class="input-box" value="1" min="1" max="10">
-    <button class="plus" aria-label="Increase">&plus;</button>
     </div>
     <button class="addtocartButton" ${onclickText}">Add to Cart!</button>`;
     return shopper;
 }
 
+
 function addToCart(itemObject) {
     const inputBox = document.querySelector(`#${itemObject.id} > .shopper > .quantity > .input-box`);
-    const itemBadge = document.querySelector(`#${itemObject.id} > .itemBadge`);
+    const itemBadges = document.querySelectorAll(`#${itemObject.id} > .itemBadge`);
     let value = parseInt(inputBox.value);
     if(!shoppingCart[itemObject.id]){
         shoppingCart[itemObject.id] = {
@@ -261,10 +210,11 @@ function addToCart(itemObject) {
         };
     }
     shoppingCart[itemObject.id].quantity += value;
-    itemBadge.style.visibility = "visible";
-    itemBadge.innerHTML = shoppingCart[itemObject.id].quantity;
     localStorage.setItem("cart", JSON.stringify(shoppingCart));
-    console.log(localStorage);
+    itemBadges.forEach((itemBadge)=>{
+      itemBadge.style.visibility = "visible";
+      itemBadge.innerHTML = shoppingCart[itemObject.id].quantity;
+    })
 
 }
 
@@ -341,7 +291,7 @@ function openCart(pageID) {
   document.getElementById("zooItems").style.display = "none";
   document.getElementById("backyardItems").style.display = "none";
   document.getElementById(pageID).style.display = "block";
-} /*attempting to create shopping cart button/page*/
+}
 
 function addItem(itemObject){
     document.getElementById(`${itemObject.itemGroup.toLowerCase()}Items`).appendChild(createItemContainer(itemObject));
@@ -362,3 +312,10 @@ Object.keys(allItems).forEach((key)=>{
         addItem(itemObject);
     })
 })
+
+function resetCart(){
+    localStorage.removeItem("cart");
+    window.location.reload();
+}
+
+
