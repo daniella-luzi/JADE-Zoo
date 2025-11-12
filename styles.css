@@ -194,6 +194,7 @@ nav {
     height: 40%;
     width: 100%;
     box-sizing: border-box;
+    border: none;
 }
 .encycloDescTitle{
   position: absolute;
