@@ -8,37 +8,37 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
+    <!-- Encyclopedia (Andrew) -->
     <div id="encyclopedia-container" class="encyclopedia-container">
-            <div class="encyclopedia">
-                
-                <div  class="animalPage">
-                    <div  class="animal animal-1">
-                        <button class="animalBtn" id= "cat"></button> 
-                    </div>
-                    <div  class="animal animal-2">
-                       <button class="animalBtn" id= "dog"></button> 
-                    </div>
-                    <div  class="animal animal-3">
-                        <button class="animalBtn" id= "rat"></button> 
-                    </div>
-
-                </div>
-                
-                <div class="descPage">
-                    <div class = "imgBox">
-                        <img src = "images/cat.jpg" alt = "Picture of cat" class = "encyclopediaImg" id = "descImage">
-                    </div>
-                    <h2 id="descTitle"></h2>
-                    <p id ="description"></p>
-                    
-                </div>
-                
-                <button id="closeEncyclopediaBtn">
-                  <img src="assets/UI/exit_transparent.png" alt="exit sign" id="exit_button" onclick="window.location.href = 'index.html'">
-                </button>
+      <div class="encyclopedia">
+        <div  class="animalPage">
+            <div  class="animal animal-1">
+                <button class="animalBtn" id= "cat"></button> 
+            </div>
+            <div  class="animal animal-2">
+                <button class="animalBtn" id= "dog"></button> 
+            </div>
+            <div  class="animal animal-3">
+                <button class="animalBtn" id= "rat"></button> 
             </div>
         </div>
+          
+        <div class="descPage">
+          <div class = "imgBox">
+            <img src = "images/cat.jpg" alt = "Picture of cat" class = "encyclopediaImg" id = "descImage">
+          </div>
+          <h2 id="descTitle"></h2>
+          <p id ="description"></p>
+        </div>
+          
+        <button id="closeEncyclopediaBtn">
+          <img src="assets/UI/exit_transparent.png" alt="exit sign" id="exit_button" onclick="window.location.href = 'index.html'">
+        </button>
+      </div>
+    </div>
     
+
+    <!-- Petting Zoo (Emma) -->
     <div id="worldWrapper">
       <div id="frame">
         <div id="world">
@@ -47,13 +47,20 @@
       </div>
     </div>
     <nav>
-      <div>
+      <div class="navItem">
         <img src="assets/UI/shop icon.png" alt="Shop" id="shopButton" class="squareIcon" onclick="window.location.href = 'shop/index.html'">
         <img src="assets/UI/gem.png" alt="Jades" id="jade">
-        <span class="mainFont">150</span>
+        <span class="mainFont" id="balance">150</span>
         <img src="assets/UI/creatures icon.png" alt="Creatures" id="creaturesButton" class="squareIcon" onclick="showEncyclopedia()">
       </div>
-      <img src="assets/UI/zoo icon.png" alt="Zoo Customization" id="zooButton" class="squareIcon" onclick="window.location.href = 'customization.html'">
+      <img src="assets/UI/zoo icon.png" alt="Zoo Customization" id="zooButton" class="squareIcon navItem" onclick="window.location.href = 'customization.html'">
+      <div id="decorPopUp" style="display: none;">
+        <p>Place <span id="decorChoice">DECOR ITEM</span> here?</p>
+        <div id="decorButtons">
+          <button id="placeDecor" class="decorButton">&#10003;</button>
+          <button id="rejectDecor" class="decorButton">X</button>
+        </div>
+      </div>
     </nav>
     <script src="script.js"></script>
   </body>
