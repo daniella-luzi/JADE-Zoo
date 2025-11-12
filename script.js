@@ -182,22 +182,17 @@ function placeDecoration(itemObject){
   //runs if you choose to place down the item
   function placeDecor(){
     console.log("decor accepted :)");
-    console.log("jsonData before placement: ", jsonData);
     const decorIndex = (jsonData.furniture.findIndex((i)=>{
       return (i.id == itemObject.id)
     }));
     jsonData.furniture[decorIndex].id = itemObject.id;
     jsonData.furniture[decorIndex].name = itemObject.name;
     jsonData.furniture[decorIndex].src = itemObject.src;
-    console.log("jsonData after placement: ", jsonData);
-    console.log("localStorage before placement: ", localStorage);
     localStorage.setItem("currentDecorations", JSON.stringify(jsonData));
-    console.log("localStorage after placement: ", localStorage);
     deleteFunc();
     addFunc();
     document.querySelector(`#${itemObject.id}`).style.border = "none";
     localStorage.removeItem("decorChoice");
-    console.log("jsonData after placement: ", jsonData);
     cleanup();
   }
   
