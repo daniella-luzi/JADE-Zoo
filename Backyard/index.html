@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Petting Zoo!</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div id="worldWrapper">
+      <div id="frame">
+        <div id="world">
+        </div>
+      </div>
+    </div>
+    <nav>
+      <div class="navItem">
+        <img src="../assets/UI/shop icon.png" alt="Shop" id="shopButton" class="squareIcon" onclick="window.location.href = 'shop/index.html'">
+        <img src="../assets/UI/gem.png" alt="Jades" id="jade">
+        <span class="mainFont" id="balance">150</span>
+        <img src="../assets/UI/creatures icon.png" alt="Creatures" id="creaturesButton" class="squareIcon" onclick="showEncyclopedia()">
+      </div>
+      <img src="../assets/UI/zoo icon.png" alt="Zoo Customization" id="zooButton" class="squareIcon navItem" onclick="window.location.href = 'customization.html'">
+      <div id="decorPopUp" style="display: none;">
+        <p>Place <span id="decorChoice">DECOR ITEM</span> here?</p>
+        <div id="decorButtons">
+          <button id="placeDecor" class="decorButton">&#10003;</button>
+          <button id="rejectDecor" class="decorButton">X</button>
+        </div>
+      </div>
+    </nav>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -133,7 +133,7 @@ function loadFurniture() {
     if (item.id == "backyardButton") {
       item.className = "navItem";
       item.addEventListener("click", () => {
-        window.location.href = "Backyard//SoftwareProject/index.html";
+        window.location.href = "Backyard/index.html";
       });
     }
     world.appendChild(item);
