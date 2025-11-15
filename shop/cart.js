@@ -16,3 +16,8 @@ Object.keys(cart).forEach((key)=>{
 
 const cartTotal = document.querySelector("#cartTotal");
 cartTotal.innerHTML = `<br><span><center>Total: <img id="shopGem" src="./images/gem.png">${total}</center></span><span style="font-weight: bold"><center>Confirm Purchase?</center></span>`
+
+//if no button is clicked, it saves your items and simply takes you back to the shop
+function cancelItems(){
+  window.location.href = 'index.html';
+}

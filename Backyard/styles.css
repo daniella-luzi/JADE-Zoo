@@ -20,7 +20,7 @@ html, body {
   justify-content: center;     /* center horizontally */
   align-items: center;         /* center vertically */
   position: relative;
-  background-image: url(assets/backgrounds/WALL.png);
+  background-image: url(../assets/backgrounds/WALL.png);
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -38,7 +38,7 @@ html, body {
   height: 900px;
   position: relative;
   transform-origin: top left;  /* simpler when using the frame sizing approach */
-  /* background-color: red; */
+  background-color: red;
   /* border: 1px solid red; */
   z-index: 1;
 }

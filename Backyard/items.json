@@ -1,0 +1,15 @@
+{
+  "furniture":[
+    {"id": "bench", "name": "bench", "src": "../assets/furniture/benches/bench.png", "bottom": 0, "left": 0},
+    {"id": "catTree", "name": "plant cat tree", "src": "../assets/furniture/cat trees/plant cat tree.png", "bottom": 0, "left": 0},
+    {"id": "window", "name": "window", "src": "../assets/furniture/wall/windows/window.png", "bottom": 0, "left": 0},
+    {"id": "rug", "name": "rug", "src": "../assets/furniture/rugs.rug.png", "bottom": 0, "left": 0},
+    {"id": "bed1", "name": "fluffy bed", "src": "../assets/furniture/beds/fluffy bed.png", "bottom": 0, "left": 0},
+    {"id": "bed2", "name": "circle bed", "src": "../assets/furniture/beds/circle bed.png", "bottom": 0, "left": 0},
+    {"id": "bed3", "name": "pillow bed", "src": "../assets/furniture/beds/pillow bed.png", "bottom": 0, "left": 0},
+    {"id": "platform1", "name": "platform", "src": "../assets/furniture/wall/platforms/platform.png", "bottom": 0, "left": 0},
+    {"id": "platform2", "name": "platform", "src": "../assets/furniture/wall/platforms/platform.png", "bottom": 0, "left": 0},
+    {"id": "platform3", "name": "platform", "src": "../assets/furniture/wall/platforms/platform.png", "bottom": 0, "left": 0},
+    {"id": "painting1", "name": "cat painting", "src": "../assets/furniture/wall/paintings/painting.png", "bottom": 0, "left": 0}
+  ]
+}
