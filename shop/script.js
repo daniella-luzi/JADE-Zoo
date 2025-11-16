@@ -1,6 +1,7 @@
 console.log(localStorage)
-let shoppingCart = {}; //{id: quantity}
+let shoppingCart = {};
 
+//loading the cart
 window.addEventListener('load', () => {
   if(localStorage.getItem("cart")){
     shoppingCart = JSON.parse(localStorage.getItem("cart"));
@@ -18,7 +19,9 @@ window.addEventListener('load', () => {
 }
 });
 
+//object array of all items available in the shop
 const allItems = {
+  //Zoo items
   Zoo: [
     {
       id: "bench",
@@ -134,6 +137,7 @@ const allItems = {
     }
 
   ],
+  //Backyard items
   Backyard: [
     {
       id: "trashcan",
@@ -155,6 +159,7 @@ const allItems = {
   ],
 };
 
+//getting itemObject for all items
 Object.keys(allItems).forEach((key)=>{
     allItems[key].forEach((itemObject)=>{
         itemObject.itemGroup = `${key}`;
@@ -165,6 +170,8 @@ Object.keys(allItems).forEach((key)=>{
  * Takes in an object representing ONE item (like the bench)
  * @param {object} itemObject
  */
+
+//making the container for each item with the name, picture, price, attribute, and badge
 function createItemContainer(itemObject) {
   const itemContainer = document.createElement("div");
   itemContainer.id = itemObject.id;
@@ -185,7 +192,7 @@ function createItemContainer(itemObject) {
   return itemContainer;
 }
 
-// Makes the quantity and add to cart buttons appear in the item container
+//makes the quantity and add to cart buttons appear in the item container
 function createShopper(itemObject) {
     const shopper = document.createElement("div");
     const onclickText = `onclick='addToCart(${JSON.stringify(itemObject)})'`;
@@ -197,15 +204,19 @@ function createShopper(itemObject) {
     return shopper;
 }
 
-
+//adding items to cart and updating the quantity on the badge
 function addToCart(itemObject) {
     const inputBox = document.querySelector(`#${itemObject.id} > .shopper > .quantity > .input-box`);
     const itemBadges = document.querySelectorAll(`#${itemObject.id} > .itemBadge`);
     let value = parseInt(inputBox.value);
     if(!shoppingCart[itemObject.id]){
         shoppingCart[itemObject.id] = {
-            "name": `${itemObject.name}`,
-            "price": `${itemObject.price}`,
+            "id": itemObject.id,
+            "name": itemObject.name,
+            "price": itemObject.price,
+            "src": itemObject.src,
+            "attribute": itemObject.attribute,
+            "category": itemObject.category,
             "quantity": 0
         };
     }
@@ -285,6 +296,7 @@ function openSubCategory(subcategoryID) {
   }
 }
 
+//getting the cart to display
 function openCart(pageID) {
   document.getElementById("Zoo").style.display = "none";
   document.getElementById("Backyard").style.display = "none";
@@ -293,11 +305,13 @@ function openCart(pageID) {
   document.getElementById(pageID).style.display = "block";
 }
 
+//adding items to their containers for the shop
 function addItem(itemObject){
     document.getElementById(`${itemObject.itemGroup.toLowerCase()}Items`).appendChild(createItemContainer(itemObject));
     document.getElementById(itemObject.category).appendChild(createItemContainer(itemObject));
 }
 
+//function to go to the cart page, if there are items in the cart
 function goToCart(){
     if(localStorage.getItem("cart")){
         window.location.href = 'shoppingcart.html';
@@ -307,12 +321,14 @@ function goToCart(){
 /* show zoo items by default*/
 openCategory("Zoo");
 
+//getting all items to have an itemObject for the shop
 Object.keys(allItems).forEach((key)=>{
     allItems[key].forEach((itemObject)=>{
         addItem(itemObject);
     })
 })
 
+//function to reset/clear the cart and reload the page
 function resetCart(){
     localStorage.removeItem("cart");
     window.location.reload();

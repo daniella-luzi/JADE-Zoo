@@ -9,33 +9,57 @@
   </head>
   <body>
     <!-- Encyclopedia (Andrew) -->
-    <div id="encyclopedia-container" class="encyclopedia-container">
-      <div class="encyclopedia">
-        <div  class="animalPage">
-            <div  class="animal animal-1">
-                <button class="animalBtn" id= "cat"></button> 
-            </div>
-            <div  class="animal animal-2">
-                <button class="animalBtn" id= "dog"></button> 
-            </div>
-            <div  class="animal animal-3">
-                <button class="animalBtn" id= "rat"></button> 
+   <div id="encyclopedia-container" class="encyclopedia-container">
+            <div class="encyclopedia">
+                
+              
+              <!-- Encyclopedia Tab -->
+              <div class="encyclopediaTab" id = "encyclopediaTab">
+                <div  class="animalPage" id = "entryGrid">
+                </div>
+                
+                <div class="descPage">
+                    <div class = "imgBox">
+                        <img src = "images/cat.jpg" alt = "Picture of cat" class = "encyclopediaImg" id = "encycloDescImage">
+                    </div>
+                    <h2 class = "encycloDescTitle" id="encycloDescTitle"></h2>
+                    <textArea readonly class="encycloDescription" id ="encycloDescription"></textArea>
+                </div>
+              </div>  
+              
+              
+              <!-- Creature Tab -->
+              <div class="creatureTab" id = "creatureTab">
+                <div  class="animalPage" id = "creatureGrid">
+                </div>
+                
+                <div id="activeAnimals">
+                </div>
+                
+                <div class="descPage">
+                    <div class = "imgBox">
+                        <img src = "images/cat.jpg" alt = "Picture of cat" class = "encyclopediaImg" id = "creatureDescImage">
+                    </div>
+                    <h2 class = "encycloDescTitle" id="creatureDescTitle"></h2>
+                    <textArea readonly class="encycloDescription" id="creatureDescription"></textArea>
+                    <button id="assignActive">Placeholder</button>
+                </div>
+                
+              </div>  
+              
+                <!-- Necessary Buttons for maneuvering Encyclopedia -->
+                <button class="exit_button" id="closeEncyclopediaBtn">
+                  <img src="assets/UI/exit_transparent.png" alt="exit sign" class="btnImage" onclick="closeEncyclopedia()">
+                </button>
+                <button class="exit_button creaturesTab_btn" id="creaturesTab_btn">
+                  <img src="assets/UI/zoo%20icon.png" alt="exit sign" class="btnImage" onclick="showCreaturePage()">
+                </button>
+                <button class="exit_button encyclopediaTab_btn" id="encyclopediaTab_btn">
+                  <img src="assets/UI/creatures%20icon.png" alt="exit sign" class="btnImage" onclick="showEncyclopediaPage()">
+                </button>
+              
             </div>
         </div>
-          
-        <div class="descPage">
-          <div class = "imgBox">
-            <img src = "images/cat.jpg" alt = "Picture of cat" class = "encyclopediaImg" id = "descImage">
-          </div>
-          <h2 id="descTitle"></h2>
-          <p id ="description"></p>
-        </div>
-          
-        <button id="closeEncyclopediaBtn">
-          <img src="assets/UI/exit_transparent.png" alt="exit sign" id="exit_button" onclick="window.location.href = 'index.html'">
-        </button>
-      </div>
-    </div>
     
 
     <!-- Petting Zoo (Emma) -->
@@ -61,6 +85,27 @@
           <button id="rejectDecor" class="decorButton">X</button>
         </div>
       </div>
+
+        
+        <!-- If you have an element that displays money, use this code to display money value -->
+        
+        <!-- This is the page element -->
+        <span id ="money" class="mainFont">This Value Will Be Replaced by $$$</span>
+        <!-- This is the script needed -->
+        <script src="Money.js"></script>
+          <script>
+            setupPage()
+          </script>
+        <!-- If you have an element that displays money, use this code to display money value -->
+        
+        
+        
+        
+        <!-- As long as the script src="Money.js"> is loaded. You can use add(value) to add to the money.-->
+        <!-- You can also add(-value) to subtract from your balance. -->
+        <!-- Must use <scrip> or other ways to acess JS for this function to work. -->
+      <button onclick="add(10)">+10</button>
+      <button onclick="add(-10)">-10</button>
     </nav>
     <script src="script.js"></script>
   </body>

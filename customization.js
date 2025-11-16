@@ -46,6 +46,23 @@ let inventory = {
   "animals": []
 }
 
+//getting the purchased items to show up in the customization section
+//the function is used at the bottom of the file, when the window loads, it loads the purchased items and the decor inventory
+function loadPurchasedItems(){
+  
+  //getting purchased items from local storage
+  const purchasedInventory = localStorage.getItem('boughtItems');
+
+      const items = JSON.parse(purchasedInventory);
+      
+      //for each item, we will push it into the inventory decor array that emma has for customization section
+      items.forEach((item)=>{
+        
+        inventory.decor.push(item);
+      });
+  }
+
+
 //displays all the decor in your inventory in the decorations tab
 function loadDecorInventory(){
   const decorInventory = document.querySelector("#decorInventory")
@@ -80,5 +97,6 @@ function pickDecoration(itemObject){
 
 
 window.addEventListener("load", ()=>{
+  loadPurchasedItems();
   loadDecorInventory();
 });
