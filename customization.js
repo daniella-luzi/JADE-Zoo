@@ -53,13 +53,16 @@ function loadPurchasedItems(){
   //getting purchased items from local storage
   const purchasedInventory = localStorage.getItem('boughtItems');
 
-      const items = JSON.parse(purchasedInventory);
-      
-      //for each item, we will push it into the inventory decor array that emma has for customization section
-      items.forEach((item)=>{
+      //checking the purchased items first
+      if(purchasedInventory){
+        const items = JSON.parse(purchasedInventory);
         
-        inventory.decor.push(item);
-      });
+        //for each item, we will push it into the inventory decor array that emma has for customization section
+        items.forEach((item)=>{
+          
+          inventory.decor.push(item);
+        });
+      }
   }
 
 
