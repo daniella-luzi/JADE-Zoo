@@ -8,65 +8,51 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <!-- Encyclopedia (Andrew) -->
-   <div id="encyclopedia-container" class="encyclopedia-container">
-      <div class="encyclopedia">
-          
-        
-        <!-- Encyclopedia Tab -->
-        <div class="encyclopediaTab" id = "encyclopediaTab">
-          <div class="animalPage" id="entryGrid">
-          </div>
-          
-          <div class="descPage">
-              <div class = "imgBox">
-                  <img src = "images/cat.jpg" alt = "Picture of cat" class = "encyclopediaImg" id = "encycloDescImage">
-              </div>
-              <h2 class = "encycloDescTitle" id="encycloDescTitle"></h2>
-              <textArea readonly class="encycloDescription" id ="encycloDescription"></textArea>
-          </div>
-        </div>  
-        
-        
-        <!-- Creature Tab -->
-        <div class="creatureTab" id = "creatureTab">
-          <div  class="animalPage" id = "creatureGrid">
-          </div>
-          
-          <div id="activeAnimals">
-          </div>
-          
-          <div class="descPage">
-              <div class = "imgBox">
-                  <img src = "images/cat.jpg" alt = "Picture of cat" class = "encyclopediaImg" id = "creatureDescImage">
-              </div>
-              <h2 class = "encycloDescTitle" id="creatureDescTitle"></h2>
-              <textArea readonly class="encycloDescription" id="creatureDescription"></textArea>
-              <button id="assignActive">Placeholder</button>
-          </div>
-          
-        </div>  
-        
-          <!-- Necessary Buttons for maneuvering Encyclopedia -->
-          <button class="exit_button" id="closeEncyclopediaBtn">
-            <img src="assets/UI/exit_transparent.png" alt="exit sign" class="btnImage" onclick="closeEncyclopedia()">
-          </button>
-          <button class="exit_button creaturesTab_btn" id="creaturesTab_btn">
-            <img src="assets/UI/zoo%20icon.png" alt="exit sign" class="btnImage" onclick="showCreaturePage()">
-          </button>
-          <button class="exit_button encyclopediaTab_btn" id="encyclopediaTab_btn">
-            <img src="assets/UI/creatures%20icon.png" alt="exit sign" class="btnImage" onclick="showEncyclopediaPage()">
-          </button>
-        
-      </div>
-    </div>
     
+
 
     <!-- Petting Zoo (Emma) -->
     <div id="worldWrapper">
       <div id="frame">
         <div id="world">
           <img src="assets/backgrounds/FLOOR.png" alt="Floor" id="floor">
+
+
+
+          <!-- Encyclopedia (Andrew) -->
+          <div id="encyclopedia-container" class="encyclopedia-container">
+            <!-- Tabs -->
+            <div class="enc-tabs">
+              <button class="enc-tab active" id="encyclopediaTab_btn">E
+                <div class="tab-spacer"></div>
+              </button>
+              <button class="enc-tab" id="creaturesTab_btn">C
+                <div class="tab-spacer"></div>
+              </button>
+            </div>
+            <div class="encyclopedia">
+              <!-- Close button -->
+              <button class="enc-close" id="closeEncyclopediaBtn">x</button>
+
+
+              <!-- Book content -->
+              <div class="enc-inner">
+                <!-- Left side: list -->
+                <div class="enc-list">
+                  <div id="encyclopediaList" class="enc-list-grid"></div>
+                  <div id="creaturesList" class="enc-list-grid enc-hidden"></div>
+                </div>
+
+                <!-- Right side: details -->
+                <div class="enc-detail">
+                  <img id="encImage" class="enc-image" src="" alt="">
+                  <h2 id="encTitle" class="enc-title"></h2>
+                  <p id="encAttribute" class="enc-attribute"></p>
+                  <p id="encBody" class="enc-body"></p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -75,7 +61,7 @@
         <img src="assets/UI/shop icon.png" alt="Shop" id="shopButton" class="squareIcon" onclick="window.location.href = 'shop/index.html'">
         <img src="assets/UI/gem.png" alt="Jades" id="jade">
         <span class="mainFont" id="balance">150</span>
-        <img src="assets/UI/creatures icon.png" alt="Creatures" id="creaturesButton" class="squareIcon" onclick="showEncyclopedia()">
+        <img src="assets/UI/creatures icon.png" alt="Creatures" id="creaturesButton" class="squareIcon" onclick="openEncyclopedia()">
       </div>
       <img src="assets/UI/zoo icon.png" alt="Zoo Customization" id="zooButton" class="squareIcon navItem" onclick="window.location.href = 'customization.html'">
       <div id="decorPopUp" style="display: none;">
