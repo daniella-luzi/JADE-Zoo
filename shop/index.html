@@ -3,10 +3,40 @@
     <meta http-equiv="Content-Type" content="text/html; charset-windows-1252">
     <meta charset="utf-8" />
     <title>Shop!</title>
+    <link rel="stylesheet" href="../global.css">
     <link rel="stylesheet" href="style.css">
+
     <link rel="icon" href="./images/Jonathan.png">
 </head>
 <body>
+    <!--Wallet/Money Section-->
+    <div id="Wallet">
+        <div id="WalletText">
+            <!--adding Money.js code-->
+            <span id ="money" class="mainFont">This Value Will Be Replaced by $$$</span>
+            <!-- This is the script needed -->
+            <script src="Money.js"></script>
+            <script>
+                setupPage()
+            </script>
+            <span>Total Money Earned: </span>
+        </div>
+        <button id="shoppingCartButton" onclick="goToCart()">
+            <img src="images/cart.png" width="50" height="50" style="object-fit: contain;">
+        </button>
+    </div>
+    <div id="pageOverlay">
+      <div class="paw-loader">
+        <div class="paw paw1"></div>
+        <div class="paw paw2"></div>
+        <div class="paw paw3"></div>
+        <div class="paw paw4"></div>
+        <div class="paw paw5"></div>
+        <div class="paw paw6"></div>
+        <div class="paw paw7"></div>
+        <div class="paw paw8"></div>
+      </div>
+    </div>
     <!--Shop! Header-->
     <h1><center>SHOP!</center></h1>
     
@@ -24,7 +54,6 @@
         <button id="toysTab" class="styled-tab sub-tab" onclick="openSubCategory('Toys')">Toys</button>
         <button id="zoo-furnitureTab" class="styled-tab sub-tab" onclick="openSubCategory('zooFurniture')">Furniture</button>
         <button id="zoo-miscTab" class="styled-tab sub-tab" onclick="openSubCategory('zooMisc')">Misc.</button>
-
         <!--Zoo Items in Shop (All items shown when Zoo tab is clicked)-->
         <div id="zooItems" class="item-section">
         </div>
@@ -77,26 +106,11 @@
         <div id="byMisc" class="item-section" style="display: none;"></div>
     </div>
 
-    <!--Wallet/Money Section-->
-    <div id="Wallet">
-        <div id="WalletText">
-            <!--adding Money.js code-->
-            <span id ="money" class="mainFont">This Value Will Be Replaced by $$$</span>
-            <!-- This is the script needed -->
-            <script src="Money.js"></script>
-            <script>
-                setupPage()
-            </script>
-            <span>Total Money Earned: </span>
-        </div>
-        <button id="shoppingCartButton" onclick="goToCart()">
-            <img src="./images/cart.png" width="50" height="50" style="object-fit: contain;">
-        </button>
-    </div>
+    
     
     <!--Exit Button-->
     <div>
-        <img id="ExitButton" src="./images/exit.png" onclick="window.location.href = '../index.html'">
+        <img id="ExitButton" src="./images/exit.png" onclick="goTo('../index.html')">
     </div>
 
     <!--Reset Cart Button-->
@@ -105,5 +119,7 @@
     </div>
 
 <script src="script.js"></script>
+<script src="../global.js"></script>
+
 </body>
 

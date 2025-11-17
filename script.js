@@ -211,7 +211,7 @@ function loadFurniture() {
     else{
       item.className = "navItem";
       item.addEventListener("click", () => {
-        window.location.href = "Backyard/index.html";
+        goTo('Backyard/index.html');
       });
     }
     decorContainer.appendChild(item);
