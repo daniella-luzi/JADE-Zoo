@@ -146,6 +146,19 @@ nav {
 
 
 
+.moneybutton {
+  z-index: 9999;
+  
+  
+}
+
+.moneybuttons {
+  position:  absolute;
+  top: 0px; 
+}
+
+
+
 
 
 
@@ -315,7 +328,7 @@ nav {
 
 .enc-title {
   font-size: 25px;
-  margin: 2px 0 0;
+  margin: 3px 0 0;
   text-align: center;
 }
 

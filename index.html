@@ -56,11 +56,45 @@
         </div>
       </div>
     </div>
+    
+     <!-- These buttons add and remove money value via the add($) function, money script needs to be attached somewhere-->
+      <div class = "moneybuttons">
+      <button class = "moneybutton" onclick="add(10)">+10</button>
+      <button class = "moneybutton" onclick="add(-10)">-10</button>
+      </div>
+    
+    
+    
     <nav>
       <div class="navItem">
         <img src="assets/UI/shop icon.png" alt="Shop" id="shopButton" class="squareIcon" onclick="window.location.href = 'shop/index.html'">
         <img src="assets/UI/gem.png" alt="Jades" id="jade">
-        <span class="mainFont" id="balance">150</span>
+
+        
+        
+        
+        
+                <!-- If you have an element that displays money, use this code to display money value -->
+        
+        <!-- This is the page element -->
+        <span id ="money" class="mainFont">This Value Will Be Replaced by $$$</span>
+        <!-- This is the script needed -->
+        <script src="Money.js"></script>
+          <script>
+            setupPage()
+          </script>
+        <!-- If you have an element that displays money, use this code to display money value -->
+        
+        
+        
+        
+        <!-- As long as the script src="Money.js"> is loaded. You can use add(value) to add to the money.-->
+        <!-- You can also add(-value) to subtract from your balance. -->
+        <!-- Must use <scrip> or other ways to acess JS for this function to work. -->
+
+        
+        
+        
         <img src="assets/UI/creatures icon.png" alt="Creatures" id="creaturesButton" class="squareIcon" onclick="openEncyclopedia()">
       </div>
       <img src="assets/UI/zoo icon.png" alt="Zoo Customization" id="zooButton" class="squareIcon navItem" onclick="window.location.href = 'customization.html'">
