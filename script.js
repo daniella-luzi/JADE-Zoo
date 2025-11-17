@@ -113,7 +113,7 @@ let jsonData = {
       id: "rug",
       name: "Basic Rug",
       src: "assets/furniture/rugs/rug.png",
-      bottom: 0,
+      bottom: -20,
       left: 350
     },
     {
@@ -274,15 +274,20 @@ function placeDecoration(itemObject){
   // the new decoration.
   const oldDecorationAlt = document.querySelector(`#${itemObject.id}`).alt;
   const oldDecorationSrc = document.querySelector(`#${itemObject.id}`).src;
-  //deleteFunc is the function that runs if you get rid of the old decoration. It removes that decoration's attributes.
-  const deleteFunc = attributeLookup[oldDecorationAlt.replaceAll(" ", "")][1];
+  const oldKey = oldDecorationAlt.replaceAll(" ", "");
+  const newKey = itemObject.name.replaceAll(" ", "");
+
+  const oldEntry = attributeLookup[oldKey];
+  const newEntry = attributeLookup[newKey];
+
+  // if there is no entry, use a no-op function
+  const deleteFunc = oldEntry ? oldEntry[1] : () => {};
+  const addFunc = newEntry ? newEntry[0] : () => {};
 
   // newDecoration is the HTML element that corresponds to the itemObject id. This will replace the old decoration.
   const newDecoration = document.querySelector(`#${itemObject.id}`);
   newDecoration.alt = itemObject.name.replaceAll(" ", "");
   newDecoration.src = itemObject.src;
-  //addFunc is the function that runs if you add this new decoration. It adds that decoration's attributes.
-  const addFunc = attributeLookup[newDecoration.alt][0];
 
   //sets the text in the decor popup to reflect what you're currently placing
   document.querySelector("#decorChoice").innerText = itemObject.name;
