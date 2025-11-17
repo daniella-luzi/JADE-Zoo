@@ -20,7 +20,7 @@ html, body {
   justify-content: center;     /* center horizontally */
   align-items: center;         /* center vertically */
   position: relative;
-  background-image: url(../assets/backgrounds/WALL.png);
+
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -38,9 +38,11 @@ html, body {
   height: 900px;
   position: relative;
   transform-origin: top left;  /* simpler when using the frame sizing approach */
-  background-color: red;
+  background-image: url(BackyardSunset.png);
   /* border: 1px solid red; */
   z-index: 1;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 
@@ -48,8 +50,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url(assets/backgrounds/WALL.png)
+  background-image: url(../assets/backgrounds/WALL.png);
 }
+
+
+
 
 nav {
   position: fixed;
