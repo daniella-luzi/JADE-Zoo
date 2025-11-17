@@ -177,6 +177,7 @@ let jsonData = {
 
 // makes the furniture appear on screen using their respective coordinates from the JSON data
 function loadFurniture() {
+
   if(!localStorage.getItem("currentDecorations")){
     console.log("filling local with decorations");
     localStorage.setItem("currentDecorations", JSON.stringify(jsonData));
@@ -191,12 +192,14 @@ function loadFurniture() {
   //If the decoration is the backyardButton (don't ask why), give it the class of "navItem"
   //   and add an event listener that takes you to the backyard.
   for (let i of currentDecorations) {
+
     const decorContainer = document.createElement("div");
 
     const item = document.createElement("img");
     item.id = i.id;
     item.alt = i.name;
     item.src = i.src;
+
     decorContainer.style.position = "absolute";
     decorContainer.style.bottom = i.bottom + "px";
     decorContainer.style.left = i.left + "px";
