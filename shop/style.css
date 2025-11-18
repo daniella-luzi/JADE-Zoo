@@ -187,6 +187,7 @@ h1{
     scale: 1.1;
 }
 
+/*styling the quantity box*/
 .input-box {
     width: 30px;
     text-align: center;
@@ -204,6 +205,7 @@ h1{
     font-size: 15px;
 }
 
+/*styling the quantity badge*/
 .itemBadge {
     visibility: hidden;
     position: absolute;
@@ -286,3 +288,10 @@ h1{
     background-color: rgb(249, 249, 190);
 }
 
+#inventoryButton{
+    position: absolute;
+    top: 25px;
+    right: 100px;
+    padding: 10px;
+    font-size: 15px;
+}
