@@ -9,6 +9,20 @@ let inventory = {
       slotGroup: null
     },
     {
+      id: "bench",
+      name: "Paw Bench",
+      src: "../assets/furniture/benches/pawbench.png",
+      attribute: "Gives an extra $3 tip",
+      slotGroup: null
+    },
+    {
+      id: "rug",
+      name: "Paw Rug",
+      src: "../assets/furniture/rugs/pawrug.png",
+      attribute: "Gives an extra $3 tip",
+      slotGroup: null
+    },
+    {
       id: "catTree",
       name: "Plant Cat Tree",
       src: "../assets/furniture/cat trees/plant cat tree.png",
@@ -43,7 +57,15 @@ let inventory = {
       name: "Cat Painting",
       src: "assets/furniture/wall/paintings/painting.png",
       attribute: "+1% Tip Chance",
-      category: "Beds",
+      category: "Paintings",
+      slotGroup: null
+    },
+    {
+      id: "painting1",
+      name: "Dog Painting",
+      src: "assets/furniture/wall/paintings/dogpainting.png",
+      attribute: "+1% Tip Chance",
+      category: "Paintings",
       slotGroup: null
     }
 

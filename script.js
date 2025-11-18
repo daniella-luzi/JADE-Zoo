@@ -22,6 +22,7 @@ let movingAnimalSrc = "";
 let attributeLookup = {
   "WoodenBench": [()=>{addToTip(3)}, ()=>{addToTip(-3)}],
   "BasicBench": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
+  "PawBench": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
   "BudgetBench": [()=>{addToTip(0)}, ()=>{addToTip(-0)}],
 
   "BasicWindow": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
@@ -35,9 +36,11 @@ let attributeLookup = {
 
   "PaintingSlot": [()=>{},()=>{}],
   "CatTreeSlot": [()=>{},()=>{}],
-  "FlowerPainting": [()=>{changeTipChance(2)}, ()=>{changeTipChance(-2)}],
+  "FlowerPainting": [()=>{changeTipChance(1)}, ()=>{changeTipChance(-1)}],
   "CatPainting": [()=>{changeTipChance(1)}, ()=>{changeTipChance(-1)}],
+  "DogPainting": [()=>{changeTipChance(1)}, ()=>{changeTipChance(-1)}],
 
+  "PawRug": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
   "BasicRug": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
   "BudgetRug": [()=>{addToTip(0)}, ()=>{addToTip(-0)}],
 
@@ -51,6 +54,7 @@ let attributeLookup = {
 let locationLookup = {
   WoodenBench: ["top: -10px; left: 10px", "top: -10px; right: 10px"],
   BasicBench: ["top: -10px; left: 10px", "top: -10px; right: 10px"],
+  PawBench: ["top: -10px; left: 10px", "top: -10px; right: 10px"],
   BudgetBench: ["top: -10px; left: 10px", "top: -10px; right: 10px"],
 
   PlantCatTree: ["top: 0; right: 90px", "top: 160px; left: 90px", "bottom: 15px; right: 85px"],
@@ -59,6 +63,7 @@ let locationLookup = {
   BasicWindow: ["bottom: 20px; left: 80px"],
   FlowerWindow: ["bottom: 20px; left: 80px"],
 
+  PawRug: ["top: 90px; left: 200px", "top: 90px; right: 200px"],
   BasicRug: ["top: 90px; left: 200px", "top: 90px; right: 200px"],
   BudgetRug: ["top: 90px; left: 200px", "top: 90px; right: 200px"],
 
@@ -72,6 +77,7 @@ let locationLookup = {
   
   backyardButton: [],
   CatPainting: [],
+  DogPainting: [],
   FlowerPainting: [],
   PaintingSlot: [],
   CatTreeSlot: [],
@@ -462,7 +468,7 @@ function placeDecoration(itemObject){
   ["#platform1", "#platform2", "#platform3"].forEach((el)=>{
     document.querySelector(el).parentElement.querySelector(".animalLocation").style.display = "block";
   })
-  
+
   document.querySelector(`#${itemObject.id}`).style.border = "4px solid magenta";
 
   //saves the old decoration name and source image in case you decide not to use
