@@ -74,8 +74,7 @@ h1{
     right: 60px;
     border: 2px solid black;
     padding: 10px 10px;
-    background-color: rgb(238,230,250); 
-    z-index: 9999;
+    background-color: rgb(238,230,250);
     min-width: 350px;
     font-size: 18px;
     line-height: 1.5;
@@ -113,8 +112,8 @@ h1{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 250px;
-    height: 250px;
+    width: 350px;
+    height: 350px;
     margin: 20px;
     border: 2px solid black;
     border-radius: 20%;
@@ -124,8 +123,8 @@ h1{
 }
 
 .item-container img {
-  width: 150px;
-  height: 80px;
+  height: 200px;
+  width: 200px;
   object-fit: contain;
 }
 

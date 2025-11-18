@@ -1,7 +1,7 @@
 let playLoadingAnimation = true;
 
 // ===== CONFIG =====
-let MIN_OVERLAY_TIME = 1000; // ms - minimum time overlay should be visible
+let MIN_OVERLAY_TIME = 800; // ms - minimum time overlay should be visible
 let overlayShownAt = performance.now(); // approximate start time for this page
 
 // Start the paw animation as soon as the DOM is ready

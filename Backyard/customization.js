@@ -3,17 +3,39 @@ let inventory = {
     {
       id: "trashcan",
       name: "Standard Trash Can",
-      src: "JADEtrashcan.png",
+      src: "../assets/furniture/backyard/trashcans/JADEtrashcan.png",
       attribute: "30% Chance for Raccoons, 5% Chance for Possums"
     },
     {
-      id: "trashcan",
+      id: "foodbowl1",
       name: "Food Bowl", //this is a TRASH CAN (pretend)
-      src: "foodbowl.png",
-      attribute: "30% Chance to yummy yummy"
+      src: "../assets/furniture/backyard/foodbowls/foodbowl.png",
+      attribute: "30% Chance to yummy yummy",
+      slotGroup: "foodbowls"
     }
   ]
 }
+
+//getting the purchased items to show up in the customization section
+//the function is used at the bottom of the file, when the window loads, it loads the purchased items and the decor inventory
+function loadPurchasedItems(){
+  
+  //getting purchased items from local storage
+  const purchasedInventory = localStorage.getItem('boughtItems');
+
+      //checking the purchased items first
+      if(purchasedInventory){
+        const items = JSON.parse(purchasedInventory);
+        
+        //for each item, we will push it into the inventory decor array that emma has for customization section
+        items.forEach((item)=>{
+          
+          inventory.decor.push(item);
+        });
+      }
+  }
+
+
 
 //displays all the decor in your inventory in the decorations tab
 function loadDecorInventory(){
@@ -42,12 +64,19 @@ function loadDecorInventory(){
 
 //runs when you click a decoration to put in your zoo
 function pickDecoration(itemObject){
-  console.log("pick decoration: ", itemObject)
-  localStorage.setItem("decorChoice", JSON.stringify(itemObject));
+  const decorChoice = {
+    id: itemObject.id,
+    name: itemObject.name,
+    src: itemObject.src,
+    slotGroup: itemObject.slotGroup || null  // e.g. "platform" or "bed"
+  };
+
+  localStorage.setItem("decorChoice", JSON.stringify(decorChoice));
   window.location.href = "index.html";
 }
 
 
 window.addEventListener("load", ()=>{
+  loadPurchasedItems();
   loadDecorInventory();
 });

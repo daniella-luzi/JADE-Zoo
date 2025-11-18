@@ -117,7 +117,6 @@ function loadAnimalInventory(){
 }
 
 function pickAnimal(itemObject){
-  console.log("pick animal: ", itemObject)
   localStorage.setItem("animalChoice", JSON.stringify(itemObject));
   window.location.href = "index.html";
 }

@@ -16,12 +16,6 @@ let chances = {
   RagdollCat: 1
 }
 
-
-function changeChance(breed, modifier){
-  chances[breed] += modifier;
-}
-
-// A list of all the item names (WITHOUT SPACES) and their corresponding attribute functions.
 let attributeLookup = {
   "StandardTrashCan": [()=>{
     changeChance("CommonRaccoon", 30);
@@ -32,6 +26,58 @@ let attributeLookup = {
   }]
 };
 
+let locationLookup = {
+  StandardTrashCan: ["top: 0px; left: 50px"]
+};
+
+let allBreeds = {
+  CommonRaccoon: {
+    attributeText: "+1 Ticket Price",
+    entry: "These furry mammals are native to North America, but later spread to central Europe, the Caucasus, and Japan in the mid-20th century. They are nocturnal, meaning they sleep during the day. Raccoons are super intelligent; in fact, studies have shown that they can remember the solutions to tasks for at least 3 years! They originally lived in forests, but have adapted to live in urban areas, which is why you might find one digging through your trash. You may have noticed their dexterous paws. That's where they got their name! The word 'raccoon' was adopted into English from the native Powhatan term meaning 'animal that scratches with its hands'. Do NOT try to pet them.",
+    src: "assets/animals/breeds/commonraccoon.png" //real picture
+  },
+  GoldenRaccoon: {
+    attributeText: "+15 Ticket Price",
+    entry: "While not really a 'breed' per se, these little guys are inspired by albino raccoons, which are normal raccoons but with a rare gene mutation that removes their 'melanin', or the pigment that makes their fur and skin dark. As a result, their fur is white, their noses are pink, and their eyes are red. This mutation only occurs in about one in every 10,000-20,000 raccoons, making sightings extremely rare. There are also blonde raccoons, a rare color morph with light brown or golden fur. Their masks and tail rings are still visible but not nearly as pronounced.",
+    src: "assets/animals/breeds/blonderaccoon.png"
+  },
+  VirginiaOpossum: {
+    attributeText: "+1 Ticket Price",
+    entry: "These solitary marsupials, usually referred to as 'possums', can be found from Canada to Costa Rica. Like raccoons, they often roam around trash, compost, and gardens. Opossums have 'prehensile' tails, meaning they are used for grabbing and holding things. They have a whopping 50 teeth and opposable thumbs! Surprisingly, their brain is only 1/5 the size of a raccoon's. A mother opossum carries her children on her body, and newborn opossums are as tiny as a honeybee. When threatened by a predator, an opossum may 'play dead', or pretend to be dead or injured. But in some cases, opossums will absolutely fight back. DON'T pet them!",
+    src: "assets/animals/breeds/virginiaopossum.png"
+  },
+  LaboradorRetriever: {
+    attributeText: "+2 Ticket Price",
+    entry: "We all know and love these playful canines. This breed comes from Britain and was created to hunt and track game in the 19th century. Labs have historically been trained to become guide and service dogs, war dogs, rescue dogs, and even police dogs. They of course make wonderful companions, as they are a friendly, energetic, intelligent, and loyal breed. Labs are very widespread - in fact, you may have seen a few in your neighborhood! They vary a lot in color, with black, chocolate, and yellow variants - all equally adorable.",
+    src: "assets/animals/breeds/lab.png"
+  },
+  CavalierKingCharlesSpaniel: {
+    attributeText: "+2 Ticket Price",
+    entry: "This is a British breed of toy dog with four distinct color patterns, emerging in the 1920s. They are soft, snuggly, highly affectionate lap dogs that do great with children and other dogs. Cavaliers are not shy at all, and are highly adaptable. They are playful, active, and curious, and have been trained to become therapy dogs due to their sweet and gentle nature. Cavaliers often want to chase things, including vehicles, so they are not suited for off-leash walking, and they have a strong hunting instinct. They usually make terrible guard dogs because all strangers are friends to them.",
+    src: "assets/animals/breeds/cavalier.png"
+  },
+  PersianCat: {
+    attributeText: "+3 Ticket Price",
+    entry: "Persian Longhairs are thought to have emerged in the 19th century. Selective breeding has caused them to have flat faces over time which cause health problems, but traditional Persians actually had normal muzzles. Persians are quiet cats that adapt well to indoor life, and are close and affectionate with their owners. They can be friendly towards strangers, and like to keep themselves clean, although require regular brushing to maintain their beautiful coats.",
+    src: "assets/animals/breeds/persian.png"
+  },
+  RagdollCat: {
+    attributeText: "+4 Ticket Price",
+    entry: "Ragdolls originated around 1963 and have colorpoint coats, which means the colder the fur is over time, the darker it will become. Their fur looks like a heat map of their bodies! They are super affectionate and docile cats, and are even called 'ragdolls' because they can be completely limp and relaxed when picked up, just like a ragdoll. They are dog-like cats because they follow people around, are easily handled, are not typically aggressive towards other animals, can be super playful, want attention constantly, and are intelligent and trainable. They make wonderful family pets.",
+    src: "assets/animals/breeds/ragdoll.png"
+  }
+}
+
+
+
+
+
+function changeChance(breed, modifier){
+  chances[breed] += modifier;
+}
+
+
+
 
 //Don't forget to clear localStorage! :)
 let jsonData = {
@@ -39,14 +85,14 @@ let jsonData = {
     {
       id: "trashcan",
       name: "Standard Trash Can",
-      src: "JADEtrashcan.png",
+      src: "../assets/furniture/backyard/trashcans/JADEtrashcan.png",
       bottom: 100,
       left: 150
     },
     {
-      id: "foodbowl",
+      id: "foodbowl1",
       name: "Food Bowl",
-      src: "foodbowl.png",
+      src: "../assets/furniture/backyard/foodbowls/foodbowl.png",
       bottom: 100,
       left: 500
     }
@@ -56,14 +102,12 @@ let jsonData = {
 function loadFurniture() {
 
   if(!localStorage.getItem("backyardDecor")){
-    console.log("filling backyard with local");
     localStorage.setItem("backyardDecor", JSON.stringify(jsonData));
   }
   //puts localstorage contents into variable jsondata
   jsonData = JSON.parse(localStorage.getItem("backyardDecor"));
 
   let backyardDecor = JSON.parse(localStorage.getItem("backyardDecor")).furniture;
-  console.log("backyardDecor in loadFurniture: ", backyardDecor);
 
   for (let i of backyardDecor) {
 
@@ -112,9 +156,13 @@ function loadFurniture() {
     itemPopUp.appendChild(animalButtons);
 
     itemPopUp.style.position = "absolute";
-    itemPopUp.style.right = "-50px";
-    itemPopUp.style.top = "-200px";
+    itemPopUp.style.right = "-100%";
+    itemPopUp.style.top = `-200px`;
+    itemPopUp.style.visibility = "hidden";
 
+    decorContainer.addEventListener("click",()=>{
+      decorContainer.querySelector(".itemPopUp").style.visibility = "visible";
+    })
     decorContainer.appendChild(item);
     decorContainer.appendChild(itemPopUp);
     world.appendChild(decorContainer);
@@ -172,13 +220,6 @@ function placeDecoration(itemObject){
     localStorage.removeItem("decorChoice");
     cleanup();
     const itemParent = document.getElementById(itemObject.id).parentElement;
-    const oldLocations = itemParent.querySelectorAll(`.animalLocation`);
-    console.log(oldLocations);
-    oldLocations.forEach((el)=>{
-      console.log("removing old location")
-      el.remove();
-    })
-    appendLocations(itemParent, itemObject.name.replaceAll(" ", ""));
   }
   
   //runs if you don't want to place down the item
