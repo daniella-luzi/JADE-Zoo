@@ -34,6 +34,7 @@ let attributeLookup = {
   "BasicCatTree": [()=>{changeTipChance(1)}, ()=>{changeTipChance(-1)}],
 
   "PaintingSlot": [()=>{},()=>{}],
+  "CatTreeSlot": [()=>{},()=>{}],
   "FlowerPainting": [()=>{changeTipChance(2)}, ()=>{changeTipChance(-2)}],
   "CatPainting": [()=>{changeTipChance(1)}, ()=>{changeTipChance(-1)}],
 
@@ -73,7 +74,8 @@ let locationLookup = {
   CatPainting: [],
   FlowerPainting: [],
   PaintingSlot: [],
-  PlatformSlot: ["bottom: 0px; right: -200px"]
+  CatTreeSlot: [],
+  PlatformSlot: ["bottom: 0px; right: -200px; display: none;"]
 };
 
 let allBreeds = {
@@ -134,8 +136,8 @@ let jsonData = {
     },
     {
       id: "catTree",
-      name: "Plant Cat Tree",
-      src: "assets/furniture/cat trees/plant cat tree.png",
+      name: "CatTreeSlot",
+      src: "assets/furniture/transparent.png",
       bottom: 160,
       left: 1200
     },
@@ -347,10 +349,13 @@ function startMultiDecorPlacement(decorChoice, group) {
     return;
   }
 
-  // Hide nav while choosing, like you do in placeDecoration.
+  // Hide nav while choosing
   document.querySelectorAll(".navItem").forEach((el) => {
     el.style.display = "none";
   });
+  ["#platform1", "#platform2", "#platform3"].forEach((el)=>{
+    document.querySelector(el).parentElement.querySelector(".animalLocation").style.display = "block";
+  })
 
   const handlers = {};
 
@@ -454,6 +459,10 @@ function placeDecoration(itemObject){
     el.style.display = "none";
   });
 
+  ["#platform1", "#platform2", "#platform3"].forEach((el)=>{
+    document.querySelector(el).parentElement.querySelector(".animalLocation").style.display = "block";
+  })
+  
   document.querySelector(`#${itemObject.id}`).style.border = "4px solid magenta";
 
   //saves the old decoration name and source image in case you decide not to use
@@ -484,6 +493,11 @@ function placeDecoration(itemObject){
   //runs if you choose to place down the item
   function placeDecor(){
     console.log("decor accepted :)");
+
+    //hide platform locations
+    ["#platform1", "#platform2", "#platform3"].forEach((el)=>{
+      document.querySelector(el).parentElement.querySelector(".animalLocation").style.display = "none";
+    })
     const decorIndex = (jsonData.furniture.findIndex((i)=>{
       return (i.id == itemObject.id);
     }));
