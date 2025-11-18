@@ -21,35 +21,59 @@ let movingAnimalSrc = "";
 // A list of all the item names (WITHOUT SPACES) and their corresponding attribute functions.
 let attributeLookup = {
   "WoodenBench": [()=>{addToTip(3)}, ()=>{addToTip(-3)}],
-  "PlantCatTree": [()=>{changeTipChance(5)}, ()=>{changeTipChance(-5)}],
-  "BasicWindow": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
-  "BasicPlatform": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
-  "FlowerWindow": [()=>{addToTip(5)}, ()=>{addToTip(-5)}],
   "BasicBench": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
+  "BudgetBench": [()=>{addToTip(0)}, ()=>{addToTip(-0)}],
+
+  "BasicWindow": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
+  "FlowerWindow": [()=>{addToTip(5)}, ()=>{addToTip(-5)}],
+
+  "PlatformSlot": [()=>{},()=>{}],
+  "BasicPlatform": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
+  
+  "PlantCatTree": [()=>{changeTipChance(5)}, ()=>{changeTipChance(-5)}],
   "BasicCatTree": [()=>{changeTipChance(1)}, ()=>{changeTipChance(-1)}],
+
+  "PaintingSlot": [()=>{},()=>{}],
   "FlowerPainting": [()=>{changeTipChance(2)}, ()=>{changeTipChance(-2)}],
   "CatPainting": [()=>{changeTipChance(1)}, ()=>{changeTipChance(-1)}],
+
   "BasicRug": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
+  "BudgetRug": [()=>{addToTip(0)}, ()=>{addToTip(-0)}],
+
   "FluffyBed": [()=>{addToTip(3)}, ()=>{addToTip(-3)}],
   "CircleBed": [()=>{addToTip(3)}, ()=>{addToTip(-3)}],
-  "PillowBed": [()=>{addToTip(4)}, ()=>{addToTip(-4)}]
+  "PillowBed": [()=>{addToTip(4)}, ()=>{addToTip(-4)}],
+  "NewspaperBed": [()=>{addToTip(0)}, ()=>{addToTip(-0)}],
+  "BudgetBed": [()=>{addToTip(0)}, ()=>{addToTip(-0)}],
 };
 
 let locationLookup = {
   WoodenBench: ["top: -10px; left: 10px", "top: -10px; right: 10px"],
   BasicBench: ["top: -10px; left: 10px", "top: -10px; right: 10px"],
+  BudgetBench: ["top: -10px; left: 10px", "top: -10px; right: 10px"],
+
   PlantCatTree: ["top: 0; right: 90px", "top: 160px; left: 90px", "bottom: 15px; right: 85px"],
   BasicCatTree: ["top: -20px; right: 45px", "top: 140px; left: 30px", "bottom: 10px; right: 40px"],
+
   BasicWindow: ["bottom: 20px; left: 80px"],
   FlowerWindow: ["bottom: 20px; left: 80px"],
+
   BasicRug: ["top: 90px; left: 200px", "top: 90px; right: 200px"],
+  BudgetRug: ["top: 90px; left: 200px", "top: 90px; right: 200px"],
+
   FluffyBed: ["top: 30px; left: 80px"],
   CircleBed: ["top: 40px; left: 50px"],
+  NewspaperBed: ["top: 40px; left: 50px"],
+  BudgetBed: ["top: 40px; left: 50px"],
   PillowBed: ["top: 10px; left: 80px"],
+  
+  BasicPlatform: ["bottom: 5px; right: 55px"],
+  
   backyardButton: [],
-  BasicPlatform: ["bottom: 5px; right: 55px"], // platform1
   CatPainting: [],
-  FlowerPainting: []
+  FlowerPainting: [],
+  PaintingSlot: [],
+  PlatformSlot: ["bottom: 0px; right: -200px"]
 };
 
 let allBreeds = {
@@ -103,8 +127,8 @@ let jsonData = {
   furniture: [
     {
       id: "bench",
-      name: "Wooden Bench",
-      src: "assets/furniture/benches/bench.png",
+      name: "Budget Bench",
+      src: "assets/furniture/benches/budgetbench.png",
       bottom: 220,
       left: 0
     },
@@ -124,29 +148,29 @@ let jsonData = {
     },
     {
       id: "rug",
-      name: "Basic Rug",
-      src: "assets/furniture/rugs/rug.png",
+      name: "Budget Rug",
+      src: "assets/furniture/rugs/budgetrug.png",
       bottom: -20,
       left: 350
     },
     {
       id: "bed1",
-      name: "Fluffy Bed",
-      src: "assets/furniture/beds/fluffy bed.png",
+      name: "Newspaper Bed",
+      src: "assets/furniture/beds/newspapers.png",
       bottom: 50,
       left: 50
     },
     {
       id: "bed2",
-      name: "Circle Bed",
-      src: "assets/furniture/beds/circle bed.png",
+      name: "Budget Bed",
+      src: "assets/furniture/beds/budgetbed.png",
       bottom: 220,
       left: 450
     },
     {
       id: "bed3",
-      name: "Pillow Bed",
-      src: "assets/furniture/beds/pillow bed.png",
+      name: "Newspaper Bed",
+      src: "assets/furniture/beds/newspapers.png",
       bottom: 220,
       left: 800
     },
@@ -159,29 +183,29 @@ let jsonData = {
     },
     {
       id: "platform1",
-      name: "Basic Platform",
-      src: "assets/furniture/wall/platforms/platform.png",
+      name: "PlatformSlot",
+      src: "assets/furniture/transparent.png",
       bottom: 350,
       left: 830
     },
     {
       id: "platform2",
-      name: "Basic Platform",
-      src: "assets/furniture/wall/platforms/platform.png",
+      name: "PlatformSlot",
+      src: "assets/furniture/transparent.png",
       bottom: 520,
       left: 50
     },
     {
       id: "platform3",
-      name: "Basic Platform",
-      src: "assets/furniture/wall/platforms/platform.png",
-      bottom: 420,
+      name: "PlatformSlot",
+      src: "assets/furniture/transparent.png",
+      bottom: 450,
       left: 430
     },
     {
       id: "painting1",
-      name: "Cat Painting",
-      src: "assets/furniture/wall/paintings/painting.png",
+      name: "PaintingSlot",
+      src: "assets/furniture/transparent.png",
       bottom: 600,
       left: 400
     }
@@ -308,8 +332,8 @@ function resizeWorld() {
 }
 
 function startMultiDecorPlacement(decorChoice, group) {
+  document.querySelector("#animalPrompt").style.display = "block";
   // Decide which furniture IDs are valid targets for this group.
-  // These must match the IDs in your jsonData (bench, bed1, bed2, platform1, etc.)
   const targetIds = group === "platform"
     ? ["platform1", "platform2", "platform3"]
     : group === "bed"
@@ -317,6 +341,7 @@ function startMultiDecorPlacement(decorChoice, group) {
     : [];
 
   if (targetIds.length === 0) {
+    document.querySelector("#animalPrompt").style.display = "none";
     // Fallback: just behave like old single-slot placement
     placeDecoration(decorChoice);
     return;
@@ -329,27 +354,50 @@ function startMultiDecorPlacement(decorChoice, group) {
 
   const handlers = {};
 
-  // Highlight each possible target and attach a click handler.
   targetIds.forEach((id) => {
     const img = document.getElementById(id);
     if (!img) return;
 
-    img.classList.add("decorTargetHighlight");
-    img.style.cursor = "pointer";
+    const container = img.parentElement;
+    // Try to highlight the first .animalLocation for that furniture
+    const slotDiv = container.querySelector(".animalLocation");
+
+    // If we have a location slot, that's what we highlight and click.
+    // Otherwise fall back to the image (for safety / future stuff).
+    const highlightTarget = slotDiv || img;
+
+    highlightTarget.classList.add("decorTargetHighlight");
+    highlightTarget.style.cursor = "pointer";
+
+    // Make sure we can click it even though animal locations default to pointer-events: none
+    if (slotDiv) {
+      slotDiv.style.pointerEvents = "auto";
+    }
 
     const handler = () => {
-      // Clean up highlight & handlers on all targets
+      // Clean up all targets (both highlight + handlers)
       targetIds.forEach((tid) => {
         const timg = document.getElementById(tid);
         if (!timg) return;
-        timg.classList.remove("decorTargetHighlight");
-        timg.style.cursor = "";
+
+        const tContainer = timg.parentElement;
+        const tSlot = tContainer.querySelector(".animalLocation");
+        const tTarget = tSlot || timg;
+
+        tTarget.classList.remove("decorTargetHighlight");
+        tTarget.style.cursor = "";
+
+        // Put location pointer events back to "none" (original state)
+        if (tSlot) {
+          tSlot.style.pointerEvents = "none";
+        }
+
         if (handlers[tid]) {
-          timg.removeEventListener("click", handlers[tid]);
+          tTarget.removeEventListener("click", handlers[tid]);
         }
       });
 
-      // Restore nav items (placeDecoration will handle its own hiding)
+      // Restore nav buttons (placeDecoration will hide them again for its popup)
       document.querySelectorAll(".navItem").forEach((el) => {
         el.style.display = "block";
       });
@@ -359,16 +407,17 @@ function startMultiDecorPlacement(decorChoice, group) {
       const itemObject = {
         id: id,
         name: decorChoice.name,
-        src: decorChoice.src
+        src: decorChoice.src,
       };
-
+      document.querySelector("#animalPrompt").style.display = "none";
       placeDecoration(itemObject);
     };
 
     handlers[id] = handler;
-    img.addEventListener("click", handler);
+    highlightTarget.addEventListener("click", handler);
   });
 }
+
 
 function reapplyAnimalsForFurniture(furnitureId) {
   // Get latest activeLocations from localStorage

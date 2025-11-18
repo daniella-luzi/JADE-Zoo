@@ -1,14 +1,14 @@
 let playLoadingAnimation = true;
 
 // ===== CONFIG =====
-let MIN_OVERLAY_TIME = 1200; // ms - minimum time overlay should be visible
+let MIN_OVERLAY_TIME = 1000; // ms - minimum time overlay should be visible
 let overlayShownAt = performance.now(); // approximate start time for this page
 
 // Start the paw animation as soon as the DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
   const overlay = document.getElementById("pageOverlay");
   if (!overlay) return;
-  MIN_OVERLAY_TIME = overlay.getAttribute("data-waitTime") || 1200;
+  MIN_OVERLAY_TIME = overlay.getAttribute("data-waitTime") || 1000;
   // If overlay is visible (not .hidden), start paws on THIS page
   if (!overlay.classList.contains("hidden")) {
     startPawAnimation();

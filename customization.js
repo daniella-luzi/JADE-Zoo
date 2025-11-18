@@ -37,6 +37,14 @@ let inventory = {
       attribute: "+5% Tip Chance",
       category: "Beds",
       slotGroup: "bed"
+    },
+    {
+      id: "painting1",
+      name: "Cat Painting",
+      src: "assets/furniture/wall/paintings/painting.png",
+      attribute: "+1% Tip Chance",
+      category: "Beds",
+      slotGroup: null
     }
 
   ],
