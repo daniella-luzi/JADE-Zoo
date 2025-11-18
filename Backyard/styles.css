@@ -425,3 +425,14 @@ nav {
   font-size: 54px;
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.87);
 }
+
+#animalType {
+  display: none;
+  position: absolute;
+  transform: scale(3);
+  bottom: 606px;
+  right: 48%;
+  z-index: 100001;
+  text-align: center
+}
+

@@ -289,9 +289,14 @@ function raccoonAppear() {
   document.querySelector("#raccoon").style.display = "block";
 }
 
-function captureVisible() {
+function captureVisible(AnimalElement) {
+  // Show the question container
   document.querySelector("#question").style.display = "block";
+  document.querySelector("#animalType").style.display = "block";
+  // Use the alt text of the image to display the message
   
+  const animalName = AnimalElement.alt; 
+  document.querySelector("#animalType").textContent = "What a cute " + animalName + "!";
 }
 
 
