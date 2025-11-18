@@ -469,6 +469,7 @@ function placeDecoration(itemObject){
     document.querySelector(el).parentElement.querySelector(".animalLocation").style.display = "block";
   })
 
+  console.log("itemObject.id:  ", itemObject.id)
   document.querySelector(`#${itemObject.id}`).style.border = "4px solid magenta";
 
   //saves the old decoration name and source image in case you decide not to use
@@ -748,7 +749,7 @@ window.addEventListener("load", ()=>{
   const decorRaw = localStorage.getItem("decorChoice");
   if (decorRaw) {
     const decorChoice = JSON.parse(decorRaw);
-
+    console.log("DECOR CHOICE: ", decorChoice)
     let slotGroup = decorChoice.slotGroup || null;
 
     if (slotGroup === "platform" || slotGroup === "bed") {
