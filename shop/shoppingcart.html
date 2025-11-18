@@ -4,9 +4,23 @@
     <meta charset="utf-8" />
     <title>Shop!</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../global.css">
+
     <link rel="icon" href="./images/Jonathan.png">
 </head>
 <body>
+    <div id="pageOverlay">
+      <div class="paw-loader">
+        <div class="paw paw1"></div>
+        <div class="paw paw2"></div>
+        <div class="paw paw3"></div>
+        <div class="paw paw4"></div>
+        <div class="paw paw5"></div>
+        <div class="paw paw6"></div>
+        <div class="paw paw7"></div>
+        <div class="paw paw8"></div>
+      </div>
+    </div>
     <!--Shop! Header-->
     <div id="header">
         <h1><center>Shopping Cart:</center></h1>
@@ -16,7 +30,7 @@
     <div id="Wallet">
         <div id="WalletText">
             <!--adding Money.js code-->
-            <span>Current Balance: </span>
+            <span><img id="walletGem" src="./images/gem.png"></span>
             <span id ="money" class="mainFont">This Value Will Be Replaced by $$$</span>
             <!-- This is the script needed -->
             <script src="../Money.js"></script>
@@ -29,7 +43,7 @@
 
     <!--Exit Button-->
     <div>
-        <img id="ExitButton" src="./images/exit.png" width="70" height="70" onclick="window.location.href = 'index.html'">
+        <img id="ExitButton" src="./images/exit.png" width="70" height="70" onclick="goTo('index.html')">
     </div>
     
 
@@ -49,5 +63,7 @@
     </div>
 
 <script src="cart.js"></script>
+<script src="../global.js"></script>
+
 </body>
 </html>

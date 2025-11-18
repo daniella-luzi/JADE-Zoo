@@ -100,10 +100,10 @@ h1{
 
 /*positioning all item sections so their contents line up horizontally*/
 .item-section {
-    position: absolute;
-    left: 20px;
-    top: 325px;
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;          /* spacing between cards */
+    margin: 40px 20px;  /* space below the tabs & from sides */
 }
 
 /* styling each item square/container */
@@ -172,7 +172,7 @@ h1{
 /*positioning and styling the text inside wallet section*/
 #WalletText{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: fit-content;
     margin-right: 20px;
 }
@@ -224,6 +224,11 @@ h1{
     top: 0;
 }
 
+#walletGem{
+    width:20px;
+    height:20px;
+    margin-right: 10px;
+}
 
 /*------------------------------------------------------------*/
 

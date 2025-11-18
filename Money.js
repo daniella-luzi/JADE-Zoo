@@ -28,12 +28,13 @@ function setupPage() {
 
   // This function adds money, saves to the JSON, then updates the display.
 function add(value) {
-  money = money + value;
+  money = Math.max(0, money + value);
   save();
   updateMoneyDisplay();
   
+}
+
 //havent tested this but I assune it works
 function getMoney() {
   return money;
   }
-}

@@ -20,7 +20,6 @@ html, body {
   justify-content: center;     /* center horizontally */
   align-items: center;         /* center vertically */
   position: relative;
-  background-image: url(assets/backgrounds/WALL.png);
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -39,8 +38,11 @@ html, body {
   position: relative;
   transform-origin: top left;  /* simpler when using the frame sizing approach */
   /* background-color: red; */
-  /* border: 1px solid red; */
+  box-sizing: border-box;
+  border: 5px solid black;
   z-index: 1;
+  background-image: url(assets/backgrounds/WALL.png);
+  overflow: hidden;
 }
 
 
@@ -48,7 +50,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url(assets/backgrounds/WALL.png)
+  background-image: url(assets/UI/singlepaw.png);
 }
 
 nav {
@@ -57,6 +59,7 @@ nav {
   top: 0;
   width: 100%;
   z-index: 1000;
+  pointer-events: none;
 }
 
 #jade {
@@ -71,6 +74,7 @@ nav {
 .squareIcon {
   width: 100px;
   margin: 10px;
+  pointer-events: auto;
 }
 
 .squareIcon:hover, #backyardButton:hover {
@@ -91,13 +95,7 @@ nav {
   z-index: 0; /* behind world */
   width: 100%;
   object-fit: cover;
-  border-top: black 5px solid;
-}
-
-#bench {
-  position: absolute;
-  bottom: 150px;
-  left: 0;
+  border-top: black 2px solid;
 }
 
 #placeDecor {
@@ -116,12 +114,23 @@ nav {
   border: 5px solid black;
   font-size: 40px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 
 #decorPopUp {
   padding: 50px;
   font-size: 30px;
+
+
+  pointer-events: auto;
+  position: fixed;
+  top: 8%;
+  left: 8%;
+  z-index: 2000;
+  background-color: #fdf5d8;
+  border: 4px solid black;
+  border-radius: 20px;
 }
 
 #decorButtons {
@@ -131,191 +140,276 @@ nav {
 }
 
 
-/*Encyclopedia stuff*/
-.encyclopedia
-{
-    position: relative;
-    background-color: beige; 
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    width:80%;
-    padding-top: 50%;
-    max-width: 1200px;
-    max-height: 750px;
-}
-.encyclopedia-container
-{
-    position: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    top:0;
-    left:0;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0,0,0,0.5); 
-    pointer-events: none;
-    opacity: 0;
-    z-index: 1001;
-}
-.encyclopedia-container.show
-{
-  pointer-events: auto;
-  opacity: 1;
-}
-#closeEncyclopediaBtn
-{
-  background-color: beige;
-  position: absolute;
-  right:1%;
-  top:1%;
+
+
+#placeAnimal {
+  background-color: green;
 }
 
-/*Tabs*/
-.encyclopediaTab
-{
-  opacity: 0;
-  pointer-events: none;
-}
-.encyclopediaTab.show
-{
-  opacity: 1;
-  pointer-events: auto;
-}
-#creatureTab
-{
-  opacity: 0;
-  pointer-events: none;
-  background-color: aqua;
-}
-#creatureTab.show
-{
-  pointer-events: auto;
-  opacity: 1;
+#rejectAnimal {
+  background-color: red;
 }
 
-/*Pages*/
-.animalPage{
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(5,1fr);
-
-  align-items: center;
-  justify-items: center;
-  position: absolute;
-  top: 0%;
-  width: 50%;
-  height: 100%;
-  max-width: 50%;
-}
-.descPage{
-  display: flex;
-  align-items: center;
-  justify-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 0%;
-  width: 50%;
-  height: 100%;
-  max-width: 50%;
-  left: 50%;
-  overflow: hidden;
-  background-color: rgba(0,0,0,0.1);
-}
-.imgBox{
-    position: absolute;
-    top: 0%;
-    align-content: center;
-    justify-content: center;
-    height: 40%;
-    width: 100%;
-    box-sizing: border-box;
-    border: none;
-}
-.encycloDescTitle{
-  position: absolute;
-  font-family: ComicNeue;
-  font-size: 30pt;
+.animalButton {
+  color: black;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 5px solid black;
+  font-size: 40px;
   font-weight: bold;
-  text-align: center;
-  top: 35%;
-  padding: 0%;
+  cursor: pointer;
+}
+
+
+#animalPopUp {
+  padding: 20px;
+  font-size: 30px;
+
+
+  pointer-events: auto;
+  position: fixed;
+  top: 8%;
+  left: 8%;
+  z-index: 2000;
+  background-color: #fdf5d8;
+  border: 4px solid black;
+  border-radius: 20px;
+}
+
+#animalPrompt {
+  padding: 20px;
+  font-size: 30px;
+  position: fixed;
+  top: 8%;
+  left: 8%;
+  z-index: 2000;
+  background-color: #fdf5d8;
+  border: 4px solid black;
+  border-radius: 20px;
+}
+
+#animalPrompt p {
   margin: 0;
 }
-.encycloDescription{
-  font-family: ComicNeue; 
-  padding-left: 5%;
-  padding-right: 5%;
-  font-size: 20pt;
-  height: 35%;
-  width: 80%;
-  background: none;
-  position: absolute;
-  left: 5%;
-  resize: none;
-  top: 50%
+
+#animalButtons {
+  display: flex;
+  column-gap: 20px;
+  align-items: center;
+}
+
+.decorTargetHighlight {
+  outline: 4px solid magenta;
+  border-radius: 20px;
+  box-shadow: 0 0 8px 4px white, 0 0 15px 8px white;
+}
+
+
+
+.moneybutton {
+  z-index: 9999;
+  
   
 }
-.animalBtn{
-  display: block;
-  height: 8vw;
-  width: 8vw;
-  
-  background-size:contain;
+
+.moneybuttons {
+  position:  absolute;
+  top: 0px; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Encyclopedia stuff*/
+/* === Encyclopedia Overlay Root (inside world) === */
+.encyclopedia-container {
+  position: absolute;
+  inset: 0;             /* top/right/bottom/left: 0 relative to #world */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0,0,0,0.5);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 50;          /* above floor + furniture, below nav if needed */
+  transition: opacity 0.2s ease;
+}
+
+.encyclopedia-container.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* === The “Book” itself === */
+.encyclopedia {
+  position: relative;
+  width: 75%;           /* bigger book */
+  max-width: 1150px;
+  height: 80%;          /* fill most of world height */
+  max-height: 80%;
+  background-image: url("assets/backgrounds/book.png");
+  background-size: 100% 100%;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: beige;
-  cursor: pointer;
-}
-.animal{
-    padding: 1vw 5px;
-    grid-row:span 1;
-}
-.encyclopediaImg{
-    border: groove;
-    width: 40%;
-    margin-left: 30%;
-    object-fit: contain;
+  display: flex;
+  flex-direction: column;
+  padding: 4% 6% 4.5%;    /* space in from book edges */
+  box-sizing: border-box;
+  z-index: 60;
 }
 
-.exit_button {
-  width: 8%; 
-  height: 10%;
+/* Close button (top-right on page) */
+.enc-close {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: 6%;
+  right: 8%;
+  background: rgba(255,255,255,0.9);
+  border: 4px solid #333;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 30px;
+  line-height: 1.07;
+  font-weight: bold;
   cursor: pointer;
 }
-.exit_button img{
-  width: 100%; 
+
+/* Tabs row (top center-ish) */
+.enc-tabs {
+  position: absolute;
+  top: 30px;
+  left: 360px;
+  margin-bottom: 6px;
+  z-index: 51;
+}
+
+.enc-tab {
+  position: relative;
+  padding: 4px 12px;
+  border: 2px solid #333;
+  background-color: #e6dec5;
+  cursor: pointer;
+  font-size: 50px;
+  margin-left: 20px;
+}
+
+#encyclopediaTab_btn:hover, #creaturesTab_btn:hover {
+  top: -10px;
+}
+
+.tab-spacer {
+  height: 70px;
+  width: 10px;
+}
+
+.enc-tab.active {
+  background-color: #fff7d8;
+}
+
+/* Inner book layout: left (list) / right (details) */
+.enc-inner {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
   height: 100%;
-  object-fit: contain;
-}
-#assignActive
-{
-  position: absolute;
-  bottom: 5%;
-  
-}
-#creaturesTab_btn
-{
-  background-color: rgb(190, 192, 176);
-  position: absolute;
-  top: -10%;
-  left: 8%;
-  border-bottom: none;
-}
-#encyclopediaTab_btn
-{
-  background-color: rgb(190, 192, 176);
-  position: absolute;
-  top: -10%;
-  border-bottom: none
-}
-#creaturesTab_btn.active
-{
-  background-color: rgb(245, 245, 220);
-}
-#encyclopediaTab_btn.active
-{
-  background-color: rgb(245, 245, 220);
+  width: 100%;
+
 }
 
+/* Left column (lists) */
+.enc-list {
+  overflow: visible;
+}
+
+.enc-list-grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 10px;
+}
+
+.enc-hidden {
+  display: none;
+}
+
+/* Buttons in lists – image only */
+.enc-list-item {
+  aspect-ratio: 1 / 1;
+  border: none;
+  background-color: transparent;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  position: relative;
+  overflow: visible;
+  display: inline;
+}
+
+.enc-list-item:hover {
+  scale: 1.1;
+}
+
+/* Right column (details) */
+.enc-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.enc-image {
+  max-width: 45%;
+  max-height: 40%;
+  object-fit: contain;
+  margin-bottom: 6px;
+}
+
+.enc-title {
+  font-size: 25px;
+  margin: 3px 0 0;
+  text-align: center;
+}
+
+.enc-attribute {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 2px 0 8px 0;
+  text-align: center;
+  color: rgb(8, 59, 8);
+}
+
+.enc-body {
+  font-size: 18px;
+  width: 100%;
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+/* Make sure encyclopedia uses your comic font */
+.encyclopedia, .encyclopedia * {
+  font-family: ComicNeue, sans-serif;
+}

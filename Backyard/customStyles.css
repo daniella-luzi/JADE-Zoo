@@ -1,0 +1,75 @@
+@font-face {
+  font-family: ComicNeue;
+  src: url(../fonts/Comic_Neue/ComicNeue-Regular.ttf);
+}
+
+* {
+  font-family: ComicNeue;
+}
+
+body {
+  background-image: url(../assets/UI/singlepaw.png);
+}
+
+nav {
+  font-size: 30pt;
+}
+
+nav span {
+  border: 2px solid black;
+  padding: 10px;
+  border-radius: 20px 20px 0 0;
+  margin: 0;
+  display: inline-block;
+  border-bottom: transparent;
+  background-color: rgb(131, 113, 185);
+}
+
+section {
+  min-height: 300px;
+  border-top: 5px solid black;
+  /* background-color: pink; */
+}
+
+#exit_button {
+  width: 70px;
+  padding: 10px;
+  margin-right: 100px;
+}
+
+.item {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 220px;
+  height: 220px;
+  margin: 20px;
+  border: 2px solid black;
+  border-radius: 20%;
+  background-color: rgba(255, 253, 225, 0.635);
+  vertical-align: top;
+  padding: 10px;
+}
+
+.item img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+}
+
+.item span {
+  font-size: 16pt;
+}
+
+.itemName {
+  font-weight: bold;
+}
+
+.itemAttribute {
+  color: darkgreen;
+}
+
+.current {
+  background-color: rgb(238, 230, 250);
+}

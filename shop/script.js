@@ -60,30 +60,33 @@ const allItems = {
     },
 
     {
-      id: "fluffyBed",
+      id: "bed1",
       name: "Fluffy Bed",
       src: "../assets/furniture/beds/fluffy bed.png",
       price: 30,
       attribute: "+5% Tip Chance",
       category: "Beds",
+      slotGroup: "bed"
     },
 
     {
-      id: "circleBed",
+      id: "bed1",
       name: "Circle Bed",
       src: "../assets/furniture/beds/circle bed.png",
       price: 15,
       attribute: "Gives an extra $1 tip",
       category: "Beds",
+      slotGroup: "bed"
     },
 
     {
-      id: "pillowBed",
+      id: "bed1",
       name: "Pillow Bed",
       src: "../assets/furniture/beds/pillow bed.png",
       price: 15,
       attribute: "Gives an extra $1 tip",
       category: "Beds",
+      slotGroup: "bed"
     },
 
     {
@@ -96,7 +99,7 @@ const allItems = {
     },
 
     {
-      id: "catPainting",
+      id: "painting1",
       name: "Cat Painting",
       src: "../assets/furniture/wall/paintings/painting.png",
       price: 10,
@@ -104,7 +107,7 @@ const allItems = {
       category: "Paintings",
     },
      {
-      id: "basicbench",
+      id: "bench",
       name: "Basic Bench",
       src: "../assets/furniture/benches/basicbench.png",
       price: 10,
@@ -112,7 +115,7 @@ const allItems = {
       category: "zooFurniture",
     },
     {
-      id: "flowerwindow",
+      id: "window",
       name: "Flower Window",
       src: "../assets/furniture/wall/windows/flowerwindow.png",
       price: 10,
@@ -120,7 +123,7 @@ const allItems = {
       category: "zooMisc",
     },
     {
-      id: "basiccattree",
+      id: "catTree",
       name: "Basic Cat Tree",
       src: "../assets/furniture/cat trees/basic cat tree.png",
       price: 10,
@@ -128,7 +131,7 @@ const allItems = {
       category: "zooFurniture",
     },
     {
-      id: "flowerpainting",
+      id: "painting1",
       name: "Flower Painting",
       src: "../assets/furniture/wall/paintings/flowerPainting.png",
       price: 10,
@@ -175,10 +178,12 @@ Object.keys(allItems).forEach((key)=>{
 function createItemContainer(itemObject) {
   const itemContainer = document.createElement("div");
   itemContainer.id = itemObject.id;
-  itemContainer.className = `item-container ${itemObject.category}`;
+  const prettyName = itemObject.name.replaceAll(" ", "");
+  console.log("itemObject.name in createItemContainer:  ", prettyName)
+  itemContainer.className = `item-container ${itemObject.category} ${prettyName}`;
   itemContainer.innerHTML = `
         <div class="itemBadge">0</div>
-        <img src="${itemObject.src}" alt="${itemObject.name}">
+        <img src="${itemObject.src}" alt="${prettyName}">
         <div class="item-description">
             <div class="itemName">
                 <span>${itemObject.name} - <img id="shopGem" src="./images/gem.png">${itemObject.price}</span>
@@ -206,25 +211,30 @@ function createShopper(itemObject) {
 
 //adding items to cart and updating the quantity on the badge
 function addToCart(itemObject) {
-    const inputBox = document.querySelector(`#${itemObject.id} > .shopper > .quantity > .input-box`);
-    const itemBadges = document.querySelectorAll(`#${itemObject.id} > .itemBadge`);
+  const prettyName = itemObject.name.replaceAll(" ", "");
+    const inputBox = document.querySelector(`.${prettyName} > .shopper > .quantity > .input-box`);
+    const itemBadges = document.querySelectorAll(`.${prettyName} > .itemBadge`);
     let value = parseInt(inputBox.value);
-    if(!shoppingCart[itemObject.id]){
-        shoppingCart[itemObject.id] = {
-            "id": itemObject.id,
-            "name": itemObject.name,
-            "price": itemObject.price,
-            "src": itemObject.src,
-            "attribute": itemObject.attribute,
-            "category": itemObject.category,
-            "quantity": 0
-        };
+    if(!shoppingCart[prettyName]){
+      if(!itemObject.slotGroup){
+        itemObject.slotGroup = null;
+      }
+      shoppingCart[prettyName] = {
+          "id": itemObject.id,
+          "name": itemObject.name,
+          "price": itemObject.price,
+          "src": itemObject.src,
+          "attribute": itemObject.attribute,
+          "category": itemObject.category,
+          "quantity": 0,
+          "slotGroup": itemObject.slotGroup
+      };
     }
-    shoppingCart[itemObject.id].quantity += value;
+    shoppingCart[prettyName].quantity += value;
     localStorage.setItem("cart", JSON.stringify(shoppingCart));
     itemBadges.forEach((itemBadge)=>{
       itemBadge.style.visibility = "visible";
-      itemBadge.innerHTML = shoppingCart[itemObject.id].quantity;
+      itemBadge.innerHTML = shoppingCart[prettyName].quantity;
     })
 
 }
