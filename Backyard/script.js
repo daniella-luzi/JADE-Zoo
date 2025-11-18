@@ -277,7 +277,6 @@ function resetTimer() {
 
 
 function trashTimeout() {
-  document.querySelector(".itemPopUp").style.display = "block";
   (Math.random() < 0.5 ? possumAppear : raccoonAppear)();
 }
 
@@ -290,7 +289,10 @@ function raccoonAppear() {
   document.querySelector("#raccoon").style.display = "block";
 }
 
-
+function captureVisible() {
+  document.querySelector("#question").style.display = "block";
+  
+}
 
 
 

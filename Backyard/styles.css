@@ -400,8 +400,28 @@ nav {
  transform: scale(4);
 }
 
-#Question {
-  background: blue;
-  z-index: 99999;
-}
+#question {
+  
+  display: none;
 
+  position: absolute;
+  
+  bottom: 179px;
+  right: 398px;
+  z-index: 100000;
+  justify-content: center;
+  align-items: center;
+  
+  width: 823px;
+  height: 540px;
+  
+  margin: 0 auto;
+  
+  padding: 20px;
+  border-radius: 33px;
+  background-color: #e1d8b3;
+  
+  text-align: center;
+  font-size: 54px;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.87);
+}
