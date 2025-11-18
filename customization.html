@@ -10,7 +10,7 @@
 
   </head>
   <body>
-    <div id="pageOverlay">
+    <div id="pageOverlay" data-waitTime="10">
       <div class="paw-loader">
         <div class="paw paw1"></div>
         <div class="paw paw2"></div>
@@ -25,7 +25,7 @@
     <nav>
       <img src="assets/UI/exit_transparent.png" alt="exit sign" id="exit_button" onclick="goTo('index.html')">
       <span id="decorations-tab" class="current">Decorations</span>
-      <span id="animals-tab" onclick="goTo('customization animals.html')">Animals</span>
+      <span id="animals-tab" onclick="window.location.href = 'customization animals.html'">Animals</span>
     </nav>
     <section id="decorInventory">
       <!-- <div class="item">

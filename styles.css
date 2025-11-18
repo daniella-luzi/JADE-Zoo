@@ -143,6 +143,70 @@ nav {
 
 
 
+#placeAnimal {
+  background-color: green;
+}
+
+#rejectAnimal {
+  background-color: red;
+}
+
+.animalButton {
+  color: black;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 5px solid black;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+#animalPopUp {
+  padding: 20px;
+  font-size: 30px;
+
+
+  pointer-events: auto;
+  position: fixed;
+  top: 8%;
+  left: 8%;
+  z-index: 2000;
+  background-color: #fdf5d8;
+  border: 4px solid black;
+  border-radius: 20px;
+}
+
+#animalPrompt {
+  padding: 20px;
+  font-size: 30px;
+  position: fixed;
+  top: 8%;
+  left: 8%;
+  z-index: 2000;
+  background-color: #fdf5d8;
+  border: 4px solid black;
+  border-radius: 20px;
+}
+
+#animalPrompt p {
+  margin: 0;
+}
+
+#animalButtons {
+  display: flex;
+  column-gap: 20px;
+  align-items: center;
+}
+
+.decorTargetHighlight {
+  outline: 4px solid magenta;
+  box-shadow: 0 0 8px 4px white, 0 0 15px 8px white;
+}
+
+
+
 
 
 

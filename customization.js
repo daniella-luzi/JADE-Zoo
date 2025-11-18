@@ -1,50 +1,64 @@
+
 let inventory = {
   "decor": [
     {
       id: "bench",
       name: "Wooden Bench",
       src: "../assets/furniture/benches/bench.png",
-      attribute: "Gives an extra $3 tip"
+      attribute: "Gives an extra $3 tip",
+      slotGroup: null
     },
     {
       id: "catTree",
       name: "Plant Cat Tree",
       src: "../assets/furniture/cat trees/plant cat tree.png",
-      attribute: "+5% Tip Chance"
-    },
-    {
-      id: "window",
-      name: "Basic Window",
-      src: "../assets/furniture/wall/windows/window.png",
-      attribute: "Gives an extra $1 tip"
+      attribute: "+5% Tip Chance",
+      slotGroup: null
     },
     {
       id: "window",
       name: "Flower Window",
       src: "../assets/furniture/wall/windows/flowerWindow.png",
-      attribute: "Gives an extra $5 tip"
+      attribute: "Gives an extra $5 tip",
+      slotGroup: null
     },
     {
-      id: "bench",
-      name: "Basic Bench",
-      src: "../assets/furniture/benches/basicbench.png",
-      attribute: "Gives an extra $1 tip"
+      id: "platform",
+      name: "Basic Platform",
+      src: "../assets/furniture/wall/platforms/platform.png",
+      attribute: "+5% Tip Chance",
+      category: "zooMisc",
+      slotGroup: "platform"
     },
     {
-      id: "catTree",
-      name: "Basic Cat Tree",
-      src: "../assets/furniture/cat trees/basic cat tree.png",
-      attribute: "+1% Tip Chance"
-    },
-    {
-      id: "painting1",
-      name: "Flower Painting",
-      src: "../assets/furniture/wall/paintings/flowerPainting.png",
-      attribute: "+1% Tip Chance"
+      id: "fluffyBed",
+      name: "Fluffy Bed",
+      src: "../assets/furniture/beds/fluffy bed.png",
+      attribute: "+5% Tip Chance",
+      category: "Beds",
+      slotGroup: "bed"
     }
+
   ],
-  "animals": []
+  "animals": [
+    {
+      name: "Johnathan",
+      breed: "PersianCat",
+      src: "assets/animals/cat.jpg"
+    },
+    {
+      name: "Kelsey",
+      breed: "CavalierKingCharlesSpaniel",
+      src: "assets/animals/cavalier_dog.png"
+    },
+    {
+      name: "Silly",
+      breed: "LaboradorRetriever",
+      src: "assets/animals/lab_puppy.png"
+    }
+  ]
 }
+
 
 //displays all the decor in your inventory in the decorations tab
 function loadDecorInventory(){
@@ -74,7 +88,14 @@ function loadDecorInventory(){
 //runs when you click a decoration to put in your zoo
 function pickDecoration(itemObject){
   console.log("pick decoration: ", itemObject)
-  localStorage.setItem("decorChoice", JSON.stringify(itemObject));
+  const decorChoice = {
+    id: itemObject.id,
+    name: itemObject.name,
+    src: itemObject.src,
+    slotGroup: itemObject.slotGroup || null  // e.g. "platform" or "bed"
+  };
+
+  localStorage.setItem("decorChoice", JSON.stringify(decorChoice));
   window.location.href = "index.html";
 }
 

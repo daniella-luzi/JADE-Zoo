@@ -1,12 +1,14 @@
+let playLoadingAnimation = true;
+
 // ===== CONFIG =====
-const MIN_OVERLAY_TIME = 1200; // ms - minimum time overlay should be visible
+let MIN_OVERLAY_TIME = 1200; // ms - minimum time overlay should be visible
 let overlayShownAt = performance.now(); // approximate start time for this page
 
 // Start the paw animation as soon as the DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
   const overlay = document.getElementById("pageOverlay");
   if (!overlay) return;
-
+  MIN_OVERLAY_TIME = overlay.getAttribute("data-waitTime") || 1200;
   // If overlay is visible (not .hidden), start paws on THIS page
   if (!overlay.classList.contains("hidden")) {
     startPawAnimation();
@@ -44,12 +46,8 @@ function goTo(url) {
   // Show overlay on the current page for a nicer transition
   overlay.classList.remove("hidden");
 
-  // (Optional) start animation here too so you see paws before navigation
   startPawAnimation();
 
-  // Navigate immediately; the NEW page will:
-  //  - start its own animation on DOMContentLoaded
-  //  - hide overlay on window.load (with MIN_OVERLAY_TIME)
   window.location.href = url;
 }
 

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="global.css">
+    <link rel="icon" href="assets/animals/johnathan_cat.png">
 
   </head>
   <body>
@@ -91,11 +92,6 @@
         
         <!-- This is the page element -->
         <span id ="money" class="mainFont">This Value Will Be Replaced by $$$</span>
-        <!-- This is the script needed -->
-        <script src="Money.js"></script>
-          <script>
-            setupPage()
-          </script>
         <!-- If you have an element that displays money, use this code to display money value -->
         
         
@@ -118,7 +114,24 @@
           <button id="rejectDecor" class="decorButton">X</button>
         </div>
       </div>
+
+      <div id="animalPopUp" style="display: none;">
+        <p>Place <span id="animalChoice">ANIMAL</span> here?</p>
+        <div id="animalButtons">
+          <button id="placeAnimal" class="animalButton">&#10003;</button>
+          <button id="rejectAnimal" class="animalButton">X</button>
+        </div>
+      </div>
+
+      <div id="animalPrompt" style="display: none;">
+        <p>Please click on a location.</p>
+      </div>
     </nav>
+    <!-- This is the script needed -->
+    <script src="Money.js"></script>
+    <script>
+      setupPage()
+    </script>
     <script src="script.js"></script>
     <script src="global.js"></script>
 
