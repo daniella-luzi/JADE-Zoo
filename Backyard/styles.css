@@ -367,3 +367,41 @@ nav {
   background-color: rgb(245, 245, 220);
 }
 
+#possum {
+  position:  absolute;
+  bottom: 100px;
+  left: 60px;
+  z-index: 999;
+  width: 16%;
+  display: none;
+}
+
+#raccoon {
+  position:  absolute;
+  bottom: 100px;
+  left: 60px;
+  z-index: 999;
+  width: 16%;
+  display: none;
+}
+
+
+
+.itemPopUp {
+  display: none;
+}
+
+#TTime {
+  position:  absolute;
+  bottom: 650px;
+  left: 740px;
+  z-index: 999;
+  width: 21%;
+ transform: scale(4);
+}
+
+#Question {
+  background: blue;
+  z-index: 99999;
+}
+

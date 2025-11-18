@@ -78,11 +78,11 @@ function loadFurniture() {
     decorContainer.style.bottom = i.bottom + "px";
     decorContainer.style.left = i.left + "px";
 
-    decorContainer.style.backgroundColor = "blue";
+
 
     const itemPopUp = document.createElement("div"); //container for the pop up
     itemPopUp.className = "itemPopUp";
-
+    itemPopUp.id = i + "item";
     const mainText = document.createElement("span"); //You found Larry the Raccoon!
     const attributeInfo = document.createElement("span"); //+5 Ticket Price
     const question = document.createElement("span"); //Take it in?
@@ -237,4 +237,62 @@ window.addEventListener("load", ()=>{
     placeDecoration(JSON.parse(localStorage.getItem("decorChoice")));
   }
 });
+
+
+
+
+
+let countdown = 5;
+let intervalId = null;
+
+function updateDisplay() {
+  document.getElementById("TTime").textContent = countdown;
+}
+
+function startTimer(onTimeout) {
+  if (intervalId !== null) return; // Prevent multiple intervals
+
+  updateDisplay();
+
+  intervalId = setInterval(() => {
+    countdown--;
+
+    updateDisplay();
+
+    if (countdown <= 0) {
+      clearInterval(intervalId);
+      intervalId = null;
+      onTimeout();
+    }
+  }, 1000);
+}
+
+function resetTimer() {
+  clearInterval(intervalId);
+  intervalId = null;
+  countdown = 5;
+  updateDisplay();
+}
+
+
+
+function trashTimeout() {
+  document.querySelector(".itemPopUp").style.display = "block";
+  (Math.random() < 0.5 ? possumAppear : raccoonAppear)();
+}
+
+function possumAppear() {
+  document.querySelector("#possum").style.display = "block";
+  
+}
+
+function raccoonAppear() {
+  document.querySelector("#raccoon").style.display = "block";
+}
+
+
+
+
+
 resizeWorld();
+startTimer(trashTimeout);
