@@ -504,7 +504,18 @@ function captureVisible2(AnimalElement) {
 
 var inMenu = false;
 
+// var currentAnimalType;
+// var currentAnimalName;
+// var currentAnimalBaseMoney;
+// var currentAnimalTipPer;
+// var currentAnimalTipVal;
+
 function keep() {
+  const newAnimal = {
+    name: currentAnimalName,
+    breed: currentAnimalType,
+    
+  }
   alert("This will send to andrews part");
 }
 
