@@ -142,6 +142,7 @@ const allItems = {
       price: 100,
       attribute: "+5% Tip Chance",
       category: "Platforms",
+      slotGroup: "platform"
     },
 
 
