@@ -1,73 +1,73 @@
 
 let inventory = {
   "decor": [
-    // {
-    //   id: "bench",
-    //   name: "Wooden Bench",
-    //   src: "../assets/furniture/benches/bench.png",
-    //   attribute: "Gives an extra $3 tip",
-    //   slotGroup: null
-    // },
-    // {
-    //   id: "bench",
-    //   name: "Paw Bench",
-    //   src: "../assets/furniture/benches/pawbench.png",
-    //   attribute: "Gives an extra $3 tip",
-    //   slotGroup: null
-    // },
-    // {
-    //   id: "rug",
-    //   name: "Paw Rug",
-    //   src: "../assets/furniture/rugs/pawrug.png",
-    //   attribute: "Gives an extra $3 tip",
-    //   slotGroup: null
-    // },
-    // {
-    //   id: "catTree",
-    //   name: "Plant Cat Tree",
-    //   src: "../assets/furniture/cat trees/plant cat tree.png",
-    //   attribute: "+5% Tip Chance",
-    //   slotGroup: null
-    // },
-    // {
-    //   id: "window",
-    //   name: "Flower Window",
-    //   src: "../assets/furniture/wall/windows/flowerWindow.png",
-    //   attribute: "Gives an extra $5 tip",
-    //   slotGroup: null
-    // },
-    // {
-    //   id: "platform",
-    //   name: "Basic Platform",
-    //   src: "../assets/furniture/wall/platforms/platform.png",
-    //   attribute: "+5% Tip Chance",
-    //   category: "zooMisc",
-    //   slotGroup: "platform"
-    // },
-    // {
-    //   id: "fluffyBed",
-    //   name: "Fluffy Bed",
-    //   src: "../assets/furniture/beds/fluffy bed.png",
-    //   attribute: "+5% Tip Chance",
-    //   category: "Beds",
-    //   slotGroup: "bed"
-    // },
-    // {
-    //   id: "painting1",
-    //   name: "Cat Painting",
-    //   src: "assets/furniture/wall/paintings/painting.png",
-    //   attribute: "+1% Tip Chance",
-    //   category: "Paintings",
-    //   slotGroup: null
-    // },
-    // {
-    //   id: "painting1",
-    //   name: "Dog Painting",
-    //   src: "assets/furniture/wall/paintings/dogpainting.png",
-    //   attribute: "+1% Tip Chance",
-    //   category: "Paintings",
-    //   slotGroup: null
-    // }
+    {
+      id: "bench",
+      name: "Wooden Bench",
+      src: "../assets/furniture/benches/bench.png",
+      attribute: "Gives an extra $3 tip",
+      slotGroup: null
+    },
+    {
+      id: "bench",
+      name: "Paw Bench",
+      src: "../assets/furniture/benches/pawbench.png",
+      attribute: "Gives an extra $3 tip",
+      slotGroup: null
+    },
+    {
+      id: "rug",
+      name: "Paw Rug",
+      src: "../assets/furniture/rugs/pawrug.png",
+      attribute: "Gives an extra $3 tip",
+      slotGroup: null
+    },
+    {
+      id: "catTree",
+      name: "Plant Cat Tree",
+      src: "../assets/furniture/cat trees/plant cat tree.png",
+      attribute: "+5% Tip Chance",
+      slotGroup: null
+    },
+    {
+      id: "window",
+      name: "Flower Window",
+      src: "../assets/furniture/wall/windows/flowerWindow.png",
+      attribute: "Gives an extra $5 tip",
+      slotGroup: null
+    },
+    {
+      id: "platform",
+      name: "Basic Platform",
+      src: "../assets/furniture/wall/platforms/platform.png",
+      attribute: "+5% Tip Chance",
+      category: "zooMisc",
+      slotGroup: "platform"
+    },
+    {
+      id: "fluffyBed",
+      name: "Fluffy Bed",
+      src: "../assets/furniture/beds/fluffy bed.png",
+      attribute: "+5% Tip Chance",
+      category: "Beds",
+      slotGroup: "bed"
+    },
+    {
+      id: "painting1",
+      name: "Cat Painting",
+      src: "assets/furniture/wall/paintings/painting.png",
+      attribute: "+1% Tip Chance",
+      category: "Paintings",
+      slotGroup: null
+    },
+    {
+      id: "painting1",
+      name: "Dog Painting",
+      src: "assets/furniture/wall/paintings/dogpainting.png",
+      attribute: "+1% Tip Chance",
+      category: "Paintings",
+      slotGroup: null
+    }
 
   ],
   "animals": [
@@ -92,7 +92,11 @@ let inventory = {
 //getting the purchased items to show up in the customization section
 //the function is used at the bottom of the file, when the window loads, it loads the purchased items and the decor inventory
 function loadPurchasedItems(){
-  
+  if(!localStorage.getItem("inventory")){
+    localStorage.setItem("inventory", JSON.stringify(inventory));
+  }else{
+    inventory = JSON.parse(localStorage.getItem("inventory"));
+  }
   //getting purchased items from local storage
   const purchasedInventory = localStorage.getItem('boughtItems');
 
@@ -101,10 +105,12 @@ function loadPurchasedItems(){
         const items = JSON.parse(purchasedInventory);
         
         //for each item, we will push it into the inventory decor array that emma has for customization section
-        const blacklisted = ["trashcan", "foodbowl", "foodbowl1"]
+        items.forEach((item)=>{
+          const blacklisted = ["trashcan", "foodbowl", "foodbowl1"]
           if(!blacklisted.includes(item.id)){
             inventory.decor.push(item);
           }
+        });
         localStorage.removeItem('boughtItems');
       }
   }
@@ -112,6 +118,11 @@ function loadPurchasedItems(){
 
 //displays all the decor in your inventory in the decorations tab
 function loadDecorInventory(){
+  if(!localStorage.getItem("inventory")){
+    localStorage.setItem("inventory", JSON.stringify(inventory));
+  }else{
+    inventory = JSON.parse(localStorage.getItem("inventory"));
+  }
   const decorInventory = document.querySelector("#decorInventory")
   inventory.decor.forEach((item)=>{
     const newItemContainer = document.createElement("div");
