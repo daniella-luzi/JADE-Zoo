@@ -127,7 +127,7 @@ let allBreeds = {
     entry: "Ragdolls originated around 1963 and have colorpoint coats, which means the colder the fur is over time, the darker it will become. Their fur looks like a heat map of their bodies! They are super affectionate and docile cats, and are even called 'ragdolls' because they can be completely limp and relaxed when picked up, just like a ragdoll. They are dog-like cats because they follow people around, are easily handled, are not typically aggressive towards other animals, can be super playful, want attention constantly, and are intelligent and trainable. They make wonderful family pets.",
     src: "assets/animals/breeds/ragdoll.png"
   }
-}
+};
 
 
 // This is all the DEFAULT furniture. May change later.
@@ -220,8 +220,7 @@ let jsonData = {
   ]
 };
 
-let activeLocations = [
-]
+let activeLocations = [];
 
 // makes the furniture appear on screen using their respective coordinates from the JSON data
 function loadFurniture() {
@@ -255,7 +254,7 @@ function loadFurniture() {
     // decorContainer.style.cssText += "background-color: blue";
 
     if (item.id != "backyardButton") {
-      console.log("i id:", i.name)
+      console.log("i id:", i.name);
       attributeLookup[i.name.replaceAll(" ", "")][0]();
       appendLocations(decorContainer, i.name.replaceAll(" ", ""));
     }
@@ -268,7 +267,7 @@ function loadFurniture() {
     decorContainer.appendChild(item);
     world.appendChild(decorContainer);
   }
-  loadAnimals()
+  loadAnimals();
 }
 
 function loadAnimals() {
@@ -309,7 +308,7 @@ function appendLocations(decorContainer, itemName){
         previewAnimal();
         showAnimalButtons();
       }
-    })
+    });
     newLocation.style.pointerEvents = "none";
     const imgSlot = document.createElement("img");
     imgSlot.style.width = "130px";
@@ -318,7 +317,7 @@ function appendLocations(decorContainer, itemName){
     newLocation.style.boxSizing = "border-box";
     newLocation.appendChild(imgSlot);
     decorContainer.appendChild(newLocation);
-  })
+  });
 }
 
 //resizes the world dynamically
@@ -361,7 +360,7 @@ function startMultiDecorPlacement(decorChoice, group) {
   });
   ["#platform1", "#platform2", "#platform3"].forEach((el)=>{
     document.querySelector(el).parentElement.querySelector(".animalLocation").style.display = "block";
-  })
+  });
 
   const handlers = {};
 
@@ -467,9 +466,9 @@ function placeDecoration(itemObject){
 
   ["#platform1", "#platform2", "#platform3"].forEach((el)=>{
     document.querySelector(el).parentElement.querySelector(".animalLocation").style.display = "block";
-  })
+  });
 
-  console.log("itemObject.id:  ", itemObject.id)
+  console.log("itemObject.id:  ", itemObject.id);
   document.querySelector(`#${itemObject.id}`).style.border = "4px solid magenta";
 
   //saves the old decoration name and source image in case you decide not to use
@@ -504,7 +503,7 @@ function placeDecoration(itemObject){
     //hide platform locations
     ["#platform1", "#platform2", "#platform3"].forEach((el)=>{
       document.querySelector(el).parentElement.querySelector(".animalLocation").style.display = "none";
-    })
+    });
     const decorIndex = (jsonData.furniture.findIndex((i)=>{
       return (i.id == itemObject.id);
     }));
@@ -523,7 +522,7 @@ function placeDecoration(itemObject){
     oldLocations.forEach((el)=>{
       console.log("removing old location")
       el.remove();
-    })
+    });
     appendLocations(itemParent, itemObject.name.replaceAll(" ", ""));
 
     reapplyAnimalsForFurniture(itemObject.id);
@@ -584,7 +583,7 @@ function previewAnimal(){
   }
   const prevLocationData = activeLocations.find((el)=>{
     return (el.furnitureId == previouslyPreviewed[0] && el.locationId == previouslyPreviewed[1]);
-  })
+  });
   
   console.log({ prevLocationData });
   
@@ -592,7 +591,7 @@ function previewAnimal(){
     const prevLocationContainer = document.querySelector(`#${previouslyPreviewed[0]}`).parentElement;
     const prevLocation = prevLocationContainer.querySelector(`.${previouslyPreviewed[1]}`);
     const prevLocationImage = prevLocation.querySelector(`img`);
-    console.log("prevLocation in if statement: ", prevLocation)
+    console.log("prevLocation in if statement: ", prevLocation);
     prevLocationImage.src = prevLocationData.animal.src;
   }
   else{
@@ -600,11 +599,11 @@ function previewAnimal(){
     const prevLocation = prevLocationContainer.querySelector(`.${previouslyPreviewed[1]}`);
     const prevLocationImage = prevLocation.querySelector(`img`);
 
-    console.log({ prevLocationContainer, prevLocation})
+    console.log({ prevLocationContainer, prevLocation});
     prevLocationImage.src = "";
   }
   const animalObject = JSON.parse(localStorage.getItem("animalChoice"));
-  previewImage.src = animalObject.src
+  previewImage.src = animalObject.src;
   previouslyPreviewed = [`${locationFurnitureId}`, `${locationClass}`];
 }
 
@@ -651,14 +650,14 @@ function placeAnimal(itemObject){
     l.style.borderRadius = "40%";
     l.style.boxShadow = "0 0 8px 4px white, 0 0 15px 8px white";
     l.style.pointerEvents = "auto";
-  })
+  });
 
   function hideLocations(){
     allLocations.forEach((l)=>{
       l.style.border = "none";
       l.style.boxShadow = "none";
       l.style.pointerEvents = "none";
-    })
+    });
   }
 
   document.querySelector("#animalChoice").innerText = itemObject.name;
@@ -686,7 +685,7 @@ function placeAnimal(itemObject){
       console.log("after removal: ", activeLocations);
     }
 
-    console.log("active locations after removal: ", activeLocations)
+    console.log("active locations after removal: ", activeLocations);
     let activeLocationIndex = activeLocations.findIndex((i)=>{
       return (i.furnitureId == locationFurnitureId && i.locationId == locationClass);
     });
@@ -697,10 +696,10 @@ function placeAnimal(itemObject){
         locationId: locationClass,
         animal: itemObject,
         active: true
-      })
+      });
 
     }else{
-      deleteFunc = allBreeds[activeLocations[activeLocationIndex].animal.breed].attributes[1]
+      deleteFunc = allBreeds[activeLocations[activeLocationIndex].animal.breed].attributes[1];
     }
 
     activeLocationIndex = (activeLocations.findIndex((i)=>{
@@ -733,7 +732,7 @@ function placeAnimal(itemObject){
     });
     placeAnimalButton.removeEventListener('click', placeAnimal);
     rejectAnimalButton.removeEventListener('click', rejectAnimal);
-    hideLocations()
+    hideLocations();
   }
 
 
@@ -749,7 +748,7 @@ window.addEventListener("load", ()=>{
   const decorRaw = localStorage.getItem("decorChoice");
   if (decorRaw) {
     const decorChoice = JSON.parse(decorRaw);
-    console.log("DECOR CHOICE: ", decorChoice)
+    console.log("DECOR CHOICE: ", decorChoice);
     let slotGroup = decorChoice.slotGroup || null;
 
     if (slotGroup === "platform" || slotGroup === "bed") {
@@ -768,9 +767,9 @@ window.addEventListener("load", ()=>{
   setInterval(()=>{
     add(ticketPrice);
     if(Math.random()*100 < tipChance && activeLocations[0]){
-      add(tip)
+      add(tip);
     }
-  }, 1000)
+  }, 1000);
 });
 resizeWorld();
 
@@ -950,7 +949,7 @@ function showCreaturesTab() {
   creaturesListEl.classList.remove("enc-hidden");
 
   // hide body text on this tab
-  encBody.style.display = "none";
+  //encBody.style.display = "none";
 
   // Show first owned creature by default if any
   if (ownedCreatures.length > 0) {
@@ -1010,9 +1009,8 @@ function showCreatureDetails(creature) {
   encTitle.textContent = `${creature.name} the ${prettyName}`;
   //encAttribute.textContent = allBreeds[creature.breed].attributeText;
 
-  console.log( breedInfo.attributeText);
   // no body text for creatures tab
-  encBody.textContent =  breedInfo.attributeText;
+  encBody.textContent = allBreeds[creature.breed].attributeText;
 }
 
 // Utility: turn CommonRaccoon -> "Common Raccoon"

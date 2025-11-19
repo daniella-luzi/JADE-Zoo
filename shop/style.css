@@ -172,7 +172,7 @@ h1{
 /*positioning and styling the text inside wallet section*/
 #WalletText{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: fit-content;
     margin-right: 20px;
 }
@@ -224,11 +224,6 @@ h1{
     top: 0;
 }
 
-#walletGem{
-    width:20px;
-    height:20px;
-    margin-right: 10px;
-}
 
 /*------------------------------------------------------------*/
 
