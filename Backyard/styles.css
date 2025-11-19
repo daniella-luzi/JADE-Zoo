@@ -181,9 +181,16 @@ nav {
   text-align: center;
 }
 
+#backToZoo {
+  rotate: (180deg);
+  position: absolute;
+  top: 50%;
+  left: 20px;
+}
 
-
-
+#backToZoo:hover {
+  scale: 1.3;
+}
 
 
 

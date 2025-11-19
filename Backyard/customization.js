@@ -35,9 +35,12 @@ function loadPurchasedItems(){
         
         //for each item, we will push it into the inventory decor array that emma has for customization section
         items.forEach((item)=>{
-          
-          inventory.decor.push(item);
+          const acceptableIds = ["trashcan", "foodbowl", "foodbowl1"]
+          if(acceptableIds.includes(item.id)){
+            inventory.decor.push(item);
+          }
         });
+        localStorage.removeItem('boughtItems');
       }
   }
 
