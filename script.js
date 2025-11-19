@@ -21,7 +21,6 @@ let movingAnimalSrc = "";
 // A list of all the item names (WITHOUT SPACES) and their corresponding attribute functions.
 let attributeLookup = {
   "WoodenBench": [()=>{addToTip(3)}, ()=>{addToTip(-3)}],
-
   "BasicBench": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
   "PawBench": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
   "BudgetBench": [()=>{addToTip(0)}, ()=>{addToTip(-0)}],
@@ -221,8 +220,7 @@ let jsonData = {
   ]
 };
 
-let activeLocations = [
-]
+let activeLocations = [];
 
 // makes the furniture appear on screen using their respective coordinates from the JSON data
 function loadFurniture() {
@@ -266,7 +264,7 @@ function loadFurniture() {
     decorContainer.appendChild(item);
     world.appendChild(decorContainer);
   }
-  loadAnimals()
+  loadAnimals();
 }
 
 function loadAnimals() {
@@ -308,7 +306,7 @@ function appendLocations(decorContainer, itemName){
         previewAnimal();
         showAnimalButtons();
       }
-    })
+    });
     newLocation.style.pointerEvents = "none";
     const imgSlot = document.createElement("img");
     imgSlot.style.width = "130px";
@@ -317,7 +315,7 @@ function appendLocations(decorContainer, itemName){
     newLocation.style.boxSizing = "border-box";
     newLocation.appendChild(imgSlot);
     decorContainer.appendChild(newLocation);
-  })
+  });
 }
 
 //resizes the world dynamically
@@ -360,7 +358,7 @@ function startMultiDecorPlacement(decorChoice, group) {
   });
   ["#platform1", "#platform2", "#platform3"].forEach((el)=>{
     document.querySelector(el).parentElement.querySelector(".animalLocation").style.display = "block";
-  })
+  });
 
   const handlers = {};
 
@@ -466,8 +464,9 @@ function placeDecoration(itemObject){
 
   ["#platform1", "#platform2", "#platform3"].forEach((el)=>{
     document.querySelector(el).parentElement.querySelector(".animalLocation").style.display = "block";
-  })
+  });
 
+  console.log("itemObject.id:  ", itemObject.id);
   document.querySelector(`#${itemObject.id}`).style.border = "4px solid magenta";
 
   //saves the old decoration name and source image in case you decide not to use
@@ -502,7 +501,7 @@ function placeDecoration(itemObject){
     //hide platform locations
     ["#platform1", "#platform2", "#platform3"].forEach((el)=>{
       document.querySelector(el).parentElement.querySelector(".animalLocation").style.display = "none";
-    })
+    });
     const decorIndex = (jsonData.furniture.findIndex((i)=>{
       return (i.id == itemObject.id);
     }));
@@ -580,7 +579,7 @@ function previewAnimal(){
   }
   const prevLocationData = activeLocations.find((el)=>{
     return (el.furnitureId == previouslyPreviewed[0] && el.locationId == previouslyPreviewed[1]);
-  })
+  });
   
   
   if(prevLocationData && prevLocationData.animal){
@@ -647,14 +646,14 @@ function placeAnimal(itemObject){
     l.style.borderRadius = "40%";
     l.style.boxShadow = "0 0 8px 4px white, 0 0 15px 8px white";
     l.style.pointerEvents = "auto";
-  })
+  });
 
   function hideLocations(){
     allLocations.forEach((l)=>{
       l.style.border = "none";
       l.style.boxShadow = "none";
       l.style.pointerEvents = "none";
-    })
+    });
   }
 
   document.querySelector("#animalChoice").innerText = itemObject.name;
@@ -729,7 +728,7 @@ function placeAnimal(itemObject){
     });
     placeAnimalButton.removeEventListener('click', placeAnimal);
     rejectAnimalButton.removeEventListener('click', rejectAnimal);
-    hideLocations()
+    hideLocations();
   }
 
 
@@ -763,9 +762,9 @@ window.addEventListener("load", ()=>{
   setInterval(()=>{
     add(ticketPrice);
     if(Math.random()*100 < tipChance && activeLocations[0]){
-      add(tip)
+      add(tip);
     }
-  }, 1000)
+  }, 1000);
 });
 resizeWorld();
 
@@ -906,7 +905,6 @@ const creaturesListEl = document.getElementById("creaturesList");
 
 const encImage = document.getElementById("encImage");
 const encTitle = document.getElementById("encTitle");
-const encAttribute = document.getElementById("encAttribute");
 const encBody = document.getElementById("encBody");
 
 // === Open / Close ===
@@ -945,7 +943,7 @@ function showCreaturesTab() {
   creaturesListEl.classList.remove("enc-hidden");
 
   // hide body text on this tab
-  encBody.style.display = "none";
+  //encBody.style.display = "none";
 
   // Show first owned creature by default if any
   if (ownedCreatures.length > 0) {
@@ -992,20 +990,31 @@ function showBreedDetails(b) {
 
   encImage.src = breedInfo.src;
   encTitle.textContent = prettyBreedName(b);
-  encAttribute.textContent = breedInfo.attributeText;
+  //encAttribute.textContent = breedInfo.attributeText;
   encBody.textContent = breedInfo.entry;
 }
 
 function showCreatureDetails(creature) {
   currentCreature = creature; // remember which creature is active
-  console.log("creature: ", creature)
+  console.log("creature: ", creature);
   const prettyName = prettyBreedName(creature.breed);
 
   encImage.src = creature.src;
   encTitle.textContent = `${creature.name} the ${prettyName}`;
+  //encAttribute.textContent = allBreeds[creature.breed].attributeText;
 
   // no body text for creatures tab
-  encBody.textContent = "";
+
+
+
+
+
+
+
+
+
+  
+  encBody.textContent = allBreeds[creature.breed].attributeText;
 }
 
 // Utility: turn CommonRaccoon -> "Common Raccoon"

@@ -23,6 +23,8 @@ nav span {
   display: inline-block;
   border-bottom: transparent;
   background-color: rgb(131, 113, 185);
+  cursor: pointer;
+  user-select: none;
 }
 
 section {
@@ -42,8 +44,8 @@ section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 220px;
-  height: 220px;
+  width: 350px;
+  height: 350px;
   margin: 20px;
   border: 2px solid black;
   border-radius: 20%;
@@ -53,13 +55,13 @@ section {
 }
 
 .item img {
-  width: 120px;
-  height: 120px;
+  height: 200px;
+  width: 200px;
   object-fit: contain;
 }
 
 .item span {
-  font-size: 16pt;
+  font-size: 22pt;
 }
 
 .itemName {

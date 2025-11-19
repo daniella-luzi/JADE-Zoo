@@ -7,7 +7,13 @@ let inventory = {
       attribute: "30% Chance for Raccoons, 5% Chance for Possums"
     },
     {
-      id: "foodbowl1",
+      id: "trashcan",
+      name: "Cooler Trash Can",
+      src: "JADEtrashcan.png",
+      attribute: "40%% Chance for Raccoons, 5% Chance for Possums"
+    },
+    {
+      id: "trashcan",
       name: "Food Bowl", //this is a TRASH CAN (pretend)
       src: "../assets/furniture/backyard/foodbowls/foodbowl.png",
       attribute: "30% Chance to yummy yummy",
@@ -29,9 +35,14 @@ function loadPurchasedItems(){
         
         //for each item, we will push it into the inventory decor array that emma has for customization section
         items.forEach((item)=>{
-          
-          inventory.decor.push(item);
+          const acceptableIds = ["trashcan", "foodbowl", "foodbowl1"]
+          if(acceptableIds.includes(item.id)){
+            inventory.decor.push(item);
+          }
         });
+        //saving the inventory
+        localStorage.setItem("inventory", JSON.stringify(inventory));
+        localStorage.removeItem('boughtItems');
       }
   }
 
