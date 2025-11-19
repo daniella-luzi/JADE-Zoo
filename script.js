@@ -770,15 +770,27 @@ resizeWorld();
 
 
 function addToTip(amt){
+  if(localStorage.getItem("tip")){
+    tip = localStorage.getItem("tip");
+  }
   tip += amt;
+  localStorage.setItem("tip", tip);
 }
 
 function addToTicketPrice(amt){
+  if(localStorage.getItem("ticketPrice")){
+    ticketPrice = localStorage.getItem("ticketPrice");
+  }
   ticketPrice += amt;
+  localStorage.setItem("ticketPrice", ticketPrice);
 }
 
 function changeTipChance(amt){
+  if(localStorage.getItem("tipChance")){
+    tipChance = localStorage.getItem("tipChance");
+  }
   tipChance += amt;
+  localStorage.setItem("tipChance", tipChance);
 }
 
 

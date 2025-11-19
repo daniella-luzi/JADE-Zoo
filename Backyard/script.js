@@ -510,12 +510,44 @@ var inMenu = false;
 // var currentAnimalTipPer;
 // var currentAnimalTipVal;
 
+let breedImages = {
+  "VirginiaOpossum": "assets/animals/virginia_possum.png",
+  "CommonRaccoon": "assets/animals/racket_raccoon.png",
+  "PersianCat": "assets/animals/johnathan_cat.png",
+}
+
 function keep() {
+  console.log("currentAnimalType: ", currentAnimalType)
+  if(currentAnimalType == "Possum"){
+    currentAnimalType = "Virginia Opossum";
+  }
+  if(currentAnimalType == "Raccoon"){
+    currentAnimalType = "Common Raccoon";
+  }
+  if(currentAnimalType == "Cat"){
+    currentAnimalType = "Persian Cat";
+  }
   const newAnimal = {
     name: currentAnimalName,
     breed: currentAnimalType,
+    attributes: [
+      ()=>{
+        addToTicketPrice(currentAnimalBaseMoney);
+        addToTip(currentAnimalTipVal);
+        changeTipChance(currentAnimalTipPer);
+      },
+      ()=>{
+        addToTicketPrice(-currentAnimalBaseMoney);
+        addToTip(-currentAnimalTipVal);
+        changeTipChance(-currentAnimalTipPer);
+      }
+    ],
+    src: breedImages[currentAnimalType.replaceAll(" ", "")]
     
   }
+  const currentownedCreatures = JSON.parse(localStorage.getItem("ownedCreatures"));
+  currentownedCreatures.push(newAnimal);
+  localStorage.setItem("ownedCreatures", currentownedCreatures);
   alert("Good job! You saved the animal!");
   window.location.href = "index.html";
 }
@@ -540,8 +572,7 @@ function release() {
 
 
 function keep2() {
-  alert("Good job! You saved the animal!");
-  window.location.href = "index.html";
+  keep();
 }
 
 function release2() {

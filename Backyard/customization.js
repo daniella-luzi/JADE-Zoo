@@ -1,31 +1,35 @@
 let inventory = {
   "decor": [
-    {
-      id: "trashcan",
-      name: "Standard Trash Can",
-      src: "../assets/furniture/backyard/trashcans/JADEtrashcan.png",
-      attribute: "30% Chance for Raccoons, 5% Chance for Possums"
-    },
-    {
-      id: "trashcan",
-      name: "Cooler Trash Can",
-      src: "JADEtrashcan.png",
-      attribute: "40%% Chance for Raccoons, 5% Chance for Possums"
-    },
-    {
-      id: "trashcan",
-      name: "Food Bowl", //this is a TRASH CAN (pretend)
-      src: "../assets/furniture/backyard/foodbowls/foodbowl.png",
-      attribute: "30% Chance to yummy yummy",
-      slotGroup: "foodbowls"
-    }
+    // {
+    //   id: "trashcan",
+    //   name: "Standard Trash Can",
+    //   src: "../assets/furniture/backyard/trashcans/JADEtrashcan.png",
+    //   attribute: "30% Chance for Raccoons, 5% Chance for Possums"
+    // },
+    // {
+    //   id: "trashcan",
+    //   name: "Cooler Trash Can",
+    //   src: "JADEtrashcan.png",
+    //   attribute: "40%% Chance for Raccoons, 5% Chance for Possums"
+    // },
+    // {
+    //   id: "trashcan",
+    //   name: "Food Bowl", //this is a TRASH CAN (pretend)
+    //   src: "../assets/furniture/backyard/foodbowls/foodbowl.png",
+    //   attribute: "30% Chance to yummy yummy",
+    //   slotGroup: "foodbowls"
+    // }
   ]
 }
 
 //getting the purchased items to show up in the customization section
 //the function is used at the bottom of the file, when the window loads, it loads the purchased items and the decor inventory
 function loadPurchasedItems(){
-  
+  if(!localStorage.getItem("inventory")){
+    localStorage.setItem("inventory", JSON.stringify(inventory));
+  }else{
+    inventory = JSON.parse(localStorage.getItem("inventory"));
+  }
   //getting purchased items from local storage
   const purchasedInventory = localStorage.getItem('boughtItems');
 
@@ -50,6 +54,11 @@ function loadPurchasedItems(){
 
 //displays all the decor in your inventory in the decorations tab
 function loadDecorInventory(){
+  if(!localStorage.getItem("inventory")){
+    localStorage.setItem("inventory", JSON.stringify(inventory));
+  }else{
+    inventory = JSON.parse(localStorage.getItem("inventory"));
+  }
   const decorInventory = document.querySelector("#decorInventory")
   inventory.decor.forEach((item)=>{
     const newItemContainer = document.createElement("div");

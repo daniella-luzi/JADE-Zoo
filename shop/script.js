@@ -288,7 +288,7 @@ function openCategory(categoryID) {
   }
   /*Hide all backyard subcategories when Backyard tab is clicked, and ensure there are no duplicates*/
   if (categoryID === "Backyard") {
-    const bySubcategories = ["byFurniture", "Lights", "Decorations", "byMisc"];
+    const bySubcategories = ["byFurniture", "Food", "Decorations", "Toys"];
     bySubcategories.forEach((id) => {
       const el = document.getElementById(id);
       if (el) el.style.display = "none";
