@@ -12,6 +12,7 @@
     <div id="Wallet" style="visibility: hidden;">
         <div id="WalletText">
             <!--adding Money.js code-->
+            <span><img id="walletGem" src="./images/gem.png"></span>
             <span id ="money" class="mainFont">This Value Will Be Replaced by $$$</span>
             <!-- This is the script needed -->
             <script src="../Money.js"></script>
@@ -91,9 +92,9 @@
     <div id="Backyard" style="display: none;">
         <!--Filter Buttons-->
         <button id="by-furnitureTab" class="styled-tab sub-tab" onclick="openSubCategory('byFurniture')">Furniture</button>
-        <button id="lightsTab" class="styled-tab sub-tab" onclick="openSubCategory('Lights')">Lights</button>
+        <button id="foodTab" class="styled-tab sub-tab" onclick="openSubCategory('Food')">Food/Treats</button>
         <button id="decorTab" class="styled-tab sub-tab" onclick="openSubCategory('Decorations')">Decorations</button>
-        <button id="by-miscTab" class="styled-tab sub-tab" onclick="openSubCategory('byMisc')">Misc.</button>
+        <button id="toysTab" class="styled-tab sub-tab" onclick="openSubCategory('Toys')">Toys</button>
 
         <!--Backyard Items (All items shown when Backyard tab is clicked)-->
         <div id="backyardItems" class="item-section">
@@ -103,15 +104,15 @@
         <div id="byFurniture" class="item-section" style="display: none;">
         </div>
 
-        <!--Lights Tab-->
-        <div id="Lights" class="item-section" style="display: none;">
+        <!--Food Tab-->
+        <div id="Food" class="item-section" style="display: none;">
         </div>
 
         <!--Decorations Tab-->
         <div id="Decorations" class="item-section" style="display: none;"></div>
 
-        <!--Misc Tab-->
-        <div id="byMisc" class="item-section" style="display: none;"></div>
+        <!--Toys Tab-->
+        <div id="Toys" class="item-section" style="display: none;"></div>
     </div>
 
     

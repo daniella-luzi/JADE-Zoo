@@ -169,20 +169,20 @@ const allItems = {
     {
       id: "trashcan",
       name: "Trash Can",
-      src: "images/trashcan.jpg",
+      src: "../assets/furniture/backyard/trashcans/JADEtrashcan.png",
       price: 20,
       attribute: "30% Chance for Raccoons, 5% Chance for Possums",
       category: "byFurniture",
     },
 
     {
-      id: "fairylights",
-      name: "Fairy Lights",
-      src: "images/fairylights.jpg",
-      price: 60,
-      attribute: "+1% Chance for Rare Breeds",
-      category: "Lights",
-    },
+      id: "foodbowl",
+      name: "Food Bowl",
+      src: "../assets/furniture/backyard/foodbowls/foodbowl.png",
+      price: 20,
+      attribute: "30% Chance for Raccoons, 5% Chance for Possums",
+      category: "Food",
+    }
   ],
 };
 
@@ -313,9 +313,9 @@ function openSubCategory(subcategoryID) {
     "Platforms",
     "Windows",
     "byFurniture",
-    "Lights",
+    "Food",
     "Decorations",
-    "byMisc",
+    "Toys",
   ];
 
   /*for each loop to go through all subcategories and hide them*/
