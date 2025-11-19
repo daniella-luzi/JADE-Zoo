@@ -21,6 +21,7 @@ let movingAnimalSrc = "";
 // A list of all the item names (WITHOUT SPACES) and their corresponding attribute functions.
 let attributeLookup = {
   "WoodenBench": [()=>{addToTip(3)}, ()=>{addToTip(-3)}],
+
   "BasicBench": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
   "PawBench": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
   "BudgetBench": [()=>{addToTip(0)}, ()=>{addToTip(-0)}],
@@ -279,7 +280,11 @@ function loadAnimals() {
     const decorContainer = document.querySelector(`#${i.furnitureId}`).parentElement;
     const currentLocationImg = decorContainer.querySelector(`.${i.locationId} > img`);
     currentLocationImg.src = i.animal.src;
-    allBreeds[i.animal.breed].attributes[0]();
+    if(i.animal.attributes){
+      i.animal.attributes[0]();
+    }else{
+      allBreeds[i.animal.breed].attributes[0]();
+    }
     
   }
 }
@@ -625,6 +630,9 @@ function placeAnimal(itemObject){
 
   let deleteFunc = () => {};
   const addFunc = allBreeds[itemObject.breed].attributes[0];
+  if(itemObject.attributes){
+    addFunc = itemObject.attributes[0];
+  }
 
   //hide stuff
   document.querySelector("#animalPrompt").style.display = "block";
@@ -685,7 +693,10 @@ function placeAnimal(itemObject){
       })
 
     }else{
-      deleteFunc = allBreeds[activeLocations[activeLocationIndex].animal.breed].attributes[1]
+      deleteFunc = allBreeds[activeLocations[activeLocationIndex].animal.breed].attributes[1];
+      if(activeLocations[activeLocationIndex].animal.attributes[1]){
+        deleteFunc = activeLocations[activeLocationIndex].animal.attributes[1];
+      }
     }
 
     activeLocationIndex = (activeLocations.findIndex((i)=>{
@@ -858,6 +869,9 @@ function loadOwnedCreatures() {
       const parsed = JSON.parse(saved);
       if (Array.isArray(parsed)) {
         ownedCreatures = parsed;
+        if(JSON.parse(localStorage.getItem("newAnimal"))){ //ADDING NEW ANIMAL FROM BACKYARD
+          ownedCreatures.push(JSON.parse(localStorage.getItem("newAnimal")));
+        }
         return;
       }
     } catch (e) {
@@ -989,7 +1003,6 @@ function showCreatureDetails(creature) {
 
   encImage.src = creature.src;
   encTitle.textContent = `${creature.name} the ${prettyName}`;
-  encAttribute.textContent = allBreeds[creature.breed].attributeText;
 
   // no body text for creatures tab
   encBody.textContent = "";
