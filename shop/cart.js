@@ -1,7 +1,6 @@
 //loading local storage
-window.addEventListener("load", ()=>{
-  console.log(localStorage);
-})
+// window.addEventListener("load", ()=>{
+// })
 
 //setting up the cart
 let cart = {};

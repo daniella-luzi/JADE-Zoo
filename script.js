@@ -21,6 +21,7 @@ let movingAnimalSrc = "";
 // A list of all the item names (WITHOUT SPACES) and their corresponding attribute functions.
 let attributeLookup = {
   "WoodenBench": [()=>{addToTip(3)}, ()=>{addToTip(-3)}],
+
   "BasicBench": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
   "PawBench": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
   "BudgetBench": [()=>{addToTip(0)}, ()=>{addToTip(-0)}],
@@ -70,7 +71,7 @@ let locationLookup = {
   FluffyBed: ["top: 30px; left: 80px"],
   CircleBed: ["top: 40px; left: 50px"],
   NewspaperBed: ["top: 40px; left: 50px"],
-  BudgetBed: ["top: 40px; left: 50px"],
+  BudgetBed: ["top: 10px; left: 70px"],
   PillowBed: ["top: 10px; left: 80px"],
   
   BasicPlatform: ["bottom: 5px; right: 55px"],
@@ -87,43 +88,43 @@ let locationLookup = {
 let allBreeds = {
   CommonRaccoon: {
     attributes: [()=>{addToTicketPrice(1)}, ()=>{addToTicketPrice(-1)}],
-    attributeText: "+3 Ticket Price",
+    attributeText: "+1 Ticket Price",
     entry: "These furry mammals are native to North America, but later spread to central Europe, the Caucasus, and Japan in the mid-20th century. They are nocturnal, meaning they sleep during the day. Raccoons are super intelligent; in fact, studies have shown that they can remember the solutions to tasks for at least 3 years! They originally lived in forests, but have adapted to live in urban areas, which is why you might find one digging through your trash. You may have noticed their dexterous paws. That's where they got their name! The word 'raccoon' was adopted into English from the native Powhatan term meaning 'animal that scratches with its hands'. Do NOT try to pet them.",
     src: "assets/animals/breeds/commonraccoon.png" //real picture
   },
   GoldenRaccoon: {
-    attributes: [()=>{addToTicketPrice(30)}, ()=>{addToTicketPrice(-30)}],
-    attributeText: "+50 Ticket Price",
+    attributes: [()=>{addToTicketPrice(15)}, ()=>{addToTicketPrice(-15)}],
+    attributeText: "+15 Ticket Price",
     entry: "While not really a 'breed' per se, these little guys are inspired by albino raccoons, which are normal raccoons but with a rare gene mutation that removes their 'melanin', or the pigment that makes their fur and skin dark. As a result, their fur is white, their noses are pink, and their eyes are red. This mutation only occurs in about one in every 10,000-20,000 raccoons, making sightings extremely rare. There are also blonde raccoons, a rare color morph with light brown or golden fur. Their masks and tail rings are still visible but not nearly as pronounced.",
     src: "assets/animals/breeds/blonderaccoon.png"
   },
   VirginiaOpossum: {
     attributes: [()=>{addToTicketPrice(1)}, ()=>{addToTicketPrice(-1)}],
-    attributeText: "+5 Ticket Price",
+    attributeText: "+1 Ticket Price",
     entry: "These solitary marsupials, usually referred to as 'possums', can be found from Canada to Costa Rica. Like raccoons, they often roam around trash, compost, and gardens. Opossums have 'prehensile' tails, meaning they are used for grabbing and holding things. They have a whopping 50 teeth and opposable thumbs! Surprisingly, their brain is only 1/5 the size of a raccoon's. A mother opossum carries her children on her body, and newborn opossums are as tiny as a honeybee. When threatened by a predator, an opossum may 'play dead', or pretend to be dead or injured. But in some cases, opossums will absolutely fight back. DON'T pet them!",
     src: "assets/animals/breeds/virginiaopossum.png"
   },
   LaboradorRetriever: {
-    attributes: [()=>{addToTicketPrice(10)}, ()=>{addToTicketPrice(-10)}],
-    attributeText: "+30 Ticket Price",
+    attributes: [()=>{addToTicketPrice(2)}, ()=>{addToTicketPrice(-2)}],
+    attributeText: "+2 Ticket Price",
     entry: "We all know and love these playful canines. This breed comes from Britain and was created to hunt and track game in the 19th century. Labs have historically been trained to become guide and service dogs, war dogs, rescue dogs, and even police dogs. They of course make wonderful companions, as they are a friendly, energetic, intelligent, and loyal breed. Labs are very widespread - in fact, you may have seen a few in your neighborhood! They vary a lot in color, with black, chocolate, and yellow variants - all equally adorable.",
     src: "assets/animals/breeds/lab.png"
   },
   CavalierKingCharlesSpaniel: {
-    attributes: [()=>{addToTicketPrice(15)}, ()=>{addToTicketPrice(-15)}],
-    attributeText: "+20 Ticket Price",
+    attributes: [()=>{addToTicketPrice(2)}, ()=>{addToTicketPrice(-2)}],
+    attributeText: "+2 Ticket Price",
     entry: "This is a British breed of toy dog with four distinct color patterns, emerging in the 1920s. They are soft, snuggly, highly affectionate lap dogs that do great with children and other dogs. Cavaliers are not shy at all, and are highly adaptable. They are playful, active, and curious, and have been trained to become therapy dogs due to their sweet and gentle nature. Cavaliers often want to chase things, including vehicles, so they are not suited for off-leash walking, and they have a strong hunting instinct. They usually make terrible guard dogs because all strangers are friends to them.",
     src: "assets/animals/breeds/cavalier.png"
   },
   PersianCat: {
-    attributes: [()=>{addToTicketPrice(20)}, ()=>{addToTicketPrice(-20)}],
-    attributeText: "+30 Ticket Price",
+    attributes: [()=>{addToTicketPrice(3)}, ()=>{addToTicketPrice(-3)}],
+    attributeText: "+3 Ticket Price",
     entry: "Persian Longhairs are thought to have emerged in the 19th century. Selective breeding has caused them to have flat faces over time which cause health problems, but traditional Persians actually had normal muzzles. Persians are quiet cats that adapt well to indoor life, and are close and affectionate with their owners. They can be friendly towards strangers, and like to keep themselves clean, although require regular brushing to maintain their beautiful coats.",
     src: "assets/animals/breeds/persian.png"
   },
   RagdollCat: {
-    attributes: [()=>{addToTicketPrice(25)}, ()=>{addToTicketPrice(-25)}],
-    attributeText: "+40 Ticket Price",
+    attributes: [()=>{addToTicketPrice(4)}, ()=>{addToTicketPrice(-4)}],
+    attributeText: "+4 Ticket Price",
     entry: "Ragdolls originated around 1963 and have colorpoint coats, which means the colder the fur is over time, the darker it will become. Their fur looks like a heat map of their bodies! They are super affectionate and docile cats, and are even called 'ragdolls' because they can be completely limp and relaxed when picked up, just like a ragdoll. They are dog-like cats because they follow people around, are easily handled, are not typically aggressive towards other animals, can be super playful, want attention constantly, and are intelligent and trainable. They make wonderful family pets.",
     src: "assets/animals/breeds/ragdoll.png"
   }
@@ -227,14 +228,12 @@ let activeLocations = [
 function loadFurniture() {
 
   if(!localStorage.getItem("currentDecorations")){
-    console.log("filling local with decorations");
     localStorage.setItem("currentDecorations", JSON.stringify(jsonData));
   }
   //puts localstorage contents into variable jsondata
   jsonData = JSON.parse(localStorage.getItem("currentDecorations"));
 
   let currentDecorations = JSON.parse(localStorage.getItem("currentDecorations")).furniture;
-  console.log("currentDecorations in loadFurniture: ", currentDecorations);
 
   //for each decoration in the zoo, creates an image element with the same id, name, src, and coordinates.
   //If the decoration is the backyardButton (don't ask why), give it the class of "navItem"
@@ -255,7 +254,6 @@ function loadFurniture() {
     // decorContainer.style.cssText += "background-color: blue";
 
     if (item.id != "backyardButton") {
-      console.log("i id:", i.name)
       attributeLookup[i.name.replaceAll(" ", "")][0]();
       appendLocations(decorContainer, i.name.replaceAll(" ", ""));
     }
@@ -274,17 +272,19 @@ function loadFurniture() {
 function loadAnimals() {
 
   if(!localStorage.getItem("activeLocations")){
-    console.log("filling local with animals");
     localStorage.setItem("activeLocations", JSON.stringify(activeLocations));
   }
   activeLocations = JSON.parse(localStorage.getItem("activeLocations"));
-  console.log("activeLocations in loadAnimals: ", activeLocations);
 
   for (let i of activeLocations) {
     const decorContainer = document.querySelector(`#${i.furnitureId}`).parentElement;
     const currentLocationImg = decorContainer.querySelector(`.${i.locationId} > img`);
     currentLocationImg.src = i.animal.src;
-    allBreeds[i.animal.breed].attributes[0]();
+    if(i.animal.attributes){
+      i.animal.attributes[0]();
+    }else{
+      allBreeds[i.animal.breed].attributes[0]();
+    }
     
   }
 }
@@ -304,7 +304,6 @@ function appendLocations(decorContainer, itemName){
       if(localStorage.getItem("animalChoice")){
         locationClass = newLocation.classList[1];
         locationFurnitureId = newLocation.parentElement.querySelector(".furnitureItem").id;
-        console.log("locationFurnitureId: ", locationFurnitureId);
         loadAnimals();
         previewAnimal();
         showAnimalButtons();
@@ -469,7 +468,6 @@ function placeDecoration(itemObject){
     document.querySelector(el).parentElement.querySelector(".animalLocation").style.display = "block";
   })
 
-  console.log("itemObject.id:  ", itemObject.id)
   document.querySelector(`#${itemObject.id}`).style.border = "4px solid magenta";
 
   //saves the old decoration name and source image in case you decide not to use
@@ -519,9 +517,7 @@ function placeDecoration(itemObject){
     cleanup();
     const itemParent = document.getElementById(itemObject.id).parentElement;
     const oldLocations = itemParent.querySelectorAll(`.animalLocation`);
-    console.log(oldLocations);
     oldLocations.forEach((el)=>{
-      console.log("removing old location")
       el.remove();
     })
     appendLocations(itemParent, itemObject.name.replaceAll(" ", ""));
@@ -586,13 +582,11 @@ function previewAnimal(){
     return (el.furnitureId == previouslyPreviewed[0] && el.locationId == previouslyPreviewed[1]);
   })
   
-  console.log({ prevLocationData });
   
   if(prevLocationData && prevLocationData.animal){
     const prevLocationContainer = document.querySelector(`#${previouslyPreviewed[0]}`).parentElement;
     const prevLocation = prevLocationContainer.querySelector(`.${previouslyPreviewed[1]}`);
     const prevLocationImage = prevLocation.querySelector(`img`);
-    console.log("prevLocation in if statement: ", prevLocation)
     prevLocationImage.src = prevLocationData.animal.src;
   }
   else{
@@ -600,7 +594,6 @@ function previewAnimal(){
     const prevLocation = prevLocationContainer.querySelector(`.${previouslyPreviewed[1]}`);
     const prevLocationImage = prevLocation.querySelector(`img`);
 
-    console.log({ prevLocationContainer, prevLocation})
     prevLocationImage.src = "";
   }
   const animalObject = JSON.parse(localStorage.getItem("animalChoice"));
@@ -637,6 +630,9 @@ function placeAnimal(itemObject){
 
   let deleteFunc = () => {};
   const addFunc = allBreeds[itemObject.breed].attributes[0];
+  if(itemObject.attributes){
+    addFunc = itemObject.attributes[0];
+  }
 
   //hide stuff
   document.querySelector("#animalPrompt").style.display = "block";
@@ -670,7 +666,6 @@ function placeAnimal(itemObject){
   function placeAnimal(){
     console.log("Animal accepted :)");
     if (movingAnimal) {
-      console.log("before removal: ", activeLocations);
 
       const idx = activeLocations.findIndex((el) => {
         return (
@@ -683,10 +678,8 @@ function placeAnimal(itemObject){
         activeLocations.splice(idx, 1); // mutate in place, DON'T reassign
       }
 
-      console.log("after removal: ", activeLocations);
     }
 
-    console.log("active locations after removal: ", activeLocations)
     let activeLocationIndex = activeLocations.findIndex((i)=>{
       return (i.furnitureId == locationFurnitureId && i.locationId == locationClass);
     });
@@ -700,7 +693,10 @@ function placeAnimal(itemObject){
       })
 
     }else{
-      deleteFunc = allBreeds[activeLocations[activeLocationIndex].animal.breed].attributes[1]
+      deleteFunc = allBreeds[activeLocations[activeLocationIndex].animal.breed].attributes[1];
+      if(activeLocations[activeLocationIndex].animal.attributes[1]){
+        deleteFunc = activeLocations[activeLocationIndex].animal.attributes[1];
+      }
     }
 
     activeLocationIndex = (activeLocations.findIndex((i)=>{
@@ -749,7 +745,6 @@ window.addEventListener("load", ()=>{
   const decorRaw = localStorage.getItem("decorChoice");
   if (decorRaw) {
     const decorChoice = JSON.parse(decorRaw);
-    console.log("DECOR CHOICE: ", decorChoice)
     let slotGroup = decorChoice.slotGroup || null;
 
     if (slotGroup === "platform" || slotGroup === "bed") {
@@ -776,17 +771,14 @@ resizeWorld();
 
 
 function addToTip(amt){
-  console.log("adding to tip: ", amt);
   tip += amt;
 }
 
 function addToTicketPrice(amt){
-  console.log("adding to ticketprice: ", amt);
   ticketPrice += amt;
 }
 
 function changeTipChance(amt){
-  console.log("adding to tip chance: ", amt);
   tipChance += amt;
 }
 
@@ -877,6 +869,9 @@ function loadOwnedCreatures() {
       const parsed = JSON.parse(saved);
       if (Array.isArray(parsed)) {
         ownedCreatures = parsed;
+        if(JSON.parse(localStorage.getItem("newAnimal"))){ //ADDING NEW ANIMAL FROM BACKYARD
+          ownedCreatures.push(JSON.parse(localStorage.getItem("newAnimal")));
+        }
         return;
       }
     } catch (e) {
@@ -1008,7 +1003,6 @@ function showCreatureDetails(creature) {
 
   encImage.src = creature.src;
   encTitle.textContent = `${creature.name} the ${prettyName}`;
-  encAttribute.textContent = allBreeds[creature.breed].attributeText;
 
   // no body text for creatures tab
   encBody.textContent = "";

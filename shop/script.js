@@ -1,8 +1,8 @@
-console.log(localStorage)
 let shoppingCart = {};
 
 //loading the cart
 window.addEventListener('load', () => {
+  document.querySelector('#Wallet').style.visibility = "visible";
   if(localStorage.getItem("cart")){
     shoppingCart = JSON.parse(localStorage.getItem("cart"));
 
@@ -27,19 +27,49 @@ const allItems = {
       id: "bench",
       name: "Wooden Bench",
       src: "../assets/furniture/benches/bench.png",
-      price: 30,
+      price: 300,
       attribute: "Gives an extra $1 tip",
-      category: "zooFurniture",
+      category: "Benches",
     },
+    {
+      id: "bench",
+      name: "Basic Bench",
+      src: "../assets/furniture/benches/basicbench.png",
+      price: 100,
+      attribute: "Gives an extra $1 tip",
+      category: "Benches",
+    },
+    {
+      id: "bench",
+      name: "Paw Bench",
+      src: "../assets/furniture/benches/pawbench.png",
+      price: 200,
+      attribute: "Gives an extra $1 tip",
+      category: "Benches",
+    },
+
+
+
 
     {
       id: "catTree",
       name: "Plant Cat Tree",
       src: "../assets/furniture/cat trees/plant cat tree.png",
-      price: 50,
+      price: 500,
       attribute: "+5% Tip Chance",
-      category: "zooFurniture",
+      category: "CatTrees",
     },
+    {
+      id: "catTree",
+      name: "Basic Cat Tree",
+      src: "../assets/furniture/cat trees/basic cat tree.png",
+      price: 400,
+      attribute: "+1% Tip Chance",
+      category: "CatTrees",
+    },
+
+
+
 
     {
       id: "window",
@@ -47,23 +77,37 @@ const allItems = {
       src: "../assets/furniture/wall/windows/window.png",
       price: 30,
       attribute: "Gives an extra $1 tip",
-      category: "zooMisc",
+      category: "Windows",
     },
+    {
+      id: "window",
+      name: "Flower Window",
+      src: "../assets/furniture/wall/windows/flowerwindow.png",
+      price: 400,
+      attribute: "Gives an extra $5 tip",
+      category: "Windows",
+    },
+
+
+
 
     {
       id: "rug",
       name: "Basic Rug",
       src: "../assets/furniture/rugs/rug.png",
-      price: 30,
+      price: 300,
       attribute: "Gives an extra $2 tip",
-      category: "zooFurniture",
+      category: "Rugs",
     },
+
+
+
 
     {
       id: "bed1",
       name: "Fluffy Bed",
       src: "../assets/furniture/beds/fluffy bed.png",
-      price: 30,
+      price: 600,
       attribute: "+5% Tip Chance",
       category: "Beds",
       slotGroup: "bed"
@@ -73,7 +117,7 @@ const allItems = {
       id: "bed1",
       name: "Circle Bed",
       src: "../assets/furniture/beds/circle bed.png",
-      price: 15,
+      price: 300,
       attribute: "Gives an extra $1 tip",
       category: "Beds",
       slotGroup: "bed"
@@ -83,58 +127,38 @@ const allItems = {
       id: "bed1",
       name: "Pillow Bed",
       src: "../assets/furniture/beds/pillow bed.png",
-      price: 15,
+      price: 400,
       attribute: "Gives an extra $1 tip",
       category: "Beds",
       slotGroup: "bed"
     },
 
+
+
     {
       id: "platform",
       name: "Basic Platform",
       src: "../assets/furniture/wall/platforms/platform.png",
-      price: 60,
+      price: 100,
       attribute: "+5% Tip Chance",
-      category: "zooMisc",
+      category: "Platforms",
+      slotGroup: "platform"
     },
+
 
     {
       id: "painting1",
       name: "Cat Painting",
       src: "../assets/furniture/wall/paintings/painting.png",
-      price: 10,
+      price: 100,
       attribute: "Gives an extra $1 tip",
       category: "Paintings",
-    },
-     {
-      id: "bench",
-      name: "Basic Bench",
-      src: "../assets/furniture/benches/basicbench.png",
-      price: 10,
-      attribute: "Gives an extra $1 tip",
-      category: "zooFurniture",
-    },
-    {
-      id: "window",
-      name: "Flower Window",
-      src: "../assets/furniture/wall/windows/flowerwindow.png",
-      price: 10,
-      attribute: "Gives an extra $5 tip",
-      category: "zooMisc",
-    },
-    {
-      id: "catTree",
-      name: "Basic Cat Tree",
-      src: "../assets/furniture/cat trees/basic cat tree.png",
-      price: 10,
-      attribute: "+1% Tip Chance",
-      category: "zooFurniture",
     },
     {
       id: "painting1",
       name: "Flower Painting",
       src: "../assets/furniture/wall/paintings/flowerPainting.png",
-      price: 10,
+      price: 150,
       attribute: "+1% Tip Chance",
       category: "Paintings",
     }
@@ -145,20 +169,20 @@ const allItems = {
     {
       id: "trashcan",
       name: "Trash Can",
-      src: "images/trashcan.jpg",
+      src: "../assets/furniture/backyard/trashcans/JADEtrashcan.png",
       price: 20,
       attribute: "30% Chance for Raccoons, 5% Chance for Possums",
       category: "byFurniture",
     },
 
     {
-      id: "fairylights",
-      name: "Fairy Lights",
-      src: "images/fairylights.jpg",
-      price: 60,
-      attribute: "+1% Chance for Rare Breeds",
-      category: "Lights",
-    },
+      id: "foodbowl",
+      name: "Food Bowl",
+      src: "../assets/furniture/backyard/foodbowls/foodbowl.png",
+      price: 20,
+      attribute: "30% Chance for Raccoons, 5% Chance for Possums",
+      category: "Food",
+    }
   ],
 };
 
@@ -179,7 +203,6 @@ function createItemContainer(itemObject) {
   const itemContainer = document.createElement("div");
   itemContainer.id = itemObject.id;
   const prettyName = itemObject.name.replaceAll(" ", "");
-  console.log("itemObject.name in createItemContainer:  ", prettyName)
   itemContainer.className = `item-container ${itemObject.category} ${prettyName}`;
   itemContainer.innerHTML = `
         <div class="itemBadge">0</div>
@@ -250,10 +273,12 @@ function openCategory(categoryID) {
   if (categoryID === "Zoo") {
     const zooSubcategories = [
       "Beds",
+      "Benches",
+      "CatTrees",
+      "Rugs",
       "Paintings",
-      "Toys",
-      "zooFurniture",
-      "zooMisc",
+      "Platforms",
+      "Windows"
     ];
     zooSubcategories.forEach((id) => {
       const el = document.getElementById(id);
@@ -281,14 +306,16 @@ function openSubCategory(subcategoryID) {
   /*creating an array of subcategories*/
   const subcategories = [
     "Beds",
+    "Benches",
+    "CatTrees",
+    "Rugs",
     "Paintings",
-    "Toys",
-    "zooFurniture",
-    "zooMisc",
+    "Platforms",
+    "Windows",
     "byFurniture",
-    "Lights",
+    "Food",
     "Decorations",
-    "byMisc",
+    "Toys",
   ];
 
   /*for each loop to go through all subcategories and hide them*/

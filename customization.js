@@ -136,7 +136,6 @@ function loadDecorInventory(){
 
 //runs when you click a decoration to put in your zoo
 function pickDecoration(itemObject){
-  console.log("pick decoration: ", itemObject)
   const decorChoice = {
     id: itemObject.id,
     name: itemObject.name,
