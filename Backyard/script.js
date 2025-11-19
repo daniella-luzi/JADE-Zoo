@@ -16,6 +16,12 @@ let chances = {
   RagdollCat: 1
 }
 
+
+function changeChance(breed, modifier){
+  chances[breed] += modifier;
+}
+
+// A list of all the item names (WITHOUT SPACES) and their corresponding attribute functions.
 let attributeLookup = {
   "StandardTrashCan": [()=>{
     changeChance("CommonRaccoon", 30);
