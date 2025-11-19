@@ -7,7 +7,13 @@ let inventory = {
       attribute: "30% Chance for Raccoons, 5% Chance for Possums"
     },
     {
-      id: "foodbowl1",
+      id: "trashcan",
+      name: "Cooler Trash Can",
+      src: "JADEtrashcan.png",
+      attribute: "40%% Chance for Raccoons, 5% Chance for Possums"
+    },
+    {
+      id: "trashcan",
       name: "Food Bowl", //this is a TRASH CAN (pretend)
       src: "../assets/furniture/backyard/foodbowls/foodbowl.png",
       attribute: "30% Chance to yummy yummy",

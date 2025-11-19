@@ -25,7 +25,51 @@
     <div id="worldWrapper">
       <div id="frame">
         <div id="world">
-          <img src="../assets/UI/backyard_button.png" alt="Back To Zoo" id="backToZoo" onclick="goTo('../index.html')">
+          
+          
+          <img src="possum.png" alt="Possum" id="possum" class="squareIcon" onclick="captureVisible(possum)">
+          
+          <img src="raccoon2.png" alt="Raccoon" id="raccoon" class="squareIcon" onclick="captureVisible(raccoon)">
+          
+          
+          <img src="cavalier_dog.png" alt="Dog" id="Dog" class="squareIcon" onclick="captureVisible2(Dog)">
+          
+          <img src="johnathan_cat.png" alt="Cat" id="Cat" class="squareIcon" onclick="captureVisible2(Cat)">
+          
+          
+          <span id="TTime">Timer</span>
+          <span id="TTTime">Timer</span>
+          
+
+          <span id = "question"> You found Larry! </span>
+          <span id = "animalType">What a cute possum!</span>
+          <span id = "baseValue">+$x / second</span>
+          <span id = "tipValue">+$x tip</span>
+          <span id = "tipChance">x% tip chance</span>
+          
+          
+          <div class="action-buttons-container">
+            <button id="keepBtn">Keep</button>
+            <button id="releaseBtn">Release</button>
+          </div>
+          
+
+
+          <span id = "question2"> You found Larry! </span>
+          <span id = "animalType2">What a cute possum!</span>
+          <span id = "baseValue2">+$x / second</span>
+          <span id = "tipValue2">+$x tip</span>
+          <span id = "tipChance2">x% tip chance</span>
+          
+          
+          <div class="action-buttons-container2">
+            <button id="keepBtn2">Keep2</button>
+            <button id="releaseBtn2">Release2</button>
+          </div>
+          
+          
+          
+          
           <!-- <div class="itemPopUp">
             <span>You found Larry the Raccoon!</span>
             <span>+5 Ticket Price</span>
