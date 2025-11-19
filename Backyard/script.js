@@ -519,13 +519,13 @@ let breedImages = {
 function keep() {
   console.log("currentAnimalType: ", currentAnimalType)
   if(currentAnimalType == "Possum"){
-    currentAnimalType = "Virginia Opossum";
+    currentAnimalType = "VirginiaOpossum";
   }
   if(currentAnimalType == "Raccoon"){
-    currentAnimalType = "Common Raccoon";
+    currentAnimalType = "CommonRaccoon";
   }
   if(currentAnimalType == "Cat"){
-    currentAnimalType = "Persian Cat";
+    currentAnimalType = "PersianCat";
   }
   const newAnimal = {
     name: currentAnimalName,
@@ -542,11 +542,13 @@ function keep() {
         changeTipChance(-currentAnimalTipPer);
       }
     ],
-    src: breedImages[currentAnimalType.replaceAll(" ", "")]
+    src: breedImages[currentAnimalType.replaceAll(" ", "")],
+    active: false
     
   }
   const currentownedCreatures = JSON.parse(localStorage.getItem("ownedCreatures"));
   currentownedCreatures.push(newAnimal);
+  console.log(currentownedCreatures)
   localStorage.setItem("ownedCreatures", currentownedCreatures);
   alert("Good job! You saved the animal!");
   window.location.href = "index.html";
