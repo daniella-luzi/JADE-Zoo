@@ -21,6 +21,18 @@ function changeChance(breed, modifier){
   chances[breed] += modifier;
 }
 
+let baseValue = 1;
+
+if (!localStorage.getItem("trashBaseValue")) {
+  localStorage.setItem("trashBaseValue", baseValue);
+}
+else {
+  //update trash value in local store
+  baseValue = JSON.parse(localStorage.getItem("trashBaseValue"));
+}
+
+
+
 // A list of all the item names (WITHOUT SPACES) and their corresponding attribute functions.
 let attributeLookup = {
   "StandardTrashCan": [()=>{
@@ -29,8 +41,23 @@ let attributeLookup = {
   }, ()=>{
     changeChance("CommonRaccoon", -30);
     changeChance("VirginiaOpossum", -5);
-  }]
+  }], "CoolerTrashCan": [()=> {
+  
+  changeBaseValue(10000);
+    
+  }, ()=> {
+  
+  changeBaseValue(-10000);
+    
+  } ]
+  
 };
+
+
+function changeBaseValue(amount) {
+baseValue = baseValue + amount;
+localStorage.setItem("trashBaseValue", baseValue);
+}
 
 
 //Don't forget to clear localStorage! :)
@@ -308,7 +335,7 @@ function startTimer2(onTimeout) {
 }
 
 function resetTimer2() {
-  clearInterval2(intervalId2);
+  clearInterval(intervalId2);
   intervalId2 = null;
   countdown2 = 10;
   updateDisplay2();
@@ -367,7 +394,7 @@ function captureVisible(AnimalElement) {
   
   //if you have diffrent trash can, logic would be here.
   
-  currentAnimalBaseMoney = Math.floor(Math.random() * 4) + 1;
+  currentAnimalBaseMoney = Math.floor(Math.random() * 4) + baseValue;
   currentAnimalTipPer =    Math.floor(Math.random() * 5) + 1;
   currentAnimalTipVal =    Math.floor(Math.random() * 7) + 4;
   
@@ -461,7 +488,7 @@ function release2() {
   document.querySelector("#tipChance2").style.display = "none";
   
   resetTimer2();
-  startTimer2(trashTimeout);
+  startTimer2(petTimeout);
   
   document.querySelector("#Cat").style.display = "none";
   document.querySelector("#Dog").style.display = "none";
