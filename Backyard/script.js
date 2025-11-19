@@ -89,7 +89,7 @@ function loadFurniture() {
 
     mainText.innerText = `You found Placeholder the Placeholder!`;
     attributeInfo.innerText = `+NaN Placeholders`;
-    question.innerText = `Take it in? Placeholder!`
+    question.innerText = `Take it in? Placeholder!`;
 
     const animalButtons = document.createElement("div");
     animalButtons.className = "animalButtons";
@@ -175,7 +175,7 @@ function placeDecoration(itemObject){
     const oldLocations = itemParent.querySelectorAll(`.animalLocation`);
     console.log(oldLocations);
     oldLocations.forEach((el)=>{
-      console.log("removing old location")
+      console.log("removing old location");
       el.remove();
     })
     appendLocations(itemParent, itemObject.name.replaceAll(" ", ""));
@@ -316,16 +316,6 @@ function resetTimer2() {
 
 
 
-
-
-
-
-
-
-
-
-
-
 function trashTimeout() {
   (Math.random() < 0.5 ? possumAppear : raccoonAppear)();
 }
@@ -354,6 +344,7 @@ function captureVisible(AnimalElement) {
 
   inMenu = true;
   document.querySelector(".action-buttons-container").style.display = "flex";
+  
   document.querySelector("#question").style.display = "block";
   document.querySelector("#animalType").style.display = "block";
   // Uses the alt text of the image to display the message
@@ -387,6 +378,49 @@ function captureVisible(AnimalElement) {
   
 }
 
+
+function captureVisible2(AnimalElement) {
+  // Asks if you want to capture or not. 
+  if (inMenu == true) {
+    return;
+  }
+
+  inMenu = true;
+  document.querySelector(".action-buttons-container2").style.display = "flex";
+  document.querySelector("#question2").style.display = "block";
+  document.querySelector("#animalType2").style.display = "block";
+  // Uses the alt text of the image to display the message
+  
+  document.querySelector("#baseValue2").style.display = "flex";
+  document.querySelector("#tipChance2").style.display = "flex";
+  document.querySelector("#tipValue2").style.display = "flex";
+
+
+  const animalName = AnimalElement.alt;  //animal type
+  document.querySelector("#animalType2").textContent = "What a cute " + animalName + "!";
+  currentAnimalType = animalName;
+  
+  
+  var animalsFirstName = getRandomName();      //animal name, sorry for confusion
+  document.querySelector("#question2").textContent = "You found " + animalsFirstName + "!";
+  currentAnimalName = animalsFirstName;
+
+  
+  
+  //if you have diffrent pet bowl, logic would be here.
+  
+  currentAnimalBaseMoney = Math.floor(Math.random() * 4) + 1;
+  currentAnimalTipPer =    Math.floor(Math.random() * 5) + 1;
+  currentAnimalTipVal =    Math.floor(Math.random() * 7) + 4;
+  
+  
+  document.querySelector("#baseValue2").textContent = "+$" + currentAnimalBaseMoney + " per second";
+  document.querySelector("#tipChance2").textContent = currentAnimalTipPer + "% tip chance";
+  document.querySelector("#tipValue2").textContent = "+$" + currentAnimalTipPer + " per tip";
+  
+}
+
+
 var inMenu = false;
 
 function keep() {
@@ -409,21 +443,45 @@ function release() {
   document.querySelector("#raccoon").style.display = "none";
   document.querySelector("#possum").style.display = "none";
   
+}
+
+
+function keep2() {
+  alert("This will send to andrews part");
+}
+
+function release2() {
+  inMenu = false;
+  document.querySelector("#question2").style.display = "none";
+  document.querySelector("#animalType2").style.display = "none";
+  document.querySelector(".action-buttons-container2").style.display = "none";
+
+  document.querySelector("#baseValue2").style.display = "none";
+  document.querySelector("#tipValue2").style.display = "none";
+  document.querySelector("#tipChance2").style.display = "none";
   
+  resetTimer2();
+  startTimer2(trashTimeout);
   
   document.querySelector("#Cat").style.display = "none";
   document.querySelector("#Dog").style.display = "none";
   
-  
-  resetTimer2();
-  startTimer2(petTimeout);
-  
-  
-  
 }
+
+
+
 
 document.getElementById("keepBtn").addEventListener("click", keep);
 document.getElementById("releaseBtn").addEventListener("click", release);
+
+document.getElementById("keepBtn2").addEventListener("click", keep2);
+document.getElementById("releaseBtn2").addEventListener("click", release2);
+
+
+
+
+
+
 
 
 function getRandomName() {

@@ -544,3 +544,128 @@ nav {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+#question2 {
+  
+  display: none;
+
+  position: absolute;
+  
+  bottom: 179px;
+  right: 398px;
+  z-index: 100000;
+  justify-content: center;
+  align-items: center;
+  
+  width: 823px;
+  height: 540px;
+  
+  margin: 0 auto;
+  
+  padding: 20px;
+  border-radius: 33px;
+  background-color: #e1d8b3;
+  
+  text-align: center;
+  font-size: 54px;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.87);
+}
+
+#animalType2 {
+  display: none;
+  position: absolute;
+  transform: scale(3);
+  bottom: 606px;
+  right: 48%;
+  z-index: 100002;
+  text-align: center
+}
+
+
+#baseValue2 {
+  display: none;
+  position: absolute;
+  transform: scale(2.4);
+  bottom: 516px;
+  right: 48%;
+  z-index: 100002;
+  text-align: center
+}
+
+#tipValue2 {
+  display: none;
+  position: absolute;
+  transform: scale(2.4);
+  bottom: 435px;
+  right: 50%;
+  z-index: 100002;
+  text-align: center
+}
+
+
+#tipChance2 {
+  display: none;
+  position: absolute;
+  transform: scale(2.4);
+  bottom: 359px;
+  right: 48%;
+  z-index: 100001;
+  text-align: center
+}
+
+
+
+.action-buttons-container2 {
+  display: none;
+  gap: 20px;
+  justify-content: center; /* optional, center horizontally */
+}
+
+.action-buttons-container2 button {
+
+  position: relative;
+  top: 600px; /* move down 100px from original position */
+  z-index: 99999;
+  padding: 13px 28px;
+  font-size: 42px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  color: white;
+}
+
+/* Individual colors */
+#keepBtn2 {
+  z-index: 9999999;
+  background-color: #5fa662; /* green */
+}
+
+#releaseBtn2 {
+  z-index: 9999999;
+  background-color: #dc4034; /* red */
+}
+
+/* Hover animation */
+.action-buttons-container2 button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+
+
+
+
+
+
