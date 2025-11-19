@@ -386,6 +386,26 @@ nav {
 }
 
 
+#Cat {
+  display: none;
+  position:  absolute;
+  bottom: 155px;
+  left: 492px;
+  z-index: 0;
+  width: 16%;
+}
+
+#Dog {
+  display: none;
+  position:  absolute;
+  bottom: 155px;
+  left: 492px;
+  z-index: 0;
+  width: 16%;
+}
+
+
+
 
 .itemPopUp {
   display: none;
@@ -399,6 +419,20 @@ nav {
   width: 21%;
  transform: scale(4);
 }
+
+
+
+#TTTime {
+  position:  absolute;
+  bottom: 650px;
+  left: 1057px;
+  z-index: 999;
+  width: 21%;
+ transform: scale(4);
+}
+
+
+
 
 #question {
   
@@ -432,9 +466,42 @@ nav {
   transform: scale(3);
   bottom: 606px;
   right: 48%;
+  z-index: 100002;
+  text-align: center
+}
+
+
+#baseValue {
+  display: none;
+  position: absolute;
+  transform: scale(2.4);
+  bottom: 516px;
+  right: 48%;
+  z-index: 100002;
+  text-align: center
+}
+
+#tipValue {
+  display: none;
+  position: absolute;
+  transform: scale(2.4);
+  bottom: 435px;
+  right: 50%;
+  z-index: 100002;
+  text-align: center
+}
+
+
+#tipChance {
+  display: none;
+  position: absolute;
+  transform: scale(2.4);
+  bottom: 359px;
+  right: 48%;
   z-index: 100001;
   text-align: center
 }
+
 
 
 .action-buttons-container {

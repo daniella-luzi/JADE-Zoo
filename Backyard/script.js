@@ -276,6 +276,56 @@ function resetTimer() {
 
 
 
+
+
+
+
+
+
+let countdown2 = 10;
+let intervalId2 = null;
+
+function updateDisplay2() {
+  document.getElementById("TTTime").textContent = countdown2;
+}
+
+function startTimer2(onTimeout) {
+  if (intervalId2 !== null) return; // Prevent multiple intervals
+
+  updateDisplay2();
+
+  intervalId2 = setInterval(() => {
+    countdown2--;
+
+    updateDisplay2();
+
+    if (countdown2 <= 0) {
+      clearInterval(intervalId2);
+      intervalId2 = null;
+      onTimeout();
+    }
+  }, 1000);
+}
+
+function resetTimer2() {
+  clearInterval2(intervalId2);
+  intervalId2 = null;
+  countdown2 = 10;
+  updateDisplay2();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 function trashTimeout() {
   (Math.random() < 0.5 ? possumAppear : raccoonAppear)();
 }
@@ -289,49 +339,114 @@ function raccoonAppear() {
   document.querySelector("#raccoon").style.display = "block";
 }
 
+
+var currentAnimalType;
+var currentAnimalName;
+var currentAnimalBaseMoney;
+var currentAnimalTipPer;
+var currentAnimalTipVal;
+
 function captureVisible(AnimalElement) {
-  // Show the question container
-  
+  // Asks if you want to capture or not. 
+  if (inMenu == true) {
+    return;
+  }
+
+  inMenu = true;
   document.querySelector(".action-buttons-container").style.display = "flex";
   document.querySelector("#question").style.display = "block";
   document.querySelector("#animalType").style.display = "block";
-  // Use the alt text of the image to display the message
+  // Uses the alt text of the image to display the message
   
-  const animalName = AnimalElement.alt; 
+  document.querySelector("#baseValue").style.display = "flex";
+  document.querySelector("#tipChance").style.display = "flex";
+  document.querySelector("#tipValue").style.display = "flex";
+
+
+  const animalName = AnimalElement.alt;  //animal type
   document.querySelector("#animalType").textContent = "What a cute " + animalName + "!";
+  currentAnimalType = animalName;
   
   
+  var animalsFirstName = getRandomName();      //animal name, sorry for confusion
+  document.querySelector("#question").textContent = "You found " + animalsFirstName + "!";
+  currentAnimalName = animalsFirstName;
+
+  
+  
+  //if you have diffrent trash can, logic would be here.
+  
+  currentAnimalBaseMoney = Math.floor(Math.random() * 4) + 1;
+  currentAnimalTipPer =    Math.floor(Math.random() * 5) + 1;
+  currentAnimalTipVal =    Math.floor(Math.random() * 7) + 4;
+  
+  
+  document.querySelector("#baseValue").textContent = "+$" + currentAnimalBaseMoney + " per second";
+  document.querySelector("#tipChance").textContent = currentAnimalTipPer + "% tip chance";
+  document.querySelector("#tipValue").textContent = "+$" + currentAnimalTipPer + " per tip";
   
 }
 
-
-
+var inMenu = false;
 
 function keep() {
   alert("This will send to andrews part");
 }
 
 function release() {
-  
+  inMenu = false;
   document.querySelector("#question").style.display = "none";
   document.querySelector("#animalType").style.display = "none";
   document.querySelector(".action-buttons-container").style.display = "none";
+
+  document.querySelector("#baseValue").style.display = "none";
+  document.querySelector("#tipValue").style.display = "none";
+  document.querySelector("#tipChance").style.display = "none";
+  
   resetTimer();
   startTimer(trashTimeout);
-  
   
   document.querySelector("#raccoon").style.display = "none";
   document.querySelector("#possum").style.display = "none";
   
-
+  
+  
+  document.querySelector("#Cat").style.display = "none";
+  document.querySelector("#Dog").style.display = "none";
+  
+  
+  resetTimer2();
+  startTimer2(petTimeout);
+  
+  
+  
 }
 
 document.getElementById("keepBtn").addEventListener("click", keep);
 document.getElementById("releaseBtn").addEventListener("click", release);
 
 
+function getRandomName() {
+  const names = ["Rocky", "Larry", "Max", "Cheese", "Sunshine", "Tubs", "Nina", "Holly", "Fluffy", "Rockey", "Cookie", "Crumb", "Cuddle"]; // array of names
+  const randomIndex = Math.floor(Math.random() * names.length);
+  return names[randomIndex];
+}
+
+function petTimeout() {
+  (Math.random() < 0.5 ? CatAppear : DogAppear)();
+}
+
+function CatAppear() {
+  document.querySelector("#Cat").style.display = "block";
+  
+}
+
+function DogAppear() {
+  document.querySelector("#Dog").style.display = "block";
+}
 
 
 
 resizeWorld();
 startTimer(trashTimeout);
+startTimer2(petTimeout);
