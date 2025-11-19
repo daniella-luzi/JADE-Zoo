@@ -516,7 +516,8 @@ function keep() {
     breed: currentAnimalType,
     
   }
-  alert("This will send to andrews part");
+  alert("Good job! You saved the animal!");
+  window.location.href = "index.html";
 }
 
 function release() {
@@ -539,7 +540,8 @@ function release() {
 
 
 function keep2() {
-  alert("This will send to andrews part");
+  alert("Good job! You saved the animal!");
+  window.location.href = "index.html";
 }
 
 function release2() {

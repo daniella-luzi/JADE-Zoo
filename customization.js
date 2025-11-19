@@ -111,6 +111,8 @@ function loadPurchasedItems(){
             inventory.decor.push(item);
           }
         });
+        //saving the inventory
+        localStorage.setItem("inventory", JSON.stringify(inventory));
         localStorage.removeItem('boughtItems');
       }
   }

@@ -54,7 +54,10 @@ function purchaseItems(){
   //adding the items to the bought items section
   Object.keys(fullCart).forEach((key)=>{
     const item = fullCart[key];
-    boughtItems.push(item);
+    // Add each item multiple times based on quantity
+    for(let i = 0; i < item.quantity; i++){
+      boughtItems.push(item);
+    }
   });
   
   //saving the bought items to local storage
