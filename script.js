@@ -906,7 +906,6 @@ const creaturesListEl = document.getElementById("creaturesList");
 
 const encImage = document.getElementById("encImage");
 const encTitle = document.getElementById("encTitle");
-const encAttribute = document.getElementById("encAttribute");
 const encBody = document.getElementById("encBody");
 
 // === Open / Close ===
@@ -992,7 +991,6 @@ function showBreedDetails(b) {
 
   encImage.src = breedInfo.src;
   encTitle.textContent = prettyBreedName(b);
-  encAttribute.textContent = breedInfo.attributeText;
   encBody.textContent = breedInfo.entry;
 }
 
