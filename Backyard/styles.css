@@ -436,3 +436,44 @@ nav {
   text-align: center
 }
 
+
+.action-buttons-container {
+  display: none;
+  gap: 20px;
+  justify-content: center; /* optional, center horizontally */
+}
+
+.action-buttons-container button {
+
+  position: relative;
+  top: 600px; /* move down 100px from original position */
+  z-index: 99999;
+  padding: 13px 28px;
+  font-size: 42px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  color: white;
+}
+
+/* Individual colors */
+#keepBtn {
+  z-index: 9999999;
+  background-color: #5fa662; /* green */
+}
+
+#releaseBtn {
+  z-index: 9999999;
+  background-color: #dc4034; /* red */
+}
+
+/* Hover animation */
+.action-buttons-container button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+
+
