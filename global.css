@@ -1,0 +1,67 @@
+
+#pageOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgb(255, 249, 193);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+
+  opacity: 1;
+  transition: opacity 600ms ease;
+}
+
+#pageOverlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Circular paw loader container */
+.paw-loader {
+  position: relative;
+  width: 140px;
+  height: 140px;
+
+  /* IMPORTANT — pause animation by default */
+  animation-play-state: paused;
+}
+
+.paw {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;       /* or 28px if you liked that better */
+  height: 24px;
+  transform-origin: center center;
+  background-image: url("assets/UI/paw_loading.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;        /* default to invisible */
+}
+
+.paw.running {
+  animation-name: pawStep;
+  animation-duration: 1.6s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+
+@keyframes pawStep {
+  0%, 10%   { opacity: 0; }
+  20%       { opacity: 1; }
+  35%       { opacity: 0.3; }
+  50%       { opacity: 0; }
+  100%      { opacity: 0; }
+}
+
+/* place paws around the circle — rotated OUTWARD (fixed) */
+.paw1 { transform: rotate(0deg) translate(55px) rotate(180deg);    animation-delay: 0s; }
+.paw2 { transform: rotate(45deg) translate(55px) rotate(180deg);   animation-delay: 0.125s; }
+.paw3 { transform: rotate(90deg) translate(55px) rotate(180deg);   animation-delay: 0.25s; }
+.paw4 { transform: rotate(135deg) translate(55px) rotate(180deg);  animation-delay: 0.375s; }
+.paw5 { transform: rotate(180deg) translate(55px) rotate(180deg);  animation-delay: 0.5s; }
+.paw6 { transform: rotate(225deg) translate(55px) rotate(180deg);  animation-delay: 0.625s; }
+.paw7 { transform: rotate(270deg) translate(55px) rotate(180deg);  animation-delay: 0.75s; }
+.paw8 { transform: rotate(315deg) translate(55px) rotate(180deg);  animation-delay: 0.875s; }

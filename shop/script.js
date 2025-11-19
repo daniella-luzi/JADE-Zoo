@@ -1,6 +1,7 @@
 console.log(localStorage)
-let shoppingCart = {}; //{id: quantity}
+let shoppingCart = {};
 
+//loading the cart
 window.addEventListener('load', () => {
   if(localStorage.getItem("cart")){
     shoppingCart = JSON.parse(localStorage.getItem("cart"));
@@ -18,7 +19,9 @@ window.addEventListener('load', () => {
 }
 });
 
+//object array of all items available in the shop
 const allItems = {
+  //Zoo items
   Zoo: [
     {
       id: "bench",
@@ -57,30 +60,33 @@ const allItems = {
     },
 
     {
-      id: "fluffyBed",
+      id: "bed1",
       name: "Fluffy Bed",
       src: "../assets/furniture/beds/fluffy bed.png",
       price: 30,
       attribute: "+5% Tip Chance",
       category: "Beds",
+      slotGroup: "bed"
     },
 
     {
-      id: "circleBed",
+      id: "bed1",
       name: "Circle Bed",
       src: "../assets/furniture/beds/circle bed.png",
       price: 15,
       attribute: "Gives an extra $1 tip",
       category: "Beds",
+      slotGroup: "bed"
     },
 
     {
-      id: "pillowBed",
+      id: "bed1",
       name: "Pillow Bed",
       src: "../assets/furniture/beds/pillow bed.png",
       price: 15,
       attribute: "Gives an extra $1 tip",
       category: "Beds",
+      slotGroup: "bed"
     },
 
     {
@@ -93,7 +99,7 @@ const allItems = {
     },
 
     {
-      id: "catPainting",
+      id: "painting1",
       name: "Cat Painting",
       src: "../assets/furniture/wall/paintings/painting.png",
       price: 10,
@@ -101,7 +107,7 @@ const allItems = {
       category: "Paintings",
     },
      {
-      id: "basicbench",
+      id: "bench",
       name: "Basic Bench",
       src: "../assets/furniture/benches/basicbench.png",
       price: 10,
@@ -109,7 +115,7 @@ const allItems = {
       category: "zooFurniture",
     },
     {
-      id: "flowerwindow",
+      id: "window",
       name: "Flower Window",
       src: "../assets/furniture/wall/windows/flowerwindow.png",
       price: 10,
@@ -117,7 +123,7 @@ const allItems = {
       category: "zooMisc",
     },
     {
-      id: "basiccattree",
+      id: "catTree",
       name: "Basic Cat Tree",
       src: "../assets/furniture/cat trees/basic cat tree.png",
       price: 10,
@@ -125,7 +131,7 @@ const allItems = {
       category: "zooFurniture",
     },
     {
-      id: "flowerpainting",
+      id: "painting1",
       name: "Flower Painting",
       src: "../assets/furniture/wall/paintings/flowerPainting.png",
       price: 10,
@@ -134,6 +140,7 @@ const allItems = {
     }
 
   ],
+  //Backyard items
   Backyard: [
     {
       id: "trashcan",
@@ -155,6 +162,7 @@ const allItems = {
   ],
 };
 
+//getting itemObject for all items
 Object.keys(allItems).forEach((key)=>{
     allItems[key].forEach((itemObject)=>{
         itemObject.itemGroup = `${key}`;
@@ -165,13 +173,17 @@ Object.keys(allItems).forEach((key)=>{
  * Takes in an object representing ONE item (like the bench)
  * @param {object} itemObject
  */
+
+//making the container for each item with the name, picture, price, attribute, and badge
 function createItemContainer(itemObject) {
   const itemContainer = document.createElement("div");
   itemContainer.id = itemObject.id;
-  itemContainer.className = `item-container ${itemObject.category}`;
+  const prettyName = itemObject.name.replaceAll(" ", "");
+  console.log("itemObject.name in createItemContainer:  ", prettyName)
+  itemContainer.className = `item-container ${itemObject.category} ${prettyName}`;
   itemContainer.innerHTML = `
         <div class="itemBadge">0</div>
-        <img src="${itemObject.src}" alt="${itemObject.name}">
+        <img src="${itemObject.src}" alt="${prettyName}">
         <div class="item-description">
             <div class="itemName">
                 <span>${itemObject.name} - <img id="shopGem" src="./images/gem.png">${itemObject.price}</span>
@@ -185,7 +197,7 @@ function createItemContainer(itemObject) {
   return itemContainer;
 }
 
-// Makes the quantity and add to cart buttons appear in the item container
+//makes the quantity and add to cart buttons appear in the item container
 function createShopper(itemObject) {
     const shopper = document.createElement("div");
     const onclickText = `onclick='addToCart(${JSON.stringify(itemObject)})'`;
@@ -197,23 +209,32 @@ function createShopper(itemObject) {
     return shopper;
 }
 
-
+//adding items to cart and updating the quantity on the badge
 function addToCart(itemObject) {
-    const inputBox = document.querySelector(`#${itemObject.id} > .shopper > .quantity > .input-box`);
-    const itemBadges = document.querySelectorAll(`#${itemObject.id} > .itemBadge`);
+  const prettyName = itemObject.name.replaceAll(" ", "");
+    const inputBox = document.querySelector(`.${prettyName} > .shopper > .quantity > .input-box`);
+    const itemBadges = document.querySelectorAll(`.${prettyName} > .itemBadge`);
     let value = parseInt(inputBox.value);
-    if(!shoppingCart[itemObject.id]){
-        shoppingCart[itemObject.id] = {
-            "name": `${itemObject.name}`,
-            "price": `${itemObject.price}`,
-            "quantity": 0
-        };
+    if(!shoppingCart[prettyName]){
+      if(!itemObject.slotGroup){
+        itemObject.slotGroup = null;
+      }
+      shoppingCart[prettyName] = {
+          "id": itemObject.id,
+          "name": itemObject.name,
+          "price": itemObject.price,
+          "src": itemObject.src,
+          "attribute": itemObject.attribute,
+          "category": itemObject.category,
+          "quantity": 0,
+          "slotGroup": itemObject.slotGroup
+      };
     }
-    shoppingCart[itemObject.id].quantity += value;
+    shoppingCart[prettyName].quantity += value;
     localStorage.setItem("cart", JSON.stringify(shoppingCart));
     itemBadges.forEach((itemBadge)=>{
       itemBadge.style.visibility = "visible";
-      itemBadge.innerHTML = shoppingCart[itemObject.id].quantity;
+      itemBadge.innerHTML = shoppingCart[prettyName].quantity;
     })
 
 }
@@ -285,6 +306,7 @@ function openSubCategory(subcategoryID) {
   }
 }
 
+//getting the cart to display
 function openCart(pageID) {
   document.getElementById("Zoo").style.display = "none";
   document.getElementById("Backyard").style.display = "none";
@@ -293,11 +315,13 @@ function openCart(pageID) {
   document.getElementById(pageID).style.display = "block";
 }
 
+//adding items to their containers for the shop
 function addItem(itemObject){
     document.getElementById(`${itemObject.itemGroup.toLowerCase()}Items`).appendChild(createItemContainer(itemObject));
     document.getElementById(itemObject.category).appendChild(createItemContainer(itemObject));
 }
 
+//function to go to the cart page, if there are items in the cart
 function goToCart(){
     if(localStorage.getItem("cart")){
         window.location.href = 'shoppingcart.html';
@@ -307,12 +331,14 @@ function goToCart(){
 /* show zoo items by default*/
 openCategory("Zoo");
 
+//getting all items to have an itemObject for the shop
 Object.keys(allItems).forEach((key)=>{
     allItems[key].forEach((itemObject)=>{
         addItem(itemObject);
     })
 })
 
+//function to reset/clear the cart and reload the page
 function resetCart(){
     localStorage.removeItem("cart");
     window.location.reload();

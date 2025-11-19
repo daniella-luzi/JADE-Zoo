@@ -1,6 +1,6 @@
 @font-face {
   font-family: ComicNeue;
-  src: url(fonts/Comic_Neue/ComicNeue-Regular.ttf);
+  src: url(../fonts/Comic_Neue/ComicNeue-Regular.ttf);
 }
 
 * {
@@ -20,7 +20,7 @@ html, body {
   justify-content: center;     /* center horizontally */
   align-items: center;         /* center vertically */
   position: relative;
-  background-image: url(../assets/backgrounds/WALL.png);
+
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -38,9 +38,11 @@ html, body {
   height: 900px;
   position: relative;
   transform-origin: top left;  /* simpler when using the frame sizing approach */
-  background-color: red;
+  background-image: url(BackyardSunset.png);
   /* border: 1px solid red; */
   z-index: 1;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 
@@ -48,8 +50,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url(assets/backgrounds/WALL.png)
+  background-image: url(../assets/UI/singlepaw.png);
 }
+
+
+
 
 nav {
   position: fixed;
@@ -100,11 +105,11 @@ nav {
   left: 0;
 }
 
-#placeDecor {
+#placeDecor, #acceptAnimal {
   background-color: green;
 }
 
-#rejectDecor {
+#rejectDecor, #rejectAnimal {
   background-color: red;
 }
 
@@ -118,6 +123,20 @@ nav {
   font-weight: bold;
 }
 
+.animalButton {
+  color: black;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 5px solid black;
+  font-size: 30px;
+  line-height: 0;
+  font-weight: bold;
+}
+
+.animalButton:hover {
+  scale: 1.05;
+}
 
 #decorPopUp {
   padding: 50px;
@@ -129,6 +148,35 @@ nav {
   column-gap: 20px;
   align-items: center;
 }
+
+.animalButtons {
+  display: flex;
+  column-gap: 20px;
+  align-items: center;
+}
+
+.itemPopUp{
+  background-color: rgba(209, 206, 164, 0.863);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 18pt;
+  width: 300px;
+  border-radius: 40px;
+  padding: 20px;
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 /*Encyclopedia stuff*/

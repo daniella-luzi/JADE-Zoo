@@ -6,78 +6,107 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="global.css">
+    <link rel="icon" href="assets/animals/johnathan_cat.png">
+
   </head>
   <body>
-    <!-- Encyclopedia (Andrew) -->
-   <div id="encyclopedia-container" class="encyclopedia-container">
-            <div class="encyclopedia">
-                
-              
-              <!-- Encyclopedia Tab -->
-              <div class="encyclopediaTab" id = "encyclopediaTab">
-                <div class="animalPage" id="entryGrid">
-                </div>
-                
-                <div class="descPage">
-                    <div class = "imgBox">
-                        <img src = "images/cat.jpg" alt = "Picture of cat" class = "encyclopediaImg" id = "encycloDescImage">
-                    </div>
-                    <h2 class = "encycloDescTitle" id="encycloDescTitle"></h2>
-                    <textArea readonly class="encycloDescription" id ="encycloDescription"></textArea>
-                </div>
-              </div>  
-              
-              
-              <!-- Creature Tab -->
-              <div class="creatureTab" id = "creatureTab">
-                <div  class="animalPage" id = "creatureGrid">
-                </div>
-                
-                <div id="activeAnimals">
-                </div>
-                
-                <div class="descPage">
-                    <div class = "imgBox">
-                        <img src = "images/cat.jpg" alt = "Picture of cat" class = "encyclopediaImg" id = "creatureDescImage">
-                    </div>
-                    <h2 class = "encycloDescTitle" id="creatureDescTitle"></h2>
-                    <textArea readonly class="encycloDescription" id="creatureDescription"></textArea>
-                    <button id="assignActive">Placeholder</button>
-                </div>
-                
-              </div>  
-              
-                <!-- Necessary Buttons for maneuvering Encyclopedia -->
-                <button class="exit_button" id="closeEncyclopediaBtn">
-                  <img src="assets/UI/exit_transparent.png" alt="exit sign" class="btnImage" onclick="closeEncyclopedia()">
-                </button>
-                <button class="exit_button creaturesTab_btn" id="creaturesTab_btn">
-                  <img src="assets/UI/zoo%20icon.png" alt="exit sign" class="btnImage" onclick="showCreaturePage()">
-                </button>
-                <button class="exit_button encyclopediaTab_btn" id="encyclopediaTab_btn">
-                  <img src="assets/UI/creatures%20icon.png" alt="exit sign" class="btnImage" onclick="showEncyclopediaPage()">
-                </button>
-              
-            </div>
+    <div id="pageOverlay">
+      <div class="paw-loader">
+        <div class="paw paw1"></div>
+        <div class="paw paw2"></div>
+        <div class="paw paw3"></div>
+        <div class="paw paw4"></div>
+        <div class="paw paw5"></div>
+        <div class="paw paw6"></div>
+        <div class="paw paw7"></div>
+        <div class="paw paw8"></div>
+      </div>
     </div>
-    
+
 
     <!-- Petting Zoo (Emma) -->
     <div id="worldWrapper">
       <div id="frame">
         <div id="world">
           <img src="assets/backgrounds/FLOOR.png" alt="Floor" id="floor">
+
+
+
+          <!-- Encyclopedia (Andrew) -->
+          <div id="encyclopedia-container" class="encyclopedia-container">
+            <!-- Tabs -->
+            <div class="enc-tabs">
+              <button class="enc-tab active" id="encyclopediaTab_btn">E
+                <div class="tab-spacer"></div>
+              </button>
+              <button class="enc-tab" id="creaturesTab_btn">C
+                <div class="tab-spacer"></div>
+              </button>
+            </div>
+            <div class="encyclopedia">
+              <!-- Close button -->
+              <button class="enc-close" id="closeEncyclopediaBtn">x</button>
+
+
+              <!-- Book content -->
+              <div class="enc-inner">
+                <!-- Left side: list -->
+                <div class="enc-list">
+                  <div id="encyclopediaList" class="enc-list-grid"></div>
+                  <div id="creaturesList" class="enc-list-grid enc-hidden"></div>
+                </div>
+
+                <!-- Right side: details -->
+                <div class="enc-detail">
+                  <img id="encImage" class="enc-image" src="" alt="">
+                  <h2 id="encTitle" class="enc-title"></h2>
+                  <p id="encAttribute" class="enc-attribute"></p>
+                  <p id="encBody" class="enc-body"></p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+    
+     <!-- These buttons add and remove money value via the add($) function, money script needs to be attached somewhere-->
+      <div class = "moneybuttons">
+      <button class = "moneybutton" onclick="add(10)">+10</button>
+      <button class = "moneybutton" onclick="add(-10)">-10</button>
+      </div>
+    
+    
+    
     <nav>
       <div class="navItem">
-        <img src="assets/UI/shop icon.png" alt="Shop" id="shopButton" class="squareIcon" onclick="window.location.href = 'shop/index.html'">
+        <img src="assets/UI/shop icon.png" alt="Shop" id="shopButton" class="squareIcon" onclick="goTo('shop/index.html')">
         <img src="assets/UI/gem.png" alt="Jades" id="jade">
-        <span class="mainFont" id="balance">150</span>
-        <img src="assets/UI/creatures icon.png" alt="Creatures" id="creaturesButton" class="squareIcon" onclick="showEncyclopedia()">
+
+        
+        
+        
+        
+                <!-- If you have an element that displays money, use this code to display money value -->
+        
+        <!-- This is the page element -->
+        <span id ="money" class="mainFont">This Value Will Be Replaced by $$$</span>
+        <!-- If you have an element that displays money, use this code to display money value -->
+        
+        
+        
+        
+        <!-- As long as the script src="Money.js"> is loaded. You can use add(value) to add to the money.-->
+        <!-- You can also add(-value) to subtract from your balance. -->
+        <!-- Must use <scrip> or other ways to acess JS for this function to work. -->
+
+        
+        
+        
+        <img src="assets/UI/creatures icon.png" alt="Creatures" id="creaturesButton" class="squareIcon" onclick="openEncyclopedia()">
       </div>
-      <img src="assets/UI/zoo icon.png" alt="Zoo Customization" id="zooButton" class="squareIcon navItem" onclick="window.location.href = 'customization.html'">
+      <img src="assets/UI/zoo icon.png" alt="Zoo Customization" id="zooButton" class="squareIcon navItem" onclick="goTo('customization.html')">
       <div id="decorPopUp" style="display: none;">
         <p>Place <span id="decorChoice">DECOR ITEM</span> here?</p>
         <div id="decorButtons">
@@ -85,7 +114,26 @@
           <button id="rejectDecor" class="decorButton">X</button>
         </div>
       </div>
+
+      <div id="animalPopUp" style="display: none;">
+        <p>Place <span id="animalChoice">ANIMAL</span> here?</p>
+        <div id="animalButtons">
+          <button id="placeAnimal" class="animalButton">&#10003;</button>
+          <button id="rejectAnimal" class="animalButton">X</button>
+        </div>
+      </div>
+
+      <div id="animalPrompt" style="display: none;">
+        <p>Please click on a location.</p>
+      </div>
     </nav>
+    <!-- This is the script needed -->
+    <script src="Money.js"></script>
+    <script>
+      setupPage()
+    </script>
     <script src="script.js"></script>
+    <script src="global.js"></script>
+
   </body>
 </html>
