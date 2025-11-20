@@ -61,37 +61,37 @@ let allBreeds = {
   CommonRaccoon: {
     attributeText: "+1 Ticket Price",
     entry: "These furry mammals are native to North America, but later spread to central Europe, the Caucasus, and Japan in the mid-20th century. They are nocturnal, meaning they sleep during the day. Raccoons are super intelligent; in fact, studies have shown that they can remember the solutions to tasks for at least 3 years! They originally lived in forests, but have adapted to live in urban areas, which is why you might find one digging through your trash. You may have noticed their dexterous paws. That's where they got their name! The word 'raccoon' was adopted into English from the native Powhatan term meaning 'animal that scratches with its hands'. Do NOT try to pet them.",
-    src: "assets/animals/breeds/commonraccoon.png" //real picture
+    src: "../assets/animals/breeds/commonraccoon.png" //real picture
   },
   GoldenRaccoon: {
     attributeText: "+15 Ticket Price",
     entry: "While not really a 'breed' per se, these little guys are inspired by albino raccoons, which are normal raccoons but with a rare gene mutation that removes their 'melanin', or the pigment that makes their fur and skin dark. As a result, their fur is white, their noses are pink, and their eyes are red. This mutation only occurs in about one in every 10,000-20,000 raccoons, making sightings extremely rare. There are also blonde raccoons, a rare color morph with light brown or golden fur. Their masks and tail rings are still visible but not nearly as pronounced.",
-    src: "assets/animals/breeds/blonderaccoon.png"
+    src: "../assets/animals/breeds/blonderaccoon.png"
   },
   VirginiaOpossum: {
     attributeText: "+1 Ticket Price",
     entry: "These solitary marsupials, usually referred to as 'possums', can be found from Canada to Costa Rica. Like raccoons, they often roam around trash, compost, and gardens. Opossums have 'prehensile' tails, meaning they are used for grabbing and holding things. They have a whopping 50 teeth and opposable thumbs! Surprisingly, their brain is only 1/5 the size of a raccoon's. A mother opossum carries her children on her body, and newborn opossums are as tiny as a honeybee. When threatened by a predator, an opossum may 'play dead', or pretend to be dead or injured. But in some cases, opossums will absolutely fight back. DON'T pet them!",
-    src: "assets/animals/breeds/virginiaopossum.png"
+    src: "../assets/animals/breeds/virginiaopossum.png"
   },
   LaboradorRetriever: {
     attributeText: "+2 Ticket Price",
     entry: "We all know and love these playful canines. This breed comes from Britain and was created to hunt and track game in the 19th century. Labs have historically been trained to become guide and service dogs, war dogs, rescue dogs, and even police dogs. They of course make wonderful companions, as they are a friendly, energetic, intelligent, and loyal breed. Labs are very widespread - in fact, you may have seen a few in your neighborhood! They vary a lot in color, with black, chocolate, and yellow variants - all equally adorable.",
-    src: "assets/animals/breeds/lab.png"
+    src: "../assets/animals/breeds/lab.png"
   },
   CavalierKingCharlesSpaniel: {
     attributeText: "+2 Ticket Price",
     entry: "This is a British breed of toy dog with four distinct color patterns, emerging in the 1920s. They are soft, snuggly, highly affectionate lap dogs that do great with children and other dogs. Cavaliers are not shy at all, and are highly adaptable. They are playful, active, and curious, and have been trained to become therapy dogs due to their sweet and gentle nature. Cavaliers often want to chase things, including vehicles, so they are not suited for off-leash walking, and they have a strong hunting instinct. They usually make terrible guard dogs because all strangers are friends to them.",
-    src: "assets/animals/breeds/cavalier.png"
+    src: "../assets/animals/breeds/cavalier.png"
   },
   PersianCat: {
     attributeText: "+3 Ticket Price",
     entry: "Persian Longhairs are thought to have emerged in the 19th century. Selective breeding has caused them to have flat faces over time which cause health problems, but traditional Persians actually had normal muzzles. Persians are quiet cats that adapt well to indoor life, and are close and affectionate with their owners. They can be friendly towards strangers, and like to keep themselves clean, although require regular brushing to maintain their beautiful coats.",
-    src: "assets/animals/breeds/persian.png"
+    src: "../assets/animals/breeds/persian.png"
   },
   RagdollCat: {
     attributeText: "+4 Ticket Price",
     entry: "Ragdolls originated around 1963 and have colorpoint coats, which means the colder the fur is over time, the darker it will become. Their fur looks like a heat map of their bodies! They are super affectionate and docile cats, and are even called 'ragdolls' because they can be completely limp and relaxed when picked up, just like a ragdoll. They are dog-like cats because they follow people around, are easily handled, are not typically aggressive towards other animals, can be super playful, want attention constantly, and are intelligent and trainable. They make wonderful family pets.",
-    src: "assets/animals/breeds/ragdoll.png"
+    src: "../assets/animals/breeds/ragdoll.png"
   }
 }
 
@@ -313,11 +313,13 @@ function resizeWorld() {
 window.addEventListener("resize", resizeWorld);
 
 function preloadBackyardImages() {
-  Object.values(breedImages).forEach(path => {
+  // breedData: { CommonRaccoon: { img, nickname }, ... }
+  Object.values(breedData).forEach(info => {
     const img = new Image();
-    img.src = path;
+    img.src = info.img;
   });
 }
+
 
 window.addEventListener("load", () => {
   // hide unused hardcoded sprites if you still have them
@@ -346,16 +348,37 @@ window.addEventListener("load", () => {
 
 // === Backyard spawn config =====================================
 
-// Which breeds can appear at each spot, and how their stats are rolled.
-const breedImages = {
-  VirginiaOpossum: "../assets/animals/virginia_possum.png",
-  CommonRaccoon: "../assets/animals/racket_raccoon.png",
-  GoldenRaccoon: "../assets/animals/golden_raccoon.png",        // optional
-  PersianCat: "../assets/animals/johnathan_cat.png",
-  CavalierKingCharlesSpaniel: "../assets/animals/cavalier_dog.png",
-  LaboradorRetriever: "../assets/animals/lab_puppy.png",
-  RagdollCat: "../assets/animals/johnathan_cat.png"             // placeholder
+let breedData = {
+  CommonRaccoon: {
+    img: "../assets/animals/racket_raccoon.png",
+    nickname: "raccoon"
+  },
+  GoldenRaccoon: {
+    img: "../assets/animals/golden_raccoon.png",
+    nickname: "raccoon"
+  },
+  VirginiaOpossum: {
+    img: "../assets/animals/virginia_possum.png",
+    nickname: "possum"
+  },
+  LaboradorRetriever: {
+    img: "../assets/animals/lab_puppy.png",
+    nickname: "doggy"
+  },
+  CavalierKingCharlesSpaniel: {
+    img: "../assets/animals/cavalier_dog.png",
+    nickname: "doggy"
+  },
+  PersianCat: {
+    img: "../assets/animals/johnathan_cat.png",
+    nickname: "kitty"
+  },
+  RagdollCat: {
+    img: "../assets/animals/johnathan_cat.png",
+    nickname: "kitty"
+  }
 };
+
 
 // Two spawn "sources": trash & food bowl.
 // If you add another backyard item later, just add another entry here.
@@ -431,7 +454,6 @@ let currentSpawnKey = null;        // "trash" or "bowl"
 // We'll store the actual DOM element of the currently visible backyard animal:
 let currentSpawnImgEl = null;
 
-// Show the capture popup for a given spawn ("trash" or "bowl")
 function openCaptureMenu(spawnKey) {
   if (inMenu) return;
   inMenu = true;
@@ -445,12 +467,11 @@ function openCaptureMenu(spawnKey) {
 
   const imgEl = document.getElementById(spawn.imgId);
   const breedKey = imgEl.dataset.breed;
-  const prettyName = prettyBreedName(breedKey);
 
-  // Roll stats based on where we found them
+  const cuteWord = breedData[breedKey]?.nickname || prettyBreedName(breedKey);
+
   const { baseMoney, tipChance, tipValue } = spawn.rollStats();
 
-  // Save globals for `keep()` to use
   currentSpawnKey = spawnKey;
   currentSpawnImgEl = imgEl;
   currentAnimalType = breedKey;
@@ -459,11 +480,10 @@ function openCaptureMenu(spawnKey) {
   currentAnimalTipPer = tipChance;
   currentAnimalTipVal = tipValue;
 
-  // Update UI text
   document.querySelector("#question").textContent =
     "You found " + currentAnimalName + "!";
   document.querySelector("#animalType").textContent =
-    "What a cute " + prettyName + "!";
+    "What a cute " + cuteWord + "!";
 
   document.querySelector("#baseValue").textContent =
     "+$" + baseMoney + " per second";
@@ -472,7 +492,6 @@ function openCaptureMenu(spawnKey) {
   document.querySelector("#tipValue").textContent =
     "+$" + tipValue + " per tip";
 
-  // Show popup + buttons
   document.querySelector("#question").style.display = "block";
   document.querySelector("#animalType").style.display = "block";
   document.querySelector("#baseValue").style.display = "flex";
@@ -480,6 +499,7 @@ function openCaptureMenu(spawnKey) {
   document.querySelector("#tipValue").style.display = "flex";
   document.querySelector(".action-buttons-container").style.display = "flex";
 }
+
 
 // Hide popup and restart the appropriate timer
 function finishCapture() {
@@ -567,10 +587,14 @@ function spawnBackyardAnimal(spawnKey) {
   if (!imgEl) return;
 
   const breedKey = pickBreedWeighted(spawn.allowedBreeds);
-  const imgSrc = breedImages[breedKey];
+  const imgSrc = breedData[breedKey].img;
 
-  // Set meta info first
-  imgEl.alt = prettyBreedName(breedKey);
+  // NEW: friendly name for popup
+  imgEl.alt = breedData[breedKey].nickname;
+
+  // still keep real breed stored internally
+  imgEl.dataset.breed = breedKey;
+
   imgEl.dataset.breed = breedKey;
   imgEl.dataset.spawnKey = spawnKey;
 
@@ -751,7 +775,7 @@ function keep() {
       `+${currentAnimalTipPer}% tip chance\n` +
       `+$${currentAnimalTipVal} per tip`,
 
-    src: breedImages[breedKey],
+    src: breedData[breedKey].img,
     active: false
   };
 
