@@ -530,26 +530,26 @@ function keep() {
   const newAnimal = {
     name: currentAnimalName,
     breed: currentAnimalType,
-    attributes: [
-      ()=>{
-        addToTicketPrice(currentAnimalBaseMoney);
-        addToTip(currentAnimalTipVal);
-        changeTipChance(currentAnimalTipPer);
-      },
-      ()=>{
-        addToTicketPrice(-currentAnimalBaseMoney);
-        addToTip(-currentAnimalTipVal);
-        changeTipChance(-currentAnimalTipPer);
-      }
-    ],
+
+    baseMoney: currentAnimalBaseMoney,
+    tipChance: currentAnimalTipPer,
+    tipValue: currentAnimalTipVal,
+
+    attributeText:
+  `+$${currentAnimalBaseMoney} per second\n` +
+  `+${currentAnimalTipPer}% tip chance\n` +
+  `+$${currentAnimalTipVal} per tip`,
+
     src: breedImages[currentAnimalType.replaceAll(" ", "")],
     active: false
-    
-  }
+  };
+
+
   const currentownedCreatures = JSON.parse(localStorage.getItem("ownedCreatures"));
   currentownedCreatures.push(newAnimal);
-  console.log(currentownedCreatures)
-  localStorage.setItem("ownedCreatures", currentownedCreatures);
+  console.log(currentownedCreatures);
+  localStorage.setItem("ownedCreatures", JSON.stringify(currentownedCreatures));
+  console.log(localStorage.getItem("ownedCreatures"));
   alert("Good job! You saved the animal!");
   window.location.href = "index.html";
 }

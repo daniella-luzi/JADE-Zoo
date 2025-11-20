@@ -278,11 +278,22 @@ function loadAnimals() {
     const decorContainer = document.querySelector(`#${i.furnitureId}`).parentElement;
     const currentLocationImg = decorContainer.querySelector(`.${i.locationId} > img`);
     currentLocationImg.src = i.animal.src;
-    if(i.animal.attributes){
-      i.animal.attributes[0]();
-    }else{
+    if (i.animal.baseMoney !== undefined ||
+        i.animal.tipVal   !== undefined ||
+        i.animal.tipPer   !== undefined) {
+
+      const base   = i.animal.baseMoney || 0;
+      const tipVal = i.animal.tipVal   || 0;
+      const tipPer = i.animal.tipPer   || 0;
+
+      addToTicketPrice(base);
+      addToTip(tipVal);
+      changeTipChance(tipPer);
+    } else {
+      // default breed-based attributes
       allBreeds[i.animal.breed].attributes[0]();
     }
+
     
   }
 }
@@ -628,10 +639,25 @@ function placeAnimal(itemObject){
   }
 
   let deleteFunc = () => {};
-  const addFunc = allBreeds[itemObject.breed].attributes[0];
-  if(itemObject.attributes){
-    addFunc = itemObject.attributes[0];
+  let addFunc = () => {};
+
+  if (itemObject.baseMoney !== undefined ||
+      itemObject.tipVal   !== undefined ||
+      itemObject.tipPer   !== undefined) {
+
+    const base   = itemObject.baseMoney || 0;
+    const tipVal = itemObject.tipVal   || 0;
+    const tipPer = itemObject.tipPer   || 0;
+
+    addFunc = () => {
+      addToTicketPrice(base);
+      addToTip(tipVal);
+      changeTipChance(tipPer);
+    };
+  } else {
+    addFunc = allBreeds[itemObject.breed].attributes[0];
   }
+
 
   //hide stuff
   document.querySelector("#animalPrompt").style.display = "block";
@@ -691,12 +717,27 @@ function placeAnimal(itemObject){
         active: true
       })
 
-    }else{
-      deleteFunc = allBreeds[activeLocations[activeLocationIndex].animal.breed].attributes[1];
-      if(activeLocations[activeLocationIndex].animal.attributes[1]){
-        deleteFunc = activeLocations[activeLocationIndex].animal.attributes[1];
+    } else {
+      const oldAnimal = activeLocations[activeLocationIndex].animal;
+
+      if (oldAnimal.baseMoney !== undefined ||
+          oldAnimal.tipVal   !== undefined ||
+          oldAnimal.tipPer   !== undefined) {
+
+        const base   = oldAnimal.baseMoney || 0;
+        const tipVal = oldAnimal.tipVal   || 0;
+        const tipPer = oldAnimal.tipPer   || 0;
+
+        deleteFunc = () => {
+          addToTicketPrice(-base);
+          addToTip(-tipVal);
+          changeTipChance(-tipPer);
+        };
+      } else {
+        deleteFunc = allBreeds[oldAnimal.breed].attributes[1];
       }
     }
+
 
     activeLocationIndex = (activeLocations.findIndex((i)=>{
       return (i.furnitureId == locationFurnitureId && i.locationId == locationClass);
@@ -770,27 +811,18 @@ resizeWorld();
 
 
 function addToTip(amt){
-  if(localStorage.getItem("tip")){
-    tip = localStorage.getItem("tip");
-  }
   tip += amt;
-  localStorage.setItem("tip", tip);
+  // localStorage.setItem("tip", tip);
 }
 
 function addToTicketPrice(amt){
-  if(localStorage.getItem("ticketPrice")){
-    ticketPrice = localStorage.getItem("ticketPrice");
-  }
   ticketPrice += amt;
-  localStorage.setItem("ticketPrice", ticketPrice);
+  // localStorage.setItem("ticketPrice", ticketPrice);
 }
 
 function changeTipChance(amt){
-  if(localStorage.getItem("tipChance")){
-    tipChance = localStorage.getItem("tipChance");
-  }
   tipChance += amt;
-  localStorage.setItem("tipChance", tipChance);
+  // localStorage.setItem("tipChance", tipChance);
 }
 
 
@@ -820,54 +852,54 @@ function changeTipChance(amt){
 
 
 const defaultOwnedCreatures = [
-  {
-    name: "Geoffrey",
-    breed: "CommonRaccoon",
-    src: "assets/animals/racket_raccoon.png",
-    active: false
-  },
-  {
-    name: "Kyle",
-    breed: "GoldenRaccoon",
-    src: "assets/animals/golden_raccoon.png",
-    active: false
-  },
-  {
-    name: "Caliban",
-    breed: "VirginiaOpossum",
-    src: "assets/animals/virginia_possum.png",
-    active: false
-  },
-  {
-    name: "Emily",
-    breed: "CavalierKingCharlesSpaniel",
-    src: "assets/animals/cavalier_dog.png",
-    active: false
-  },
-  {
-    name: "Norbit",
-    breed: "LaboradorRetriever",
-    src: "assets/animals/lab_puppy.png",
-    active: false
-  },
-  {
-    name: "Mochi",
-    breed: "PersianCat",
-    src: "assets/animals/johnathan_cat.png",
-    active: false
-  },
-  {
-    name: "Pudding",
-    breed: "RagdollCat",
-    src: "assets/animals/johnathan_cat.png",
-    active: false
-  },
-  {
-    name: "Johnathan",
-    breed: "PersianCat",
-    src: "assets/animals/johnathan_cat.png",
-    active: true
-  }
+  // {
+  //   name: "Geoffrey",
+  //   breed: "CommonRaccoon",
+  //   src: "assets/animals/racket_raccoon.png",
+  //   active: false
+  // },
+  // {
+  //   name: "Kyle",
+  //   breed: "GoldenRaccoon",
+  //   src: "assets/animals/golden_raccoon.png",
+  //   active: false
+  // },
+  // {
+  //   name: "Caliban",
+  //   breed: "VirginiaOpossum",
+  //   src: "assets/animals/virginia_possum.png",
+  //   active: false
+  // },
+  // {
+  //   name: "Emily",
+  //   breed: "CavalierKingCharlesSpaniel",
+  //   src: "assets/animals/cavalier_dog.png",
+  //   active: false
+  // },
+  // {
+  //   name: "Norbit",
+  //   breed: "LaboradorRetriever",
+  //   src: "assets/animals/lab_puppy.png",
+  //   active: false
+  // },
+  // {
+  //   name: "Mochi",
+  //   breed: "PersianCat",
+  //   src: "assets/animals/johnathan_cat.png",
+  //   active: false
+  // },
+  // {
+  //   name: "Pudding",
+  //   breed: "RagdollCat",
+  //   src: "assets/animals/johnathan_cat.png",
+  //   active: false
+  // },
+  // {
+  //   name: "Johnathan",
+  //   breed: "PersianCat",
+  //   src: "assets/animals/johnathan_cat.png",
+  //   active: true
+  // }
 ];
 
 let ownedCreatures = [];
@@ -880,9 +912,6 @@ function loadOwnedCreatures() {
       const parsed = JSON.parse(saved);
       if (Array.isArray(parsed)) {
         ownedCreatures = parsed;
-        if(JSON.parse(localStorage.getItem("newAnimal"))){ //ADDING NEW ANIMAL FROM BACKYARD
-          ownedCreatures.push(JSON.parse(localStorage.getItem("newAnimal")));
-        }
         return;
       }
     } catch (e) {

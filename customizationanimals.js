@@ -1,24 +1,24 @@
 let allBreeds = {
   CommonRaccoon: {
-    attributeText: "+3 Ticket Price"
+    attributeText: "+1 Ticket Price"
   },
   GoldenRaccoon: {
-    attributeText: "+50 Ticket Price"
+    attributeText: "+15 Ticket Price"
   },
   VirginiaOpossum: {
-    attributeText: "+5 Ticket Price"
+    attributeText: "+1 Ticket Price"
   },
   LaboradorRetriever: {
-    attributeText: "+30 Ticket Price"
+    attributeText: "+2 Ticket Price"
   },
   CavalierKingCharlesSpaniel: {
-    attributeText: "+20 Ticket Price"
+    attributeText: "+2 Ticket Price"
   },
   PersianCat: {
-    attributeText: "+30 Ticket Price"
+    attributeText: "+3 Ticket Price"
   },
   RagdollCat: {
-    attributeText: "+40 Ticket Price"
+    attributeText: "+4 Ticket Price"
   }
 }
 
@@ -104,7 +104,16 @@ function loadAnimalInventory(){
 
     const itemAttribute = document.createElement("span");
     itemAttribute.className = "itemAttribute";
-    itemAttribute.innerText = allBreeds[item.breed].attributeText;
+
+    // Prefer the specific animal's text if it has one (captured from backyard),
+    // otherwise fall back to generic text
+    if (item.attributeText) {
+      itemAttribute.innerText = item.attributeText;
+    } else if (allBreeds[item.breed]) {
+      itemAttribute.innerText = allBreeds[item.breed].attributeText;
+    } else {
+      itemAttribute.innerText = ""; // or "No bonus" / "Unknown"
+    }
 
     newItemContainer.appendChild(newItemImg);
     newItemContainer.appendChild(itemName);
