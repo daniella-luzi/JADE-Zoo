@@ -311,13 +311,205 @@ function resizeWorld() {
 
 
 window.addEventListener("resize", resizeWorld);
-window.addEventListener("load", ()=>{
+
+function preloadBackyardImages() {
+  Object.values(breedImages).forEach(path => {
+    const img = new Image();
+    img.src = path;
+  });
+}
+
+window.addEventListener("load", () => {
+  // hide unused hardcoded sprites if you still have them
+  const possumEl = document.getElementById("possum");
+  const dogEl = document.getElementById("Dog");
+  if (possumEl) possumEl.style.display = "none";
+  if (dogEl) dogEl.style.display = "none";
+
+  preloadBackyardImages();
   loadFurniture();
   if(localStorage.getItem("decorChoice")){
     //if a decor item has been chosen in customization, run placeDecoration
     placeDecoration(JSON.parse(localStorage.getItem("decorChoice")));
   }
 });
+
+
+
+
+
+
+
+
+
+
+
+// === Backyard spawn config =====================================
+
+// Which breeds can appear at each spot, and how their stats are rolled.
+const breedImages = {
+  VirginiaOpossum: "../assets/animals/virginia_possum.png",
+  CommonRaccoon: "../assets/animals/racket_raccoon.png",
+  GoldenRaccoon: "../assets/animals/golden_raccoon.png",        // optional
+  PersianCat: "../assets/animals/johnathan_cat.png",
+  CavalierKingCharlesSpaniel: "../assets/animals/cavalier_dog.png",
+  LaboradorRetriever: "../assets/animals/lab_puppy.png",
+  RagdollCat: "../assets/animals/johnathan_cat.png"             // placeholder
+};
+
+// Two spawn "sources": trash & food bowl.
+// If you add another backyard item later, just add another entry here.
+const backyardSpawns = {
+  trash: {
+    imgId: "raccoon",             // DOM element used for display
+    timerType: "trash",           // which timer reset to use later
+    allowedBreeds: ["CommonRaccoon", "VirginiaOpossum"],
+    rollStats() {
+      // Justin’s original trash formula
+      const baseMoney = Math.floor(Math.random() * 4) + baseValue;
+      const tipChance = Math.floor(Math.random() * 5) + 1;
+      const tipValue  = Math.floor(Math.random() * 7) + 4;
+      return { baseMoney, tipChance, tipValue };
+    }
+  },
+  bowl: {
+    imgId: "Cat",
+    timerType: "bowl",
+    allowedBreeds: [
+      "PersianCat",
+      "CavalierKingCharlesSpaniel",
+      "LaboradorRetriever"
+    ],
+    rollStats() {
+      // Justin’s original food bowl formula
+      const baseMoney = Math.floor(Math.random() * 4) + 1;
+      const tipChance = Math.floor(Math.random() * 5) + 1;
+      const tipValue  = Math.floor(Math.random() * 7) + 4;
+      return { baseMoney, tipChance, tipValue };
+    }
+  }
+};
+
+// Utility: make "CommonRaccoon" -> "Common Raccoon"
+function prettyBreedName(key) {
+  return key.replace(/([A-Z])/g, " $1").trim();
+}
+
+// Weighted random pick based on the global `chances` object
+function pickBreedWeighted(allowedBreeds) {
+  let total = 0;
+  allowedBreeds.forEach(b => {
+    total += chances[b] || 0;
+  });
+
+  let r = Math.random() * total;
+  for (const b of allowedBreeds) {
+    r -= (chances[b] || 0);
+    if (r <= 0) return b;
+  }
+  return allowedBreeds[0]; // fallback
+}
+
+
+
+
+
+
+
+
+// === Shared capture state ======================================
+
+let inMenu = false;
+
+let currentAnimalType = null;      // breed key, e.g. "PersianCat"
+let currentAnimalName = null;
+let currentAnimalBaseMoney = 0;
+let currentAnimalTipPer = 0;
+let currentAnimalTipVal = 0;
+let currentSpawnKey = null;        // "trash" or "bowl"
+
+// We'll store the actual DOM element of the currently visible backyard animal:
+let currentSpawnImgEl = null;
+
+// Show the capture popup for a given spawn ("trash" or "bowl")
+function openCaptureMenu(spawnKey) {
+  if (inMenu) return;
+  inMenu = true;
+
+  const spawn = backyardSpawns[spawnKey];
+  if (!spawn) {
+    console.error("Unknown spawn key:", spawnKey);
+    inMenu = false;
+    return;
+  }
+
+  const imgEl = document.getElementById(spawn.imgId);
+  const breedKey = imgEl.dataset.breed;
+  const prettyName = prettyBreedName(breedKey);
+
+  // Roll stats based on where we found them
+  const { baseMoney, tipChance, tipValue } = spawn.rollStats();
+
+  // Save globals for `keep()` to use
+  currentSpawnKey = spawnKey;
+  currentSpawnImgEl = imgEl;
+  currentAnimalType = breedKey;
+  currentAnimalName = getRandomName();
+  currentAnimalBaseMoney = baseMoney;
+  currentAnimalTipPer = tipChance;
+  currentAnimalTipVal = tipValue;
+
+  // Update UI text
+  document.querySelector("#question").textContent =
+    "You found " + currentAnimalName + "!";
+  document.querySelector("#animalType").textContent =
+    "What a cute " + prettyName + "!";
+
+  document.querySelector("#baseValue").textContent =
+    "+$" + baseMoney + " per second";
+  document.querySelector("#tipChance").textContent =
+    tipChance + "% tip chance";
+  document.querySelector("#tipValue").textContent =
+    "+$" + tipValue + " per tip";
+
+  // Show popup + buttons
+  document.querySelector("#question").style.display = "block";
+  document.querySelector("#animalType").style.display = "block";
+  document.querySelector("#baseValue").style.display = "flex";
+  document.querySelector("#tipChance").style.display = "flex";
+  document.querySelector("#tipValue").style.display = "flex";
+  document.querySelector(".action-buttons-container").style.display = "flex";
+}
+
+// Hide popup and restart the appropriate timer
+function finishCapture() {
+  inMenu = false;
+
+  // Hide popup ui
+  document.querySelector("#question").style.display = "none";
+  document.querySelector("#animalType").style.display = "none";
+  document.querySelector("#baseValue").style.display = "none";
+  document.querySelector("#tipChance").style.display = "none";
+  document.querySelector("#tipValue").style.display = "none";
+  document.querySelector(".action-buttons-container").style.display = "none";
+
+  // Hide the animal sprite that was clicked
+  if (currentSpawnImgEl) {
+    currentSpawnImgEl.style.display = "none";
+  }
+
+  // Restart the correct timer
+  if (currentSpawnKey === "trash") {
+    resetTimer();
+    startTimer(trashTimeout);
+  } else if (currentSpawnKey === "bowl") {
+    resetTimer2();
+    startTimer2(petTimeout);
+  }
+
+  currentSpawnKey = null;
+  currentSpawnImgEl = null;
+}
 
 
 
@@ -359,6 +551,48 @@ function resetTimer() {
 
 
 
+// Hide the unused old sprites (we always use #raccoon and #Cat now)
+window.addEventListener("load", () => {
+  const possumEl = document.getElementById("possum");
+  const dogEl = document.getElementById("Dog");
+  if (possumEl) possumEl.style.display = "none";
+  if (dogEl) dogEl.style.display = "none";
+});
+
+function spawnBackyardAnimal(spawnKey) {
+  const spawn = backyardSpawns[spawnKey];
+  if (!spawn) return;
+
+  const imgEl = document.getElementById(spawn.imgId);
+  if (!imgEl) return;
+
+  const breedKey = pickBreedWeighted(spawn.allowedBreeds);
+  const imgSrc = breedImages[breedKey];
+
+  // Set meta info first
+  imgEl.alt = prettyBreedName(breedKey);
+  imgEl.dataset.breed = breedKey;
+  imgEl.dataset.spawnKey = spawnKey;
+
+  imgEl.style.display = "none";
+
+  function handleLoad() {
+    imgEl.style.display = "block";   // show only after the new sprite is ready
+    imgEl.removeEventListener("load", handleLoad);
+  }
+
+  imgEl.addEventListener("load", handleLoad);
+  imgEl.src = imgSrc; // start loading the new sprite
+}
+
+
+// Timers now just call the generic spawn
+function trashTimeout() {
+  spawnBackyardAnimal("trash");
+}
+function petTimeout() {
+  spawnBackyardAnimal("bowl");
+}
 
 
 
@@ -397,112 +631,8 @@ function resetTimer2() {
 
 
 
-function trashTimeout() {
-  (Math.random() < 0.5 ? possumAppear : raccoonAppear)();
-}
-
-function possumAppear() {
-  document.querySelector("#possum").style.display = "block";
-  
-}
-
-function raccoonAppear() {
-  document.querySelector("#raccoon").style.display = "block";
-}
 
 
-var currentAnimalType;
-var currentAnimalName;
-var currentAnimalBaseMoney;
-var currentAnimalTipPer;
-var currentAnimalTipVal;
-
-function captureVisible(AnimalElement) {
-  // Asks if you want to capture or not. 
-  if (inMenu == true) {
-    return;
-  }
-
-  inMenu = true;
-  document.querySelector(".action-buttons-container").style.display = "flex";
-  
-  document.querySelector("#question").style.display = "block";
-  document.querySelector("#animalType").style.display = "block";
-  // Uses the alt text of the image to display the message
-  
-  document.querySelector("#baseValue").style.display = "flex";
-  document.querySelector("#tipChance").style.display = "flex";
-  document.querySelector("#tipValue").style.display = "flex";
-
-
-  const animalName = AnimalElement.alt;  //animal type
-  document.querySelector("#animalType").textContent = "What a cute " + animalName + "!";
-  currentAnimalType = animalName;
-  
-  
-  var animalsFirstName = getRandomName();      //animal name, sorry for confusion
-  document.querySelector("#question").textContent = "You found " + animalsFirstName + "!";
-  currentAnimalName = animalsFirstName;
-
-  
-  
-  //if you have diffrent trash can, logic would be here.
-  
-  currentAnimalBaseMoney = Math.floor(Math.random() * 4) + baseValue;
-  currentAnimalTipPer =    Math.floor(Math.random() * 5) + 1;
-  currentAnimalTipVal =    Math.floor(Math.random() * 7) + 4;
-  
-  
-  document.querySelector("#baseValue").textContent = "+$" + currentAnimalBaseMoney + " per second";
-  document.querySelector("#tipChance").textContent = currentAnimalTipPer + "% tip chance";
-  document.querySelector("#tipValue").textContent = "+$" + currentAnimalTipPer + " per tip";
-  
-}
-
-
-function captureVisible2(AnimalElement) {
-  // Asks if you want to capture or not. 
-  if (inMenu == true) {
-    return;
-  }
-
-  inMenu = true;
-  document.querySelector(".action-buttons-container2").style.display = "flex";
-  document.querySelector("#question2").style.display = "block";
-  document.querySelector("#animalType2").style.display = "block";
-  // Uses the alt text of the image to display the message
-  
-  document.querySelector("#baseValue2").style.display = "flex";
-  document.querySelector("#tipChance2").style.display = "flex";
-  document.querySelector("#tipValue2").style.display = "flex";
-
-
-  const animalName = AnimalElement.alt;  //animal type
-  document.querySelector("#animalType2").textContent = "What a cute " + animalName + "!";
-  currentAnimalType = animalName;
-  
-  
-  var animalsFirstName = getRandomName();      //animal name, sorry for confusion
-  document.querySelector("#question2").textContent = "You found " + animalsFirstName + "!";
-  currentAnimalName = animalsFirstName;
-
-  
-  
-  //if you have diffrent pet bowl, logic would be here.
-  
-  currentAnimalBaseMoney = Math.floor(Math.random() * 4) + 1;
-  currentAnimalTipPer =    Math.floor(Math.random() * 5) + 1;
-  currentAnimalTipVal =    Math.floor(Math.random() * 7) + 4;
-  
-  
-  document.querySelector("#baseValue2").textContent = "+$" + currentAnimalBaseMoney + " per second";
-  document.querySelector("#tipChance2").textContent = currentAnimalTipPer + "% tip chance";
-  document.querySelector("#tipValue2").textContent = "+$" + currentAnimalTipPer + " per tip";
-  
-}
-
-
-var inMenu = false;
 
 // var currentAnimalType;
 // var currentAnimalName;
@@ -510,66 +640,140 @@ var inMenu = false;
 // var currentAnimalTipPer;
 // var currentAnimalTipVal;
 
-let breedImages = {
-  "VirginiaOpossum": "assets/animals/virginia_possum.png",
-  "CommonRaccoon": "assets/animals/racket_raccoon.png",
-  "PersianCat": "assets/animals/johnathan_cat.png",
-}
+// function captureVisible(AnimalElement) {
+//   // Asks if you want to capture or not. 
+//   if (inMenu == true) {
+//     return;
+//   }
+
+//   inMenu = true;
+//   document.querySelector(".action-buttons-container").style.display = "flex";
+  
+//   document.querySelector("#question").style.display = "block";
+//   document.querySelector("#animalType").style.display = "block";
+//   // Uses the alt text of the image to display the message
+  
+//   document.querySelector("#baseValue").style.display = "flex";
+//   document.querySelector("#tipChance").style.display = "flex";
+//   document.querySelector("#tipValue").style.display = "flex";
+
+
+//   const animalName = AnimalElement.alt;  //animal type
+//   document.querySelector("#animalType").textContent = "What a cute " + animalName + "!";
+//   currentAnimalType = animalName;
+  
+  
+//   var animalsFirstName = getRandomName();      //animal name, sorry for confusion
+//   document.querySelector("#question").textContent = "You found " + animalsFirstName + "!";
+//   currentAnimalName = animalsFirstName;
+
+  
+  
+//   //if you have diffrent trash can, logic would be here.
+  
+//   currentAnimalBaseMoney = Math.floor(Math.random() * 4) + baseValue;
+//   currentAnimalTipPer =    Math.floor(Math.random() * 5) + 1;
+//   currentAnimalTipVal =    Math.floor(Math.random() * 7) + 4;
+  
+  
+//   document.querySelector("#baseValue").textContent = "+$" + currentAnimalBaseMoney + " per second";
+//   document.querySelector("#tipChance").textContent = currentAnimalTipPer + "% tip chance";
+//   document.querySelector("#tipValue").textContent = "+$" + currentAnimalTipPer + " per tip";
+  
+// }
+
+
+// function captureVisible2(AnimalElement) {
+//   // Asks if you want to capture or not. 
+//   if (inMenu == true) {
+//     return;
+//   }
+
+//   inMenu = true;
+//   document.querySelector(".action-buttons-container2").style.display = "flex";
+//   document.querySelector("#question2").style.display = "block";
+//   document.querySelector("#animalType2").style.display = "block";
+//   // Uses the alt text of the image to display the message
+  
+//   document.querySelector("#baseValue2").style.display = "flex";
+//   document.querySelector("#tipChance2").style.display = "flex";
+//   document.querySelector("#tipValue2").style.display = "flex";
+
+
+//   const animalName = AnimalElement.alt;  //animal type
+//   document.querySelector("#animalType2").textContent = "What a cute " + animalName + "!";
+//   currentAnimalType = animalName;
+  
+  
+//   var animalsFirstName = getRandomName();      //animal name, sorry for confusion
+//   document.querySelector("#question2").textContent = "You found " + animalsFirstName + "!";
+//   currentAnimalName = animalsFirstName;
+
+  
+  
+//   //if you have diffrent pet bowl, logic would be here.
+  
+//   currentAnimalBaseMoney = Math.floor(Math.random() * 4) + 1;
+//   currentAnimalTipPer =    Math.floor(Math.random() * 5) + 1;
+//   currentAnimalTipVal =    Math.floor(Math.random() * 7) + 4;
+  
+  
+//   document.querySelector("#baseValue2").textContent = "+$" + currentAnimalBaseMoney + " per second";
+//   document.querySelector("#tipChance2").textContent = currentAnimalTipPer + "% tip chance";
+//   document.querySelector("#tipValue2").textContent = "+$" + currentAnimalTipPer + " per tip";
+  
+// }
+
+
+// var inMenu = false;
+
+// var currentAnimalType;
+// var currentAnimalName;
+// var currentAnimalBaseMoney;
+// var currentAnimalTipPer;
+// var currentAnimalTipVal;
+
 
 function keep() {
-  console.log("currentAnimalType: ", currentAnimalType)
-  if(currentAnimalType == "Possum"){
-    currentAnimalType = "VirginiaOpossum";
-  }
-  if(currentAnimalType == "Raccoon"){
-    currentAnimalType = "CommonRaccoon";
-  }
-  if(currentAnimalType == "Cat"){
-    currentAnimalType = "PersianCat";
-  }
+  // currentAnimalType is already a breed key like "PersianCat"
+  const breedKey = currentAnimalType;
+
   const newAnimal = {
     name: currentAnimalName,
-    breed: currentAnimalType,
+    breed: breedKey,
 
     baseMoney: currentAnimalBaseMoney,
     tipChance: currentAnimalTipPer,
     tipValue: currentAnimalTipVal,
 
     attributeText:
-  `+$${currentAnimalBaseMoney} per second\n` +
-  `+${currentAnimalTipPer}% tip chance\n` +
-  `+$${currentAnimalTipVal} per tip`,
+      `+$${currentAnimalBaseMoney} per second\n` +
+      `+${currentAnimalTipPer}% tip chance\n` +
+      `+$${currentAnimalTipVal} per tip`,
 
-    src: breedImages[currentAnimalType.replaceAll(" ", "")],
+    src: breedImages[breedKey],
     active: false
   };
 
+  const currentownedCreatures =
+    JSON.parse(localStorage.getItem("ownedCreatures")) || [];
 
-  const currentownedCreatures = JSON.parse(localStorage.getItem("ownedCreatures"));
   currentownedCreatures.push(newAnimal);
-  console.log(currentownedCreatures);
   localStorage.setItem("ownedCreatures", JSON.stringify(currentownedCreatures));
-  console.log(localStorage.getItem("ownedCreatures"));
+
   alert("Good job! You saved the animal!");
+
+  // finish capture UI + restart timer
+  finishCapture();
+
+  // Go back to zoo
   window.location.href = "index.html";
 }
 
-function release() {
-  inMenu = false;
-  document.querySelector("#question").style.display = "none";
-  document.querySelector("#animalType").style.display = "none";
-  document.querySelector(".action-buttons-container").style.display = "none";
 
-  document.querySelector("#baseValue").style.display = "none";
-  document.querySelector("#tipValue").style.display = "none";
-  document.querySelector("#tipChance").style.display = "none";
-  
-  resetTimer();
-  startTimer(trashTimeout);
-  
-  document.querySelector("#raccoon").style.display = "none";
-  document.querySelector("#possum").style.display = "none";
-  
+function release() {
+  // Just close popup & restart the appropriate timer
+  finishCapture();
 }
 
 
@@ -578,20 +782,7 @@ function keep2() {
 }
 
 function release2() {
-  inMenu = false;
-  document.querySelector("#question2").style.display = "none";
-  document.querySelector("#animalType2").style.display = "none";
-  document.querySelector(".action-buttons-container2").style.display = "none";
-
-  document.querySelector("#baseValue2").style.display = "none";
-  document.querySelector("#tipValue2").style.display = "none";
-  document.querySelector("#tipChance2").style.display = "none";
-  
-  resetTimer2();
-  startTimer2(petTimeout);
-  
-  document.querySelector("#Cat").style.display = "none";
-  document.querySelector("#Dog").style.display = "none";
+  release();
   
 }
 
@@ -617,21 +808,26 @@ function getRandomName() {
   return names[randomIndex];
 }
 
-function petTimeout() {
-  (Math.random() < 0.5 ? CatAppear : DogAppear)();
-}
 
-function CatAppear() {
-  document.querySelector("#Cat").style.display = "block";
-  
-}
-
-function DogAppear() {
-  document.querySelector("#Dog").style.display = "block";
-}
 
 
 
 resizeWorld();
+
+// Attach click handlers to the two spawn images
+const trashImg = document.getElementById("raccoon");
+const bowlImg  = document.getElementById("Cat");
+
+if (trashImg) {
+  trashImg.addEventListener("click", () => {
+    openCaptureMenu("trash");
+  });
+}
+if (bowlImg) {
+  bowlImg.addEventListener("click", () => {
+    openCaptureMenu("bowl");
+  });
+}
+
 startTimer(trashTimeout);
 startTimer2(petTimeout);
