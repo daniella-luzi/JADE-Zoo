@@ -25,10 +25,10 @@ const allItems = {
   Zoo: [
     {
       id: "bench",
-      name: "Wooden Bench",
-      src: "../assets/furniture/benches/bench.png",
-      price: 300,
-      attribute: "Gives an extra $1 tip",
+      name: "Budget Bench",
+      src: "../assets/furniture/benches/budgetbench.png",
+      price: 10,
+      attribute: "This is just sad.",
       category: "Benches",
     },
     {
@@ -47,24 +47,32 @@ const allItems = {
       attribute: "Gives an extra $1 tip",
       category: "Benches",
     },
-
-
-
-
     {
-      id: "catTree",
-      name: "Plant Cat Tree",
-      src: "../assets/furniture/cat trees/plant cat tree.png",
-      price: 500,
-      attribute: "+5% Tip Chance",
-      category: "CatTrees",
+      id: "bench",
+      name: "Wooden Bench",
+      src: "../assets/furniture/benches/bench.png",
+      price: 300,
+      attribute: "Gives an extra $3 tip",
+      category: "Benches",
     },
+    
+
+
+
     {
       id: "catTree",
       name: "Basic Cat Tree",
       src: "../assets/furniture/cat trees/basic cat tree.png",
-      price: 400,
+      price: 500,
       attribute: "+1% Tip Chance",
+      category: "CatTrees",
+    },
+    {
+      id: "catTree",
+      name: "Plant Cat Tree",
+      src: "../assets/furniture/cat trees/plant cat tree.png",
+      price: 700,
+      attribute: "+5% Tip Chance",
       category: "CatTrees",
     },
 
@@ -83,7 +91,7 @@ const allItems = {
       id: "window",
       name: "Flower Window",
       src: "../assets/furniture/wall/windows/flowerwindow.png",
-      price: 400,
+      price: 1000,
       attribute: "Gives an extra $5 tip",
       category: "Windows",
     },
@@ -93,9 +101,25 @@ const allItems = {
 
     {
       id: "rug",
+      name: "Budget Rug",
+      src: "../assets/furniture/rugs/budgetrug.png",
+      price: 30,
+      attribute: "An old blanket from your childhood home.",
+      category: "Rugs",
+    },
+    {
+      id: "rug",
       name: "Basic Rug",
       src: "../assets/furniture/rugs/rug.png",
       price: 300,
+      attribute: "Gives an extra $1 tip",
+      category: "Rugs",
+    },
+    {
+      id: "rug",
+      name: "Paw Rug",
+      src: "../assets/furniture/rugs/pawrug.png",
+      price: 500,
       attribute: "Gives an extra $2 tip",
       category: "Rugs",
     },
@@ -103,22 +127,32 @@ const allItems = {
 
 
 
+
+
     {
       id: "bed1",
-      name: "Fluffy Bed",
-      src: "../assets/furniture/beds/fluffy bed.png",
-      price: 600,
-      attribute: "+5% Tip Chance",
+      name: "Newspaper Bed",
+      src: "../assets/furniture/beds/newspapers.png",
+      price: 5,
+      attribute: "This is really the bare minimum.",
       category: "Beds",
       slotGroup: "bed"
     },
-
+    {
+      id: "bed1",
+      name: "Budget Bed",
+      src: "../assets/furniture/beds/budgetbed.png",
+      price: 30,
+      attribute: "At least the animals like it?",
+      category: "Beds",
+      slotGroup: "bed"
+    },
     {
       id: "bed1",
       name: "Circle Bed",
       src: "../assets/furniture/beds/circle bed.png",
-      price: 300,
-      attribute: "Gives an extra $1 tip",
+      price: 500,
+      attribute: "Gives an extra $3 tip",
       category: "Beds",
       slotGroup: "bed"
     },
@@ -127,8 +161,17 @@ const allItems = {
       id: "bed1",
       name: "Pillow Bed",
       src: "../assets/furniture/beds/pillow bed.png",
-      price: 400,
-      attribute: "Gives an extra $1 tip",
+      price: 700,
+      attribute: "Gives an extra $4 tip",
+      category: "Beds",
+      slotGroup: "bed"
+    },
+    {
+      id: "bed1",
+      name: "Fluffy Bed",
+      src: "../assets/furniture/beds/fluffy bed.png",
+      price: 1000,
+      attribute: "Gives an extra $5 tip",
       category: "Beds",
       slotGroup: "bed"
     },
@@ -139,8 +182,8 @@ const allItems = {
       id: "platform",
       name: "Basic Platform",
       src: "../assets/furniture/wall/platforms/platform.png",
-      price: 100,
-      attribute: "+5% Tip Chance",
+      price: 400,
+      attribute: "Gives an extra $1 tip",
       category: "Platforms",
       slotGroup: "platform"
     },
@@ -150,15 +193,23 @@ const allItems = {
       id: "painting1",
       name: "Cat Painting",
       src: "../assets/furniture/wall/paintings/painting.png",
-      price: 100,
-      attribute: "Gives an extra $1 tip",
+      price: 300,
+      attribute: "+1% Tip Chance",
+      category: "Paintings",
+    },
+    {
+      id: "painting1",
+      name: "Dog Painting",
+      src: "../assets/furniture/wall/paintings/dogpainting.png",
+      price: 300,
+      attribute: "+1% Tip Chance",
       category: "Paintings",
     },
     {
       id: "painting1",
       name: "Flower Painting",
       src: "../assets/furniture/wall/paintings/flowerPainting.png",
-      price: 150,
+      price: 450,
       attribute: "+1% Tip Chance",
       category: "Paintings",
     }
@@ -170,7 +221,7 @@ const allItems = {
       id: "trashcan",
       name: "Trash Can",
       src: "../assets/furniture/backyard/trashcans/JADEtrashcan.png",
-      price: 20,
+      price: 200,
       attribute: "30% Chance for Raccoons, 5% Chance for Possums",
       category: "byFurniture",
     },
@@ -179,7 +230,7 @@ const allItems = {
       id: "foodbowl",
       name: "Food Bowl",
       src: "../assets/furniture/backyard/foodbowls/foodbowl.png",
-      price: 20,
+      price: 200,
       attribute: "30% Chance for Raccoons, 5% Chance for Possums",
       category: "Food",
     }

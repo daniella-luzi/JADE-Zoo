@@ -20,10 +20,10 @@ let movingAnimalSrc = "";
 
 // A list of all the item names (WITHOUT SPACES) and their corresponding attribute functions.
 let attributeLookup = {
-  "WoodenBench": [()=>{addToTip(3)}, ()=>{addToTip(-3)}],
+  "BudgetBench": [()=>{addToTip(0)}, ()=>{addToTip(-0)}],
   "BasicBench": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
   "PawBench": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
-  "BudgetBench": [()=>{addToTip(0)}, ()=>{addToTip(-0)}],
+  "WoodenBench": [()=>{addToTip(3)}, ()=>{addToTip(-3)}],
 
   "BasicWindow": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
   "FlowerWindow": [()=>{addToTip(5)}, ()=>{addToTip(-5)}],
@@ -31,24 +31,24 @@ let attributeLookup = {
   "PlatformSlot": [()=>{},()=>{}],
   "BasicPlatform": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
   
-  "PlantCatTree": [()=>{changeTipChance(5)}, ()=>{changeTipChance(-5)}],
   "BasicCatTree": [()=>{changeTipChance(1)}, ()=>{changeTipChance(-1)}],
+  "PlantCatTree": [()=>{changeTipChance(5)}, ()=>{changeTipChance(-5)}],
 
   "PaintingSlot": [()=>{},()=>{}],
   "CatTreeSlot": [()=>{},()=>{}],
-  "FlowerPainting": [()=>{changeTipChance(1)}, ()=>{changeTipChance(-1)}],
   "CatPainting": [()=>{changeTipChance(1)}, ()=>{changeTipChance(-1)}],
   "DogPainting": [()=>{changeTipChance(1)}, ()=>{changeTipChance(-1)}],
+  "FlowerPainting": [()=>{changeTipChance(1)}, ()=>{changeTipChance(-1)}],
 
-  "PawRug": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
-  "BasicRug": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
   "BudgetRug": [()=>{addToTip(0)}, ()=>{addToTip(-0)}],
+  "BasicRug": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
+  "PawRug": [()=>{addToTip(2)}, ()=>{addToTip(-2)}],
 
-  "FluffyBed": [()=>{addToTip(3)}, ()=>{addToTip(-3)}],
-  "CircleBed": [()=>{addToTip(3)}, ()=>{addToTip(-3)}],
-  "PillowBed": [()=>{addToTip(4)}, ()=>{addToTip(-4)}],
   "NewspaperBed": [()=>{addToTip(0)}, ()=>{addToTip(-0)}],
   "BudgetBed": [()=>{addToTip(0)}, ()=>{addToTip(-0)}],
+  "CircleBed": [()=>{addToTip(3)}, ()=>{addToTip(-3)}],
+  "PillowBed": [()=>{addToTip(4)}, ()=>{addToTip(-4)}],
+  "FluffyBed": [()=>{addToTip(3)}, ()=>{addToTip(-3)}],
 };
 
 let locationLookup = {

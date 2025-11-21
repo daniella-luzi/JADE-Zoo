@@ -1,3 +1,5 @@
+const blacklisted = ["trashcan", "foodbowl", "foodbowl1"]
+
 
 let inventory = {
   "decor": [
@@ -106,10 +108,7 @@ function loadPurchasedItems(){
         
         //for each item, we will push it into the inventory decor array that emma has for customization section
         items.forEach((item)=>{
-          const blacklisted = ["trashcan", "foodbowl", "foodbowl1"]
-          if(!blacklisted.includes(item.id)){
-            inventory.decor.push(item);
-          }
+          inventory.decor.push(item);
         });
         //saving the inventory
         localStorage.setItem("inventory", JSON.stringify(inventory));
@@ -125,26 +124,29 @@ function loadDecorInventory(){
   }else{
     inventory = JSON.parse(localStorage.getItem("inventory"));
   }
+  
   const decorInventory = document.querySelector("#decorInventory")
   inventory.decor.forEach((item)=>{
-    const newItemContainer = document.createElement("div");
-    newItemContainer.className = "item";
-    const newItemImg = document.createElement("img");
-    newItemImg.src = item.src;
-    newItemImg.alt = item.name;
-    const itemName = document.createElement("span");
-    itemName.className = "itemName";
-    itemName.innerText = item.name;
-    const itemAttribute = document.createElement("span");
-    itemAttribute.className = "itemAttribute";
-    itemAttribute.innerText = item.attribute;
-    newItemContainer.appendChild(newItemImg);
-    newItemContainer.appendChild(itemName);
-    newItemContainer.appendChild(itemAttribute);
-    newItemContainer.addEventListener("click", ()=>{
-      pickDecoration(item);
-    });
-    decorInventory.appendChild(newItemContainer);
+    if(!blacklisted.includes(item.id)){
+      const newItemContainer = document.createElement("div");
+      newItemContainer.className = "item";
+      const newItemImg = document.createElement("img");
+      newItemImg.src = item.src;
+      newItemImg.alt = item.name;
+      const itemName = document.createElement("span");
+      itemName.className = "itemName";
+      itemName.innerText = item.name;
+      const itemAttribute = document.createElement("span");
+      itemAttribute.className = "itemAttribute";
+      itemAttribute.innerText = item.attribute;
+      newItemContainer.appendChild(newItemImg);
+      newItemContainer.appendChild(itemName);
+      newItemContainer.appendChild(itemAttribute);
+      newItemContainer.addEventListener("click", ()=>{
+        pickDecoration(item);
+      });
+      decorInventory.appendChild(newItemContainer);
+    }
   })
 }
 
