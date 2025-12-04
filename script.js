@@ -349,7 +349,7 @@ function resizeWorld() {
 
 function startMultiDecorPlacement(decorChoice, group) {
   document.querySelector("#animalPrompt").style.display = "block";
-  // Decide which furniture IDs are valid targets for this group.
+  // Decide which furniture IDs are valid targets
   const targetIds = group === "platform"
     ? ["platform1", "platform2", "platform3"]
     : group === "bed"
@@ -358,7 +358,6 @@ function startMultiDecorPlacement(decorChoice, group) {
 
   if (targetIds.length === 0) {
     document.querySelector("#animalPrompt").style.display = "none";
-    // Fallback: just behave like old single-slot placement
     placeDecoration(decorChoice);
     return;
   }
@@ -378,23 +377,19 @@ function startMultiDecorPlacement(decorChoice, group) {
     if (!img) return;
 
     const container = img.parentElement;
-    // Try to highlight the first .animalLocation for that furniture
+    // Try to highlight the first .animalLocation
     const slotDiv = container.querySelector(".animalLocation");
 
-    // If we have a location slot, that's what we highlight and click.
-    // Otherwise fall back to the image (for safety / future stuff).
     const highlightTarget = slotDiv || img;
 
     highlightTarget.classList.add("decorTargetHighlight");
     highlightTarget.style.cursor = "pointer";
 
-    // Make sure we can click it even though animal locations default to pointer-events: none
     if (slotDiv) {
       slotDiv.style.pointerEvents = "auto";
     }
 
     const handler = () => {
-      // Clean up all targets (both highlight + handlers)
       targetIds.forEach((tid) => {
         const timg = document.getElementById(tid);
         if (!timg) return;
@@ -406,7 +401,7 @@ function startMultiDecorPlacement(decorChoice, group) {
         tTarget.classList.remove("decorTargetHighlight");
         tTarget.style.cursor = "";
 
-        // Put location pointer events back to "none" (original state)
+        // Put location pointer events back to "none"
         if (tSlot) {
           tSlot.style.pointerEvents = "none";
         }
@@ -416,13 +411,11 @@ function startMultiDecorPlacement(decorChoice, group) {
         }
       });
 
-      // Restore nav buttons (placeDecoration will hide them again for its popup)
+      // Restore nav buttons
       document.querySelectorAll(".navItem").forEach((el) => {
         el.style.display = "block";
       });
 
-      // Build the object placeDecoration expects:
-      // id = the specific furniture slot we clicked (platform2, bed3, etc.)
       const itemObject = {
         id: id,
         name: decorChoice.name,
@@ -919,7 +912,7 @@ function loadOwnedCreatures() {
     }
   }
 
-  // Fallback: copy defaults (deep copy)
+  // Fallback: copy defaults
   ownedCreatures = JSON.parse(JSON.stringify(defaultOwnedCreatures));
   saveOwnedCreatures();
 }

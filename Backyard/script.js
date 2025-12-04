@@ -589,10 +589,8 @@ function spawnBackyardAnimal(spawnKey) {
   const breedKey = pickBreedWeighted(spawn.allowedBreeds);
   const imgSrc = breedData[breedKey].img;
 
-  // NEW: friendly name for popup
   imgEl.alt = breedData[breedKey].nickname;
 
-  // still keep real breed stored internally
   imgEl.dataset.breed = breedKey;
 
   imgEl.dataset.breed = breedKey;
@@ -601,7 +599,7 @@ function spawnBackyardAnimal(spawnKey) {
   imgEl.style.display = "none";
 
   function handleLoad() {
-    imgEl.style.display = "block";   // show only after the new sprite is ready
+    imgEl.style.display = "block";   // show after new sprite is ready
     imgEl.removeEventListener("load", handleLoad);
   }
 
@@ -610,7 +608,7 @@ function spawnBackyardAnimal(spawnKey) {
 }
 
 
-// Timers now just call the generic spawn
+// timers just call the generic spawn
 function trashTimeout() {
   spawnBackyardAnimal("trash");
 }
