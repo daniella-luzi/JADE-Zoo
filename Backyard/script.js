@@ -10,10 +10,12 @@ let chances = {
   CommonRaccoon: 1,
   GoldenRaccoon: 1,
   VirginiaOpossum: 1,
+  PatagonianPossum: 1,
   LaboradorRetriever: 1,
   CavalierKingCharlesSpaniel: 1,
   PersianCat: 1,
-  RagdollCat: 1
+  RagdollCat: 1,
+  GreyCat: 1
 }
 
 
@@ -91,8 +93,19 @@ let allBreeds = {
   RagdollCat: {
     attributeText: "+4 Ticket Price",
     entry: "Ragdolls originated around 1963 and have colorpoint coats, which means the colder the fur is over time, the darker it will become. Their fur looks like a heat map of their bodies! They are super affectionate and docile cats, and are even called 'ragdolls' because they can be completely limp and relaxed when picked up, just like a ragdoll. They are dog-like cats because they follow people around, are easily handled, are not typically aggressive towards other animals, can be super playful, want attention constantly, and are intelligent and trainable. They make wonderful family pets.",
-    src: "../assets/animals/breeds/ragdoll.png"
+    src: "../assets/animals/breeds/ragdollcat.png"
+  },
+  GreyCat: {
+    attributeText: "+1 Ticket Price",
+    entry: "These beautiful grey cats are called Russian Blues! They originated in Arkhangelsk, Russia. These cats have grey and silky fur. They are quiet, reserved, and even shy at times. It is even noted that these cats tend to not bother people with cat allergies as much. That’s always a good sign!",
+    src: "../assets/animals/breeds/greycat.png"
+  },
+  PatagonianPossum: {
+    attributeText: "+3 Ticket Price",
+    entry: "Patagonian possums are usually found in southern Argentina. They are adorable, tiny animals with a long tail and beady eyes! Adult Patagonian possums can grow up to 10 inches long. They are decorated with gray and white fur. Opossums’ diets usually consist of bugs and fruit, but for these guys, they have to make do with birds and mice. Be careful around them, they can bite!",
+    src: "../assets/animals/breeds/patagonianpossum.png"
   }
+
 }
 
 
@@ -373,9 +386,17 @@ let breedData = {
     img: "../assets/animals/johnathan_cat.png",
     nickname: "kitty"
   },
-  RagdollCat: {
-    img: "../assets/animals/johnathan_cat.png",
+  GreyCat: {
+    img: "../assets/animals/grey_cat.png",
     nickname: "kitty"
+  },
+  RagdollCat: {
+    img: "../assets/animals/ragdoll_cat.png",
+    nickname: "kitty"
+  },
+  PatagonianPossum: {
+    img: "../assets/animals/patagonian_possum.png",
+    nickname: "possum"
   }
 };
 
@@ -386,7 +407,7 @@ const backyardSpawns = {
   trash: {
     imgId: "raccoon",             // DOM element used for display
     timerType: "trash",           // which timer reset to use later
-    allowedBreeds: ["CommonRaccoon", "VirginiaOpossum"],
+    allowedBreeds: ["CommonRaccoon", "VirginiaOpossum", "GoldenRaccoon","PatagonianPossum"],
     rollStats() {
       // Justin’s original trash formula
       const baseMoney = Math.floor(Math.random() * 4) + baseValue;
@@ -401,7 +422,9 @@ const backyardSpawns = {
     allowedBreeds: [
       "PersianCat",
       "CavalierKingCharlesSpaniel",
-      "LaboradorRetriever"
+      "LaboradorRetriever",
+      "GreyCat",
+      "RagdollCat"
     ],
     rollStats() {
       // Justin’s original food bowl formula

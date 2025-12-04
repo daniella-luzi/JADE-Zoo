@@ -19,6 +19,12 @@ let allBreeds = {
   },
   RagdollCat: {
     attributeText: "+4 Ticket Price"
+  },
+  GreyCat: {
+    attributeText: "+1 Ticket Price"
+  },
+  PatagonianOpossum: {
+    attributeText: "+3 Ticket Price"
   }
 }
 
