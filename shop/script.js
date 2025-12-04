@@ -49,6 +49,14 @@ const allItems = {
     },
     {
       id: "bench",
+      name: "Park Bench",
+      src: "../assets/furniture/benches/parkbench.png",
+      price: 200,
+      attribute: "Gives an extra $1 tip",
+      category: "Benches",
+    },
+    {
+      id: "bench",
       name: "Wooden Bench",
       src: "../assets/furniture/benches/bench.png",
       price: 300,
@@ -184,6 +192,15 @@ const allItems = {
       src: "../assets/furniture/wall/platforms/platform.png",
       price: 400,
       attribute: "Gives an extra $1 tip",
+      category: "Platforms",
+      slotGroup: "platform"
+    },
+    {
+      id: "platform",
+      name: "Flower Platform",
+      src: "../assets/furniture/wall/platforms/flowerplatform.png",
+      price: 600,
+      attribute: "Gives an extra $2 tip",
       category: "Platforms",
       slotGroup: "platform"
     },

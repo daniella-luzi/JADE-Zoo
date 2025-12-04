@@ -23,6 +23,7 @@ let attributeLookup = {
   "BudgetBench": [()=>{addToTip(0)}, ()=>{addToTip(-0)}],
   "BasicBench": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
   "PawBench": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
+  "ParkBench": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
   "WoodenBench": [()=>{addToTip(3)}, ()=>{addToTip(-3)}],
 
   "BasicWindow": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
@@ -30,6 +31,7 @@ let attributeLookup = {
 
   "PlatformSlot": [()=>{},()=>{}],
   "BasicPlatform": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
+  "FlowerPlatform": [()=>{addToTip(2)}, ()=>{addToTip(-2)}],
   
   "BasicCatTree": [()=>{changeTipChance(1)}, ()=>{changeTipChance(-1)}],
   "PlantCatTree": [()=>{changeTipChance(5)}, ()=>{changeTipChance(-5)}],
@@ -55,6 +57,7 @@ let locationLookup = {
   WoodenBench: ["top: -10px; left: 10px", "top: -10px; right: 10px"],
   BasicBench: ["top: -10px; left: 10px", "top: -10px; right: 10px"],
   PawBench: ["top: -10px; left: 10px", "top: -10px; right: 10px"],
+  ParkBench: ["top: 80px; left: 70px", "top: 80px; right: 70px"],
   BudgetBench: ["top: -10px; left: 10px", "top: -10px; right: 10px"],
 
   PlantCatTree: ["top: 0; right: 90px", "top: 160px; left: 90px", "bottom: 15px; right: 85px"],
@@ -74,6 +77,7 @@ let locationLookup = {
   PillowBed: ["top: 10px; left: 80px"],
   
   BasicPlatform: ["bottom: 5px; right: 55px"],
+  FlowerPlatform: ["top: -10px; right: 55px"],
   
   backyardButton: [],
   CatPainting: [],
