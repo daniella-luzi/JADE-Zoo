@@ -10,6 +10,7 @@ let chances = {
   CommonRaccoon: 1,
   GoldenRaccoon: 1,
   VirginiaOpossum: 1,
+  PatagonianPossum: 1,
   LaboradorRetriever: 1,
   CavalierKingCharlesSpaniel: 1,
   PersianCat: 1,
@@ -99,10 +100,10 @@ let allBreeds = {
     entry: "These beautiful grey cats are called Russian Blues! They originated in Arkhangelsk, Russia. These cats have grey and silky fur. They are quiet, reserved, and even shy at times. It is even noted that these cats tend to not bother people with cat allergies as much. That’s always a good sign!",
     src: "../assets/animals/breeds/greycat.png"
   },
-  PatagonianOpossum: {
+  PatagonianPossum: {
     attributeText: "+3 Ticket Price",
-    entry: "Patagonian opossums are usually found in southern Argentina. They are adorable, tiny animals with a long tail and beady eyes! Adult Patagonian opossums can grow up to 10 inches long. They are decorated with gray and white fur. Opossums’ diets usually consist of bugs and fruit, but for these guys, they have to make do with birds and mice. Be careful around them, they can bite!",
-    src: "../assets/animals/breeds/patagonianopossum.png"
+    entry: "Patagonian possums are usually found in southern Argentina. They are adorable, tiny animals with a long tail and beady eyes! Adult Patagonian possums can grow up to 10 inches long. They are decorated with gray and white fur. Opossums’ diets usually consist of bugs and fruit, but for these guys, they have to make do with birds and mice. Be careful around them, they can bite!",
+    src: "../assets/animals/breeds/patagonianpossum.png"
   }
 
 }
@@ -393,9 +394,9 @@ let breedData = {
     img: "../assets/animals/ragdoll_cat.png",
     nickname: "kitty"
   },
-  PatagonianOpossum: {
+  PatagonianPossum: {
     img: "../assets/animals/patagonian_possum.png",
-    nickname: "kitty"
+    nickname: "possum"
   }
 };
 
@@ -406,7 +407,7 @@ const backyardSpawns = {
   trash: {
     imgId: "raccoon",             // DOM element used for display
     timerType: "trash",           // which timer reset to use later
-    allowedBreeds: ["CommonRaccoon", "VirginiaOpossum", "GoldenRaccoon","PatagonianOpossum"],
+    allowedBreeds: ["CommonRaccoon", "VirginiaOpossum", "GoldenRaccoon","PatagonianPossum"],
     rollStats() {
       // Justin’s original trash formula
       const baseMoney = Math.floor(Math.random() * 4) + baseValue;

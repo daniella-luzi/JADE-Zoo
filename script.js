@@ -103,6 +103,12 @@ let allBreeds = {
     entry: "These solitary marsupials, usually referred to as 'possums', can be found from Canada to Costa Rica. Like raccoons, they often roam around trash, compost, and gardens. Opossums have 'prehensile' tails, meaning they are used for grabbing and holding things. They have a whopping 50 teeth and opposable thumbs! Surprisingly, their brain is only 1/5 the size of a raccoon's. A mother opossum carries her children on her body, and newborn opossums are as tiny as a honeybee. When threatened by a predator, an opossum may 'play dead', or pretend to be dead or injured. But in some cases, opossums will absolutely fight back. DON'T pet them!",
     src: "assets/animals/breeds/virginiaopossum.png"
   },
+  PatagonianPossum: {
+    attributes: [()=>{addToTicketPrice(1)}, ()=>{addToTicketPrice(-1)}],
+    attributeText: "+1 Ticket Price",
+    entry: "Patagonian possums are usually found in southern Argentina. They are adorable, tiny animals with a long tail and beady eyes! Adult Patagonian possums can grow up to 10 inches long. They are decorated with gray and white fur. Possums’ diets usually consist of bugs and fruit, but for these guys, they have to make do with birds and mice. Be careful around them, they can bite!",
+    src: "assets/animals/breeds/patagonianpossum.png"
+  },
   LaboradorRetriever: {
     attributes: [()=>{addToTicketPrice(2)}, ()=>{addToTicketPrice(-2)}],
     attributeText: "+2 Ticket Price",
