@@ -13,7 +13,8 @@ let chances = {
   LaboradorRetriever: 1,
   CavalierKingCharlesSpaniel: 1,
   PersianCat: 1,
-  RagdollCat: 1
+  RagdollCat: 1,
+  GreyCat: 1
 }
 
 
@@ -61,38 +62,49 @@ let allBreeds = {
   CommonRaccoon: {
     attributeText: "+1 Ticket Price",
     entry: "These furry mammals are native to North America, but later spread to central Europe, the Caucasus, and Japan in the mid-20th century. They are nocturnal, meaning they sleep during the day. Raccoons are super intelligent; in fact, studies have shown that they can remember the solutions to tasks for at least 3 years! They originally lived in forests, but have adapted to live in urban areas, which is why you might find one digging through your trash. You may have noticed their dexterous paws. That's where they got their name! The word 'raccoon' was adopted into English from the native Powhatan term meaning 'animal that scratches with its hands'. Do NOT try to pet them.",
-    src: "assets/animals/breeds/commonraccoon.png" //real picture
+    src: "../assets/animals/breeds/commonraccoon.png" //real picture
   },
   GoldenRaccoon: {
     attributeText: "+15 Ticket Price",
     entry: "While not really a 'breed' per se, these little guys are inspired by albino raccoons, which are normal raccoons but with a rare gene mutation that removes their 'melanin', or the pigment that makes their fur and skin dark. As a result, their fur is white, their noses are pink, and their eyes are red. This mutation only occurs in about one in every 10,000-20,000 raccoons, making sightings extremely rare. There are also blonde raccoons, a rare color morph with light brown or golden fur. Their masks and tail rings are still visible but not nearly as pronounced.",
-    src: "assets/animals/breeds/blonderaccoon.png"
+    src: "../assets/animals/breeds/blonderaccoon.png"
   },
   VirginiaOpossum: {
     attributeText: "+1 Ticket Price",
     entry: "These solitary marsupials, usually referred to as 'possums', can be found from Canada to Costa Rica. Like raccoons, they often roam around trash, compost, and gardens. Opossums have 'prehensile' tails, meaning they are used for grabbing and holding things. They have a whopping 50 teeth and opposable thumbs! Surprisingly, their brain is only 1/5 the size of a raccoon's. A mother opossum carries her children on her body, and newborn opossums are as tiny as a honeybee. When threatened by a predator, an opossum may 'play dead', or pretend to be dead or injured. But in some cases, opossums will absolutely fight back. DON'T pet them!",
-    src: "assets/animals/breeds/virginiaopossum.png"
+    src: "../assets/animals/breeds/virginiaopossum.png"
   },
   LaboradorRetriever: {
     attributeText: "+2 Ticket Price",
     entry: "We all know and love these playful canines. This breed comes from Britain and was created to hunt and track game in the 19th century. Labs have historically been trained to become guide and service dogs, war dogs, rescue dogs, and even police dogs. They of course make wonderful companions, as they are a friendly, energetic, intelligent, and loyal breed. Labs are very widespread - in fact, you may have seen a few in your neighborhood! They vary a lot in color, with black, chocolate, and yellow variants - all equally adorable.",
-    src: "assets/animals/breeds/lab.png"
+    src: "../assets/animals/breeds/lab.png"
   },
   CavalierKingCharlesSpaniel: {
     attributeText: "+2 Ticket Price",
     entry: "This is a British breed of toy dog with four distinct color patterns, emerging in the 1920s. They are soft, snuggly, highly affectionate lap dogs that do great with children and other dogs. Cavaliers are not shy at all, and are highly adaptable. They are playful, active, and curious, and have been trained to become therapy dogs due to their sweet and gentle nature. Cavaliers often want to chase things, including vehicles, so they are not suited for off-leash walking, and they have a strong hunting instinct. They usually make terrible guard dogs because all strangers are friends to them.",
-    src: "assets/animals/breeds/cavalier.png"
+    src: "../assets/animals/breeds/cavalier.png"
   },
   PersianCat: {
     attributeText: "+3 Ticket Price",
     entry: "Persian Longhairs are thought to have emerged in the 19th century. Selective breeding has caused them to have flat faces over time which cause health problems, but traditional Persians actually had normal muzzles. Persians are quiet cats that adapt well to indoor life, and are close and affectionate with their owners. They can be friendly towards strangers, and like to keep themselves clean, although require regular brushing to maintain their beautiful coats.",
-    src: "assets/animals/breeds/persian.png"
+    src: "../assets/animals/breeds/persian.png"
   },
   RagdollCat: {
     attributeText: "+4 Ticket Price",
     entry: "Ragdolls originated around 1963 and have colorpoint coats, which means the colder the fur is over time, the darker it will become. Their fur looks like a heat map of their bodies! They are super affectionate and docile cats, and are even called 'ragdolls' because they can be completely limp and relaxed when picked up, just like a ragdoll. They are dog-like cats because they follow people around, are easily handled, are not typically aggressive towards other animals, can be super playful, want attention constantly, and are intelligent and trainable. They make wonderful family pets.",
-    src: "assets/animals/breeds/ragdoll.png"
+    src: "../assets/animals/breeds/ragdollcat.png"
+  },
+  GreyCat: {
+    attributeText: "+1 Ticket Price",
+    entry: "These beautiful grey cats are called Russian Blues! They originated in Arkhangelsk, Russia. These cats have grey and silky fur. They are quiet, reserved, and even shy at times. It is even noted that these cats tend to not bother people with cat allergies as much. That’s always a good sign!",
+    src: "../assets/animals/breeds/greycat.png"
+  },
+  PatagonianOpossum: {
+    attributeText: "+3 Ticket Price",
+    entry: "Patagonian opossums are usually found in southern Argentina. They are adorable, tiny animals with a long tail and beady eyes! Adult Patagonian opossums can grow up to 10 inches long. They are decorated with gray and white fur. Opossums’ diets usually consist of bugs and fruit, but for these guys, they have to make do with birds and mice. Be careful around them, they can bite!",
+    src: "../assets/animals/breeds/patagonianopossum.png"
   }
+
 }
 
 
@@ -311,13 +323,235 @@ function resizeWorld() {
 
 
 window.addEventListener("resize", resizeWorld);
-window.addEventListener("load", ()=>{
+
+function preloadBackyardImages() {
+  // breedData: { CommonRaccoon: { img, nickname }, ... }
+  Object.values(breedData).forEach(info => {
+    const img = new Image();
+    img.src = info.img;
+  });
+}
+
+
+window.addEventListener("load", () => {
+  // hide unused hardcoded sprites if you still have them
+  const possumEl = document.getElementById("possum");
+  const dogEl = document.getElementById("Dog");
+  if (possumEl) possumEl.style.display = "none";
+  if (dogEl) dogEl.style.display = "none";
+
+  preloadBackyardImages();
   loadFurniture();
   if(localStorage.getItem("decorChoice")){
     //if a decor item has been chosen in customization, run placeDecoration
     placeDecoration(JSON.parse(localStorage.getItem("decorChoice")));
   }
 });
+
+
+
+
+
+
+
+
+
+
+
+// === Backyard spawn config =====================================
+
+let breedData = {
+  CommonRaccoon: {
+    img: "../assets/animals/racket_raccoon.png",
+    nickname: "raccoon"
+  },
+  GoldenRaccoon: {
+    img: "../assets/animals/golden_raccoon.png",
+    nickname: "raccoon"
+  },
+  VirginiaOpossum: {
+    img: "../assets/animals/virginia_possum.png",
+    nickname: "possum"
+  },
+  LaboradorRetriever: {
+    img: "../assets/animals/lab_puppy.png",
+    nickname: "doggy"
+  },
+  CavalierKingCharlesSpaniel: {
+    img: "../assets/animals/cavalier_dog.png",
+    nickname: "doggy"
+  },
+  PersianCat: {
+    img: "../assets/animals/johnathan_cat.png",
+    nickname: "kitty"
+  },
+  GreyCat: {
+    img: "../assets/animals/grey_cat.png",
+    nickname: "kitty"
+  },
+  RagdollCat: {
+    img: "../assets/animals/ragdoll_cat.png",
+    nickname: "kitty"
+  },
+  PatagonianOpossum: {
+    img: "../assets/animals/patagonian_possum.png",
+    nickname: "kitty"
+  }
+};
+
+
+// Two spawn "sources": trash & food bowl.
+// If you add another backyard item later, just add another entry here.
+const backyardSpawns = {
+  trash: {
+    imgId: "raccoon",             // DOM element used for display
+    timerType: "trash",           // which timer reset to use later
+    allowedBreeds: ["CommonRaccoon", "VirginiaOpossum", "GoldenRaccoon","PatagonianOpossum"],
+    rollStats() {
+      // Justin’s original trash formula
+      const baseMoney = Math.floor(Math.random() * 4) + baseValue;
+      const tipChance = Math.floor(Math.random() * 5) + 1;
+      const tipValue  = Math.floor(Math.random() * 7) + 4;
+      return { baseMoney, tipChance, tipValue };
+    }
+  },
+  bowl: {
+    imgId: "Cat",
+    timerType: "bowl",
+    allowedBreeds: [
+      "PersianCat",
+      "CavalierKingCharlesSpaniel",
+      "LaboradorRetriever",
+      "GreyCat",
+      "RagdollCat"
+    ],
+    rollStats() {
+      // Justin’s original food bowl formula
+      const baseMoney = Math.floor(Math.random() * 4) + 1;
+      const tipChance = Math.floor(Math.random() * 5) + 1;
+      const tipValue  = Math.floor(Math.random() * 7) + 4;
+      return { baseMoney, tipChance, tipValue };
+    }
+  }
+};
+
+// Utility: make "CommonRaccoon" -> "Common Raccoon"
+function prettyBreedName(key) {
+  return key.replace(/([A-Z])/g, " $1").trim();
+}
+
+// Weighted random pick based on the global `chances` object
+function pickBreedWeighted(allowedBreeds) {
+  let total = 0;
+  allowedBreeds.forEach(b => {
+    total += chances[b] || 0;
+  });
+
+  let r = Math.random() * total;
+  for (const b of allowedBreeds) {
+    r -= (chances[b] || 0);
+    if (r <= 0) return b;
+  }
+  return allowedBreeds[0]; // fallback
+}
+
+
+
+
+
+
+
+
+// === Shared capture state ======================================
+
+let inMenu = false;
+
+let currentAnimalType = null;      // breed key, e.g. "PersianCat"
+let currentAnimalName = null;
+let currentAnimalBaseMoney = 0;
+let currentAnimalTipPer = 0;
+let currentAnimalTipVal = 0;
+let currentSpawnKey = null;        // "trash" or "bowl"
+
+// We'll store the actual DOM element of the currently visible backyard animal:
+let currentSpawnImgEl = null;
+
+function openCaptureMenu(spawnKey) {
+  if (inMenu) return;
+  inMenu = true;
+
+  const spawn = backyardSpawns[spawnKey];
+  if (!spawn) {
+    console.error("Unknown spawn key:", spawnKey);
+    inMenu = false;
+    return;
+  }
+
+  const imgEl = document.getElementById(spawn.imgId);
+  const breedKey = imgEl.dataset.breed;
+
+  const cuteWord = breedData[breedKey]?.nickname || prettyBreedName(breedKey);
+
+  const { baseMoney, tipChance, tipValue } = spawn.rollStats();
+
+  currentSpawnKey = spawnKey;
+  currentSpawnImgEl = imgEl;
+  currentAnimalType = breedKey;
+  currentAnimalName = getRandomName();
+  currentAnimalBaseMoney = baseMoney;
+  currentAnimalTipPer = tipChance;
+  currentAnimalTipVal = tipValue;
+
+  document.querySelector("#question").textContent =
+    "You found " + currentAnimalName + "!";
+  document.querySelector("#animalType").textContent =
+    "What a cute " + cuteWord + "!";
+
+  document.querySelector("#baseValue").textContent =
+    "+$" + baseMoney + " per second";
+  document.querySelector("#tipChance").textContent =
+    tipChance + "% tip chance";
+  document.querySelector("#tipValue").textContent =
+    "+$" + tipValue + " per tip";
+
+  document.querySelector("#question").style.display = "block";
+  document.querySelector("#animalType").style.display = "block";
+  document.querySelector("#baseValue").style.display = "flex";
+  document.querySelector("#tipChance").style.display = "flex";
+  document.querySelector("#tipValue").style.display = "flex";
+  document.querySelector(".action-buttons-container").style.display = "flex";
+}
+
+
+// Hide popup and restart the appropriate timer
+function finishCapture() {
+  inMenu = false;
+
+  // Hide popup ui
+  document.querySelector("#question").style.display = "none";
+  document.querySelector("#animalType").style.display = "none";
+  document.querySelector("#baseValue").style.display = "none";
+  document.querySelector("#tipChance").style.display = "none";
+  document.querySelector("#tipValue").style.display = "none";
+  document.querySelector(".action-buttons-container").style.display = "none";
+
+  // Hide the animal sprite that was clicked
+  if (currentSpawnImgEl) {
+    currentSpawnImgEl.style.display = "none";
+  }
+
+  // Restart the correct timer
+  if (currentSpawnKey === "trash") {
+    resetTimer();
+    startTimer(trashTimeout);
+  } else if (currentSpawnKey === "bowl") {
+    resetTimer2();
+    startTimer2(petTimeout);
+  }
+
+  currentSpawnKey = null;
+  currentSpawnImgEl = null;
+}
 
 
 
@@ -359,6 +593,52 @@ function resetTimer() {
 
 
 
+// Hide the unused old sprites (we always use #raccoon and #Cat now)
+window.addEventListener("load", () => {
+  const possumEl = document.getElementById("possum");
+  const dogEl = document.getElementById("Dog");
+  if (possumEl) possumEl.style.display = "none";
+  if (dogEl) dogEl.style.display = "none";
+});
+
+function spawnBackyardAnimal(spawnKey) {
+  const spawn = backyardSpawns[spawnKey];
+  if (!spawn) return;
+
+  const imgEl = document.getElementById(spawn.imgId);
+  if (!imgEl) return;
+
+  const breedKey = pickBreedWeighted(spawn.allowedBreeds);
+  const imgSrc = breedData[breedKey].img;
+
+  // NEW: friendly name for popup
+  imgEl.alt = breedData[breedKey].nickname;
+
+  // still keep real breed stored internally
+  imgEl.dataset.breed = breedKey;
+
+  imgEl.dataset.breed = breedKey;
+  imgEl.dataset.spawnKey = spawnKey;
+
+  imgEl.style.display = "none";
+
+  function handleLoad() {
+    imgEl.style.display = "block";   // show only after the new sprite is ready
+    imgEl.removeEventListener("load", handleLoad);
+  }
+
+  imgEl.addEventListener("load", handleLoad);
+  imgEl.src = imgSrc; // start loading the new sprite
+}
+
+
+// Timers now just call the generic spawn
+function trashTimeout() {
+  spawnBackyardAnimal("trash");
+}
+function petTimeout() {
+  spawnBackyardAnimal("bowl");
+}
 
 
 
@@ -397,112 +677,8 @@ function resetTimer2() {
 
 
 
-function trashTimeout() {
-  (Math.random() < 0.5 ? possumAppear : raccoonAppear)();
-}
-
-function possumAppear() {
-  document.querySelector("#possum").style.display = "block";
-  
-}
-
-function raccoonAppear() {
-  document.querySelector("#raccoon").style.display = "block";
-}
 
 
-var currentAnimalType;
-var currentAnimalName;
-var currentAnimalBaseMoney;
-var currentAnimalTipPer;
-var currentAnimalTipVal;
-
-function captureVisible(AnimalElement) {
-  // Asks if you want to capture or not. 
-  if (inMenu == true) {
-    return;
-  }
-
-  inMenu = true;
-  document.querySelector(".action-buttons-container").style.display = "flex";
-  
-  document.querySelector("#question").style.display = "block";
-  document.querySelector("#animalType").style.display = "block";
-  // Uses the alt text of the image to display the message
-  
-  document.querySelector("#baseValue").style.display = "flex";
-  document.querySelector("#tipChance").style.display = "flex";
-  document.querySelector("#tipValue").style.display = "flex";
-
-
-  const animalName = AnimalElement.alt;  //animal type
-  document.querySelector("#animalType").textContent = "What a cute " + animalName + "!";
-  currentAnimalType = animalName;
-  
-  
-  var animalsFirstName = getRandomName();      //animal name, sorry for confusion
-  document.querySelector("#question").textContent = "You found " + animalsFirstName + "!";
-  currentAnimalName = animalsFirstName;
-
-  
-  
-  //if you have diffrent trash can, logic would be here.
-  
-  currentAnimalBaseMoney = Math.floor(Math.random() * 4) + baseValue;
-  currentAnimalTipPer =    Math.floor(Math.random() * 5) + 1;
-  currentAnimalTipVal =    Math.floor(Math.random() * 7) + 4;
-  
-  
-  document.querySelector("#baseValue").textContent = "+$" + currentAnimalBaseMoney + " per second";
-  document.querySelector("#tipChance").textContent = currentAnimalTipPer + "% tip chance";
-  document.querySelector("#tipValue").textContent = "+$" + currentAnimalTipPer + " per tip";
-  
-}
-
-
-function captureVisible2(AnimalElement) {
-  // Asks if you want to capture or not. 
-  if (inMenu == true) {
-    return;
-  }
-
-  inMenu = true;
-  document.querySelector(".action-buttons-container2").style.display = "flex";
-  document.querySelector("#question2").style.display = "block";
-  document.querySelector("#animalType2").style.display = "block";
-  // Uses the alt text of the image to display the message
-  
-  document.querySelector("#baseValue2").style.display = "flex";
-  document.querySelector("#tipChance2").style.display = "flex";
-  document.querySelector("#tipValue2").style.display = "flex";
-
-
-  const animalName = AnimalElement.alt;  //animal type
-  document.querySelector("#animalType2").textContent = "What a cute " + animalName + "!";
-  currentAnimalType = animalName;
-  
-  
-  var animalsFirstName = getRandomName();      //animal name, sorry for confusion
-  document.querySelector("#question2").textContent = "You found " + animalsFirstName + "!";
-  currentAnimalName = animalsFirstName;
-
-  
-  
-  //if you have diffrent pet bowl, logic would be here.
-  
-  currentAnimalBaseMoney = Math.floor(Math.random() * 4) + 1;
-  currentAnimalTipPer =    Math.floor(Math.random() * 5) + 1;
-  currentAnimalTipVal =    Math.floor(Math.random() * 7) + 4;
-  
-  
-  document.querySelector("#baseValue2").textContent = "+$" + currentAnimalBaseMoney + " per second";
-  document.querySelector("#tipChance2").textContent = currentAnimalTipPer + "% tip chance";
-  document.querySelector("#tipValue2").textContent = "+$" + currentAnimalTipPer + " per tip";
-  
-}
-
-
-var inMenu = false;
 
 // var currentAnimalType;
 // var currentAnimalName;
@@ -510,55 +686,149 @@ var inMenu = false;
 // var currentAnimalTipPer;
 // var currentAnimalTipVal;
 
+// function captureVisible(AnimalElement) {
+//   // Asks if you want to capture or not. 
+//   if (inMenu == true) {
+//     return;
+//   }
+
+//   inMenu = true;
+//   document.querySelector(".action-buttons-container").style.display = "flex";
+  
+//   document.querySelector("#question").style.display = "block";
+//   document.querySelector("#animalType").style.display = "block";
+//   // Uses the alt text of the image to display the message
+  
+//   document.querySelector("#baseValue").style.display = "flex";
+//   document.querySelector("#tipChance").style.display = "flex";
+//   document.querySelector("#tipValue").style.display = "flex";
+
+
+//   const animalName = AnimalElement.alt;  //animal type
+//   document.querySelector("#animalType").textContent = "What a cute " + animalName + "!";
+//   currentAnimalType = animalName;
+  
+  
+//   var animalsFirstName = getRandomName();      //animal name, sorry for confusion
+//   document.querySelector("#question").textContent = "You found " + animalsFirstName + "!";
+//   currentAnimalName = animalsFirstName;
+
+  
+  
+//   //if you have diffrent trash can, logic would be here.
+  
+//   currentAnimalBaseMoney = Math.floor(Math.random() * 4) + baseValue;
+//   currentAnimalTipPer =    Math.floor(Math.random() * 5) + 1;
+//   currentAnimalTipVal =    Math.floor(Math.random() * 7) + 4;
+  
+  
+//   document.querySelector("#baseValue").textContent = "+$" + currentAnimalBaseMoney + " per second";
+//   document.querySelector("#tipChance").textContent = currentAnimalTipPer + "% tip chance";
+//   document.querySelector("#tipValue").textContent = "+$" + currentAnimalTipPer + " per tip";
+  
+// }
+
+
+// function captureVisible2(AnimalElement) {
+//   // Asks if you want to capture or not. 
+//   if (inMenu == true) {
+//     return;
+//   }
+
+//   inMenu = true;
+//   document.querySelector(".action-buttons-container2").style.display = "flex";
+//   document.querySelector("#question2").style.display = "block";
+//   document.querySelector("#animalType2").style.display = "block";
+//   // Uses the alt text of the image to display the message
+  
+//   document.querySelector("#baseValue2").style.display = "flex";
+//   document.querySelector("#tipChance2").style.display = "flex";
+//   document.querySelector("#tipValue2").style.display = "flex";
+
+
+//   const animalName = AnimalElement.alt;  //animal type
+//   document.querySelector("#animalType2").textContent = "What a cute " + animalName + "!";
+//   currentAnimalType = animalName;
+  
+  
+//   var animalsFirstName = getRandomName();      //animal name, sorry for confusion
+//   document.querySelector("#question2").textContent = "You found " + animalsFirstName + "!";
+//   currentAnimalName = animalsFirstName;
+
+  
+  
+//   //if you have diffrent pet bowl, logic would be here.
+  
+//   currentAnimalBaseMoney = Math.floor(Math.random() * 4) + 1;
+//   currentAnimalTipPer =    Math.floor(Math.random() * 5) + 1;
+//   currentAnimalTipVal =    Math.floor(Math.random() * 7) + 4;
+  
+  
+//   document.querySelector("#baseValue2").textContent = "+$" + currentAnimalBaseMoney + " per second";
+//   document.querySelector("#tipChance2").textContent = currentAnimalTipPer + "% tip chance";
+//   document.querySelector("#tipValue2").textContent = "+$" + currentAnimalTipPer + " per tip";
+  
+// }
+
+
+// var inMenu = false;
+
+// var currentAnimalType;
+// var currentAnimalName;
+// var currentAnimalBaseMoney;
+// var currentAnimalTipPer;
+// var currentAnimalTipVal;
+
+
 function keep() {
+  // currentAnimalType is already a breed key like "PersianCat"
+  const breedKey = currentAnimalType;
+
   const newAnimal = {
     name: currentAnimalName,
-    breed: currentAnimalType,
-    
-  }
+    breed: breedKey,
+
+    baseMoney: currentAnimalBaseMoney,
+    tipChance: currentAnimalTipPer,
+    tipValue: currentAnimalTipVal,
+
+    attributeText:
+      `+$${currentAnimalBaseMoney} per second\n` +
+      `+${currentAnimalTipPer}% tip chance\n` +
+      `+$${currentAnimalTipVal} per tip`,
+
+    src: breedData[breedKey].img,
+    active: false
+  };
+
+  const currentownedCreatures =
+    JSON.parse(localStorage.getItem("ownedCreatures")) || [];
+
+  currentownedCreatures.push(newAnimal);
+  localStorage.setItem("ownedCreatures", JSON.stringify(currentownedCreatures));
+
   alert("Good job! You saved the animal!");
+
+  // finish capture UI + restart timer
+  finishCapture();
+
+  // Go back to zoo
   window.location.href = "index.html";
 }
 
-function release() {
-  inMenu = false;
-  document.querySelector("#question").style.display = "none";
-  document.querySelector("#animalType").style.display = "none";
-  document.querySelector(".action-buttons-container").style.display = "none";
 
-  document.querySelector("#baseValue").style.display = "none";
-  document.querySelector("#tipValue").style.display = "none";
-  document.querySelector("#tipChance").style.display = "none";
-  
-  resetTimer();
-  startTimer(trashTimeout);
-  
-  document.querySelector("#raccoon").style.display = "none";
-  document.querySelector("#possum").style.display = "none";
-  
+function release() {
+  // Just close popup & restart the appropriate timer
+  finishCapture();
 }
 
 
 function keep2() {
-  alert("Good job! You saved the animal!");
-  window.location.href = "index.html";
+  keep();
 }
 
 function release2() {
-  inMenu = false;
-  document.querySelector("#question2").style.display = "none";
-  document.querySelector("#animalType2").style.display = "none";
-  document.querySelector(".action-buttons-container2").style.display = "none";
-
-  document.querySelector("#baseValue2").style.display = "none";
-  document.querySelector("#tipValue2").style.display = "none";
-  document.querySelector("#tipChance2").style.display = "none";
-  
-  resetTimer2();
-  startTimer2(petTimeout);
-  
-  document.querySelector("#Cat").style.display = "none";
-  document.querySelector("#Dog").style.display = "none";
+  release();
   
 }
 
@@ -584,21 +854,26 @@ function getRandomName() {
   return names[randomIndex];
 }
 
-function petTimeout() {
-  (Math.random() < 0.5 ? CatAppear : DogAppear)();
-}
 
-function CatAppear() {
-  document.querySelector("#Cat").style.display = "block";
-  
-}
-
-function DogAppear() {
-  document.querySelector("#Dog").style.display = "block";
-}
 
 
 
 resizeWorld();
+
+// Attach click handlers to the two spawn images
+const trashImg = document.getElementById("raccoon");
+const bowlImg  = document.getElementById("Cat");
+
+if (trashImg) {
+  trashImg.addEventListener("click", () => {
+    openCaptureMenu("trash");
+  });
+}
+if (bowlImg) {
+  bowlImg.addEventListener("click", () => {
+    openCaptureMenu("bowl");
+  });
+}
+
 startTimer(trashTimeout);
 startTimer2(petTimeout);

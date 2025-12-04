@@ -61,7 +61,14 @@
     "src": "./assets/furniture/wall/paintings/painting.png",
     "price": 10,
     "attribute": "Gives an extra $1 tip",
-    "category": "Paintings"}
+    "category": "Paintings"},
+    
+    {"id": "flowerplatform",
+    "name": "Flower Platform",
+    "src": "./assets/furniture/wall/platforms/flowerplatform.png",
+    "price": 200,
+    "attribute": "+10% Tip Chance",
+    "category": "Misc."}
   ],
  "Backyard": [
     {"id": "trashcan",

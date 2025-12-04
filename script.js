@@ -20,10 +20,10 @@ let movingAnimalSrc = "";
 
 // A list of all the item names (WITHOUT SPACES) and their corresponding attribute functions.
 let attributeLookup = {
-  "WoodenBench": [()=>{addToTip(3)}, ()=>{addToTip(-3)}],
+  "BudgetBench": [()=>{addToTip(0)}, ()=>{addToTip(-0)}],
   "BasicBench": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
   "PawBench": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
-  "BudgetBench": [()=>{addToTip(0)}, ()=>{addToTip(-0)}],
+  "WoodenBench": [()=>{addToTip(3)}, ()=>{addToTip(-3)}],
 
   "BasicWindow": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
   "FlowerWindow": [()=>{addToTip(5)}, ()=>{addToTip(-5)}],
@@ -31,24 +31,24 @@ let attributeLookup = {
   "PlatformSlot": [()=>{},()=>{}],
   "BasicPlatform": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
   
-  "PlantCatTree": [()=>{changeTipChance(5)}, ()=>{changeTipChance(-5)}],
   "BasicCatTree": [()=>{changeTipChance(1)}, ()=>{changeTipChance(-1)}],
+  "PlantCatTree": [()=>{changeTipChance(5)}, ()=>{changeTipChance(-5)}],
 
   "PaintingSlot": [()=>{},()=>{}],
   "CatTreeSlot": [()=>{},()=>{}],
-  "FlowerPainting": [()=>{changeTipChance(1)}, ()=>{changeTipChance(-1)}],
   "CatPainting": [()=>{changeTipChance(1)}, ()=>{changeTipChance(-1)}],
   "DogPainting": [()=>{changeTipChance(1)}, ()=>{changeTipChance(-1)}],
+  "FlowerPainting": [()=>{changeTipChance(1)}, ()=>{changeTipChance(-1)}],
 
-  "PawRug": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
-  "BasicRug": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
   "BudgetRug": [()=>{addToTip(0)}, ()=>{addToTip(-0)}],
+  "BasicRug": [()=>{addToTip(1)}, ()=>{addToTip(-1)}],
+  "PawRug": [()=>{addToTip(2)}, ()=>{addToTip(-2)}],
 
-  "FluffyBed": [()=>{addToTip(3)}, ()=>{addToTip(-3)}],
-  "CircleBed": [()=>{addToTip(3)}, ()=>{addToTip(-3)}],
-  "PillowBed": [()=>{addToTip(4)}, ()=>{addToTip(-4)}],
   "NewspaperBed": [()=>{addToTip(0)}, ()=>{addToTip(-0)}],
   "BudgetBed": [()=>{addToTip(0)}, ()=>{addToTip(-0)}],
+  "CircleBed": [()=>{addToTip(3)}, ()=>{addToTip(-3)}],
+  "PillowBed": [()=>{addToTip(4)}, ()=>{addToTip(-4)}],
+  "FluffyBed": [()=>{addToTip(3)}, ()=>{addToTip(-3)}],
 };
 
 let locationLookup = {
@@ -125,7 +125,13 @@ let allBreeds = {
     attributes: [()=>{addToTicketPrice(4)}, ()=>{addToTicketPrice(-4)}],
     attributeText: "+4 Ticket Price",
     entry: "Ragdolls originated around 1963 and have colorpoint coats, which means the colder the fur is over time, the darker it will become. Their fur looks like a heat map of their bodies! They are super affectionate and docile cats, and are even called 'ragdolls' because they can be completely limp and relaxed when picked up, just like a ragdoll. They are dog-like cats because they follow people around, are easily handled, are not typically aggressive towards other animals, can be super playful, want attention constantly, and are intelligent and trainable. They make wonderful family pets.",
-    src: "assets/animals/breeds/ragdoll.png"
+    src: "assets/animals/breeds/ragdollcat.png"
+  },
+  GreyCat: {
+    attributes: [()=>{addToTicketPrice(1)}, ()=>{addToTicketPrice(-1)}],
+    attributeText: "+1 Ticket Price",
+    entry: "These beautiful grey cats are called Russian Blues! They originated in Arkhangelsk, Russia. These cats have grey and silky fur. They are quiet, reserved, and even shy at times. It is even noted that these cats tend to not bother people with cat allergies as much. That’s always a good sign!",
+    src: "assets/animals/breeds/greycat.png"
   }
 }
 
@@ -278,11 +284,22 @@ function loadAnimals() {
     const decorContainer = document.querySelector(`#${i.furnitureId}`).parentElement;
     const currentLocationImg = decorContainer.querySelector(`.${i.locationId} > img`);
     currentLocationImg.src = i.animal.src;
-    if(i.animal.attributes){
-      i.animal.attributes[0]();
-    }else{
+    if (i.animal.baseMoney !== undefined ||
+        i.animal.tipVal   !== undefined ||
+        i.animal.tipPer   !== undefined) {
+
+      const base   = i.animal.baseMoney || 0;
+      const tipVal = i.animal.tipVal   || 0;
+      const tipPer = i.animal.tipPer   || 0;
+
+      addToTicketPrice(base);
+      addToTip(tipVal);
+      changeTipChance(tipPer);
+    } else {
+      // default breed-based attributes
       allBreeds[i.animal.breed].attributes[0]();
     }
+
     
   }
 }
@@ -628,10 +645,25 @@ function placeAnimal(itemObject){
   }
 
   let deleteFunc = () => {};
-  const addFunc = allBreeds[itemObject.breed].attributes[0];
-  if(itemObject.attributes){
-    addFunc = itemObject.attributes[0];
+  let addFunc = () => {};
+
+  if (itemObject.baseMoney !== undefined ||
+      itemObject.tipVal   !== undefined ||
+      itemObject.tipPer   !== undefined) {
+
+    const base   = itemObject.baseMoney || 0;
+    const tipVal = itemObject.tipVal   || 0;
+    const tipPer = itemObject.tipPer   || 0;
+
+    addFunc = () => {
+      addToTicketPrice(base);
+      addToTip(tipVal);
+      changeTipChance(tipPer);
+    };
+  } else {
+    addFunc = allBreeds[itemObject.breed].attributes[0];
   }
+
 
   //hide stuff
   document.querySelector("#animalPrompt").style.display = "block";
@@ -691,12 +723,27 @@ function placeAnimal(itemObject){
         active: true
       })
 
-    }else{
-      deleteFunc = allBreeds[activeLocations[activeLocationIndex].animal.breed].attributes[1];
-      if(activeLocations[activeLocationIndex].animal.attributes[1]){
-        deleteFunc = activeLocations[activeLocationIndex].animal.attributes[1];
+    } else {
+      const oldAnimal = activeLocations[activeLocationIndex].animal;
+
+      if (oldAnimal.baseMoney !== undefined ||
+          oldAnimal.tipVal   !== undefined ||
+          oldAnimal.tipPer   !== undefined) {
+
+        const base   = oldAnimal.baseMoney || 0;
+        const tipVal = oldAnimal.tipVal   || 0;
+        const tipPer = oldAnimal.tipPer   || 0;
+
+        deleteFunc = () => {
+          addToTicketPrice(-base);
+          addToTip(-tipVal);
+          changeTipChance(-tipPer);
+        };
+      } else {
+        deleteFunc = allBreeds[oldAnimal.breed].attributes[1];
       }
     }
+
 
     activeLocationIndex = (activeLocations.findIndex((i)=>{
       return (i.furnitureId == locationFurnitureId && i.locationId == locationClass);
@@ -771,14 +818,17 @@ resizeWorld();
 
 function addToTip(amt){
   tip += amt;
+  // localStorage.setItem("tip", tip);
 }
 
 function addToTicketPrice(amt){
   ticketPrice += amt;
+  // localStorage.setItem("ticketPrice", ticketPrice);
 }
 
 function changeTipChance(amt){
   tipChance += amt;
+  // localStorage.setItem("tipChance", tipChance);
 }
 
 
@@ -808,54 +858,54 @@ function changeTipChance(amt){
 
 
 const defaultOwnedCreatures = [
-  {
-    name: "Geoffrey",
-    breed: "CommonRaccoon",
-    src: "assets/animals/racket_raccoon.png",
-    active: false
-  },
-  {
-    name: "Kyle",
-    breed: "GoldenRaccoon",
-    src: "assets/animals/golden_raccoon.png",
-    active: false
-  },
-  {
-    name: "Caliban",
-    breed: "VirginiaOpossum",
-    src: "assets/animals/virginia_possum.png",
-    active: false
-  },
-  {
-    name: "Emily",
-    breed: "CavalierKingCharlesSpaniel",
-    src: "assets/animals/cavalier_dog.png",
-    active: false
-  },
-  {
-    name: "Norbit",
-    breed: "LaboradorRetriever",
-    src: "assets/animals/lab_puppy.png",
-    active: false
-  },
-  {
-    name: "Mochi",
-    breed: "PersianCat",
-    src: "assets/animals/johnathan_cat.png",
-    active: false
-  },
-  {
-    name: "Pudding",
-    breed: "RagdollCat",
-    src: "assets/animals/johnathan_cat.png",
-    active: false
-  },
-  {
-    name: "Johnathan",
-    breed: "PersianCat",
-    src: "assets/animals/johnathan_cat.png",
-    active: true
-  }
+  // {
+  //   name: "Geoffrey",
+  //   breed: "CommonRaccoon",
+  //   src: "assets/animals/racket_raccoon.png",
+  //   active: false
+  // },
+  // {
+  //   name: "Kyle",
+  //   breed: "GoldenRaccoon",
+  //   src: "assets/animals/golden_raccoon.png",
+  //   active: false
+  // },
+  // {
+  //   name: "Caliban",
+  //   breed: "VirginiaOpossum",
+  //   src: "assets/animals/virginia_possum.png",
+  //   active: false
+  // },
+  // {
+  //   name: "Emily",
+  //   breed: "CavalierKingCharlesSpaniel",
+  //   src: "assets/animals/cavalier_dog.png",
+  //   active: false
+  // },
+  // {
+  //   name: "Norbit",
+  //   breed: "LaboradorRetriever",
+  //   src: "assets/animals/lab_puppy.png",
+  //   active: false
+  // },
+  // {
+  //   name: "Mochi",
+  //   breed: "PersianCat",
+  //   src: "assets/animals/johnathan_cat.png",
+  //   active: false
+  // },
+  // {
+  //   name: "Pudding",
+  //   breed: "RagdollCat",
+  //   src: "assets/animals/johnathan_cat.png",
+  //   active: false
+  // },
+  // {
+  //   name: "Johnathan",
+  //   breed: "PersianCat",
+  //   src: "assets/animals/johnathan_cat.png",
+  //   active: true
+  // }
 ];
 
 let ownedCreatures = [];
@@ -868,9 +918,6 @@ function loadOwnedCreatures() {
       const parsed = JSON.parse(saved);
       if (Array.isArray(parsed)) {
         ownedCreatures = parsed;
-        if(JSON.parse(localStorage.getItem("newAnimal"))){ //ADDING NEW ANIMAL FROM BACKYARD
-          ownedCreatures.push(JSON.parse(localStorage.getItem("newAnimal")));
-        }
         return;
       }
     } catch (e) {
