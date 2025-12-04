@@ -131,6 +131,12 @@ let allBreeds = {
     entry: "This is a British breed of toy dog with four distinct color patterns, emerging in the 1920s. They are soft, snuggly, highly affectionate lap dogs that do great with children and other dogs. Cavaliers are not shy at all, and are highly adaptable. They are playful, active, and curious, and have been trained to become therapy dogs due to their sweet and gentle nature. Cavaliers often want to chase things, including vehicles, so they are not suited for off-leash walking, and they have a strong hunting instinct. They usually make terrible guard dogs because all strangers are friends to them.",
     src: "assets/animals/breeds/cavalier.png"
   },
+  Dalmatian: {
+    attributes: [()=>{addToTicketPrice(2)}, ()=>{addToTicketPrice(-2)}],
+    attributeText: "+2 Ticket Price",
+    entry: "This dog is known for its trademark dark spots - in fact, you may have seen the movie starring them, 101 Dalmatians! They were originally bred as hunting dogs and used as carriage dogs by firefighters. They are thought to have originated from Croatia and Dalmatia. They are muscular with high stamina. They go VERY far back - the first known reference to a Dalmatian was written in 1375 by Peter, Bishop of Dakovo! The breed has a rich history and makes an excellent companion.",
+    src: "../assets/animals/breeds/dalmatian.png"
+  },
   PersianCat: {
     attributes: [()=>{addToTicketPrice(3)}, ()=>{addToTicketPrice(-3)}],
     attributeText: "+3 Ticket Price",
