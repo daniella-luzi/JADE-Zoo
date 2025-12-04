@@ -8,6 +8,7 @@ const baseHeight = 900;
 
 let chances = {
   CommonRaccoon: 1,
+  MexicanRaccoon: 1,
   GoldenRaccoon: 1,
   VirginiaOpossum: 1,
   PatagonianPossum: 1,
@@ -15,7 +16,8 @@ let chances = {
   CavalierKingCharlesSpaniel: 1,
   PersianCat: 1,
   RagdollCat: 1,
-  GreyCat: 1
+  GreyCat: 1,
+  BengalCat: 1
 }
 
 
@@ -65,6 +67,11 @@ let allBreeds = {
     entry: "These furry mammals are native to North America, but later spread to central Europe, the Caucasus, and Japan in the mid-20th century. They are nocturnal, meaning they sleep during the day. Raccoons are super intelligent; in fact, studies have shown that they can remember the solutions to tasks for at least 3 years! They originally lived in forests, but have adapted to live in urban areas, which is why you might find one digging through your trash. You may have noticed their dexterous paws. That's where they got their name! The word 'raccoon' was adopted into English from the native Powhatan term meaning 'animal that scratches with its hands'. Do NOT try to pet them.",
     src: "../assets/animals/breeds/commonraccoon.png" //real picture
   },
+  MexicanRaccoon: {
+    attributeText: "+2 Ticket Price",
+    entry: "These raccoons are a subspecies of the common raccoon, and they are native to Mexico and Central America. They can live in a wide variety of habitats, and typically have shorter fur than common raccoons due to living in warmer climates. Their diet varies a lot depending on the season, but they often eat fruits, nuts, seeds, and small animals and insects. Unfortunately, these little guys are considered pests due to raiding cornfields and gardens (as well as carrying rabies), so if you live in Mexico, watch out and keep an eye on your plants!",
+    src: "assets/animals/breeds/mexicanraccoon.png"
+  },
   GoldenRaccoon: {
     attributeText: "+15 Ticket Price",
     entry: "While not really a 'breed' per se, these little guys are inspired by albino raccoons, which are normal raccoons but with a rare gene mutation that removes their 'melanin', or the pigment that makes their fur and skin dark. As a result, their fur is white, their noses are pink, and their eyes are red. This mutation only occurs in about one in every 10,000-20,000 raccoons, making sightings extremely rare. There are also blonde raccoons, a rare color morph with light brown or golden fur. Their masks and tail rings are still visible but not nearly as pronounced.",
@@ -96,9 +103,14 @@ let allBreeds = {
     src: "../assets/animals/breeds/ragdollcat.png"
   },
   GreyCat: {
-    attributeText: "+1 Ticket Price",
+    attributeText: "+4 Ticket Price",
     entry: "These beautiful grey cats are called Russian Blues! They originated in Arkhangelsk, Russia. These cats have grey and silky fur. They are quiet, reserved, and even shy at times. It is even noted that these cats tend to not bother people with cat allergies as much. That’s always a good sign!",
     src: "../assets/animals/breeds/greycat.png"
+  },
+  BengalCat: {
+    attributeText: "+10 Ticket Price",
+    entry: "These beautiful cats with trademark spots and stripes are a cross between domestic cats and Asian Leopard cats. Bengals can have many different types of markings, but they are the only domestic breed of cat that have rosette markings! They also tend to be more hypoallergenic than most cats, which means they are less likely to cause an allergy due to less shedding. If you can afford them, they make the purrfect companions.",
+    src: "../assets/animals/breeds/bengal.png"
   },
   PatagonianPossum: {
     attributeText: "+3 Ticket Price",
@@ -366,6 +378,10 @@ let breedData = {
     img: "../assets/animals/racket_raccoon.png",
     nickname: "raccoon"
   },
+  MexicanRaccoon: {
+    img: "../assets/animals/mexican_raccoon.png",
+    nickname: "raccoon"
+  },
   GoldenRaccoon: {
     img: "../assets/animals/golden_raccoon.png",
     nickname: "raccoon"
@@ -394,6 +410,10 @@ let breedData = {
     img: "../assets/animals/ragdoll_cat.png",
     nickname: "kitty"
   },
+  BengalCat: {
+    img: "../assets/animals/bengal_cat.png",
+    nickname: "kitty"
+  },
   PatagonianPossum: {
     img: "../assets/animals/patagonian_possum.png",
     nickname: "possum"
@@ -407,7 +427,7 @@ const backyardSpawns = {
   trash: {
     imgId: "raccoon",             // DOM element used for display
     timerType: "trash",           // which timer reset to use later
-    allowedBreeds: ["CommonRaccoon", "VirginiaOpossum", "GoldenRaccoon","PatagonianPossum"],
+    allowedBreeds: ["CommonRaccoon", "VirginiaOpossum", "GoldenRaccoon","PatagonianPossum", "MexicanRaccoon"],
     rollStats() {
       // Justin’s original trash formula
       const baseMoney = Math.floor(Math.random() * 4) + baseValue;
@@ -424,10 +444,10 @@ const backyardSpawns = {
       "CavalierKingCharlesSpaniel",
       "LaboradorRetriever",
       "GreyCat",
-      "RagdollCat"
+      "RagdollCat",
+      "BengalCat"
     ],
     rollStats() {
-      // Justin’s original food bowl formula
       const baseMoney = Math.floor(Math.random() * 4) + 1;
       const tipChance = Math.floor(Math.random() * 5) + 1;
       const tipValue  = Math.floor(Math.random() * 7) + 4;
@@ -453,7 +473,7 @@ function pickBreedWeighted(allowedBreeds) {
     r -= (chances[b] || 0);
     if (r <= 0) return b;
   }
-  return allowedBreeds[0]; // fallback
+  return allowedBreeds[0];
 }
 
 

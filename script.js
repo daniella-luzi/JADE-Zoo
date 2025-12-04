@@ -89,7 +89,13 @@ let allBreeds = {
     attributes: [()=>{addToTicketPrice(1)}, ()=>{addToTicketPrice(-1)}],
     attributeText: "+1 Ticket Price",
     entry: "These furry mammals are native to North America, but later spread to central Europe, the Caucasus, and Japan in the mid-20th century. They are nocturnal, meaning they sleep during the day. Raccoons are super intelligent; in fact, studies have shown that they can remember the solutions to tasks for at least 3 years! They originally lived in forests, but have adapted to live in urban areas, which is why you might find one digging through your trash. You may have noticed their dexterous paws. That's where they got their name! The word 'raccoon' was adopted into English from the native Powhatan term meaning 'animal that scratches with its hands'. Do NOT try to pet them.",
-    src: "assets/animals/breeds/commonraccoon.png" //real picture
+    src: "assets/animals/breeds/commonraccoon.png"
+  },
+  MexicanRaccoon: {
+    attributes: [()=>{addToTicketPrice(2)}, ()=>{addToTicketPrice(-2)}],
+    attributeText: "+2 Ticket Price",
+    entry: "These raccoons are a subspecies of the common raccoon, and they are native to Mexico and Central America. They can live in a wide variety of habitats, and typically have shorter fur than common raccoons due to living in warmer climates. Their diet varies a lot depending on the season, but they often eat fruits, nuts, seeds, and small animals and insects. Unfortunately, these little guys are considered pests due to raiding cornfields and gardens (as well as carrying rabies), so if you live in Mexico, watch out and keep an eye on your plants!",
+    src: "assets/animals/breeds/mexicanraccoon.png"
   },
   GoldenRaccoon: {
     attributes: [()=>{addToTicketPrice(15)}, ()=>{addToTicketPrice(-15)}],
@@ -134,10 +140,16 @@ let allBreeds = {
     src: "assets/animals/breeds/ragdollcat.png"
   },
   GreyCat: {
-    attributes: [()=>{addToTicketPrice(1)}, ()=>{addToTicketPrice(-1)}],
-    attributeText: "+1 Ticket Price",
+    attributes: [()=>{addToTicketPrice(4)}, ()=>{addToTicketPrice(-4)}],
+    attributeText: "+4 Ticket Price",
     entry: "These beautiful grey cats are called Russian Blues! They originated in Arkhangelsk, Russia. These cats have grey and silky fur. They are quiet, reserved, and even shy at times. It is even noted that these cats tend to not bother people with cat allergies as much. That’s always a good sign!",
     src: "assets/animals/breeds/greycat.png"
+  },
+  BengalCat: {
+    attributes: [()=>{addToTicketPrice(10)}, ()=>{addToTicketPrice(-10)}],
+    attributeText: "+10 Ticket Price",
+    entry: "These beautiful cats with trademark spots and stripes are a cross between domestic cats and Asian Leopard cats. Bengals can have many different types of markings, but they are the only domestic breed of cat that have rosette markings! They also tend to be more hypoallergenic than most cats, which means they are less likely to cause an allergy due to less shedding. If you can afford them, they make the purrfect companions.",
+    src: "../assets/animals/breeds/bengal.png"
   }
 }
 
